@@ -1,0 +1,52 @@
+{
+  "generated": "2026-09-09, this session",
+  "purpose": "settle which benchmarks are usable for the E1 pilot before promising a benchmark count, per PLAN_FLIPBUDGET.md D5",
+  "mmlu": {
+    "usable_for_e1": true,
+    "raw_item_level_data": "results/analysis/b0_scores.json",
+    "n_model_task_combinations": 28,
+    "n_items_per_combination": 400,
+    "total_responses": 11200,
+    "extractors_per_item": [
+      "strict_match_extracted",
+      "flexible_extracted",
+      "robust_letter"
+    ],
+    "human_audit_file": "results/analysis/human_labels.json",
+    "human_audit_n_items": 48,
+    "human_audit_benchmarks": [
+      "mmlu_flan_cot_zeroshot",
+      "mmlu_flan_n_shot_generative"
+    ],
+    "human_audit_models_covered": [
+      "deepseek/deepseek-v4-flash",
+      "openai/gpt-5-mini",
+      "openai/gpt-5.6-luna"
+    ],
+    "human_audit_n_models": 3,
+    "note": "audit covers only 3 of the roster's models -- per-model estimates for the other 11 models in e3_roster.json have no direct human audit and must rely entirely on partial pooling toward the 3-model pooled rate, or be flagged as unaudited."
+  },
+  "math_hard": {
+    "usable_for_e1": "partial",
+    "raw_item_level_data": "results/cache_l1/ (Open LLM Leaderboard generations, per PREREGISTRATION_AUDIT.md -- not directly re-read here, already processed into the files below)",
+    "pooled_margins_file": "results/analysis/mathhard_human_margins.json",
+    "pooled_margins_are": "stratum-pooled across all 28 models -- NOT per-model",
+    "pair_level_gaps_file": "results/analysis/pair_identification_human.json",
+    "n_pairs_with_real_gap": 378,
+    "n_roster_models": 28,
+    "phibar_used_pooled": 0.07213991680493763,
+    "labelling_key_has_model_field": true,
+    "per_model_audit_counts": {
+      "n_models_with_any_audit": 27,
+      "n_roster_models": 28,
+      "min": 5,
+      "median": 11,
+      "max": 48
+    },
+    "note": "per-model gap and margin are both available in principle (gap directly from pair_identification_human.json, margin re-sliceable from mathhard_labelling_key.json), but per-model differential flip-budget computation is deferred to E4/E5 pending the re-slicing + partial-pooling script. This E1 pass uses MATH-Hard ONLY as a Case-A (pooled, non-differential) check using the real 378 pair gaps against the real pooled phibar -- not yet the full differential Case-B treatment."
+  },
+  "gsm8k": {
+    "usable_for_e1": false,
+    "reason": "design requested 400 items but scores file has n_scored=9 for the one model checked -- a partial/interrupted run, not item-level (no per-item rows, only aggregate strict/flexible rate per model). Generation logs exist (results/runs/gsm8k_generate_*.json, dated 2026-09-05) but were not re-read here to control cost; a full item-level GSM8K pilot needs a fresh scoring pass over the existing generations, which is free (no new API calls, already-generated responses just need re-scoring) -- flagged as a candidate task, not done in this pass."
+  }
+}
