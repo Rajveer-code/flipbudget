@@ -1,0 +1,420 @@
+{
+  "item_level": {
+    "n_valid_pairs": 41,
+    "n_either_wrong": 1,
+    "n_both_wrong": 0,
+    "observed_both_wrong": 0.0,
+    "expected_both_wrong_independence": 0.0,
+    "ratio": null,
+    "pearson_r": null,
+    "pearson_p": null,
+    "verdict": "UNDERPOWERED"
+  },
+  "item_level_pairs": [
+    {
+      "item_id": "a9c60067d8e9f5595c4427891f8293bd1c5d3ac36f83ac2cd89f93b3e987a95b",
+      "model1": "01-ai/Yi-34B-Chat",
+      "model2": "01-ai/Yi-1.5-34B-Chat",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.02631578947368421
+    },
+    {
+      "item_id": "9337179ac2bf78f906adf89272253e6688cadac9d93b975d641e42cbe97a69e2",
+      "model1": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "model2": "HuggingFaceH4/zephyr-7b-alpha",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "a80cdaffd5a764de4010fe7486414de3c05a8d5d33ecf08d39f024b7bcb01679",
+      "model1": "01-ai/Yi-34B",
+      "model2": "bigcode/starcoder2-15b",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "89b3046ce178679b8c22716f560cc33e47c87402e92fb6a0a290fdd3e677b957",
+      "model1": "Qwen/Qwen2-7B",
+      "model2": "01-ai/Yi-1.5-34B-Chat",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.02631578947368421
+    },
+    {
+      "item_id": "22832302fe89cc651b84334e20c53d2d532623eba520eaff001640c689577abc",
+      "model1": "mistralai/Mistral-7B-Instruct-v0.3",
+      "model2": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "f60e6952cdb7b3b87e872f7f544d9ab3138372ed8a9ca09be6b7354009fe1841",
+      "model1": "EleutherAI/gpt-neox-20b",
+      "model2": "CohereForAI/c4ai-command-r-v01",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.17391304347826086
+    },
+    {
+      "item_id": "911cbea0c11612c59a5b9769232688bac5ea717b1aeaaa5ea04eb69ee7428919",
+      "model1": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "model2": "01-ai/Yi-1.5-34B-Chat",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.02631578947368421
+    },
+    {
+      "item_id": "911cbea0c11612c59a5b9769232688bac5ea717b1aeaaa5ea04eb69ee7428919",
+      "model1": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "model2": "mosaicml/mpt-7b",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "911cbea0c11612c59a5b9769232688bac5ea717b1aeaaa5ea04eb69ee7428919",
+      "model1": "01-ai/Yi-1.5-34B-Chat",
+      "model2": "mosaicml/mpt-7b",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.02631578947368421,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "772159744d87c229d09d218208e81bfec20119caf3e78cac1af53f3d46bd0261",
+      "model1": "HuggingFaceH4/zephyr-7b-beta",
+      "model2": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "de6834c4ca3ea5c51c79926765d55d95e3f815d818a0dbce31a01f685a852ea8",
+      "model1": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "model2": "01-ai/Yi-34B",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "de6834c4ca3ea5c51c79926765d55d95e3f815d818a0dbce31a01f685a852ea8",
+      "model1": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "model2": "tiiuae/falcon-40b",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "de6834c4ca3ea5c51c79926765d55d95e3f815d818a0dbce31a01f685a852ea8",
+      "model1": "01-ai/Yi-34B",
+      "model2": "tiiuae/falcon-40b",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "92732d0ce62e147d26d9e4dd26f38505c5b6243459ec06943f8dad086ab7be93",
+      "model1": "mistralai/Mistral-7B-Instruct-v0.3",
+      "model2": "Qwen/Qwen2-72B-Instruct",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "92732d0ce62e147d26d9e4dd26f38505c5b6243459ec06943f8dad086ab7be93",
+      "model1": "mistralai/Mistral-7B-Instruct-v0.3",
+      "model2": "Qwen/Qwen2-7B",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "92732d0ce62e147d26d9e4dd26f38505c5b6243459ec06943f8dad086ab7be93",
+      "model1": "Qwen/Qwen2-72B-Instruct",
+      "model2": "Qwen/Qwen2-7B",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "ed5dc1dad8308c80779736f0544a12ddf47867930ffb6d36cfc7f52c06e34f76",
+      "model1": "bigcode/starcoder2-15b",
+      "model2": "CohereForAI/c4ai-command-r-v01",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.17391304347826086
+    },
+    {
+      "item_id": "05753d4fbe1446e76360d8e04da868d2436c7c9bbb64042b5e9041f16c014a5e",
+      "model1": "microsoft/phi-2",
+      "model2": "mosaicml/mpt-7b",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "a271199a48bb1b26c31bdd5eededa41480df4f29c60156b3e789b58efd8cf08e",
+      "model1": "Qwen/Qwen2-72B-Instruct",
+      "model2": "EleutherAI/gpt-neox-20b",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "c1e5c019a0868ba4f7275d4ec67c9a72fae13e46edf4710c749654b7689f648d",
+      "model1": "google/gemma-7b",
+      "model2": "01-ai/Yi-1.5-34B-Chat",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.02631578947368421
+    },
+    {
+      "item_id": "50ad5672823065be68a4a14d2ca72a3b8fd471fcf01e5d5c94392b20e8ce18b2",
+      "model1": "CohereForAI/c4ai-command-r-v01",
+      "model2": "Deci/DeciLM-7B",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.17391304347826086,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "0197c0f9ac05773b69a5989419e7b839eb967e815e6cab21c603c74689e33d32",
+      "model1": "databricks/dolly-v2-12b",
+      "model2": "Qwen/Qwen2-72B-Instruct",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "f4c34cd76a76d52309e2f3114e2993f02135516e8ae8e6a4ae10205d3fced00c",
+      "model1": "HuggingFaceH4/zephyr-7b-beta",
+      "model2": "01-ai/Yi-1.5-34B-Chat",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.02631578947368421
+    },
+    {
+      "item_id": "6369294b44026cdc3da0e14a055b9a61f37a10556b52a5ead72d67d101f187e0",
+      "model1": "HuggingFaceH4/zephyr-7b-alpha",
+      "model2": "01-ai/Yi-1.5-34B-Chat",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.02631578947368421
+    },
+    {
+      "item_id": "8d2bcc63c9db3272169c0519059c6805a18eb3e60dfbc7d59dd04497af34c6b6",
+      "model1": "01-ai/Yi-1.5-34B-Chat",
+      "model2": "HuggingFaceH4/zephyr-7b-beta",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.02631578947368421,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "dc22afac9edf4640012c6e91edfa5e64a6e86a5367e192adc30f8d5e40be5c15",
+      "model1": "01-ai/Yi-34B",
+      "model2": "01-ai/Yi-1.5-34B-Chat",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.02631578947368421
+    },
+    {
+      "item_id": "12dd9e500063c83ee1a2ea67d5d212d1924ee81a3ea50b080e28cb94aa633d09",
+      "model1": "Qwen/Qwen2-7B",
+      "model2": "Qwen/Qwen2-72B-Instruct",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "5ac72e7d79b42928360acc5b625ea8cd1ceebd02e998b9cfa191db8762dd3905",
+      "model1": "01-ai/Yi-1.5-34B-Chat",
+      "model2": "HuggingFaceH4/zephyr-7b-alpha",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.02631578947368421,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "a9e6ae8036c54be6124f65b0df6194eb5443e70c583f53aee505acc0bf2faf6b",
+      "model1": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "model2": "microsoft/phi-2",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "8edba9f6cd0583d179d7118929324a1b97662357805e87b7d7bc1372b5ea282a",
+      "model1": "tiiuae/falcon-7b",
+      "model2": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "122481d34e816aedaf6f081d3c05ff2167ac6627cf0f9e36bf71984bfe1c5f94",
+      "model1": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "model2": "01-ai/Yi-1.5-34B-Chat",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.02631578947368421
+    },
+    {
+      "item_id": "122481d34e816aedaf6f081d3c05ff2167ac6627cf0f9e36bf71984bfe1c5f94",
+      "model1": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "model2": "Qwen/Qwen2-7B",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "122481d34e816aedaf6f081d3c05ff2167ac6627cf0f9e36bf71984bfe1c5f94",
+      "model1": "01-ai/Yi-1.5-34B-Chat",
+      "model2": "Qwen/Qwen2-7B",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.02631578947368421,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "1b049d689d82f15c8f07d215d50e93bbf3652c141d221abe4022f17a04af1be9",
+      "model1": "microsoft/phi-1_5",
+      "model2": "01-ai/Yi-34B",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "e757c5f49da288abfcf40a7318c49669e68acd4d2040e5dede25d7ba595ee32c",
+      "model1": "mistralai/Mistral-7B-Instruct-v0.3",
+      "model2": "01-ai/Yi-1.5-34B-Chat",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.02631578947368421
+    },
+    {
+      "item_id": "85d0a713fee5e5e37e2d811bc11ef2b895d32c3da104c05920fe311e712337be",
+      "model1": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "model2": "Qwen/Qwen2-72B-Instruct",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "96604ea0305c22358a0933101b1e2c98a3273dcec244ba30a69e8bb9d885eabd",
+      "model1": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "model2": "CohereForAI/c4ai-command-r-v01",
+      "wrong1": false,
+      "wrong2": true,
+      "expected1": 0.0,
+      "expected2": 0.17391304347826086
+    },
+    {
+      "item_id": "a2ac74b60d554b7e8769c7138b6fd8c769a9220079f21e2b86e7d564c309d7d6",
+      "model1": "bigcode/starcoder2-15b",
+      "model2": "01-ai/Yi-1.5-34B-Chat",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.02631578947368421
+    },
+    {
+      "item_id": "0f738bb2d9046883904559d879b805718bbb5cfcf197523e499d7a6957ce8dab",
+      "model1": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "model2": "EleutherAI/gpt-j-6b",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "f66a3bcd5465918895f6b999df50fbdee6ba52f1490f0b2a3ca3c0b11d35ce34",
+      "model1": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "model2": "01-ai/Yi-34B-Chat",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    },
+    {
+      "item_id": "6686020b90f827c29f6bdff5ca72601a99e58cf68bb3809e091531b0c2e379bd",
+      "model1": "tiiuae/falcon-40b",
+      "model2": "mistralai/Mistral-7B-v0.1",
+      "wrong1": false,
+      "wrong2": false,
+      "expected1": 0.0,
+      "expected2": 0.0
+    }
+  ],
+  "cell_level": {
+    "n_cells": 28,
+    "chi2": 18.63443990255584,
+    "p_value": 0.8829355342456843,
+    "verdict": "CELLS_DO_NOT_DIFFER",
+    "cell_wrongness_rates": {
+      "algebra|q4": 0.0,
+      "precalculus|q4": 0.0,
+      "intermediate_algebra|q2": 0.0,
+      "geometry|q3": 0.0,
+      "algebra|q2": 0.038461538461538464,
+      "num_theory|q1": 0.0,
+      "prealgebra|q3": 0.0,
+      "counting_and_prob|q4": 0.0,
+      "prealgebra|q2": 0.0,
+      "counting_and_prob|q1": 0.0,
+      "algebra|q1": 0.06666666666666667,
+      "geometry|q1": 0.0,
+      "algebra|q3": 0.037037037037037035,
+      "geometry|q2": 0.0,
+      "intermediate_algebra|q3": 0.0,
+      "counting_and_prob|q2": 0.0,
+      "prealgebra|q1": 0.0,
+      "geometry|q4": 0.0,
+      "counting_and_prob|q3": 0.0,
+      "intermediate_algebra|q1": 0.0,
+      "num_theory|q4": 0.125,
+      "num_theory|q2": 0.0,
+      "intermediate_algebra|q4": 0.0,
+      "prealgebra|q4": 0.0,
+      "num_theory|q3": 0.0,
+      "precalculus|q1": 0.0,
+      "precalculus|q2": 0.0,
+      "precalculus|q3": 0.0
+    }
+  }
+}
