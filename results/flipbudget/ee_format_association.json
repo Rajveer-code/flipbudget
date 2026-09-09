@@ -1,0 +1,33 @@
+{
+  "n_records": 350,
+  "n_wrong": 5,
+  "wrongness_rate": 0.014285714285714285,
+  "features_used": [
+    "char_length",
+    "word_count",
+    "has_boxed",
+    "n_dollar_signs",
+    "n_newlines",
+    "n_equals",
+    "has_therefore",
+    "n_frac",
+    "ends_with_period"
+  ],
+  "cv_auc": 0.8295652173913043,
+  "auc_bootstrap_ci": [
+    0.49248566757143175,
+    0.9913793103448275
+  ],
+  "coefficients": {
+    "char_length": 1.224985526730046,
+    "word_count": 0.07426671250382873,
+    "has_boxed": 0.3881252791371628,
+    "n_dollar_signs": 1.079490281240117,
+    "n_newlines": -3.918464397951869,
+    "n_equals": -0.2543577659638366,
+    "has_therefore": 1.6164979451438888,
+    "n_frac": -1.2559735658311266,
+    "ends_with_period": -1.7954299845406447
+  },
+  "verdict": "UNDERPOWERED"
+}
