@@ -24,11 +24,23 @@ is a diagnostic statistic.*
 
 Phase 2's thesis:
 
-> **Observational causal inference solved "how much hidden bias would overturn this
-> conclusion?" — Cornfield's inequality, Rosenbaum's Γ, the E-value, the marginal
-> sensitivity model, design sensitivity. Machine-learning evaluation has the identical
-> problem, with the scorer as the source of hidden bias, and has no such apparatus at
-> all. We build it.**
+> **Observational causal inference solved a structurally analogous problem — "how much
+> hidden bias would overturn this conclusion?" — via Cornfield's inequality, Rosenbaum's
+> Γ, the E-value, the marginal sensitivity model, design sensitivity. Machine-learning
+> evaluation faces its own version, with the scorer rather than an unmeasured confounder
+> as the source of hidden bias, and has no comparable apparatus. We adapt that
+> methodology to this different setting — a methodological import, not a claim that the
+> two problems are the same problem.**
+
+**Safeguard, added 2026-09-09 per explicit instruction:** every occurrence of this
+framing in this document and in any resulting paper must read as *adaptation of a
+method to a structurally analogous but distinct problem*, never as *the identical causal
+problem*. Scorer misclassification is a measurement-error / verification-bias structure,
+not an unmeasured-confounding structure — the analogy is at the level of "a bound on how
+much an unobserved bias term could change a conclusion," not at the level of causal
+identification assumptions (no exchangeability, no treatment assignment, no potential
+outcomes are invoked here). State this distinction explicitly in the paper's own related-
+work section, not only here.
 
 Under that framing the flip budget stops being a statistic we invented and becomes the
 scorer-error analogue of Γ — an instance of a mature, respected methodology being
@@ -60,7 +72,7 @@ tested at all.**
 |---|---|
 | **No sensitivity-analysis apparatus for scorer error in ML evaluation** | Queried `E-value`+`sensitivity`, `marginal sensitivity model`, `design sensitivity`, and `scorer`+`error`+`language model` — the causal-inference apparatus is mature and entirely absent from the eval literature. Zero overlap. |
 | **No treatment of the human reference as imperfect in benchmark auditing** | `imperfect gold standard`, latent-class/Hui-Walter test-accuracy literature exists (`1608.06677`, `2509.18489`) and is used nowhere in LLM-eval auditing. Every audit implicitly assumes human labels are truth. |
-| **No verification-bias correction in benchmark audits** | `verification bias` literature is mature in diagnostics (`2509.12217` tutorial, `2601.12167` DAGs). Every benchmark audit I have seen — **including Phase 1's own** — stratifies the audit sample on the scorer's own output. That is textbook partial verification bias and nobody names it. |
+| **No verification-bias correction in benchmark audits** | `verification bias` literature is mature in diagnostics (`2509.12217` tutorial, `2601.12167` DAGs). Every benchmark audit I have seen — **including Phase 1's own** — stratifies the audit sample on the scorer's own output, which has the *shape* of a partial-verification-bias design. **Safeguard, added 2026-09-09: this is a hypothesis to be formally established for our specific sampling design (T-E), not an assumed diagnosis.** The classical partial-verification-bias result assumes the reference standard is applied *conditional on* the index test's result in a specific way (e.g. disease-verification workup bias); our stratified-audit design must be checked against that structure explicitly — matching MAR assumptions, checking whether design weights already correct for it — before claiming the bias applies or that it is uncorrected. T-E's job is to do that check, not to assert the conclusion in advance. |
 | **Nobody has established whether scorer-induced uncertainty exceeds sampling uncertainty** | No paper found making this comparison. This is the headline nobody has claimed. |
 
 ### 2.2 Adjacent work — cite prominently, do not overclaim against
@@ -75,13 +87,14 @@ tested at all.**
 
 ### 2.3 The novelty claim, in the exact words to defend
 
-> We import sensitivity analysis — the apparatus developed for unmeasured confounding in
-> observational studies — into benchmark evaluation, with the scoring function as the
+> We adapt sensitivity-analysis methodology — developed for unmeasured confounding in
+> observational studies, applied here to a structurally analogous but distinct
+> measurement-error problem — to benchmark evaluation, with the scoring function as the
 > source of hidden bias. We define a scorer sensitivity model, derive sharp bounds and a
-> design-sensitivity limit under it, correct for the verification bias and imperfect
-> reference standard that benchmark audits structurally incur, and show empirically that
-> the resulting uncertainty component is frequently larger than the sampling uncertainty
-> the field currently reports.
+> design-sensitivity limit under it, formally test for (rather than assume) the
+> verification bias and imperfect-reference-standard structure benchmark audits may
+> incur, and show empirically whether the resulting uncertainty component is larger than
+> the sampling uncertainty the field currently reports.
 
 Not novel and must be said so: partial identification, misclassification correction,
 sensitivity analysis, Rosenbaum bounds, the E-value, latent-class reference-standard
