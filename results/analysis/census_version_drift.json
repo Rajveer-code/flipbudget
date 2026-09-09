@@ -1,0 +1,55 @@
+{
+ "design": {
+  "what": "git-history evidence that the scoring pipeline this paper measures is not a fixed artifact -- it changes version to version, including in exactly the dimension this paper studies (readable vs. silent failure)",
+  "pinned_commit": "f4d4b3de3ee6741a7151a9fe74945ee515262f4c",
+  "tags_compared": [
+   "v0.4.4",
+   "v0.4.5"
+  ],
+  "method": "targeted shallow-fetch of specific tags (not a full unshallow) against the already-vendored clone, then git diff/log restricted to the two files this project's own scoring code imports"
+ },
+ "findings": [
+  {
+   "id": "extraction_crash_to_silent_fallback",
+   "file": "lm_eval/filters/extraction.py",
+   "affects": "MMLU strict-match / flexible-extract (this project's scripts/15, 31, 34)",
+   "version_window": "v0.4.4 -> f4d4b3de (pinned)",
+   "referenced_prs": [
+    "#3708 Fix MultiChoiceRegexFilter.find_match IndexError on all-empty capture groups",
+    "#3395 Avoid errors in extraction filters"
+   ],
+   "what_changed": "match = [m for m in match if m][0] -- an uncaught IndexError when the filtered list is empty (every captured group was an empty string) -- became a guarded check that falls back to the sentinel instead of raising.",
+   "consequence": "A response whose regex captures an all-empty-string tuple used to CRASH the harness on this version; on the pinned version it silently becomes a recorded wrong answer. The extraction PATTERN did not change -- only what happens when it degenerately matches did.",
+   "commits_in_range": [
+    "b67284a7 chore: clean up deps; fix linting errors(#3748)",
+    "182836f6 Fix MultiChoiceRegexFilter.find_match IndexError on all-empty capture groups (#3708)",
+    "7ddd9667 Avoid errors in extraction filters (#3395)",
+    "f30dda15 use `strip()` instead of `lstrip()` in `remove_whitespace` filter (#3408)",
+    "bb433af7 feat: Add CLIcK task (#3173)"
+   ],
+   "verify_command": "git -C vendor/lm-evaluation-harness diff v0.4.4 f4d4b3de3ee6741a7151a9fe74945ee515262f4c -- lm_eval/filters/extraction.py"
+  },
+  {
+   "id": "math_hard_sentinel_and_timeout_drift",
+   "file": "lm_eval/tasks/leaderboard/math/utils.py",
+   "affects": "MATH-Hard boxed extraction (this project's scripts/19, 42, 47 -- the leaderboard re-scoring the 90.2% headline is computed on)",
+   "version_window": "v0.4.5 -> f4d4b3de (pinned)",
+   "what_changed": [
+    "last_boxed_only_string: 'no boxed answer found' changed from returning None to returning the string sentinel INVALID_ANSWER = '[invalidanswer]'.",
+    "remove_boxed: a previously UNCAUGHT AssertionError on malformed \\boxed{} syntax is now caught and converted to the same INVALID_ANSWER sentinel.",
+    "is_equiv: the symbolic-equivalence timeout tightened from 5 seconds to 1 second.",
+    "The equivalence backend itself changed from plain sympy (parse_latex) to a new dependency, math_verify (LatexExtractionConfig, parse, verify)."
+   ],
+   "consequence": "Finding 1: the None-vs-sentinel distinction this paper's theorem relies on (a readable failure a caller can branch on, versus an opaque value that flows into downstream comparisons) is itself unstable across versions of the SAME file in the SAME repository. Finding 2: a 5x tighter symbolic-equivalence timeout means more boundary-case comparisons are marked 'not equivalent' (scored wrong) purely because verification took too long, independent of mathematical content -- this project's own load_math_utils (scripts/19) documents that a timeout is treated as non-equivalence, matching the harness's own SIGALRM behavior.",
+   "commits_in_range": [
+    "bb433af7 feat: Add CLIcK task (#3173)"
+   ],
+   "not_attempted": "Empirical re-scoring under the pre-drift version, which would require installing its era's plain-sympy dependency rather than the pinned version's math_verify package -- deferred as future work rather than attempted as a risky unattended dependency change.",
+   "verify_command": "git -C vendor/lm-evaluation-harness diff v0.4.5 f4d4b3de3ee6741a7151a9fe74945ee515262f4c -- lm_eval/tasks/leaderboard/math/utils.py"
+  }
+ ],
+ "null_result_check": {
+  "searched_for": "any commit changing a load-bearing filter/extractor between an earlier tag and the pinned commit",
+  "result": "NOT a null result -- two independent, verifiable version-drift findings were located on the first two files checked (the two this project's own scoring code actually imports)"
+ }
+}
