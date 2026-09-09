@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>flipbudget — MATH-Hard shadow leaderboard</title>
+<style>
+  :root {
+    --bg: #fafaf9; --fg: #1c1917; --muted: #78716c; --border: #e7e5e4;
+    --identified: #f0fdf4; --identified-fg: #166534;
+    --not-identified: #fef2f2; --not-identified-fg: #991b1b;
+    --accent: #4338ca;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0c0a09; --fg: #f5f5f4; --muted: #a8a29e; --border: #292524;
+      --identified: #052e16; --identified-fg: #86efac;
+      --not-identified: #450a0a; --not-identified-fg: #fca5a5;
+      --accent: #818cf8; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+    font: 15px/1.5 -apple-system, "Segoe UI", system-ui, sans-serif; }
+  main { max-width: 980px; margin: 0 auto; padding: 32px 20px 80px; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  .subtitle { color: var(--muted); margin: 0 0 28px; font-size: 0.95rem; }
+  .subtitle a { color: var(--accent); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px; margin-bottom: 28px; }
+  .stat { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+  .stat .n { font-size: 1.6rem; font-weight: 600; }
+  .stat .label { color: var(--muted); font-size: 0.82rem; }
+  .controls { display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; align-items: center; }
+  input[type=text] { flex: 1; min-width: 180px; padding: 8px 10px; border-radius: 6px;
+    border: 1px solid var(--border); background: var(--bg); color: var(--fg); font-size: 0.9rem; }
+  select { padding: 8px 10px; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--bg); color: var(--fg); font-size: 0.9rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 220px; }
+  th { color: var(--muted); font-weight: 500; font-size: 0.78rem; text-transform: uppercase;
+    letter-spacing: 0.03em; position: sticky; top: 0; background: var(--bg); cursor: pointer; }
+  tr.not-identified { background: var(--not-identified); }
+  tr.not-identified td { color: var(--not-identified-fg); }
+  tr.identified-badge td.status { color: var(--identified-fg); }
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+  .pill.yes { background: var(--identified); color: var(--identified-fg); }
+  .pill.no { background: var(--not-identified); color: var(--not-identified-fg); }
+  footer { margin-top: 32px; color: var(--muted); font-size: 0.82rem; }
+  footer a { color: var(--accent); }
+  .empty { padding: 24px; text-align: center; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>flipbudget — MATH-Hard shadow leaderboard</h1>
+  <p class="subtitle">Which of 378 real pairwise model comparisons on MATH-Hard remain
+    <em>identified</em> once scorer misclassification is accounted for.
+    Data + code: <a href="https://github.com/Rajveer-code/flipbudget" target="_blank" rel="noopener">github.com/Rajveer-code/flipbudget</a></p>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="controls">
+    <input type="text" id="search" placeholder="filter by model name…">
+    <select id="filter">
+      <option value="all">all pairs</option>
+      <option value="not-identified">not identified only</option>
+      <option value="degenerate">degenerate only</option>
+    </select>
+  </div>
+
+  <table id="table">
+    <thead>
+      <tr>
+        <th data-key="hi">Higher-scoring model</th>
+        <th data-key="lo">Lower-scoring model</th>
+        <th data-key="raw_gap">Raw gap</th>
+        <th data-key="corrected_gap">Corrected gap</th>
+        <th data-key="flip_budget">Flip budget</th>
+        <th data-key="identified">Identified?</th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <div class="empty" id="empty" hidden>No pairs match this filter.</div>
+
+  <footer>
+    Real data, not illustrative. Generated from
+    <a href="https://github.com/Rajveer-code/flipbudget/blob/main/results/flipbudget/e1_case_b_TRUE.json" target="_blank" rel="noopener">e1_case_b_TRUE.json</a>
+    and
+    <a href="https://github.com/Rajveer-code/flipbudget/blob/main/results/flipbudget/e5_leaderboard.json" target="_blank" rel="noopener">e5_leaderboard.json</a>.
+    "Corrected gap" flips sign relative to "raw gap" exactly where a pair is
+    marked not identified. "Flip budget" is the least differential scorer
+    error that would put the pair's ranking in doubt (T2); "—" means the pair
+    was already inconclusive under ordinary sampling noise alone (degenerate).
+  </footer>
+</main>
+
+<script>
+let DATA = null;
+let sortKey = null, sortDir = 1;
+
+async function load() {
+  const res = await fetch('space_data.json');
+  DATA = await res.json();
+  renderStats();
+  render();
+}
+
+function renderStats() {
+  const s = DATA.summary;
+  const stats = [
+    { n: s.n_scored, label: 'pairs scored' },
+    { n: s.n_identified, label: 'identified' },
+    { n: s.n_not_identified, label: 'not identified' },
+    { n: (100 * s.n_identified / s.n_scored).toFixed(1) + '%', label: 'identified rate' },
+  ];
+  document.getElementById('stats').innerHTML = stats.map(x =>
+    `<div class="stat"><div class="n">${x.n}</div><div class="label">${x.label}</div></div>`
+  ).join('');
+}
+
+function render() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const filt = document.getElementById('filter').value;
+  let rows = DATA.pairs.filter(r => {
+    if (q && !r.lo.toLowerCase().includes(q) && !r.hi.toLowerCase().includes(q)) return false;
+    if (filt === 'not-identified' && r.identified) return false;
+    if (filt === 'degenerate' && !r.degenerate) return false;
+    return true;
+  });
+  if (sortKey) {
+    rows = rows.slice().sort((a, b) => {
+      const av = a[sortKey], bv = b[sortKey];
+      if (typeof av === 'string') return sortDir * av.localeCompare(bv);
+      return sortDir * ((av ?? -Infinity) - (bv ?? -Infinity));
+    });
+  }
+  const tbody = document.getElementById('rows');
+  document.getElementById('empty').hidden = rows.length > 0;
+  tbody.innerHTML = rows.map(r => `
+    <tr class="${r.identified ? '' : 'not-identified'}">
+      <td title="${r.hi}">${r.hi}</td>
+      <td title="${r.lo}">${r.lo}</td>
+      <td>${r.raw_gap}</td>
+      <td>${r.corrected_gap}</td>
+      <td>${r.degenerate ? '—' : (r.flip_budget ?? '—')}</td>
+      <td><span class="pill ${r.identified ? 'yes' : 'no'}">${r.identified ? 'yes' : 'no'}</span></td>
+    </tr>
+  `).join('');
+}
+
+document.getElementById('search').addEventListener('input', render);
+document.getElementById('filter').addEventListener('change', render);
+document.querySelectorAll('th[data-key]').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.key;
+    sortDir = (sortKey === key) ? -sortDir : 1;
+    sortKey = key;
+    render();
+  });
+});
+
+load();
+</script>
+</body>
+</html>
