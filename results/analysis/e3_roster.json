@@ -1,0 +1,741 @@
+{
+  "source": "results/analysis/b0_scores.json",
+  "n_models": 14,
+  "n_items_per_cell": 400,
+  "tasks": {
+    "mmlu_flan_cot_zeroshot": {
+      "n_models": 14,
+      "gaps": [
+        {
+          "model": "nemotron-3-super-120b",
+          "strict": 0.015,
+          "flexible": 0.4775,
+          "robust": 0.6925,
+          "robust_minus_strict_pp": 67.8,
+          "robust_minus_flexible_pp": 21.5,
+          "unparsed_rate": 0.205,
+          "truncated_rate": 0.12
+        },
+        {
+          "model": "groq/gpt-oss-20b",
+          "strict": 0.0025,
+          "flexible": 0.7725,
+          "robust": 0.795,
+          "robust_minus_strict_pp": 79.3,
+          "robust_minus_flexible_pp": 2.3,
+          "unparsed_rate": 0.058,
+          "truncated_rate": 0.005
+        },
+        {
+          "model": "groq/gpt-oss-120b",
+          "strict": 0.005,
+          "flexible": 0.8375,
+          "robust": 0.8525,
+          "robust_minus_strict_pp": 84.8,
+          "robust_minus_flexible_pp": 1.5,
+          "unparsed_rate": 0.02,
+          "truncated_rate": 0.0
+        },
+        {
+          "model": "gemini-3.1-flash-lite",
+          "strict": 0.4025,
+          "flexible": 0.935,
+          "robust": 0.9325,
+          "robust_minus_strict_pp": 53.0,
+          "robust_minus_flexible_pp": -0.3,
+          "unparsed_rate": 0.0,
+          "truncated_rate": 0.015
+        },
+        {
+          "model": "gemini-2.5-flash",
+          "strict": 0.0375,
+          "flexible": 0.5575,
+          "robust": 0.5525,
+          "robust_minus_strict_pp": 51.5,
+          "robust_minus_flexible_pp": -0.5,
+          "unparsed_rate": 0.043,
+          "truncated_rate": 0.223
+        },
+        {
+          "model": "groq/llama-3.3-70b-versatile",
+          "strict": 0.0775,
+          "flexible": 0.825,
+          "robust": 0.82,
+          "robust_minus_strict_pp": 74.2,
+          "robust_minus_flexible_pp": -0.5,
+          "unparsed_rate": 0.003,
+          "truncated_rate": 0.265
+        },
+        {
+          "model": "gemma-4-31b-it",
+          "strict": 0.2025,
+          "flexible": 0.91,
+          "robust": 0.8975,
+          "robust_minus_strict_pp": 69.5,
+          "robust_minus_flexible_pp": -1.3,
+          "unparsed_rate": 0.0,
+          "truncated_rate": 0.033
+        },
+        {
+          "model": "gemini-3.6-flash",
+          "strict": 0.0525,
+          "flexible": 0.88,
+          "robust": 0.8625,
+          "robust_minus_strict_pp": 81.0,
+          "robust_minus_flexible_pp": -1.7,
+          "unparsed_rate": 0.058,
+          "truncated_rate": 0.0
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "strict": 0.0225,
+          "flexible": 0.8575,
+          "robust": 0.8375,
+          "robust_minus_strict_pp": 81.5,
+          "robust_minus_flexible_pp": -2.0,
+          "unparsed_rate": 0.087,
+          "truncated_rate": 0.003
+        },
+        {
+          "model": "groq/llama-3.1-8b-instant",
+          "strict": 0.0275,
+          "flexible": 0.7075,
+          "robust": 0.68,
+          "robust_minus_strict_pp": 65.3,
+          "robust_minus_flexible_pp": -2.7,
+          "unparsed_rate": 0.045,
+          "truncated_rate": 0.03
+        },
+        {
+          "model": "local/phi4-mini",
+          "strict": 0.0275,
+          "flexible": 0.6175,
+          "robust": 0.585,
+          "robust_minus_strict_pp": 55.8,
+          "robust_minus_flexible_pp": -3.3,
+          "unparsed_rate": 0.003,
+          "truncated_rate": 0.08
+        },
+        {
+          "model": "nemotron-3-ultra-550b",
+          "strict": 0.09,
+          "flexible": 0.7925,
+          "robust": 0.7525,
+          "robust_minus_strict_pp": 66.2,
+          "robust_minus_flexible_pp": -4.0,
+          "unparsed_rate": 0.11,
+          "truncated_rate": 0.142
+        },
+        {
+          "model": "local/qwen3-8b",
+          "strict": 0.01,
+          "flexible": 0.485,
+          "robust": 0.41,
+          "robust_minus_strict_pp": 40.0,
+          "robust_minus_flexible_pp": -7.5,
+          "unparsed_rate": 0.458,
+          "truncated_rate": 0.0
+        },
+        {
+          "model": "groq/qwen3.6-27b",
+          "strict": 0.345,
+          "flexible": 0.81,
+          "robust": 0.07,
+          "robust_minus_strict_pp": -27.5,
+          "robust_minus_flexible_pp": -74.0,
+          "unparsed_rate": 0.91,
+          "truncated_rate": 0.993
+        }
+      ],
+      "median_robust_minus_strict_pp": 67.0,
+      "median_robust_minus_flexible_pp": -1.5,
+      "max_robust_minus_flexible": {
+        "model": "nemotron-3-super-120b",
+        "strict": 0.015,
+        "flexible": 0.4775,
+        "robust": 0.6925,
+        "robust_minus_strict_pp": 67.8,
+        "robust_minus_flexible_pp": 21.5,
+        "unparsed_rate": 0.205,
+        "truncated_rate": 0.12
+      },
+      "kendall_tau_strict_vs_robust": 0.133,
+      "kendall_tau_flexible_vs_robust": 0.714,
+      "permutation_test_flexible_vs_robust": {
+        "tau": 0.714,
+        "p_value": 0.0001799982000179998,
+        "n_permutations": 100000,
+        "seed": 42,
+        "alternative": "two-sided",
+        "null": "the two extractors' orderings are independent"
+      },
+      "permutation_test_strict_vs_robust": {
+        "tau": 0.133,
+        "p_value": 0.5539044609553905,
+        "n_permutations": 100000,
+        "seed": 42,
+        "alternative": "two-sided",
+        "null": "the two extractors' orderings are independent"
+      },
+      "n_models_changing_rank_flexible_vs_robust": 5,
+      "rank_changes": [
+        {
+          "model": "groq/qwen3.6-27b",
+          "rank_flexible": 7,
+          "rank_robust": 14,
+          "delta": -7
+        },
+        {
+          "model": "nemotron-3-super-120b",
+          "rank_flexible": 14,
+          "rank_robust": 9,
+          "delta": 5
+        },
+        {
+          "model": "groq/gpt-oss-20b",
+          "rank_flexible": 9,
+          "rank_robust": 7,
+          "delta": 2
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "rank_flexible": 4,
+          "rank_robust": 5,
+          "delta": -1
+        },
+        {
+          "model": "groq/gpt-oss-120b",
+          "rank_flexible": 5,
+          "rank_robust": 4,
+          "delta": 1
+        }
+      ],
+      "n_pairwise_inversions": 13,
+      "n_pairs": 91,
+      "inversions": [
+        {
+          "pair": [
+            "gemini-2.5-flash",
+            "groq/qwen3.6-27b"
+          ],
+          "flexible_gap_pp": -25.3,
+          "robust_gap_pp": 48.2
+        },
+        {
+          "pair": [
+            "gemini-2.5-flash",
+            "nemotron-3-super-120b"
+          ],
+          "flexible_gap_pp": 8.0,
+          "robust_gap_pp": -14.0
+        },
+        {
+          "pair": [
+            "gemini-3.5-flash",
+            "groq/gpt-oss-120b"
+          ],
+          "flexible_gap_pp": 2.0,
+          "robust_gap_pp": -1.5
+        },
+        {
+          "pair": [
+            "groq/gpt-oss-20b",
+            "groq/qwen3.6-27b"
+          ],
+          "flexible_gap_pp": -3.8,
+          "robust_gap_pp": 72.5
+        },
+        {
+          "pair": [
+            "groq/gpt-oss-20b",
+            "nemotron-3-ultra-550b"
+          ],
+          "flexible_gap_pp": -2.0,
+          "robust_gap_pp": 4.3
+        },
+        {
+          "pair": [
+            "groq/llama-3.1-8b-instant",
+            "groq/qwen3.6-27b"
+          ],
+          "flexible_gap_pp": -10.3,
+          "robust_gap_pp": 61.0
+        },
+        {
+          "pair": [
+            "groq/llama-3.1-8b-instant",
+            "nemotron-3-super-120b"
+          ],
+          "flexible_gap_pp": 23.0,
+          "robust_gap_pp": -1.2
+        },
+        {
+          "pair": [
+            "groq/qwen3.6-27b",
+            "local/phi4-mini"
+          ],
+          "flexible_gap_pp": 19.2,
+          "robust_gap_pp": -51.5
+        },
+        {
+          "pair": [
+            "groq/qwen3.6-27b",
+            "local/qwen3-8b"
+          ],
+          "flexible_gap_pp": 32.5,
+          "robust_gap_pp": -34.0
+        },
+        {
+          "pair": [
+            "groq/qwen3.6-27b",
+            "nemotron-3-super-120b"
+          ],
+          "flexible_gap_pp": 33.3,
+          "robust_gap_pp": -62.3
+        },
+        {
+          "pair": [
+            "groq/qwen3.6-27b",
+            "nemotron-3-ultra-550b"
+          ],
+          "flexible_gap_pp": 1.8,
+          "robust_gap_pp": -68.2
+        },
+        {
+          "pair": [
+            "local/phi4-mini",
+            "nemotron-3-super-120b"
+          ],
+          "flexible_gap_pp": 14.0,
+          "robust_gap_pp": -10.8
+        },
+        {
+          "pair": [
+            "local/qwen3-8b",
+            "nemotron-3-super-120b"
+          ],
+          "flexible_gap_pp": 0.8,
+          "robust_gap_pp": -28.3
+        }
+      ]
+    },
+    "mmlu_flan_n_shot_generative": {
+      "n_models": 14,
+      "gaps": [
+        {
+          "model": "nemotron-3-super-120b",
+          "strict": 0.035,
+          "flexible": 0.2075,
+          "robust": 0.75,
+          "robust_minus_strict_pp": 71.5,
+          "robust_minus_flexible_pp": 54.2,
+          "unparsed_rate": 0.142,
+          "truncated_rate": 0.102
+        },
+        {
+          "model": "gemini-3.6-flash",
+          "strict": 0.16,
+          "flexible": 0.595,
+          "robust": 0.9325,
+          "robust_minus_strict_pp": 77.2,
+          "robust_minus_flexible_pp": 33.8,
+          "unparsed_rate": 0.037,
+          "truncated_rate": 0.0
+        },
+        {
+          "model": "groq/gpt-oss-120b",
+          "strict": 0.0,
+          "flexible": 0.685,
+          "robust": 0.78,
+          "robust_minus_strict_pp": 78.0,
+          "robust_minus_flexible_pp": 9.5,
+          "unparsed_rate": 0.105,
+          "truncated_rate": 0.0
+        },
+        {
+          "model": "groq/gpt-oss-20b",
+          "strict": 0.0025,
+          "flexible": 0.625,
+          "robust": 0.7175,
+          "robust_minus_strict_pp": 71.5,
+          "robust_minus_flexible_pp": 9.3,
+          "unparsed_rate": 0.17,
+          "truncated_rate": 0.0
+        },
+        {
+          "model": "gemini-2.5-flash",
+          "strict": 0.0,
+          "flexible": 0.63,
+          "robust": 0.6425,
+          "robust_minus_strict_pp": 64.2,
+          "robust_minus_flexible_pp": 1.2,
+          "unparsed_rate": 0.302,
+          "truncated_rate": 0.015
+        },
+        {
+          "model": "nemotron-3-ultra-550b",
+          "strict": 0.0075,
+          "flexible": 0.56,
+          "robust": 0.5725,
+          "robust_minus_strict_pp": 56.5,
+          "robust_minus_flexible_pp": 1.2,
+          "unparsed_rate": 0.328,
+          "truncated_rate": 0.122
+        },
+        {
+          "model": "groq/qwen3.6-27b",
+          "strict": 0.0,
+          "flexible": 0.0,
+          "robust": 0.0,
+          "robust_minus_strict_pp": 0.0,
+          "robust_minus_flexible_pp": 0.0,
+          "unparsed_rate": 1.0,
+          "truncated_rate": 0.922
+        },
+        {
+          "model": "gemma-4-31b-it",
+          "strict": 0.2025,
+          "flexible": 0.79,
+          "robust": 0.79,
+          "robust_minus_strict_pp": 58.8,
+          "robust_minus_flexible_pp": 0.0,
+          "unparsed_rate": 0.098,
+          "truncated_rate": 0.01
+        },
+        {
+          "model": "local/phi4-mini",
+          "strict": 0.0,
+          "flexible": 0.5275,
+          "robust": 0.525,
+          "robust_minus_strict_pp": 52.5,
+          "robust_minus_flexible_pp": -0.2,
+          "unparsed_rate": 0.122,
+          "truncated_rate": 0.068
+        },
+        {
+          "model": "gemini-3.1-flash-lite",
+          "strict": 0.0025,
+          "flexible": 0.8425,
+          "robust": 0.84,
+          "robust_minus_strict_pp": 83.8,
+          "robust_minus_flexible_pp": -0.3,
+          "unparsed_rate": 0.065,
+          "truncated_rate": 0.005
+        },
+        {
+          "model": "groq/llama-3.1-8b-instant",
+          "strict": 0.0,
+          "flexible": 0.57,
+          "robust": 0.565,
+          "robust_minus_strict_pp": 56.5,
+          "robust_minus_flexible_pp": -0.5,
+          "unparsed_rate": 0.217,
+          "truncated_rate": 0.018
+        },
+        {
+          "model": "groq/llama-3.3-70b-versatile",
+          "strict": 0.0,
+          "flexible": 0.4625,
+          "robust": 0.4575,
+          "robust_minus_strict_pp": 45.8,
+          "robust_minus_flexible_pp": -0.5,
+          "unparsed_rate": 0.443,
+          "truncated_rate": 0.03
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "strict": 0.0125,
+          "flexible": 0.5125,
+          "robust": 0.5,
+          "robust_minus_strict_pp": 48.8,
+          "robust_minus_flexible_pp": -1.2,
+          "unparsed_rate": 0.49,
+          "truncated_rate": 0.0
+        },
+        {
+          "model": "local/qwen3-8b",
+          "strict": 0.0,
+          "flexible": 0.245,
+          "robust": 0.1925,
+          "robust_minus_strict_pp": 19.2,
+          "robust_minus_flexible_pp": -5.2,
+          "unparsed_rate": 0.777,
+          "truncated_rate": 0.0
+        }
+      ],
+      "median_robust_minus_strict_pp": 57.6,
+      "median_robust_minus_flexible_pp": 0.0,
+      "max_robust_minus_flexible": {
+        "model": "nemotron-3-super-120b",
+        "strict": 0.035,
+        "flexible": 0.2075,
+        "robust": 0.75,
+        "robust_minus_strict_pp": 71.5,
+        "robust_minus_flexible_pp": 54.2,
+        "unparsed_rate": 0.142,
+        "truncated_rate": 0.102
+      },
+      "kendall_tau_strict_vs_robust": 0.467,
+      "kendall_tau_flexible_vs_robust": 0.67,
+      "permutation_test_flexible_vs_robust": {
+        "tau": 0.67,
+        "p_value": 0.00043999560004399956,
+        "n_permutations": 100000,
+        "seed": 42,
+        "alternative": "two-sided",
+        "null": "the two extractors' orderings are independent"
+      },
+      "permutation_test_strict_vs_robust": {
+        "tau": 0.467,
+        "p_value": 0.03115968840311597,
+        "n_permutations": 100000,
+        "seed": 42,
+        "alternative": "two-sided",
+        "null": "the two extractors' orderings are independent"
+      },
+      "n_models_changing_rank_flexible_vs_robust": 12,
+      "rank_changes": [
+        {
+          "model": "nemotron-3-super-120b",
+          "rank_flexible": 13,
+          "rank_robust": 5,
+          "delta": 8
+        },
+        {
+          "model": "gemini-3.6-flash",
+          "rank_flexible": 6,
+          "rank_robust": 1,
+          "delta": 5
+        },
+        {
+          "model": "gemini-2.5-flash",
+          "rank_flexible": 4,
+          "rank_robust": 7,
+          "delta": -3
+        },
+        {
+          "model": "groq/llama-3.1-8b-instant",
+          "rank_flexible": 7,
+          "rank_robust": 9,
+          "delta": -2
+        },
+        {
+          "model": "gemini-3.1-flash-lite",
+          "rank_flexible": 1,
+          "rank_robust": 2,
+          "delta": -1
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "rank_flexible": 10,
+          "rank_robust": 11,
+          "delta": -1
+        },
+        {
+          "model": "gemma-4-31b-it",
+          "rank_flexible": 2,
+          "rank_robust": 3,
+          "delta": -1
+        },
+        {
+          "model": "groq/gpt-oss-120b",
+          "rank_flexible": 3,
+          "rank_robust": 4,
+          "delta": -1
+        },
+        {
+          "model": "groq/gpt-oss-20b",
+          "rank_flexible": 5,
+          "rank_robust": 6,
+          "delta": -1
+        },
+        {
+          "model": "groq/llama-3.3-70b-versatile",
+          "rank_flexible": 11,
+          "rank_robust": 12,
+          "delta": -1
+        },
+        {
+          "model": "local/phi4-mini",
+          "rank_flexible": 9,
+          "rank_robust": 10,
+          "delta": -1
+        },
+        {
+          "model": "local/qwen3-8b",
+          "rank_flexible": 12,
+          "rank_robust": 13,
+          "delta": -1
+        }
+      ],
+      "n_pairwise_inversions": 15,
+      "n_pairs": 91,
+      "inversions": [
+        {
+          "pair": [
+            "gemini-2.5-flash",
+            "gemini-3.6-flash"
+          ],
+          "flexible_gap_pp": 3.5,
+          "robust_gap_pp": -29.0
+        },
+        {
+          "pair": [
+            "gemini-2.5-flash",
+            "groq/gpt-oss-20b"
+          ],
+          "flexible_gap_pp": 0.5,
+          "robust_gap_pp": -7.5
+        },
+        {
+          "pair": [
+            "gemini-2.5-flash",
+            "nemotron-3-super-120b"
+          ],
+          "flexible_gap_pp": 42.2,
+          "robust_gap_pp": -10.8
+        },
+        {
+          "pair": [
+            "gemini-3.1-flash-lite",
+            "gemini-3.6-flash"
+          ],
+          "flexible_gap_pp": 24.8,
+          "robust_gap_pp": -9.3
+        },
+        {
+          "pair": [
+            "gemini-3.5-flash",
+            "nemotron-3-super-120b"
+          ],
+          "flexible_gap_pp": 30.5,
+          "robust_gap_pp": -25.0
+        },
+        {
+          "pair": [
+            "gemini-3.6-flash",
+            "gemma-4-31b-it"
+          ],
+          "flexible_gap_pp": -19.5,
+          "robust_gap_pp": 14.2
+        },
+        {
+          "pair": [
+            "gemini-3.6-flash",
+            "groq/gpt-oss-120b"
+          ],
+          "flexible_gap_pp": -9.0,
+          "robust_gap_pp": 15.2
+        },
+        {
+          "pair": [
+            "gemini-3.6-flash",
+            "groq/gpt-oss-20b"
+          ],
+          "flexible_gap_pp": -3.0,
+          "robust_gap_pp": 21.5
+        },
+        {
+          "pair": [
+            "groq/gpt-oss-20b",
+            "nemotron-3-super-120b"
+          ],
+          "flexible_gap_pp": 41.8,
+          "robust_gap_pp": -3.2
+        },
+        {
+          "pair": [
+            "groq/llama-3.1-8b-instant",
+            "nemotron-3-super-120b"
+          ],
+          "flexible_gap_pp": 36.2,
+          "robust_gap_pp": -18.5
+        },
+        {
+          "pair": [
+            "groq/llama-3.1-8b-instant",
+            "nemotron-3-ultra-550b"
+          ],
+          "flexible_gap_pp": 1.0,
+          "robust_gap_pp": -0.8
+        },
+        {
+          "pair": [
+            "groq/llama-3.3-70b-versatile",
+            "nemotron-3-super-120b"
+          ],
+          "flexible_gap_pp": 25.5,
+          "robust_gap_pp": -29.2
+        },
+        {
+          "pair": [
+            "local/phi4-mini",
+            "nemotron-3-super-120b"
+          ],
+          "flexible_gap_pp": 32.0,
+          "robust_gap_pp": -22.5
+        },
+        {
+          "pair": [
+            "local/qwen3-8b",
+            "nemotron-3-super-120b"
+          ],
+          "flexible_gap_pp": 3.8,
+          "robust_gap_pp": -55.8
+        },
+        {
+          "pair": [
+            "nemotron-3-super-120b",
+            "nemotron-3-ultra-550b"
+          ],
+          "flexible_gap_pp": -35.2,
+          "robust_gap_pp": 17.8
+        }
+      ]
+    }
+  },
+  "truncation_moderator": {
+    "pearson_r_truncated_vs_unparsed": 0.67,
+    "worst_truncation": [
+      {
+        "model": "groq/qwen3.6-27b",
+        "task": "mmlu_flan_cot_zeroshot",
+        "truncated_rate": 0.993,
+        "unparsed_rate": 0.91,
+        "robust": 0.07
+      },
+      {
+        "model": "groq/qwen3.6-27b",
+        "task": "mmlu_flan_n_shot_generative",
+        "truncated_rate": 0.922,
+        "unparsed_rate": 1.0,
+        "robust": 0.0
+      },
+      {
+        "model": "groq/llama-3.3-70b-versatile",
+        "task": "mmlu_flan_cot_zeroshot",
+        "truncated_rate": 0.265,
+        "unparsed_rate": 0.003,
+        "robust": 0.82
+      },
+      {
+        "model": "gemini-2.5-flash",
+        "task": "mmlu_flan_cot_zeroshot",
+        "truncated_rate": 0.223,
+        "unparsed_rate": 0.043,
+        "robust": 0.5525
+      },
+      {
+        "model": "nemotron-3-ultra-550b",
+        "task": "mmlu_flan_cot_zeroshot",
+        "truncated_rate": 0.142,
+        "unparsed_rate": 0.11,
+        "robust": 0.7525
+      }
+    ],
+    "note": "A response that hit the 1024-token cap mid-reasoning never emitted an answer, so no extractor can recover one. This is the mechanism behind the plan's hypothesis that long chain-of-thought defeats span extractors."
+  },
+  "qwen3_6_27b_case": {
+    "finding": "groq/qwen3.6-27b is the extreme case and explains the 400/400 unparsed rate flagged when scripts/34 first ran: it truncated on 369/400 n_shot and 397/400 cot responses. It reasons past the token cap without emitting an answer. Under cot its reported strict-match accuracy is 0.345 and flexible-extract 0.810 -- both scored from responses that a robust reading finds no committed answer in (robust 0.070). The framework's numbers are HIGHER than the recoverable truth here, the opposite direction from every other model, because the extractors are matching letters inside unfinished reasoning."
+  }
+}
