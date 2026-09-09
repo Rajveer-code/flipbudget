@@ -1,0 +1,5 @@
+{
+  "n_findings": 2,
+  "null_result": false,
+  "connects_to_e2": "Finding 2's comparator IS the one vendored for E2/E4 in this repo; E2 independently found a real dfrac-vs-frac false-miss in the PINNED (current) version. Whether the pre-drift version handled it differently is a flagged, unresolved, concretely bounded follow-up."
+}
