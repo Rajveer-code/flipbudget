@@ -42,6 +42,40 @@ paper are tracked separately; this repo is downstream of it, not a fork or a
 duplicate. The snapshot here is frozen at the point this project started and is
 tracked independently going forward.
 
+## Install and use the package
+
+```bash
+pip install -e ".[dev]"
+pytest tests/          # 13 tests, real regression suite, not just scripts
+```
+
+Library:
+
+```python
+from flipbudget import corrected_interval, paired_bootstrap_delta
+
+# One model: correct a reported accuracy for scorer misclassification.
+result = corrected_interval(benchmark_verdicts, audit_ystar, audit_yhat)
+print(result["corrected_point_estimate"], result["interval"])
+
+# Two models: correct a pairwise comparison, including the flip budget.
+cmp = paired_bootstrap_delta(bench1, bench2, ystar1, yhat1, ystar2, yhat2)
+print(cmp["corrected_delta_point"], cmp["flip_budget_point"])
+```
+
+CLI:
+
+```bash
+flipbudget correct records.json audit.json
+```
+
+`records.json` is a list of 0/1 scorer verdicts on the benchmark run you want
+corrected. `audit.json` is `{"ystar": [...], "yhat": [...]}`, a small paired
+human-audit sample (the scorer's verdict and a human's true-label judgment on
+the same items). Every returned interval carries an explicit coverage caveat
+rather than an unearned "95% CI" label — see `inference.py`'s `COVERAGE_CAVEAT`
+and the T3 commit history for why.
+
 ## Running the verification scripts
 
 Each script is self-contained and runnable from the repo root:
