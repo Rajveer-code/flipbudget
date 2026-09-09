@@ -1,0 +1,9 @@
+{
+  "n_pairs": 378,
+  "pooled_alpha": 0.03137299381840867,
+  "pooled_beta": 0.0,
+  "attenuation_factor": 1.032389138046113,
+  "n_pairs_gap_zero": 4,
+  "n_pairs_gap_below_pooled_alpha": 150,
+  "case_b_status": "NOT RUN -- needs per-model absolute MATH-Hard accuracy, not located in this data snapshot. E4's raw per-model alpha already shows real differential signal (one outlier model) that a Case-B pass should investigate once unblocked."
+}
