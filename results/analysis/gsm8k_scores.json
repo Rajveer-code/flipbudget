@@ -1,0 +1,94 @@
+{
+ "design": {
+  "what": "GSM8K generation + strict/flexible scoring, free-tier remote models only (local excluded -- GPU busy with scripts/60 tonight)",
+  "n_items_requested": 400,
+  "n_models_attempted": 12,
+  "n_models_skipped": 3,
+  "seed": 42,
+  "max_tokens": 1024,
+  "strict_pattern": "#### (\\-?[0-9\\.\\,]+)",
+  "flexible_pattern": "last standalone number in text"
+ },
+ "skipped": [
+  {
+   "provider": "groq",
+   "model": "llama-3.1-8b-instant",
+   "reason": "gsm8k:0: groq: HTTP 404 for model llama-3.1-8b-instant: {\"error\":{\"message\":\"The model `llama-3.1-8b-instant` does not exist or you do not have access to it.\",\"type\":\"invalid_request_error\",\"code\":\"mo"
+  },
+  {
+   "provider": "groq",
+   "model": "llama-3.3-70b-versatile",
+   "reason": "gsm8k:0: groq: HTTP 404 for model llama-3.3-70b-versatile: {\"error\":{\"message\":\"The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.\",\"type\":\"invalid_request_error\",\"cod"
+  },
+  {
+   "provider": "openrouter",
+   "model": "google/gemma-4-31b-it:free",
+   "reason": "gsm8k:0: openrouter: HTTP 429 for model google/gemma-4-31b-it:free: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited u"
+  }
+ ],
+ "scores": [
+  {
+   "provider": "groq",
+   "model": "qwen/qwen3.6-27b",
+   "strict": 0.5555555555555556,
+   "flexible": 0.6666666666666666,
+   "n_scored": 9
+  },
+  {
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b",
+   "strict": 0.93,
+   "flexible": 0.945,
+   "n_scored": 400
+  },
+  {
+   "provider": "groq",
+   "model": "openai/gpt-oss-20b",
+   "strict": 0.14210526315789473,
+   "flexible": 0.9263157894736842,
+   "n_scored": 380
+  },
+  {
+   "provider": "gemini",
+   "model": "models/gemini-2.5-flash",
+   "strict": 0.8421052631578947,
+   "flexible": 0.9473684210526315,
+   "n_scored": 19
+  },
+  {
+   "provider": "gemini",
+   "model": "models/gemini-3.1-flash-lite",
+   "strict": 0.955,
+   "flexible": 0.9575,
+   "n_scored": 400
+  },
+  {
+   "provider": "gemini",
+   "model": "models/gemini-3.5-flash",
+   "strict": 0.8095238095238095,
+   "flexible": 0.8095238095238095,
+   "n_scored": 21
+  },
+  {
+   "provider": "gemini",
+   "model": "models/gemini-3.6-flash",
+   "strict": 0.9047619047619048,
+   "flexible": 0.9047619047619048,
+   "n_scored": 21
+  },
+  {
+   "provider": "openrouter",
+   "model": "nvidia/nemotron-3-super-120b-a12b:free",
+   "strict": 0.6977329974811083,
+   "flexible": 0.9269521410579346,
+   "n_scored": 397
+  },
+  {
+   "provider": "openrouter",
+   "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+   "strict": 0.8516129032258064,
+   "flexible": 0.8580645161290322,
+   "n_scored": 310
+  }
+ ]
+}
