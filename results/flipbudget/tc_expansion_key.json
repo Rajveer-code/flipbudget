@@ -1,0 +1,1007 @@
+{
+  "n_rows": 70,
+  "key": [
+    {
+      "uid": "079ce3102a55ea57",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "0197c0f9ac05773b69a5989419e7b839eb967e815e6cab21c603c74689e33d32",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "-1"
+    },
+    {
+      "uid": "4adbc30d65b96470",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "0209409c09f7c4a2e8388a5ae7686696604cf5b6df26d7b73c58b15cc0964e56",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "\\frac{h^2}{m}"
+    },
+    {
+      "uid": "e2d2b1bb868548f8",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "07fe4807adc962f07e0c968bd77296a134723a2a73b6f744454a647573b79023",
+      "stratum": "credited",
+      "subject": "num_theory",
+      "gold": "8"
+    },
+    {
+      "uid": "e6929fc8fed3efe8",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "192e1bc9fe0509c0ea38cabd83d9d46549ba8aee9972b2922d76b0fd207360d3",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "5"
+    },
+    {
+      "uid": "56dedd5644291605",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "3620ef2517dfb35214d1e76f647edf116b57478aa0366dfcddb9cd700f16f9d2",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "-15"
+    },
+    {
+      "uid": "2f33bfbf9784ddbf",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "36ea8092ed5a24237dba83250d8ac3cc12bf6258612de39db9948ca53f9dd940",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "(-\\iny,-7)\\cup(-7,3)\\cup(3,\\iny)"
+    },
+    {
+      "uid": "d20429333fdf738f",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "3d923a98176963eb6c3b60e0bba72cd639a8cdf05888c3535c3b7ebaec4fe8cf",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "-5"
+    },
+    {
+      "uid": "71a59c9f00c164a9",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "3dd0f973ceb9d41996654716ff63dc30a04e691058056a4cf7b832276a9082c5",
+      "stratum": "credited",
+      "subject": "prealgebra",
+      "gold": "9"
+    },
+    {
+      "uid": "e6e4fcd7dbf5ea51",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "42c9a27b17d94a5eb4ae54842226e72309cc6484d49fcedd3a74cf1ff7695330",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "[0,1)"
+    },
+    {
+      "uid": "8f88bad58a20acf8",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "50beffe90c5f9fc804f09e5815d1df02c57fb5ca4ef49e849a3b83ab8bd56b00",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "-9"
+    },
+    {
+      "uid": "06ec12073db9c278",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "5e5654cf54240feae9069049270c8e7c15c28e95e2a20ca028eb7b9e38845efb",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "20"
+    },
+    {
+      "uid": "6284367665643eeb",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "62bd0f838ffa73137188e5c71c17c291d0837f642f044b0f0ae85739422bb8c0",
+      "stratum": "credited",
+      "subject": "num_theory",
+      "gold": "4"
+    },
+    {
+      "uid": "546c3af5fe3bad2e",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "69fb3bb865effcc46cc33ec3d06c619e64e3f024ebaa5b6e46701d2a1edffaab",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "\\frac{1}{9}"
+    },
+    {
+      "uid": "5c8634dc675f6309",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "83096659b38213eca1763709a546eebf9a62ab2d716200f641d5e6345de9f5a2",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "49"
+    },
+    {
+      "uid": "e6e78a27ce432191",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "84a0d57605cf70c1fa2e97529d833012a28340370e7e1ff30685a458e587fc4a",
+      "stratum": "credited",
+      "subject": "num_theory",
+      "gold": "3"
+    },
+    {
+      "uid": "22f02e1657e860a9",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "86703152cc4fab8b262c3aadca60508ea48e5db2a8e50025ac34debcf0758408",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "-\\frac{35}{9}"
+    },
+    {
+      "uid": "70a3d1e7ce578c6c",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "8f9e6416603f3f7949567bfb575c211795bb333319c790aeeeaf39135d220fb4",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "1"
+    },
+    {
+      "uid": "17f73c3a91150739",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "90dad3aedfc84a5d909072a81beed473d5f577789d6cf39fbe287ea7d86b4f1b",
+      "stratum": "credited",
+      "subject": "precalculus",
+      "gold": "0"
+    },
+    {
+      "uid": "d3687846e2b5eb85",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "94c33f82a4bd7216e371b5e34271501651b2c5b56f28c8805b1164bf204f254f",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "4"
+    },
+    {
+      "uid": "efa4617ff08e1134",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "b2a3f1fd4ca8a780bd5d4326cd6db8b65926547c9b2ebb786f34db04381832ae",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "7"
+    },
+    {
+      "uid": "5200fa59e0321c36",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "b4b05fdedac663abb3131d3e54b83843188e0dc5b543daf39f46c9639a4fbf73",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "\\frac{1}{2}"
+    },
+    {
+      "uid": "d2ed078a28191763",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "b861264025ca3635e1beb0c5f59cd32a0321f15d09e9857a49095e14b92717aa",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "36"
+    },
+    {
+      "uid": "4fde19f8a84cfa2d",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "cd9853641f27bcff23990fe36906b70b9cb4c4603aa46cf9719cea1c3b269470",
+      "stratum": "credited",
+      "subject": "intermediate_algebra",
+      "gold": "0"
+    },
+    {
+      "uid": "5afbb5ba61738fae",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "cdea69ab7a15ea8a207f5e07470abfda9851d4f0d66fb36f973ba9167dc39f38",
+      "stratum": "credited",
+      "subject": "geometry",
+      "gold": "12"
+    },
+    {
+      "uid": "0e671d5ac09f24dd",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "fdd6e79cf33aa93573111f72deabc12abedb7f8e2c0d65b045fcc95fcfb08f59",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "10455"
+    },
+    {
+      "uid": "8045c3ec9579911c",
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "item_id": "ff1afc7ab70d6ccf183b057a21997b040e0c4fbd6200b20ce2c2324a99dbe0da",
+      "stratum": "credited",
+      "subject": "geometry",
+      "gold": "\\frac{64}{121}"
+    },
+    {
+      "uid": "1591bf088367fe0f",
+      "model": "01-ai/Yi-34B-Chat",
+      "item_id": "192e1bc9fe0509c0ea38cabd83d9d46549ba8aee9972b2922d76b0fd207360d3",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "5"
+    },
+    {
+      "uid": "16c7783fa09babae",
+      "model": "01-ai/Yi-34B-Chat",
+      "item_id": "3620ef2517dfb35214d1e76f647edf116b57478aa0366dfcddb9cd700f16f9d2",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "-15"
+    },
+    {
+      "uid": "accc9fea69288a35",
+      "model": "01-ai/Yi-34B-Chat",
+      "item_id": "3dd0f973ceb9d41996654716ff63dc30a04e691058056a4cf7b832276a9082c5",
+      "stratum": "credited",
+      "subject": "prealgebra",
+      "gold": "9"
+    },
+    {
+      "uid": "a1aa54e8cdf7c4f4",
+      "model": "01-ai/Yi-34B-Chat",
+      "item_id": "69fb3bb865effcc46cc33ec3d06c619e64e3f024ebaa5b6e46701d2a1edffaab",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "\\frac{1}{9}"
+    },
+    {
+      "uid": "9f127a161f568927",
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "item_id": "38da13bee99adffef11fee862cca53d0be182c334a449409a254fb99b10099b4",
+      "stratum": "credited",
+      "subject": "prealgebra",
+      "gold": "25"
+    },
+    {
+      "uid": "bcc25f28eab1a6e9",
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "item_id": "3dd0f973ceb9d41996654716ff63dc30a04e691058056a4cf7b832276a9082c5",
+      "stratum": "credited",
+      "subject": "prealgebra",
+      "gold": "9"
+    },
+    {
+      "uid": "5ae28e43fe0e1fad",
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "item_id": "50beffe90c5f9fc804f09e5815d1df02c57fb5ca4ef49e849a3b83ab8bd56b00",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "-9"
+    },
+    {
+      "uid": "f75f2928a0b8727e",
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "item_id": "6750887a82c85b8ad67d9dbbc91cec3e1a5b06d0cd2a3b1d5e9181bc98ab4413",
+      "stratum": "credited",
+      "subject": "precalculus",
+      "gold": "0"
+    },
+    {
+      "uid": "752dfc211ce84597",
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "item_id": "89b3046ce178679b8c22716f560cc33e47c87402e92fb6a0a290fdd3e677b957",
+      "stratum": "credited",
+      "subject": "counting_and_prob",
+      "gold": "50"
+    },
+    {
+      "uid": "0048cb110f0adb1f",
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "item_id": "90dad3aedfc84a5d909072a81beed473d5f577789d6cf39fbe287ea7d86b4f1b",
+      "stratum": "credited",
+      "subject": "precalculus",
+      "gold": "0"
+    },
+    {
+      "uid": "a32f9d4ea151552d",
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "item_id": "a9c60067d8e9f5595c4427891f8293bd1c5d3ac36f83ac2cd89f93b3e987a95b",
+      "stratum": "credited",
+      "subject": "prealgebra",
+      "gold": "8"
+    },
+    {
+      "uid": "b31c16fcf17f188c",
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "item_id": "cd9853641f27bcff23990fe36906b70b9cb4c4603aa46cf9719cea1c3b269470",
+      "stratum": "credited",
+      "subject": "intermediate_algebra",
+      "gold": "0"
+    },
+    {
+      "uid": "0d151e22eef050b7",
+      "model": "Deci/DeciLM-7B",
+      "item_id": "3d923a98176963eb6c3b60e0bba72cd639a8cdf05888c3535c3b7ebaec4fe8cf",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "-5"
+    },
+    {
+      "uid": "d3abfdcc9a5f123c",
+      "model": "Deci/DeciLM-7B",
+      "item_id": "62bd0f838ffa73137188e5c71c17c291d0837f642f044b0f0ae85739422bb8c0",
+      "stratum": "credited",
+      "subject": "num_theory",
+      "gold": "4"
+    },
+    {
+      "uid": "24b841c366f6f645",
+      "model": "Deci/DeciLM-7B",
+      "item_id": "89b3046ce178679b8c22716f560cc33e47c87402e92fb6a0a290fdd3e677b957",
+      "stratum": "credited",
+      "subject": "counting_and_prob",
+      "gold": "50"
+    },
+    {
+      "uid": "5732b86c280c6a9f",
+      "model": "Deci/DeciLM-7B",
+      "item_id": "8f9e6416603f3f7949567bfb575c211795bb333319c790aeeeaf39135d220fb4",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "1"
+    },
+    {
+      "uid": "1dffc8a770e00fc4",
+      "model": "Deci/DeciLM-7B",
+      "item_id": "a9c60067d8e9f5595c4427891f8293bd1c5d3ac36f83ac2cd89f93b3e987a95b",
+      "stratum": "credited",
+      "subject": "prealgebra",
+      "gold": "8"
+    },
+    {
+      "uid": "b0008f224937ea2b",
+      "model": "Deci/DeciLM-7B",
+      "item_id": "b2a3f1fd4ca8a780bd5d4326cd6db8b65926547c9b2ebb786f34db04381832ae",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "7"
+    },
+    {
+      "uid": "a3a15694c83072da",
+      "model": "EleutherAI/gpt-neox-20b",
+      "item_id": "42c9a27b17d94a5eb4ae54842226e72309cc6484d49fcedd3a74cf1ff7695330",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "[0,1)"
+    },
+    {
+      "uid": "5a75d46a0d350f1e",
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "item_id": "0209409c09f7c4a2e8388a5ae7686696604cf5b6df26d7b73c58b15cc0964e56",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "\\frac{h^2}{m}"
+    },
+    {
+      "uid": "3f809d05c559af61",
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "item_id": "36ea8092ed5a24237dba83250d8ac3cc12bf6258612de39db9948ca53f9dd940",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "(-\\iny,-7)\\cup(-7,3)\\cup(3,\\iny)"
+    },
+    {
+      "uid": "6cd16cc002483b95",
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "item_id": "86703152cc4fab8b262c3aadca60508ea48e5db2a8e50025ac34debcf0758408",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "-\\frac{35}{9}"
+    },
+    {
+      "uid": "0cfd3316ca0db222",
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "item_id": "38da13bee99adffef11fee862cca53d0be182c334a449409a254fb99b10099b4",
+      "stratum": "credited",
+      "subject": "prealgebra",
+      "gold": "25"
+    },
+    {
+      "uid": "62097f58b71a3b30",
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "item_id": "5e5654cf54240feae9069049270c8e7c15c28e95e2a20ca028eb7b9e38845efb",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "20"
+    },
+    {
+      "uid": "7c6fca264645c32d",
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "item_id": "94c33f82a4bd7216e371b5e34271501651b2c5b56f28c8805b1164bf204f254f",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "4"
+    },
+    {
+      "uid": "f307954fb6dd5b8e",
+      "model": "ibm/merlinite-7b",
+      "item_id": "38da13bee99adffef11fee862cca53d0be182c334a449409a254fb99b10099b4",
+      "stratum": "credited",
+      "subject": "prealgebra",
+      "gold": "25"
+    },
+    {
+      "uid": "5797361e89685fe7",
+      "model": "ibm/merlinite-7b",
+      "item_id": "5e5654cf54240feae9069049270c8e7c15c28e95e2a20ca028eb7b9e38845efb",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "20"
+    },
+    {
+      "uid": "89fa536e73f9b15c",
+      "model": "ibm/merlinite-7b",
+      "item_id": "6750887a82c85b8ad67d9dbbc91cec3e1a5b06d0cd2a3b1d5e9181bc98ab4413",
+      "stratum": "credited",
+      "subject": "precalculus",
+      "gold": "0"
+    },
+    {
+      "uid": "4841977beb4f4817",
+      "model": "ibm/merlinite-7b",
+      "item_id": "89b3046ce178679b8c22716f560cc33e47c87402e92fb6a0a290fdd3e677b957",
+      "stratum": "credited",
+      "subject": "counting_and_prob",
+      "gold": "50"
+    },
+    {
+      "uid": "9138a5f8839fe350",
+      "model": "ibm/merlinite-7b",
+      "item_id": "90dad3aedfc84a5d909072a81beed473d5f577789d6cf39fbe287ea7d86b4f1b",
+      "stratum": "credited",
+      "subject": "precalculus",
+      "gold": "0"
+    },
+    {
+      "uid": "3fa4986297e89586",
+      "model": "ibm/merlinite-7b",
+      "item_id": "b4b05fdedac663abb3131d3e54b83843188e0dc5b543daf39f46c9639a4fbf73",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "\\frac{1}{2}"
+    },
+    {
+      "uid": "e036eccc9caaa4c7",
+      "model": "ibm/merlinite-7b",
+      "item_id": "ff1afc7ab70d6ccf183b057a21997b040e0c4fbd6200b20ce2c2324a99dbe0da",
+      "stratum": "credited",
+      "subject": "geometry",
+      "gold": "\\frac{64}{121}"
+    },
+    {
+      "uid": "41ec0438e82c16d6",
+      "model": "microsoft/phi-1_5",
+      "item_id": "0197c0f9ac05773b69a5989419e7b839eb967e815e6cab21c603c74689e33d32",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "-1"
+    },
+    {
+      "uid": "33ae88746aa9df46",
+      "model": "microsoft/phi-1_5",
+      "item_id": "42c9a27b17d94a5eb4ae54842226e72309cc6484d49fcedd3a74cf1ff7695330",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "[0,1)"
+    },
+    {
+      "uid": "632a934dd0fafac9",
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "item_id": "07fe4807adc962f07e0c968bd77296a134723a2a73b6f744454a647573b79023",
+      "stratum": "credited",
+      "subject": "num_theory",
+      "gold": "8"
+    },
+    {
+      "uid": "a6a49f158cc87324",
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "item_id": "36ea8092ed5a24237dba83250d8ac3cc12bf6258612de39db9948ca53f9dd940",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "(-\\iny,-7)\\cup(-7,3)\\cup(3,\\iny)"
+    },
+    {
+      "uid": "877f9aec4d34a202",
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "item_id": "3dd0f973ceb9d41996654716ff63dc30a04e691058056a4cf7b832276a9082c5",
+      "stratum": "credited",
+      "subject": "prealgebra",
+      "gold": "9"
+    },
+    {
+      "uid": "df3603055dd4b163",
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "item_id": "6750887a82c85b8ad67d9dbbc91cec3e1a5b06d0cd2a3b1d5e9181bc98ab4413",
+      "stratum": "credited",
+      "subject": "precalculus",
+      "gold": "0"
+    },
+    {
+      "uid": "c2cdbd0b5440fc44",
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "item_id": "83096659b38213eca1763709a546eebf9a62ab2d716200f641d5e6345de9f5a2",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "49"
+    },
+    {
+      "uid": "e87a28f4ed5b898d",
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "item_id": "84a0d57605cf70c1fa2e97529d833012a28340370e7e1ff30685a458e587fc4a",
+      "stratum": "credited",
+      "subject": "num_theory",
+      "gold": "3"
+    },
+    {
+      "uid": "69fe1d5fc371fb2b",
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "item_id": "90dad3aedfc84a5d909072a81beed473d5f577789d6cf39fbe287ea7d86b4f1b",
+      "stratum": "credited",
+      "subject": "precalculus",
+      "gold": "0"
+    },
+    {
+      "uid": "a339b88c3413c50b",
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "item_id": "b861264025ca3635e1beb0c5f59cd32a0321f15d09e9857a49095e14b92717aa",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "36"
+    },
+    {
+      "uid": "f2f3f8c3a80718c1",
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "item_id": "cdea69ab7a15ea8a207f5e07470abfda9851d4f0d66fb36f973ba9167dc39f38",
+      "stratum": "credited",
+      "subject": "geometry",
+      "gold": "12"
+    },
+    {
+      "uid": "2122dbe7a300203f",
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "item_id": "fdd6e79cf33aa93573111f72deabc12abedb7f8e2c0d65b045fcc95fcfb08f59",
+      "stratum": "credited",
+      "subject": "algebra",
+      "gold": "10455"
+    }
+  ],
+  "pair_candidates": [
+    {
+      "item_id": "50beffe90c5f9fc804f09e5815d1df02c57fb5ca4ef49e849a3b83ab8bd56b00",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "CohereForAI/c4ai-command-r-v01",
+      "stratum_b": "credited",
+      "rate_b": 0.0759407897452635,
+      "joint_score": 0.0024487586532893615
+    },
+    {
+      "item_id": "cd9853641f27bcff23990fe36906b70b9cb4c4603aa46cf9719cea1c3b269470",
+      "subject": "intermediate_algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "CohereForAI/c4ai-command-r-v01",
+      "stratum_b": "credited",
+      "rate_b": 0.0759407897452635,
+      "joint_score": 0.0024487586532893615
+    },
+    {
+      "item_id": "3dd0f973ceb9d41996654716ff63dc30a04e691058056a4cf7b832276a9082c5",
+      "subject": "prealgebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "CohereForAI/c4ai-command-r-v01",
+      "stratum_b": "credited",
+      "rate_b": 0.0759407897452635,
+      "joint_score": 0.0024487586532893615
+    },
+    {
+      "item_id": "90dad3aedfc84a5d909072a81beed473d5f577789d6cf39fbe287ea7d86b4f1b",
+      "subject": "precalculus",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "CohereForAI/c4ai-command-r-v01",
+      "stratum_b": "credited",
+      "rate_b": 0.0759407897452635,
+      "joint_score": 0.0024487586532893615
+    },
+    {
+      "item_id": "3dd0f973ceb9d41996654716ff63dc30a04e691058056a4cf7b832276a9082c5",
+      "subject": "prealgebra",
+      "model_a": "01-ai/Yi-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03137299381840867,
+      "model_b": "CohereForAI/c4ai-command-r-v01",
+      "stratum_b": "credited",
+      "rate_b": 0.0759407897452635,
+      "joint_score": 0.0023824899272432243
+    },
+    {
+      "item_id": "3dd0f973ceb9d41996654716ff63dc30a04e691058056a4cf7b832276a9082c5",
+      "subject": "prealgebra",
+      "model_a": "CohereForAI/c4ai-command-r-v01",
+      "stratum_a": "credited",
+      "rate_a": 0.0759407897452635,
+      "model_b": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0023824899272432243
+    },
+    {
+      "item_id": "90dad3aedfc84a5d909072a81beed473d5f577789d6cf39fbe287ea7d86b4f1b",
+      "subject": "precalculus",
+      "model_a": "CohereForAI/c4ai-command-r-v01",
+      "stratum_a": "credited",
+      "rate_a": 0.0759407897452635,
+      "model_b": "ibm/merlinite-7b",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0023824899272432243
+    },
+    {
+      "item_id": "90dad3aedfc84a5d909072a81beed473d5f577789d6cf39fbe287ea7d86b4f1b",
+      "subject": "precalculus",
+      "model_a": "CohereForAI/c4ai-command-r-v01",
+      "stratum_a": "credited",
+      "rate_a": 0.0759407897452635,
+      "model_b": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0023824899272432243
+    },
+    {
+      "item_id": "89b3046ce178679b8c22716f560cc33e47c87402e92fb6a0a290fdd3e677b957",
+      "subject": "counting_and_prob",
+      "model_a": "CohereForAI/c4ai-command-r-v01",
+      "stratum_a": "credited",
+      "rate_a": 0.0759407897452635,
+      "model_b": "Deci/DeciLM-7B",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0023824899272432243
+    },
+    {
+      "item_id": "89b3046ce178679b8c22716f560cc33e47c87402e92fb6a0a290fdd3e677b957",
+      "subject": "counting_and_prob",
+      "model_a": "CohereForAI/c4ai-command-r-v01",
+      "stratum_a": "credited",
+      "rate_a": 0.0759407897452635,
+      "model_b": "ibm/merlinite-7b",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0023824899272432243
+    },
+    {
+      "item_id": "38da13bee99adffef11fee862cca53d0be182c334a449409a254fb99b10099b4",
+      "subject": "prealgebra",
+      "model_a": "CohereForAI/c4ai-command-r-v01",
+      "stratum_a": "credited",
+      "rate_a": 0.0759407897452635,
+      "model_b": "HuggingFaceH4/zephyr-7b-beta",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0023824899272432243
+    },
+    {
+      "item_id": "38da13bee99adffef11fee862cca53d0be182c334a449409a254fb99b10099b4",
+      "subject": "prealgebra",
+      "model_a": "CohereForAI/c4ai-command-r-v01",
+      "stratum_a": "credited",
+      "rate_a": 0.0759407897452635,
+      "model_b": "ibm/merlinite-7b",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0023824899272432243
+    },
+    {
+      "item_id": "a9c60067d8e9f5595c4427891f8293bd1c5d3ac36f83ac2cd89f93b3e987a95b",
+      "subject": "prealgebra",
+      "model_a": "CohereForAI/c4ai-command-r-v01",
+      "stratum_a": "credited",
+      "rate_a": 0.0759407897452635,
+      "model_b": "Deci/DeciLM-7B",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0023824899272432243
+    },
+    {
+      "item_id": "6750887a82c85b8ad67d9dbbc91cec3e1a5b06d0cd2a3b1d5e9181bc98ab4413",
+      "subject": "precalculus",
+      "model_a": "CohereForAI/c4ai-command-r-v01",
+      "stratum_a": "credited",
+      "rate_a": 0.0759407897452635,
+      "model_b": "ibm/merlinite-7b",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0023824899272432243
+    },
+    {
+      "item_id": "6750887a82c85b8ad67d9dbbc91cec3e1a5b06d0cd2a3b1d5e9181bc98ab4413",
+      "subject": "precalculus",
+      "model_a": "CohereForAI/c4ai-command-r-v01",
+      "stratum_a": "credited",
+      "rate_a": 0.0759407897452635,
+      "model_b": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0023824899272432243
+    },
+    {
+      "item_id": "b861264025ca3635e1beb0c5f59cd32a0321f15d09e9857a49095e14b92717aa",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "0209409c09f7c4a2e8388a5ae7686696604cf5b6df26d7b73c58b15cc0964e56",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "HuggingFaceH4/zephyr-7b-alpha",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "86703152cc4fab8b262c3aadca60508ea48e5db2a8e50025ac34debcf0758408",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "HuggingFaceH4/zephyr-7b-alpha",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "42c9a27b17d94a5eb4ae54842226e72309cc6484d49fcedd3a74cf1ff7695330",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "EleutherAI/gpt-neox-20b",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "42c9a27b17d94a5eb4ae54842226e72309cc6484d49fcedd3a74cf1ff7695330",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "microsoft/phi-1_5",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "0197c0f9ac05773b69a5989419e7b839eb967e815e6cab21c603c74689e33d32",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "microsoft/phi-1_5",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "83096659b38213eca1763709a546eebf9a62ab2d716200f641d5e6345de9f5a2",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "b4b05fdedac663abb3131d3e54b83843188e0dc5b543daf39f46c9639a4fbf73",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "ibm/merlinite-7b",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "b2a3f1fd4ca8a780bd5d4326cd6db8b65926547c9b2ebb786f34db04381832ae",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "Deci/DeciLM-7B",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "fdd6e79cf33aa93573111f72deabc12abedb7f8e2c0d65b045fcc95fcfb08f59",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "3d923a98176963eb6c3b60e0bba72cd639a8cdf05888c3535c3b7ebaec4fe8cf",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "Deci/DeciLM-7B",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "69fb3bb865effcc46cc33ec3d06c619e64e3f024ebaa5b6e46701d2a1edffaab",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "01-ai/Yi-34B-Chat",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "36ea8092ed5a24237dba83250d8ac3cc12bf6258612de39db9948ca53f9dd940",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "HuggingFaceH4/zephyr-7b-alpha",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "36ea8092ed5a24237dba83250d8ac3cc12bf6258612de39db9948ca53f9dd940",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "5e5654cf54240feae9069049270c8e7c15c28e95e2a20ca028eb7b9e38845efb",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "HuggingFaceH4/zephyr-7b-beta",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "5e5654cf54240feae9069049270c8e7c15c28e95e2a20ca028eb7b9e38845efb",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "ibm/merlinite-7b",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "3620ef2517dfb35214d1e76f647edf116b57478aa0366dfcddb9cd700f16f9d2",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "01-ai/Yi-34B-Chat",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "8f9e6416603f3f7949567bfb575c211795bb333319c790aeeeaf39135d220fb4",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "Deci/DeciLM-7B",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "94c33f82a4bd7216e371b5e34271501651b2c5b56f28c8805b1164bf204f254f",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "HuggingFaceH4/zephyr-7b-beta",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "192e1bc9fe0509c0ea38cabd83d9d46549ba8aee9972b2922d76b0fd207360d3",
+      "subject": "algebra",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "01-ai/Yi-34B-Chat",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "cdea69ab7a15ea8a207f5e07470abfda9851d4f0d66fb36f973ba9167dc39f38",
+      "subject": "geometry",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "ff1afc7ab70d6ccf183b057a21997b040e0c4fbd6200b20ce2c2324a99dbe0da",
+      "subject": "geometry",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "ibm/merlinite-7b",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "62bd0f838ffa73137188e5c71c17c291d0837f642f044b0f0ae85739422bb8c0",
+      "subject": "num_theory",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "Deci/DeciLM-7B",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "84a0d57605cf70c1fa2e97529d833012a28340370e7e1ff30685a458e587fc4a",
+      "subject": "num_theory",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    },
+    {
+      "item_id": "07fe4807adc962f07e0c968bd77296a134723a2a73b6f744454a647573b79023",
+      "subject": "num_theory",
+      "model_a": "01-ai/Yi-1.5-34B-Chat",
+      "stratum_a": "credited",
+      "rate_a": 0.03224563059593534,
+      "model_b": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum_b": "credited",
+      "rate_b": 0.03137299381840867,
+      "joint_score": 0.0010116419693569688
+    }
+  ]
+}
