@@ -8,6 +8,20 @@ check surfaced something bigger than an extension: most real pairs on this
 roster are formally unidentified from Wilson-CI uncertainty alone, no Λ
 required.**
 
+**Superseded, see `RECONCILIATION_FOUR_LAYERS.md`.** Two corrections there: (1)
+"unbounded" is wrong vocabulary — accuracy is a proportion, bounded in [0,1] by
+definition; the correction *expression* diverges, not the identified accuracy
+itself (fixed: identified sets now intersect with [0,1], correctly capped at
+width 1, not literal infinity). (2) The 73.5%-saturated figure conflated audit
+thinness with genuine scorer non-uniformity. Properly separated: audit-estimation
+uncertainty alone explains 91/136 pairs (66.9%), scorer-sensitivity alone only
+15/136 (11.0%, barely above the 8.8% sampling baseline) — **verdict B, mostly
+finite-audit uncertainty, not a demonstrated scorer-non-uniformity mechanism.**
+The saturation *mathematics* below (lambda_saturate, the vertex-theorem
+precondition failing past the singularity) is still correct and still the right
+diagnostic; only the "unbounded" description and the un-decomposed headline
+number are corrected.
+
 ## What "checking boundary cases thoroughly" found
 
 First version reused `fb_ta_compound_interval.py`'s clip-to-boundary convention at
