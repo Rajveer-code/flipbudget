@@ -4,6 +4,17 @@ Script: `scripts/fb_ta_compound_interval.py`. Results:
 `results/flipbudget/ta_compound_interval.json`. Closes the item both
 `TA_SSM_DERIVATION.md` and `TB_DESIGN_SENSITIVITY.md` flagged as not yet done.
 
+**Correction, see `TA_BOUNDARY_AUDIT.md`.** The "15 of 17 models have zero
+Λ-only width, compound is the only signal" claim below overstated things: it
+didn't separate the 3 robust-subset zero-λ models (compound values sane, this
+part holds) from the 12 thin-audit ones (compound values up to 880 — the same
+already-known near-singular pathology, incorrectly left standing next to a "main
+signal" framing without that caveat). The zero-width finding itself is confirmed
+to be an artifact of anchoring Λ at the raw point estimate, not a structural
+property of the SSM — switching to the shrunk (empirical-Bayes) anchor resolves
+15 of 15 degenerate cases. Compound's own construction (Wilson-CI-based, no
+point anchor) was never affected by this and needs no change.
+
 ## Construction
 
 `compound_bounds(x, n, L) = (λ(wilson_lo, 1/L), λ(wilson_hi, L))` — Λ-widen

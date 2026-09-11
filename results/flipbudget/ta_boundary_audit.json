@@ -1,0 +1,332 @@
+{
+  "symbolic_fixed_point_confirmed": true,
+  "cross_tabulation": [
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "robust": true,
+      "n0": 29,
+      "n1": 9,
+      "alpha_raw": 0.034482758620689655,
+      "beta_raw": 0.0,
+      "w_lambda": 0.0410687311178248,
+      "w_compound": 0.6720916058189526
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "robust": false,
+      "n0": 6,
+      "n1": 1,
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "w_lambda": 0.0,
+      "w_compound": 446.20141531799237
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "robust": false,
+      "n0": 2,
+      "n1": 9,
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "w_lambda": 0.0,
+      "w_compound": 748.9766300583982
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "robust": true,
+      "n0": 6,
+      "n1": 14,
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "w_lambda": 0.0,
+      "w_compound": 5.891762730926596
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "robust": true,
+      "n0": 6,
+      "n1": 17,
+      "alpha_raw": 0.6666666666666666,
+      "beta_raw": 0.0,
+      "w_lambda": 3.000000000000001,
+      "w_compound": 948.9400033617449
+    },
+    {
+      "model": "EleutherAI/gpt-j-6b",
+      "robust": false,
+      "n0": 1,
+      "n1": 7,
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "w_lambda": 0.0,
+      "w_compound": 872.7749675859079
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "robust": false,
+      "n0": 15,
+      "n1": 2,
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "w_lambda": 0.0,
+      "w_compound": 156.07134467742787
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "robust": false,
+      "n0": 42,
+      "n1": 4,
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "w_lambda": 0.0,
+      "w_compound": 0.8145479031228902
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "robust": true,
+      "n0": 15,
+      "n1": 11,
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "w_lambda": 0.0,
+      "w_compound": 0.921918170843627
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "robust": false,
+      "n0": 4,
+      "n1": 10,
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "w_lambda": 0.0,
+      "w_compound": 604.0968922925883
+    },
+    {
+      "model": "google/gemma-7b",
+      "robust": false,
+      "n0": 2,
+      "n1": 6,
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "w_lambda": 0.0,
+      "w_compound": 729.4029923611647
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "robust": true,
+      "n0": 27,
+      "n1": 10,
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "w_lambda": 0.0,
+      "w_compound": 0.39746396329864603
+    },
+    {
+      "model": "microsoft/phi-2",
+      "robust": false,
+      "n0": 2,
+      "n1": 4,
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "w_lambda": 0.0,
+      "w_compound": 769.3573483027959
+    },
+    {
+      "model": "mistralai/Mistral-7B-v0.1",
+      "robust": false,
+      "n0": 1,
+      "n1": 7,
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "w_lambda": 0.0,
+      "w_compound": 859.9620342022093
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "robust": false,
+      "n0": 2,
+      "n1": 8,
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "w_lambda": 0.0,
+      "w_compound": 780.6412200550732
+    },
+    {
+      "model": "tiiuae/falcon-40b",
+      "robust": false,
+      "n0": 1,
+      "n1": 5,
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "w_lambda": 0.0,
+      "w_compound": 869.733843682043
+    },
+    {
+      "model": "tiiuae/falcon-7b",
+      "robust": false,
+      "n0": 1,
+      "n1": 3,
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "w_lambda": 0.0,
+      "w_compound": 879.5660226211614
+    }
+  ],
+  "raw_vs_shrunk_anchor": [
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "alpha_raw": 0.034482758620689655,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.03184515706063981,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 0.0410687311178248,
+      "w_lambda_shrunk_anchor": 0.037824037821485634
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.030252529753465502,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 0.0,
+      "w_lambda_shrunk_anchor": 0.041351586566188266
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.030990396332818318,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 0.0,
+      "w_lambda_shrunk_anchor": 0.045834536994005325
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.030252529753465502,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 0.0,
+      "w_lambda_shrunk_anchor": 0.04326012133078158
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "alpha_raw": 0.6666666666666666,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.05406205356298931,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 3.000000000000001,
+      "w_lambda_shrunk_anchor": 0.08572769561674826
+    },
+    {
+      "model": "EleutherAI/gpt-j-6b",
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.031180521463694506,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 0.0,
+      "w_lambda_shrunk_anchor": 0.04769265832496761
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.02871426552871302,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 0.0,
+      "w_lambda_shrunk_anchor": 0.036205926865717386
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.02491384803226571,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 0.0,
+      "w_lambda_shrunk_anchor": 0.024865331877286734
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.02871426552871302,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 0.0,
+      "w_lambda_shrunk_anchor": 0.036004968899765205
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.03061701806374822,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 0.0,
+      "w_lambda_shrunk_anchor": 0.044835482127847756
+    },
+    {
+      "model": "google/gemma-7b",
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.030990396332818318,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 0.0,
+      "w_lambda_shrunk_anchor": 0.04489248326922735
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.026891137558636004,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 0.0,
+      "w_lambda_shrunk_anchor": 0.031777305020289054
+    },
+    {
+      "model": "microsoft/phi-2",
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.030990396332818318,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 0.0,
+      "w_lambda_shrunk_anchor": 0.04681282355435168
+    },
+    {
+      "model": "mistralai/Mistral-7B-v0.1",
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.031180521463694506,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 0.0,
+      "w_lambda_shrunk_anchor": 0.047072799615851056
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.030990396332818318,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 0.0,
+      "w_lambda_shrunk_anchor": 0.04735631608787744
+    },
+    {
+      "model": "tiiuae/falcon-40b",
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.031180521463694506,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 0.0,
+      "w_lambda_shrunk_anchor": 0.04754521456731498
+    },
+    {
+      "model": "tiiuae/falcon-7b",
+      "alpha_raw": 0.0,
+      "beta_raw": 0.0,
+      "alpha_pooled": 0.031180521463694506,
+      "beta_pooled": 0.0,
+      "w_lambda_raw_anchor": 0.0,
+      "w_lambda_shrunk_anchor": 0.04802081881802931
+    }
+  ],
+  "n_zero_lambda_raw_anchor": 15,
+  "n_zero_lambda_shrunk_anchor": 0
+}
