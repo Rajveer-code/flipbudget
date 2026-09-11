@@ -1,0 +1,138 @@
+{
+  "n_records": 350,
+  "n_wrong": 5,
+  "original_top5_ranked": [
+    {
+      "feature": "n_newlines",
+      "coef": -3.918464397951869
+    },
+    {
+      "feature": "ends_with_period",
+      "coef": -1.7954299845406447
+    },
+    {
+      "feature": "has_therefore",
+      "coef": 1.6164979451438888
+    },
+    {
+      "feature": "n_frac",
+      "coef": -1.2559735658311266
+    },
+    {
+      "feature": "char_length",
+      "coef": 1.224985526730046
+    },
+    {
+      "feature": "n_dollar_signs",
+      "coef": 1.079490281240117
+    },
+    {
+      "feature": "has_boxed",
+      "coef": 0.3881252791371628
+    },
+    {
+      "feature": "n_equals",
+      "coef": -0.2543577659638366
+    },
+    {
+      "feature": "word_count",
+      "coef": 0.07426671250382873
+    }
+  ],
+  "loo_positive_out": {
+    "n_matches": 4,
+    "n_total": 5,
+    "per_drop_top5": [
+      [
+        "ends_with_period",
+        "has_therefore",
+        "n_dollar_signs",
+        "n_frac",
+        "n_newlines"
+      ],
+      [
+        "char_length",
+        "ends_with_period",
+        "has_therefore",
+        "n_frac",
+        "n_newlines"
+      ],
+      [
+        "char_length",
+        "ends_with_period",
+        "has_therefore",
+        "n_frac",
+        "n_newlines"
+      ],
+      [
+        "char_length",
+        "ends_with_period",
+        "has_therefore",
+        "n_frac",
+        "n_newlines"
+      ],
+      [
+        "char_length",
+        "ends_with_period",
+        "has_therefore",
+        "n_frac",
+        "n_newlines"
+      ]
+    ]
+  },
+  "full_loo": {
+    "top5_match_count": 346,
+    "n_total": 350,
+    "sign_flip_count": 8
+  },
+  "bootstrap": {
+    "n_bootstrap": 2000,
+    "n_usable": 1987,
+    "n_degenerate": 13,
+    "top5_exact_match_count": 698,
+    "per_feature_selection_frequency": {
+      "char_length": 0.5697030699547055,
+      "word_count": 0.0840463009562154,
+      "has_boxed": 0.003019627579265224,
+      "n_dollar_signs": 0.5208857574232512,
+      "n_newlines": 1.0,
+      "n_equals": 0.08454957221942627,
+      "has_therefore": 0.9748364368394564,
+      "n_frac": 0.7795671867136387,
+      "ends_with_period": 0.9833920483140413
+    },
+    "per_feature_sign_consistency": {
+      "char_length": 0.6633115249119276,
+      "word_count": 0.4141922496225465,
+      "has_boxed": 1.0,
+      "n_dollar_signs": 0.8530447911424258,
+      "n_newlines": 1.0,
+      "n_equals": 0.688978359335682,
+      "has_therefore": 1.0,
+      "n_frac": 1.0,
+      "ends_with_period": 0.9949672873678913
+    }
+  },
+  "mechanism_alternative": {
+    "features": [
+      "has_boxed",
+      "n_frac",
+      "n_dollar_signs"
+    ],
+    "epv10_events_needed": 30,
+    "bootstrap_selection_frequency": {
+      "has_boxed": 0.003019627579265224,
+      "n_frac": 0.7795671867136387,
+      "n_dollar_signs": 0.5208857574232512
+    }
+  },
+  "reliably_selected_at_threshold": [
+    "n_newlines",
+    "ends_with_period",
+    "has_therefore",
+    "n_frac",
+    "char_length"
+  ],
+  "stability_threshold": 0.5,
+  "verdict": "DATA_DRIVEN_SET_DEFENSIBLE"
+}
