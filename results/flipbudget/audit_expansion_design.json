@@ -1,0 +1,1854 @@
+{
+  "peduzzi_epv_rule": 10,
+  "ee_n_features": 9,
+  "ee_target_total_events": 90,
+  "ee_current_events": 5,
+  "ee_additional_needed": 85,
+  "ee_worklist": [
+    {
+      "round": 1,
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "stratum": "credited",
+      "current_n_audited": 6,
+      "shrunk_rate": 0.0759407897452635,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 1.51881579490527,
+      "cumulative_expected_events_after_this_row": 1.51881579490527
+    },
+    {
+      "round": 1,
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "stratum": "credited",
+      "current_n_audited": 29,
+      "shrunk_rate": 0.03224563059593534,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6449126119187067,
+      "cumulative_expected_events_after_this_row": 2.163728406823977
+    },
+    {
+      "round": 1,
+      "model": "01-ai/Yi-34B-Chat",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 2.7911882831921506
+    },
+    {
+      "round": 1,
+      "model": "ibm/merlinite-7b",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 3.418648159560324
+    },
+    {
+      "round": 1,
+      "model": "Deci/DeciLM-7B",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 4.046108035928498
+    },
+    {
+      "round": 1,
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 4.673567912296671
+    },
+    {
+      "round": 1,
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 5.301027788664845
+    },
+    {
+      "round": 1,
+      "model": "EleutherAI/gpt-neox-20b",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 5.9284876650330185
+    },
+    {
+      "round": 1,
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 6.555947541401192
+    },
+    {
+      "round": 1,
+      "model": "EleutherAI/pythia-160m",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 7.183407417769366
+    },
+    {
+      "round": 1,
+      "model": "microsoft/phi-1_5",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 7.810867294137539
+    },
+    {
+      "round": 1,
+      "model": "databricks/dolly-v2-12b",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 8.438327170505712
+    },
+    {
+      "round": 1,
+      "model": "mistralai/Mistral-7B-v0.1",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 9.05811176892516
+    },
+    {
+      "round": 1,
+      "model": "tiiuae/falcon-40b",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 9.677896367344609
+    },
+    {
+      "round": 1,
+      "model": "tiiuae/falcon-7b",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 10.297680965764057
+    },
+    {
+      "round": 1,
+      "model": "EleutherAI/gpt-j-6b",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 10.917465564183505
+    },
+    {
+      "round": 1,
+      "model": "01-ai/Yi-34B",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 11.529714857587965
+    },
+    {
+      "round": 1,
+      "model": "google/gemma-7b",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 12.141964150992425
+    },
+    {
+      "round": 1,
+      "model": "mosaicml/mpt-7b",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 12.754213444396886
+    },
+    {
+      "round": 1,
+      "model": "microsoft/phi-2",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 13.366462737801346
+    },
+    {
+      "round": 1,
+      "model": "bigcode/starcoder2-15b",
+      "stratum": "credited",
+      "current_n_audited": 4,
+      "shrunk_rate": 0.029879258592332602,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.597585171846652,
+      "cumulative_expected_events_after_this_row": 13.964047909647999
+    },
+    {
+      "round": 1,
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "stratum": "credited",
+      "current_n_audited": 6,
+      "shrunk_rate": 0.029172082262270305,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5834416452454061,
+      "cumulative_expected_events_after_this_row": 14.547489554893405
+    },
+    {
+      "round": 1,
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "stratum": "credited",
+      "current_n_audited": 6,
+      "shrunk_rate": 0.029172082262270305,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5834416452454061,
+      "cumulative_expected_events_after_this_row": 15.13093120013881
+    },
+    {
+      "round": 1,
+      "model": "Qwen/Qwen2-7B",
+      "stratum": "credited",
+      "current_n_audited": 15,
+      "shrunk_rate": 0.02628085319577124,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5256170639154247,
+      "cumulative_expected_events_after_this_row": 15.656548264054235
+    },
+    {
+      "round": 1,
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "stratum": "credited",
+      "current_n_audited": 15,
+      "shrunk_rate": 0.02628085319577124,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5256170639154247,
+      "cumulative_expected_events_after_this_row": 16.18216532796966
+    },
+    {
+      "round": 1,
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "stratum": "credited",
+      "current_n_audited": 27,
+      "shrunk_rate": 0.02304954647883086,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.46099092957661725,
+      "cumulative_expected_events_after_this_row": 16.643156257546277
+    },
+    {
+      "round": 1,
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "stratum": "credited",
+      "current_n_audited": 42,
+      "shrunk_rate": 0.019784526378563948,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.395690527571279,
+      "cumulative_expected_events_after_this_row": 17.038846785117556
+    },
+    {
+      "round": 2,
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "stratum": "credited",
+      "current_n_audited": 6,
+      "shrunk_rate": 0.0759407897452635,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 1.51881579490527,
+      "cumulative_expected_events_after_this_row": 18.557662580022825
+    },
+    {
+      "round": 2,
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "stratum": "credited",
+      "current_n_audited": 29,
+      "shrunk_rate": 0.03224563059593534,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6449126119187067,
+      "cumulative_expected_events_after_this_row": 19.20257519194153
+    },
+    {
+      "round": 2,
+      "model": "01-ai/Yi-34B-Chat",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 19.830035068309705
+    },
+    {
+      "round": 2,
+      "model": "ibm/merlinite-7b",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 20.45749494467788
+    },
+    {
+      "round": 2,
+      "model": "Deci/DeciLM-7B",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 21.084954821046054
+    },
+    {
+      "round": 2,
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 21.71241469741423
+    },
+    {
+      "round": 2,
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 22.339874573782403
+    },
+    {
+      "round": 2,
+      "model": "EleutherAI/gpt-neox-20b",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 22.967334450150577
+    },
+    {
+      "round": 2,
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 23.594794326518752
+    },
+    {
+      "round": 2,
+      "model": "EleutherAI/pythia-160m",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 24.222254202886926
+    },
+    {
+      "round": 2,
+      "model": "microsoft/phi-1_5",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 24.8497140792551
+    },
+    {
+      "round": 2,
+      "model": "databricks/dolly-v2-12b",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 25.477173955623275
+    },
+    {
+      "round": 2,
+      "model": "mistralai/Mistral-7B-v0.1",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 26.096958554042725
+    },
+    {
+      "round": 2,
+      "model": "tiiuae/falcon-40b",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 26.716743152462175
+    },
+    {
+      "round": 2,
+      "model": "tiiuae/falcon-7b",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 27.336527750881626
+    },
+    {
+      "round": 2,
+      "model": "EleutherAI/gpt-j-6b",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 27.956312349301076
+    },
+    {
+      "round": 2,
+      "model": "01-ai/Yi-34B",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 28.568561642705536
+    },
+    {
+      "round": 2,
+      "model": "google/gemma-7b",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 29.180810936109996
+    },
+    {
+      "round": 2,
+      "model": "mosaicml/mpt-7b",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 29.793060229514456
+    },
+    {
+      "round": 2,
+      "model": "microsoft/phi-2",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 30.405309522918916
+    },
+    {
+      "round": 2,
+      "model": "bigcode/starcoder2-15b",
+      "stratum": "credited",
+      "current_n_audited": 4,
+      "shrunk_rate": 0.029879258592332602,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.597585171846652,
+      "cumulative_expected_events_after_this_row": 31.00289469476557
+    },
+    {
+      "round": 2,
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "stratum": "credited",
+      "current_n_audited": 6,
+      "shrunk_rate": 0.029172082262270305,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5834416452454061,
+      "cumulative_expected_events_after_this_row": 31.586336340010973
+    },
+    {
+      "round": 2,
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "stratum": "credited",
+      "current_n_audited": 6,
+      "shrunk_rate": 0.029172082262270305,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5834416452454061,
+      "cumulative_expected_events_after_this_row": 32.16977798525638
+    },
+    {
+      "round": 2,
+      "model": "Qwen/Qwen2-7B",
+      "stratum": "credited",
+      "current_n_audited": 15,
+      "shrunk_rate": 0.02628085319577124,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5256170639154247,
+      "cumulative_expected_events_after_this_row": 32.69539504917181
+    },
+    {
+      "round": 2,
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "stratum": "credited",
+      "current_n_audited": 15,
+      "shrunk_rate": 0.02628085319577124,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5256170639154247,
+      "cumulative_expected_events_after_this_row": 33.221012113087234
+    },
+    {
+      "round": 2,
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "stratum": "credited",
+      "current_n_audited": 27,
+      "shrunk_rate": 0.02304954647883086,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.46099092957661725,
+      "cumulative_expected_events_after_this_row": 33.68200304266385
+    },
+    {
+      "round": 2,
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "stratum": "credited",
+      "current_n_audited": 42,
+      "shrunk_rate": 0.019784526378563948,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.395690527571279,
+      "cumulative_expected_events_after_this_row": 34.07769357023513
+    },
+    {
+      "round": 3,
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "stratum": "credited",
+      "current_n_audited": 6,
+      "shrunk_rate": 0.0759407897452635,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 1.51881579490527,
+      "cumulative_expected_events_after_this_row": 35.5965093651404
+    },
+    {
+      "round": 3,
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "stratum": "credited",
+      "current_n_audited": 29,
+      "shrunk_rate": 0.03224563059593534,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6449126119187067,
+      "cumulative_expected_events_after_this_row": 36.241421977059105
+    },
+    {
+      "round": 3,
+      "model": "01-ai/Yi-34B-Chat",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 36.868881853427276
+    },
+    {
+      "round": 3,
+      "model": "ibm/merlinite-7b",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 37.496341729795446
+    },
+    {
+      "round": 3,
+      "model": "Deci/DeciLM-7B",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 38.12380160616362
+    },
+    {
+      "round": 3,
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 38.75126148253179
+    },
+    {
+      "round": 3,
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 39.37872135889996
+    },
+    {
+      "round": 3,
+      "model": "EleutherAI/gpt-neox-20b",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 40.00618123526813
+    },
+    {
+      "round": 3,
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 40.6336411116363
+    },
+    {
+      "round": 3,
+      "model": "EleutherAI/pythia-160m",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 41.26110098800447
+    },
+    {
+      "round": 3,
+      "model": "microsoft/phi-1_5",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 41.88856086437264
+    },
+    {
+      "round": 3,
+      "model": "databricks/dolly-v2-12b",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 42.516020740740814
+    },
+    {
+      "round": 3,
+      "model": "mistralai/Mistral-7B-v0.1",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 43.135805339160264
+    },
+    {
+      "round": 3,
+      "model": "tiiuae/falcon-40b",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 43.755589937579714
+    },
+    {
+      "round": 3,
+      "model": "tiiuae/falcon-7b",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 44.375374535999164
+    },
+    {
+      "round": 3,
+      "model": "EleutherAI/gpt-j-6b",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 44.995159134418614
+    },
+    {
+      "round": 3,
+      "model": "01-ai/Yi-34B",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 45.607408427823074
+    },
+    {
+      "round": 3,
+      "model": "google/gemma-7b",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 46.219657721227534
+    },
+    {
+      "round": 3,
+      "model": "mosaicml/mpt-7b",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 46.831907014631994
+    },
+    {
+      "round": 3,
+      "model": "microsoft/phi-2",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 47.444156308036455
+    },
+    {
+      "round": 3,
+      "model": "bigcode/starcoder2-15b",
+      "stratum": "credited",
+      "current_n_audited": 4,
+      "shrunk_rate": 0.029879258592332602,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.597585171846652,
+      "cumulative_expected_events_after_this_row": 48.04174147988311
+    },
+    {
+      "round": 3,
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "stratum": "credited",
+      "current_n_audited": 6,
+      "shrunk_rate": 0.029172082262270305,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5834416452454061,
+      "cumulative_expected_events_after_this_row": 48.625183125128515
+    },
+    {
+      "round": 3,
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "stratum": "credited",
+      "current_n_audited": 6,
+      "shrunk_rate": 0.029172082262270305,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5834416452454061,
+      "cumulative_expected_events_after_this_row": 49.20862477037392
+    },
+    {
+      "round": 3,
+      "model": "Qwen/Qwen2-7B",
+      "stratum": "credited",
+      "current_n_audited": 15,
+      "shrunk_rate": 0.02628085319577124,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5256170639154247,
+      "cumulative_expected_events_after_this_row": 49.73424183428935
+    },
+    {
+      "round": 3,
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "stratum": "credited",
+      "current_n_audited": 15,
+      "shrunk_rate": 0.02628085319577124,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5256170639154247,
+      "cumulative_expected_events_after_this_row": 50.259858898204776
+    },
+    {
+      "round": 3,
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "stratum": "credited",
+      "current_n_audited": 27,
+      "shrunk_rate": 0.02304954647883086,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.46099092957661725,
+      "cumulative_expected_events_after_this_row": 50.72084982778139
+    },
+    {
+      "round": 3,
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "stratum": "credited",
+      "current_n_audited": 42,
+      "shrunk_rate": 0.019784526378563948,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.395690527571279,
+      "cumulative_expected_events_after_this_row": 51.11654035535267
+    },
+    {
+      "round": 4,
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "stratum": "credited",
+      "current_n_audited": 6,
+      "shrunk_rate": 0.0759407897452635,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 1.51881579490527,
+      "cumulative_expected_events_after_this_row": 52.63535615025794
+    },
+    {
+      "round": 4,
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "stratum": "credited",
+      "current_n_audited": 29,
+      "shrunk_rate": 0.03224563059593534,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6449126119187067,
+      "cumulative_expected_events_after_this_row": 53.28026876217665
+    },
+    {
+      "round": 4,
+      "model": "01-ai/Yi-34B-Chat",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 53.90772863854482
+    },
+    {
+      "round": 4,
+      "model": "ibm/merlinite-7b",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 54.53518851491299
+    },
+    {
+      "round": 4,
+      "model": "Deci/DeciLM-7B",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 55.16264839128116
+    },
+    {
+      "round": 4,
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 55.79010826764933
+    },
+    {
+      "round": 4,
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 56.4175681440175
+    },
+    {
+      "round": 4,
+      "model": "EleutherAI/gpt-neox-20b",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 57.04502802038567
+    },
+    {
+      "round": 4,
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 57.67248789675384
+    },
+    {
+      "round": 4,
+      "model": "EleutherAI/pythia-160m",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 58.299947773122014
+    },
+    {
+      "round": 4,
+      "model": "microsoft/phi-1_5",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 58.927407649490185
+    },
+    {
+      "round": 4,
+      "model": "databricks/dolly-v2-12b",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 59.554867525858356
+    },
+    {
+      "round": 4,
+      "model": "mistralai/Mistral-7B-v0.1",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 60.174652124277806
+    },
+    {
+      "round": 4,
+      "model": "tiiuae/falcon-40b",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 60.794436722697256
+    },
+    {
+      "round": 4,
+      "model": "tiiuae/falcon-7b",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 61.414221321116706
+    },
+    {
+      "round": 4,
+      "model": "EleutherAI/gpt-j-6b",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 62.034005919536156
+    },
+    {
+      "round": 4,
+      "model": "01-ai/Yi-34B",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 62.646255212940616
+    },
+    {
+      "round": 4,
+      "model": "google/gemma-7b",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 63.258504506345076
+    },
+    {
+      "round": 4,
+      "model": "mosaicml/mpt-7b",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 63.87075379974954
+    },
+    {
+      "round": 4,
+      "model": "microsoft/phi-2",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 64.483003093154
+    },
+    {
+      "round": 4,
+      "model": "bigcode/starcoder2-15b",
+      "stratum": "credited",
+      "current_n_audited": 4,
+      "shrunk_rate": 0.029879258592332602,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.597585171846652,
+      "cumulative_expected_events_after_this_row": 65.08058826500064
+    },
+    {
+      "round": 4,
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "stratum": "credited",
+      "current_n_audited": 6,
+      "shrunk_rate": 0.029172082262270305,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5834416452454061,
+      "cumulative_expected_events_after_this_row": 65.66402991024604
+    },
+    {
+      "round": 4,
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "stratum": "credited",
+      "current_n_audited": 6,
+      "shrunk_rate": 0.029172082262270305,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5834416452454061,
+      "cumulative_expected_events_after_this_row": 66.24747155549144
+    },
+    {
+      "round": 4,
+      "model": "Qwen/Qwen2-7B",
+      "stratum": "credited",
+      "current_n_audited": 15,
+      "shrunk_rate": 0.02628085319577124,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5256170639154247,
+      "cumulative_expected_events_after_this_row": 66.77308861940686
+    },
+    {
+      "round": 4,
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "stratum": "credited",
+      "current_n_audited": 15,
+      "shrunk_rate": 0.02628085319577124,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5256170639154247,
+      "cumulative_expected_events_after_this_row": 67.29870568332228
+    },
+    {
+      "round": 4,
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "stratum": "credited",
+      "current_n_audited": 27,
+      "shrunk_rate": 0.02304954647883086,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.46099092957661725,
+      "cumulative_expected_events_after_this_row": 67.75969661289889
+    },
+    {
+      "round": 4,
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "stratum": "credited",
+      "current_n_audited": 42,
+      "shrunk_rate": 0.019784526378563948,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.395690527571279,
+      "cumulative_expected_events_after_this_row": 68.15538714047017
+    },
+    {
+      "round": 5,
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "stratum": "credited",
+      "current_n_audited": 6,
+      "shrunk_rate": 0.0759407897452635,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 1.51881579490527,
+      "cumulative_expected_events_after_this_row": 69.67420293537543
+    },
+    {
+      "round": 5,
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "stratum": "credited",
+      "current_n_audited": 29,
+      "shrunk_rate": 0.03224563059593534,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6449126119187067,
+      "cumulative_expected_events_after_this_row": 70.31911554729415
+    },
+    {
+      "round": 5,
+      "model": "01-ai/Yi-34B-Chat",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 70.94657542366232
+    },
+    {
+      "round": 5,
+      "model": "ibm/merlinite-7b",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 71.5740353000305
+    },
+    {
+      "round": 5,
+      "model": "Deci/DeciLM-7B",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 72.20149517639868
+    },
+    {
+      "round": 5,
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 72.82895505276686
+    },
+    {
+      "round": 5,
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 73.45641492913504
+    },
+    {
+      "round": 5,
+      "model": "EleutherAI/gpt-neox-20b",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 74.08387480550321
+    },
+    {
+      "round": 5,
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 74.71133468187139
+    },
+    {
+      "round": 5,
+      "model": "EleutherAI/pythia-160m",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 75.33879455823957
+    },
+    {
+      "round": 5,
+      "model": "microsoft/phi-1_5",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 75.96625443460775
+    },
+    {
+      "round": 5,
+      "model": "databricks/dolly-v2-12b",
+      "stratum": "credited",
+      "current_n_audited": 0,
+      "shrunk_rate": 0.03137299381840867,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6274598763681734,
+      "cumulative_expected_events_after_this_row": 76.59371431097593
+    },
+    {
+      "round": 5,
+      "model": "mistralai/Mistral-7B-v0.1",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 77.21349890939537
+    },
+    {
+      "round": 5,
+      "model": "tiiuae/falcon-40b",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 77.83328350781481
+    },
+    {
+      "round": 5,
+      "model": "tiiuae/falcon-7b",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 78.45306810623426
+    },
+    {
+      "round": 5,
+      "model": "EleutherAI/gpt-j-6b",
+      "stratum": "credited",
+      "current_n_audited": 1,
+      "shrunk_rate": 0.030989229920972455,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6197845984194491,
+      "cumulative_expected_events_after_this_row": 79.0728527046537
+    },
+    {
+      "round": 5,
+      "model": "01-ai/Yi-34B",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 79.68510199805816
+    },
+    {
+      "round": 5,
+      "model": "google/gemma-7b",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 80.29735129146262
+    },
+    {
+      "round": 5,
+      "model": "mosaicml/mpt-7b",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 80.90960058486708
+    },
+    {
+      "round": 5,
+      "model": "microsoft/phi-2",
+      "stratum": "credited",
+      "current_n_audited": 2,
+      "shrunk_rate": 0.030612464670222973,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.6122492934044594,
+      "cumulative_expected_events_after_this_row": 81.52184987827154
+    },
+    {
+      "round": 5,
+      "model": "bigcode/starcoder2-15b",
+      "stratum": "credited",
+      "current_n_audited": 4,
+      "shrunk_rate": 0.029879258592332602,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.597585171846652,
+      "cumulative_expected_events_after_this_row": 82.11943505011818
+    },
+    {
+      "round": 5,
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "stratum": "credited",
+      "current_n_audited": 6,
+      "shrunk_rate": 0.029172082262270305,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5834416452454061,
+      "cumulative_expected_events_after_this_row": 82.70287669536359
+    },
+    {
+      "round": 5,
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "stratum": "credited",
+      "current_n_audited": 6,
+      "shrunk_rate": 0.029172082262270305,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5834416452454061,
+      "cumulative_expected_events_after_this_row": 83.28631834060899
+    },
+    {
+      "round": 5,
+      "model": "Qwen/Qwen2-7B",
+      "stratum": "credited",
+      "current_n_audited": 15,
+      "shrunk_rate": 0.02628085319577124,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5256170639154247,
+      "cumulative_expected_events_after_this_row": 83.8119354045244
+    },
+    {
+      "round": 5,
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "stratum": "credited",
+      "current_n_audited": 15,
+      "shrunk_rate": 0.02628085319577124,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.5256170639154247,
+      "cumulative_expected_events_after_this_row": 84.33755246843982
+    },
+    {
+      "round": 5,
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "stratum": "credited",
+      "current_n_audited": 27,
+      "shrunk_rate": 0.02304954647883086,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.46099092957661725,
+      "cumulative_expected_events_after_this_row": 84.79854339801645
+    },
+    {
+      "round": 5,
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "stratum": "credited",
+      "current_n_audited": 42,
+      "shrunk_rate": 0.019784526378563948,
+      "additional_items_recommended": 20,
+      "expected_additional_events": 0.395690527571279,
+      "cumulative_expected_events_after_this_row": 85.19423392558772
+    }
+  ],
+  "ee_projected_cumulative_events": 90.19423392558772,
+  "tc_target_either_wrong_planning_level": 20,
+  "tc_current_either_wrong": 1,
+  "tc_current_valid_pairs": 41,
+  "tc_roster_average_shrunk_rate": 0.015776709986219956,
+  "tc_rough_item_scale_estimate": 1267.691427266448,
+  "tc_note": "item-level worklist blocked on raw per-model roster data, not available in results/analysis/ snapshot -- flagged, not fabricated",
+  "all_pools_ranked": [
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "stratum": "credited",
+      "n_audited": 6,
+      "raw": 0.6666666666666666,
+      "pooled": 0.05406205356298931,
+      "weight": 0.03571428571428571,
+      "rate": 0.0759407897452635
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "stratum": "credited",
+      "n_audited": 29,
+      "raw": 0.034482758620689655,
+      "pooled": 0.03184515706063981,
+      "weight": 0.1518324607329843,
+      "rate": 0.03224563059593534
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "stratum": "credited",
+      "n_audited": 0,
+      "raw": null,
+      "pooled": 0.03137299381840867,
+      "weight": 0.0,
+      "rate": 0.03137299381840867
+    },
+    {
+      "model": "ibm/merlinite-7b",
+      "stratum": "credited",
+      "n_audited": 0,
+      "raw": null,
+      "pooled": 0.03137299381840867,
+      "weight": 0.0,
+      "rate": 0.03137299381840867
+    },
+    {
+      "model": "Deci/DeciLM-7B",
+      "stratum": "credited",
+      "n_audited": 0,
+      "raw": null,
+      "pooled": 0.03137299381840867,
+      "weight": 0.0,
+      "rate": 0.03137299381840867
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum": "credited",
+      "n_audited": 0,
+      "raw": null,
+      "pooled": 0.03137299381840867,
+      "weight": 0.0,
+      "rate": 0.03137299381840867
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "stratum": "credited",
+      "n_audited": 0,
+      "raw": null,
+      "pooled": 0.03137299381840867,
+      "weight": 0.0,
+      "rate": 0.03137299381840867
+    },
+    {
+      "model": "EleutherAI/gpt-neox-20b",
+      "stratum": "credited",
+      "n_audited": 0,
+      "raw": null,
+      "pooled": 0.03137299381840867,
+      "weight": 0.0,
+      "rate": 0.03137299381840867
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "stratum": "credited",
+      "n_audited": 0,
+      "raw": null,
+      "pooled": 0.03137299381840867,
+      "weight": 0.0,
+      "rate": 0.03137299381840867
+    },
+    {
+      "model": "EleutherAI/pythia-160m",
+      "stratum": "credited",
+      "n_audited": 0,
+      "raw": null,
+      "pooled": 0.03137299381840867,
+      "weight": 0.0,
+      "rate": 0.03137299381840867
+    },
+    {
+      "model": "microsoft/phi-1_5",
+      "stratum": "credited",
+      "n_audited": 0,
+      "raw": null,
+      "pooled": 0.03137299381840867,
+      "weight": 0.0,
+      "rate": 0.03137299381840867
+    },
+    {
+      "model": "databricks/dolly-v2-12b",
+      "stratum": "credited",
+      "n_audited": 0,
+      "raw": null,
+      "pooled": 0.03137299381840867,
+      "weight": 0.0,
+      "rate": 0.03137299381840867
+    },
+    {
+      "model": "mistralai/Mistral-7B-v0.1",
+      "stratum": "credited",
+      "n_audited": 1,
+      "raw": 0.0,
+      "pooled": 0.031180521463694506,
+      "weight": 0.006134969325153374,
+      "rate": 0.030989229920972455
+    },
+    {
+      "model": "tiiuae/falcon-40b",
+      "stratum": "credited",
+      "n_audited": 1,
+      "raw": 0.0,
+      "pooled": 0.031180521463694506,
+      "weight": 0.006134969325153374,
+      "rate": 0.030989229920972455
+    },
+    {
+      "model": "tiiuae/falcon-7b",
+      "stratum": "credited",
+      "n_audited": 1,
+      "raw": 0.0,
+      "pooled": 0.031180521463694506,
+      "weight": 0.006134969325153374,
+      "rate": 0.030989229920972455
+    },
+    {
+      "model": "EleutherAI/gpt-j-6b",
+      "stratum": "credited",
+      "n_audited": 1,
+      "raw": 0.0,
+      "pooled": 0.031180521463694506,
+      "weight": 0.006134969325153374,
+      "rate": 0.030989229920972455
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "stratum": "credited",
+      "n_audited": 2,
+      "raw": 0.0,
+      "pooled": 0.030990396332818318,
+      "weight": 0.012195121951219513,
+      "rate": 0.030612464670222973
+    },
+    {
+      "model": "google/gemma-7b",
+      "stratum": "credited",
+      "n_audited": 2,
+      "raw": 0.0,
+      "pooled": 0.030990396332818318,
+      "weight": 0.012195121951219513,
+      "rate": 0.030612464670222973
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "stratum": "credited",
+      "n_audited": 2,
+      "raw": 0.0,
+      "pooled": 0.030990396332818318,
+      "weight": 0.012195121951219513,
+      "rate": 0.030612464670222973
+    },
+    {
+      "model": "microsoft/phi-2",
+      "stratum": "credited",
+      "n_audited": 2,
+      "raw": 0.0,
+      "pooled": 0.030990396332818318,
+      "weight": 0.012195121951219513,
+      "rate": 0.030612464670222973
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "stratum": "credited",
+      "n_audited": 4,
+      "raw": 0.0,
+      "pooled": 0.03061701806374822,
+      "weight": 0.024096385542168676,
+      "rate": 0.029879258592332602
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "stratum": "credited",
+      "n_audited": 6,
+      "raw": 0.0,
+      "pooled": 0.030252529753465502,
+      "weight": 0.03571428571428571,
+      "rate": 0.029172082262270305
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "stratum": "credited",
+      "n_audited": 6,
+      "raw": 0.0,
+      "pooled": 0.030252529753465502,
+      "weight": 0.03571428571428571,
+      "rate": 0.029172082262270305
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "stratum": "credited",
+      "n_audited": 15,
+      "raw": 0.0,
+      "pooled": 0.02871426552871302,
+      "weight": 0.0847457627118644,
+      "rate": 0.02628085319577124
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "stratum": "credited",
+      "n_audited": 15,
+      "raw": 0.0,
+      "pooled": 0.02871426552871302,
+      "weight": 0.0847457627118644,
+      "rate": 0.02628085319577124
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "stratum": "credited",
+      "n_audited": 27,
+      "raw": 0.0,
+      "pooled": 0.026891137558636004,
+      "weight": 0.14285714285714285,
+      "rate": 0.02304954647883086
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "stratum": "credited",
+      "n_audited": 42,
+      "raw": 0.0,
+      "pooled": 0.02491384803226571,
+      "weight": 0.20588235294117646,
+      "rate": 0.019784526378563948
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "stratum": "wrong_parsed",
+      "n_audited": 9,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.05113636363636364,
+      "rate": 0.0
+    },
+    {
+      "model": "ibm/merlinite-7b",
+      "stratum": "wrong_parsed",
+      "n_audited": 7,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.040229885057471264,
+      "rate": 0.0
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "stratum": "wrong_parsed",
+      "n_audited": 11,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.06179775280898876,
+      "rate": 0.0
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "stratum": "wrong_parsed",
+      "n_audited": 17,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.09239130434782608,
+      "rate": 0.0
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "stratum": "wrong_parsed",
+      "n_audited": 10,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.05649717514124294,
+      "rate": 0.0
+    },
+    {
+      "model": "mistralai/Mistral-7B-v0.1",
+      "stratum": "wrong_parsed",
+      "n_audited": 7,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.040229885057471264,
+      "rate": 0.0
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "stratum": "wrong_parsed",
+      "n_audited": 9,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.05113636363636364,
+      "rate": 0.0
+    },
+    {
+      "model": "tiiuae/falcon-40b",
+      "stratum": "wrong_parsed",
+      "n_audited": 5,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.029069767441860465,
+      "rate": 0.0
+    },
+    {
+      "model": "tiiuae/falcon-7b",
+      "stratum": "wrong_parsed",
+      "n_audited": 3,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.01764705882352941,
+      "rate": 0.0
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "stratum": "wrong_parsed",
+      "n_audited": 9,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.05113636363636364,
+      "rate": 0.0
+    },
+    {
+      "model": "Deci/DeciLM-7B",
+      "stratum": "wrong_parsed",
+      "n_audited": 5,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.029069767441860465,
+      "rate": 0.0
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "stratum": "wrong_parsed",
+      "n_audited": 7,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.040229885057471264,
+      "rate": 0.0
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "stratum": "wrong_parsed",
+      "n_audited": 2,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.011834319526627219,
+      "rate": 0.0
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "stratum": "wrong_parsed",
+      "n_audited": 7,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.040229885057471264,
+      "rate": 0.0
+    },
+    {
+      "model": "google/gemma-7b",
+      "stratum": "wrong_parsed",
+      "n_audited": 6,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.03468208092485549,
+      "rate": 0.0
+    },
+    {
+      "model": "EleutherAI/gpt-neox-20b",
+      "stratum": "wrong_parsed",
+      "n_audited": 4,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.023391812865497075,
+      "rate": 0.0
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "stratum": "wrong_parsed",
+      "n_audited": 8,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.045714285714285714,
+      "rate": 0.0
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "stratum": "wrong_parsed",
+      "n_audited": 4,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.023391812865497075,
+      "rate": 0.0
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "stratum": "wrong_parsed",
+      "n_audited": 12,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.0670391061452514,
+      "rate": 0.0
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "stratum": "wrong_parsed",
+      "n_audited": 10,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.05649717514124294,
+      "rate": 0.0
+    },
+    {
+      "model": "microsoft/phi-2",
+      "stratum": "wrong_parsed",
+      "n_audited": 4,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.023391812865497075,
+      "rate": 0.0
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "stratum": "wrong_parsed",
+      "n_audited": 14,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.07734806629834254,
+      "rate": 0.0
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "stratum": "wrong_parsed",
+      "n_audited": 1,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.005952380952380952,
+      "rate": 0.0
+    },
+    {
+      "model": "EleutherAI/pythia-160m",
+      "stratum": "wrong_parsed",
+      "n_audited": 0,
+      "raw": null,
+      "pooled": 0.0,
+      "weight": 0.0,
+      "rate": 0.0
+    },
+    {
+      "model": "microsoft/phi-1_5",
+      "stratum": "wrong_parsed",
+      "n_audited": 6,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.03468208092485549,
+      "rate": 0.0
+    },
+    {
+      "model": "databricks/dolly-v2-12b",
+      "stratum": "wrong_parsed",
+      "n_audited": 4,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.023391812865497075,
+      "rate": 0.0
+    },
+    {
+      "model": "EleutherAI/gpt-j-6b",
+      "stratum": "wrong_parsed",
+      "n_audited": 7,
+      "raw": 0.0,
+      "pooled": 0.0,
+      "weight": 0.040229885057471264,
+      "rate": 0.0
+    }
+  ]
+}
