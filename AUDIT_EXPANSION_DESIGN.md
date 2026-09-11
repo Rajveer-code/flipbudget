@@ -4,6 +4,15 @@ Per TIER1_VERDICT.md point 3. Full script: `scripts/fb_audit_expansion_design.py
 Results: `results/flipbudget/audit_expansion_design.json`. **This designs the
 expansion; it does not execute it. Labelling is the user's own manual work.**
 
+**Superseded in part by real data — see `TC_ROSTER_PULL.md`.** T-C's item-level
+worklist (marked blocked below) is now solved with 90 real candidate pairs. The
+E-E ceiling below (90.2 projected events from 2,700 items) was a rate projection
+with unverified pool availability; real per-pool counts show the true ceiling is
+52.7 events, not 90 — a real, honestly-reported correction, not a retraction of the
+method. Keeping this file's original reasoning intact below since the method and
+the interim-option recommendation are still correct; only the E-E ceiling number
+changes.
+
 ## Estimator used
 
 Reuses the E4 pipeline's own empirical-Bayes shrinkage (`alpha_pooled`, `beta_pooled`,
