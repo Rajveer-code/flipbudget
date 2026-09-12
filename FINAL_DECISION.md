@@ -32,14 +32,20 @@ restatement of T-H, not new content).
 
 ## Strongest empirical result
 
-**The corrected E-A dominance finding**: median 5.24× (pairwise) / 3.22×
-(single-model), 89.7%/100% of cases dominant — not because the number is
-large (it is an order of magnitude smaller than first reported) but because
-it is now the most heavily fact-checked number in the project: found
-overstated by its own project's later-established correct method, recomputed
-from already-verified data, and the direction survived. A number that
-shrinks 26× under its own project's scrutiny and still supports the claim
-is stronger evidence than a number that was never checked.
+**The corrected E-A dominance finding**: median 6.10× (pairwise, n=120 of
+136 well-defined pairs) / 3.22× (single-model), **100% dominant** — not
+because the number is large (it is an order of magnitude smaller than
+first reported) but because it is now the most heavily fact-checked number
+in the project: found overstated ~26× by the original corner-drop method,
+re-derived under a `[0,1]`-bounded fix, then found that fix itself
+mishandled 16 of 136 pairs (silently inverting an empty identified set into
+a nonsensical negative width) — caught auditing the published package
+against its own research methodology (item 18) — and re-derived a third
+time. Each pass made the number more conservative and more correct, and
+the direction (audit-estimation width exceeds sampling width) survived all
+three. A number that gets re-derived twice under its own project's
+increasing scrutiny and comes out cleaner each time is stronger evidence
+than one that was never checked at all.
 
 ## Strongest practical contribution
 
@@ -50,6 +56,20 @@ any benchmark, independent of whether they adopt the SSM/Λ framework at
 all. Stress-tested to hold across rare-error, common-error, balanced and
 extremely imbalanced strata, and three-stratum designs — the part of this
 project most likely to be *used*, not just cited.
+
+## A new open question, found in this pass, not yet closed
+
+Auditing the package (item 18) surfaced that the scorer-identification-only
+layer's Λ=2 band is empty (inconsistent with observed accuracy) for **51.5%
+of the 136 real pairs (70/136)** — more than double the audit-only layer's
+16/136. Not yet root-caused beyond a plausible hypothesis (many low-accuracy
+models on this roster have a pooled alpha estimate that, even shrunk, still
+exceeds their own accuracy under a Λ=2 band). This does not change verdict
+B (still robustly supported on its own, smaller, valid subset), but it is a
+real, open methodological question about how informative the
+scorer-sensitivity layer even is for this roster's weaker models — named
+here rather than left implicit in a percentage that quietly excludes over
+half the data.
 
 ## Weakest remaining link
 

@@ -1,0 +1,8 @@
+{
+  "n_scored": 16,
+  "n_excluded_empty_set": 1,
+  "median_ratio": 3.2198208339180523,
+  "mean_ratio": 4.867874301399463,
+  "fraction_dominant": 1.0,
+  "note": "Third-pass correction, single-model: excludes empty-identified-set models. Supersedes ea_dominance_corrected.json."
+}

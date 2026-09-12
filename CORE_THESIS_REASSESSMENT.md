@@ -1,10 +1,13 @@
 # Core thesis reassessment, from first principles, post evidence-table correction
 
 Re-derived after `EVIDENCE_TABLE.md`'s biggest finding: E-A's dominance
-ratio was overstated by roughly an order of magnitude (134×→5.24× pairwise,
-75×→3.22× single-model) due to a since-identified methodology artifact in
-the *original* script. Question: does the corrected, more conservative
-number change which of A/B/C/D the evidence supports?
+ratio was overstated by roughly an order of magnitude (134×→6.10× pairwise,
+75×→3.22× single-model, corrected twice — see
+`RECONCILIATION_EMPTY_SET_BUG.md` for the second correction, which properly
+excludes empty-identified-set pairs and brings pairwise dominance back to
+100%) due to since-identified methodology artifacts in the *original*
+script and then in its own first fix. Question: does the corrected, more
+conservative number change which of A/B/C/D the evidence supports?
 
 ## Re-run the masterplan's own test with the corrected numbers
 
@@ -14,10 +17,11 @@ independent lines of evidence, both hold after correction:
    barely exceeds the sampling baseline (12/136, 8.8%) — unaffected by the
    E-A correction, which concerns the *audit-only* layer, not scorer-only.
 2. **Corrected E-A itself now argues against A more strongly, not less.**
-   A dominance ratio of 5.24× driven by audit-estimation uncertainty (finite
-   human-audit n) rather than scorer bias per se is direct evidence that
-   *the measurement problem is about how much we've verified, not about the
-   scorer being systematically wrong* — which is B's claim, not A's.
+   A dominance ratio of 6.10× (100% of well-defined pairs), driven by
+   audit-estimation uncertainty (finite human-audit n) rather than scorer
+   bias per se, is direct evidence that *the measurement problem is about
+   how much we've verified, not about the scorer being systematically
+   wrong* — which is B's claim, not A's.
 
 **Not C alone.** Unchanged reasoning from `AUDIT_DESIGN_ANALYSIS.md`: an
 audit-design methodology motivated by nothing reads as solving an invented
@@ -28,12 +32,14 @@ what makes C's six answered questions matter.
 **B is, if anything, more secure after the correction, not less.** The
 worry before this pass was that B's centerpiece claim rested partly on a
 dominance number that might not survive scrutiny. It has now been
-scrutinized, found to need correction, and the qualitative claim — audit-
-estimation width typically exceeds sampling width — **survived the
-correction intact**: still real, still the majority (89.7% pairwise, 100%
-single-model) of cases, just smaller in magnitude. A claim that shrinks by
-26× under a stricter methodology and still holds directionally is a more
-credible claim than one that was never stress-tested at all.
+scrutinized *twice* — once finding the original method overstated the
+effect ~26×, then finding the first fix itself silently mis-handled an
+edge case in 16 of 136 pairs — and the qualitative claim survived both
+passes: audit-estimation width exceeds sampling width in 100% of
+well-defined pairwise comparisons (120 of 136; the other 16 are correctly
+excluded as empty-identified-set, not counted either way). A claim that
+gets re-derived twice under increasingly strict scrutiny and comes out
+*cleaner* each time is considerably more credible than one taken on faith.
 
 ## Verdict: **D confirmed, unchanged** — B (audit-estimation uncertainty,
 now evidenced twice: modeled in the reconciliation, independently confirmed

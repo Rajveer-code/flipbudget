@@ -1,0 +1,10 @@
+{
+  "n_scored": 120,
+  "n_excluded_empty_set": 16,
+  "median_ratio": 6.094641689747292,
+  "mean_ratio": 7.387410470407969,
+  "fraction_dominant": 1.0,
+  "fraction_gt_2x": 1.0,
+  "fraction_gt_10x": 0.24166666666666667,
+  "note": "Third-pass correction: excludes pairs where w_audit_only is an empty (NaN) identified set, per RECONCILIATION_EMPTY_SET_BUG.md. Supersedes ea_dominance_pairwise_corrected.json (which used the pre-empty-set-fix reconciliation and thus included nonsensical negative widths in its median)."
+}

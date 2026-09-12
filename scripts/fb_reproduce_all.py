@@ -51,7 +51,7 @@ if __name__ == "__main__":
     results = []
     for name, script, kind in STEPS:
         t0 = time.time()
-        proc = subprocess.run([sys.executable, script], capture_output=True, text=True, timeout=600)
+        proc = subprocess.run([sys.executable, script], capture_output=True, text=True, timeout=900)
         elapsed = time.time() - t0
         ok = proc.returncode == 0
         results.append({"name": name, "script": script, "kind": kind, "ok": ok, "elapsed_s": round(elapsed, 1)})

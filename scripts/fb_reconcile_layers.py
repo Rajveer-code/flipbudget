@@ -81,12 +81,28 @@ def bounded_single_model_extrema(a, alpha_lo, alpha_hi, beta_lo, beta_hi):
         AA, BB = np.meshgrid(alphas, betas)
         GG = np.where((AA + BB) < STRADDLE_CAP, g(a, AA, BB), np.nan)
         lo, hi = float(np.nanmin(GG)), float(np.nanmax(GG))
+    if hi < 0.0 or lo > 1.0:
+        # The raw (unclipped) range does not overlap [0,1] AT ALL -- every
+        # (alpha,beta) in the box implies an A* outside [0,1], which is
+        # impossible (A* is a proportion). This means the assumed (alpha,beta)
+        # box is itself inconsistent with the observed a for this model --
+        # found auditing this function against real data (17/27 real models'
+        # audit-CI boxes hit this; see MATH_COMPARATOR_BUG.md's sibling
+        # finding, RECONCILIATION_EMPTY_SET_BUG.md). NOT the same as a narrow-
+        # but-valid identified set -- independently clipping min(lo,0) and
+        # max(hi,1) here would silently INVERT the interval (lo>hi), which is
+        # what this function did before the bug was found. Signal emptiness
+        # explicitly rather than fabricate a bounded-looking but nonsensical
+        # interval.
+        return (float("nan"), float("nan"))
     return max(lo, 0.0), min(hi, 1.0)
 
 
 def bounded_comparison(a1, box1, a2, box2):
     min1, max1 = bounded_single_model_extrema(a1, *box1)
     min2, max2 = bounded_single_model_extrema(a2, *box2)
+    if any(np.isnan(x) for x in (min1, max1, min2, max2)):
+        return (float("nan"), float("nan"))
     lo, hi = min1 - max2, max1 - min2
     return max(lo, -1.0), min(hi, 1.0)  # Delta* = A1*-A2*, both in [0,1] -> Delta* in [-1,1]
 
@@ -191,51 +207,84 @@ if __name__ == "__main__":
 
     print(f"\nPairs scored: {len(results)} (skipped {n_skipped})")
 
+    def valid(r, wkey):
+        return not np.isnan(r[wkey])
+
     print()
     print("-" * 70)
-    print("RECONCILIATION TABLE (medians across 136 pairs)")
+    print("RECONCILIATION TABLE (medians across valid pairs only -- see EMPTY-SET NOTE)")
     print("-" * 70)
-    print(f"{'layer':<28}{'median width':<16}{'n unresolved (contains 0)':<28}{'%':<8}")
+    print(f"{'layer':<28}{'n valid':<10}{'n excluded':<12}{'median width':<16}"
+          f"{'n unresolved':<14}{'%':<8}")
+    layer_stats = {}
     for label, wkey, zkey in [
         ("sampling", "w_sampling", "sampling_contains_zero"),
         ("audit-estimation-only", "w_audit_only", "audit_only_contains_zero"),
         (f"scorer-identification-only (L={L_REFERENCE})", "w_scorer_only", "scorer_only_contains_zero"),
         (f"combined (L={L_REFERENCE})", "w_combined", "combined_contains_zero"),
     ]:
-        widths = np.array([r[wkey] for r in results])
-        n_zero = sum(1 for r in results if r[zkey])
-        print(f"{label:<28}{np.median(widths):<16.4f}{n_zero:<28}{100*n_zero/len(results):.1f}%")
+        valid_rows = [r for r in results if valid(r, wkey)]
+        n_excluded = len(results) - len(valid_rows)
+        widths = np.array([r[wkey] for r in valid_rows])
+        n_zero = sum(1 for r in valid_rows if r[zkey])
+        layer_stats[wkey] = {"n_valid": len(valid_rows), "n_excluded": n_excluded,
+                              "median_width": float(np.median(widths)) if len(widths) else None,
+                              "n_unresolved": n_zero,
+                              "pct_unresolved": 100 * n_zero / len(valid_rows) if valid_rows else None}
+        med = f"{np.median(widths):.4f}" if len(widths) else "n/a"
+        pct = f"{100*n_zero/len(valid_rows):.1f}%" if valid_rows else "n/a"
+        print(f"{label:<28}{len(valid_rows):<10}{n_excluded:<12}{med:<16}{n_zero:<14}{pct:<8}")
 
-    n_audit_only_zero = sum(1 for r in results if r["audit_only_contains_zero"])
-    n_scorer_only_zero = sum(1 for r in results if r["scorer_only_contains_zero"])
-    n_combined_zero = sum(1 for r in results if r["combined_contains_zero"])
-    n_sampling_zero = sum(1 for r in results if r["sampling_contains_zero"])
+    print()
+    print("-" * 70)
+    print("EMPTY-SET NOTE: why some pairs are excluded per-layer, not silently included")
+    print("-" * 70)
+    print("A raw (unclipped) g(a,alpha,beta) range that does not overlap [0,1] AT ALL means")
+    print("that layer's assumed (alpha,beta) box is itself inconsistent with the model's")
+    print("observed accuracy a -- independently clipping min/max to [0,1] in that case would")
+    print("silently INVERT the interval (a real bug found and fixed this session, see")
+    print("RECONCILIATION_EMPTY_SET_BUG.md). Excluded from that layer's own statistics,")
+    print("not assumed resolved or unresolved either way.")
+
+    n_audit_only_zero = layer_stats["w_audit_only"]["n_unresolved"]
+    n_scorer_only_zero = layer_stats["w_scorer_only"]["n_unresolved"]
+    n_combined_zero = layer_stats["w_combined"]["n_unresolved"]
+    n_sampling_zero = layer_stats["w_sampling"]["n_unresolved"]
+    n_audit_only_valid = layer_stats["w_audit_only"]["n_valid"]
+    n_scorer_only_valid = layer_stats["w_scorer_only"]["n_valid"]
+    n_combined_valid = layer_stats["w_combined"]["n_valid"]
+    n_sampling_valid = layer_stats["w_sampling"]["n_valid"]
 
     print()
     print("-" * 70)
     print("DECOMPOSITION: how much of the combined-unresolved count is which layer")
+    print("(restricted to pairs valid in BOTH audit-only and scorer-only)")
     print("-" * 70)
-    both = sum(1 for r in results if r["audit_only_contains_zero"] and r["scorer_only_contains_zero"])
-    audit_but_not_scorer = sum(1 for r in results if r["audit_only_contains_zero"] and not r["scorer_only_contains_zero"])
-    scorer_but_not_audit = sum(1 for r in results if r["scorer_only_contains_zero"] and not r["audit_only_contains_zero"])
-    neither = sum(1 for r in results if not r["audit_only_contains_zero"] and not r["scorer_only_contains_zero"])
+    both_valid = [r for r in results if valid(r, "w_audit_only") and valid(r, "w_scorer_only")]
+    both = sum(1 for r in both_valid if r["audit_only_contains_zero"] and r["scorer_only_contains_zero"])
+    audit_but_not_scorer = sum(1 for r in both_valid if r["audit_only_contains_zero"] and not r["scorer_only_contains_zero"])
+    scorer_but_not_audit = sum(1 for r in both_valid if r["scorer_only_contains_zero"] and not r["audit_only_contains_zero"])
+    neither = sum(1 for r in both_valid if not r["audit_only_contains_zero"] and not r["scorer_only_contains_zero"])
+    print(f"  pairs valid in both layers: {len(both_valid)} of {len(results)}")
     print(f"  unresolved under AUDIT-ONLY but NOT scorer-only: {audit_but_not_scorer} "
           f"(driven purely by finite audit n)")
     print(f"  unresolved under SCORER-ONLY but NOT audit-only: {scorer_but_not_audit} "
           f"(driven purely by Lambda-sensitivity, audit irrelevant)")
     print(f"  unresolved under BOTH: {both}")
-    print(f"  unresolved under NEITHER alone (only when combined): "
-          f"{n_combined_zero - both - audit_but_not_scorer - scorer_but_not_audit}")
-    print(f"  resolved under all layers: {neither - (n_combined_zero - both - audit_but_not_scorer - scorer_but_not_audit)}")
+    print(f"  resolved under both: {neither}")
 
     print()
     print("=" * 70)
     print("VERDICT")
     print("=" * 70)
-    print(f"  sampling-only unresolved:              {n_sampling_zero}/{len(results)} ({100*n_sampling_zero/len(results):.1f}%)")
-    print(f"  audit-estimation-only unresolved:       {n_audit_only_zero}/{len(results)} ({100*n_audit_only_zero/len(results):.1f}%)")
-    print(f"  scorer-identification-only unresolved:  {n_scorer_only_zero}/{len(results)} ({100*n_scorer_only_zero/len(results):.1f}%)")
-    print(f"  combined unresolved:                    {n_combined_zero}/{len(results)} ({100*n_combined_zero/len(results):.1f}%)")
+    print(f"  sampling-only unresolved:              {n_sampling_zero}/{n_sampling_valid} valid "
+          f"({100*n_sampling_zero/n_sampling_valid:.1f}%)")
+    print(f"  audit-estimation-only unresolved:       {n_audit_only_zero}/{n_audit_only_valid} valid "
+          f"({100*n_audit_only_zero/n_audit_only_valid:.1f}%)")
+    print(f"  scorer-identification-only unresolved:  {n_scorer_only_zero}/{n_scorer_only_valid} valid "
+          f"({100*n_scorer_only_zero/n_scorer_only_valid:.1f}%)")
+    print(f"  combined unresolved:                    {n_combined_zero}/{n_combined_valid} valid "
+          f"({100*n_combined_zero/n_combined_valid:.1f}%)")
 
     audit_dominant = n_audit_only_zero > 2 * max(n_scorer_only_zero, 1)
     scorer_dominant = n_scorer_only_zero > 2 * max(n_audit_only_zero, 1)
@@ -255,17 +304,24 @@ if __name__ == "__main__":
 
     out = {
         "reference_lambda": L_REFERENCE, "n_scored": len(results), "n_skipped": n_skipped,
-        "n_sampling_unresolved": n_sampling_zero,
-        "n_audit_only_unresolved": n_audit_only_zero,
-        "n_scorer_only_unresolved": n_scorer_only_zero,
-        "n_combined_unresolved": n_combined_zero,
+        "layer_stats": layer_stats,
+        "n_sampling_unresolved": n_sampling_zero, "n_sampling_valid": n_sampling_valid,
+        "n_audit_only_unresolved": n_audit_only_zero, "n_audit_only_valid": n_audit_only_valid,
+        "n_scorer_only_unresolved": n_scorer_only_zero, "n_scorer_only_valid": n_scorer_only_valid,
+        "n_combined_unresolved": n_combined_zero, "n_combined_valid": n_combined_valid,
         "decomposition": {"audit_but_not_scorer": audit_but_not_scorer,
                            "scorer_but_not_audit": scorer_but_not_audit,
-                           "both": both},
+                           "both": both, "n_valid_in_both": len(both_valid)},
         "verdict": verdict,
+        "empty_set_note": ("Pairs where a layer's raw [0,1]-unclipped g() range does not "
+            "overlap [0,1] at all are excluded from THAT layer's statistics (see "
+            "RECONCILIATION_EMPTY_SET_BUG.md) -- not counted as resolved or unresolved."),
         "per_pair": results,
     }
-    with open("results/flipbudget/reconciliation_four_layers.json", "w") as f:
-        json.dump(out, f, indent=2)
-    print(f"\nWritten to results/flipbudget/reconciliation_four_layers.json")
+    # Corrected output, NOT overwriting the original file (preserved as
+    # historical record of the pre-fix numbers -- see RECONCILIATION_EMPTY_SET_BUG.md).
+    with open("results/flipbudget/reconciliation_four_layers_corrected.json", "w") as f:
+        json.dump(out, f, indent=2, allow_nan=True)
+    print(f"\nWritten to results/flipbudget/reconciliation_four_layers_corrected.json")
+    print("(original results/flipbudget/reconciliation_four_layers.json preserved unchanged)")
     print("=" * 70)
