@@ -848,9 +848,29 @@
     "n_overlap": 26,
     "n_raw_match": 21,
     "n_derived_match": 26,
-    "raw_agreement_rate": 0.8076923076923077,
-    "derived_agreement_rate": 1.0,
+    "raw_rate": 0.8076923076923077,
+    "derived_rate": 1.0,
     "disagreements": []
   },
-  "l3_status": "still using the broken binary 0/1 scheme, not included in this run"
+  "agreement_l1_l3": {
+    "n_overlap": 14,
+    "n_raw_match": 14,
+    "n_derived_match": 14,
+    "raw_rate": 1.0,
+    "derived_rate": 1.0,
+    "disagreements": []
+  },
+  "agreement_l2_l3": {
+    "n_overlap": 14,
+    "n_raw_match": 14,
+    "n_derived_match": 14,
+    "raw_rate": 1.0,
+    "derived_rate": 1.0,
+    "disagreements": []
+  },
+  "agreement_three_way": {
+    "n": 14,
+    "n_all_agree": 14,
+    "rate": 1.0
+  }
 }

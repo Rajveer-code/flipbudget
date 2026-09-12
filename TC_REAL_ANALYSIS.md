@@ -1,23 +1,21 @@
-# T-C real analysis — L1 + L2 in, L3 still pending
+# T-C real analysis — all three labelers complete
 
 Script: `scripts/fb_tc_real_analysis.py`. Results:
-`results/flipbudget/tc_real_analysis.json`. Real human labels, copied into the
-repo: `labeling/tc_expansion_l1_completed.csv` (70 rows),
-`labeling/tc_expansion_l2_answers.csv` (26 rows).
+`results/flipbudget/tc_real_analysis.json`. Real human labels, all copied into
+the repo: `labeling/tc_expansion_l1_completed.csv` (70 rows),
+`labeling/tc_expansion_l2_answers.csv` (26 rows),
+`labeling/tc_expansion_l3_answers.csv` (14 rows).
 
-## Data status
+## Data status — all three valid
 
 - **L1 (70 rows / 30 items): valid.** 4 rows show a bare `0`/`1` — checked each
   individually against its response text before trusting them (not assumed):
   all 4 are genuine boxed answers of exactly 0 or 1 (e.g. `a+b=\boxed{1}`), not
-  leftover broken labels. Real, usable.
+  leftover broken labels.
 - **L2 (26 rows / 11 items): valid.** Delivered as a separate answers-only
   file; uid set cross-checked against the committed sheet, exact match.
-- **L3 (14 rows / 6 items): still the broken binary scheme.** Checked one row
-  directly: item `22f02e1657e860a9`'s answer is `-\frac{35}{9}` in both L1 and
-  L2 — L3 shows `1`. Not used here. **Needed to complete the 3-way design** —
-  the L2 answers-file format (uid + your_answer only, no need to retype
-  problem/response) is the easiest way to redo it.
+- **L3 (14 rows / 6 items): valid, on the redo.** Uid set matches the
+  committed sheet exactly; no bare 0/1 remaining, no blanks.
 
 ## Item-level paired test — honestly underpowered again
 
@@ -35,21 +33,30 @@ alone. This is *not* evidence the targeting or the underlying rate estimates
 were wrong; it's consistent with them, just an unlucky (or genuinely
 low-error) draw. Stated plainly rather than spun either way.
 
-## L1×L2 agreement — the strong, real result of this round
+## Inter-rater agreement — strong across the board
 
-Raw string agreement: 21/26 (80.8%) — expected, formatting varies
-(`5x+2y-3z-0=0` vs `5x + 2y - 3z - 0 = 0`). **Derived agreement (does the
-transcription match gold under the same real comparator both scores are
-checked against): 26/26 — 100%.** Two independent people, given only the
-model's raw response, arrived at the identical correctness judgment on every
-single overlapping item. This is a genuine, reportable inter-rater-reliability
-result for the manuscript's methods section, independent of whether the
-item-level correlation test itself is powered yet.
+| Pair | n | Raw string match | Derived (matches_gold) match |
+|---|---|---|---|
+| L1 × L2 | 26 | 21/26 (80.8%) | **26/26 (100%)** |
+| L1 × L3 | 14 | 14/14 (100%) | 14/14 (100%) |
+| L2 × L3 | 14 | 14/14 (100%) | 14/14 (100%) |
+| **All three** | 14 | — | **14/14 (100%)** |
+
+Raw-string gaps are exactly what's expected from formatting, not
+disagreement (`5x+2y-3z-0=0` vs `5x + 2y - 3z - 0 = 0`) — never a case where
+two people's transcriptions implied a *different* correctness judgment once
+run through the same real comparator both scores are checked against. Three
+independent people, given only the raw model response, reached the identical
+correctness call on every single overlapping item, including the one
+`CONTRADICTORY` case (item `e2d2b1bb868548f8`) — all three independently
+flagged it, not just matched a number. This is a genuine, strong, reportable
+inter-rater-reliability result for the manuscript's methods section.
 
 ## What this does not do
 
-Does not complete 3-way agreement (needs L3 fixed). Does not resolve T-C's
-central correlation question (still underpowered — 0 events, same structural
-issue Tier 1 already hit, now confirmed again on freshly-targeted data). Does
-not imply the targeting approach failed — 0/69 is statistically unremarkable
-at these rates.
+Does not resolve T-C's central correlation question (still underpowered — 0
+events, same structural issue Tier 1 already hit, now confirmed again on
+freshly-targeted data). Does not imply the targeting approach failed — 0/69
+is statistically unremarkable at these rates. Perfect agreement on this
+30-item sample does not guarantee it holds at scale — worth keeping in mind
+if a larger audit round happens, not assumed to generalize automatically.

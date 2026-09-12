@@ -78,6 +78,37 @@ def load_l2():
         return {r["uid"]: r["your_answer"] for r in csv.DictReader(f)}
 
 
+def load_l3():
+    with open(r"C:\Users\Asus\Downloads\tc_expansion_l3_answers.csv", newline="", encoding="utf-8") as f:
+        return {r["uid"]: r["your_answer"] for r in csv.DictReader(f)}
+
+
+def agreement(labels_a, labels_b, key, name_a, name_b):
+    overlap = set(labels_a.keys()) & set(labels_b.keys())
+    n_raw, n_derived = 0, 0
+    disagreements = []
+    for uid in sorted(overlap):
+        a, b = labels_a[uid].strip(), labels_b[uid].strip()
+        raw_match = a == b
+        gold = key[uid]["gold"]
+        ia, ib = is_indeterminate(a), is_indeterminate(b)
+        if ia or ib:
+            derived_match = (ia == ib) and (a.upper() == b.upper() if ia and ib else False)
+        else:
+            derived_match = matches_gold(a, gold) == matches_gold(b, gold)
+        n_raw += raw_match
+        n_derived += derived_match
+        if not derived_match:
+            disagreements.append({"uid": uid, name_a: a, name_b: b, "gold": gold})
+    n = len(overlap)
+    print(f"{name_a} x {name_b}: n={n}  raw={n_raw}/{n} ({100*n_raw/n:.1f}%)  "
+          f"derived={n_derived}/{n} ({100*n_derived/n:.1f}%)")
+    for d in disagreements:
+        print(f"  DISAGREE uid={d['uid'][:12]} {name_a}={d[name_a]!r} {name_b}={d[name_b]!r} gold={d['gold']!r}")
+    return {"n_overlap": n, "n_raw_match": int(n_raw), "n_derived_match": int(n_derived),
+            "raw_rate": n_raw / n, "derived_rate": n_derived / n, "disagreements": disagreements}
+
+
 def load_key():
     with open("results/flipbudget/tc_expansion_key.json", encoding="utf-8") as f:
         d = json.load(f)
@@ -86,13 +117,15 @@ def load_key():
 
 if __name__ == "__main__":
     print("=" * 70)
-    print("T-C real analysis -- L1 full set + L1xL2 agreement (L3 pending)")
+    print("T-C real analysis -- all three labelers (L1/L2/L3) in")
     print("=" * 70)
 
     l1_answers = load_l1()
     l2_answers = load_l2()
+    l3_answers = load_l3()
     key = load_key()
-    print(f"L1: {len(l1_answers)} rows, L2: {len(l2_answers)} rows, key: {len(key)} rows")
+    print(f"L1: {len(l1_answers)} rows, L2: {len(l2_answers)} rows, "
+          f"L3: {len(l3_answers)} rows, key: {len(key)} rows")
 
     # ---- Build per-row (human_correct, scorer_correct, wrong) using L1 ----
     records = []
@@ -184,49 +217,42 @@ if __name__ == "__main__":
                         "pearson_r": float(r_corr) if r_corr is not None else None,
                         "pearson_p": float(pval) if pval is not None else None, "verdict": verdict}
 
-    # ---- L1 x L2 inter-rater agreement on the 26-row overlap ----
+    # ---- Full pairwise + 3-way inter-rater agreement (L1/L2/L3 all valid now) ----
     print()
     print("-" * 70)
-    print("L1 x L2 inter-rater agreement (26-row overlap; L3 pending)")
+    print("Pairwise inter-rater agreement, all three labelers")
     print("-" * 70)
-    overlap_uids = set(l1_answers.keys()) & set(l2_answers.keys())
-    print(f"Overlap rows: {len(overlap_uids)}")
-    n_raw_match, n_derived_match, n_checked = 0, 0, 0
-    disagreements = []
-    for uid in sorted(overlap_uids):
-        a1, a2 = l1_answers[uid].strip(), l2_answers[uid].strip()
-        raw_match = a1 == a2
-        gold = key[uid]["gold"]
-        i1, i2 = is_indeterminate(a1), is_indeterminate(a2)
-        if i1 or i2:
-            derived_match = (i1 == i2) and (a1.upper() == a2.upper() if i1 and i2 else False)
-        else:
-            derived_match = matches_gold(a1, gold) == matches_gold(a2, gold)
-        n_checked += 1
-        n_raw_match += raw_match
-        n_derived_match += derived_match
-        if not derived_match:
-            disagreements.append({"uid": uid, "l1": a1, "l2": a2, "gold": gold})
+    agree_12 = agreement(l1_answers, l2_answers, key, "l1", "l2")
+    agree_13 = agreement(l1_answers, l3_answers, key, "l1", "l3")
+    agree_23 = agreement(l2_answers, l3_answers, key, "l2", "l3")
 
-    print(f"Raw string agreement: {n_raw_match}/{n_checked} ({100*n_raw_match/n_checked:.1f}%)")
-    print(f"Derived (matches_gold) agreement: {n_derived_match}/{n_checked} "
-          f"({100*n_derived_match/n_checked:.1f}%)")
-    if disagreements:
-        print("Disagreements (derived-correctness level):")
-        for d in disagreements:
-            print(f"  uid={d['uid'][:12]} L1={d['l1']!r} L2={d['l2']!r} gold={d['gold']!r}")
+    print()
+    print("-" * 70)
+    print("Three-way agreement (L3's 14-row/6-item overlap, nested in L1 and L2)")
+    print("-" * 70)
+    three_way_uids = set(l1_answers) & set(l2_answers) & set(l3_answers)
+    n3_all_agree, n3_checked = 0, 0
+    for uid in sorted(three_way_uids):
+        a1, a2, a3 = l1_answers[uid].strip(), l2_answers[uid].strip(), l3_answers[uid].strip()
+        gold = key[uid]["gold"]
+        vals = []
+        for a in (a1, a2, a3):
+            vals.append("INDET:" + a.upper() if is_indeterminate(a) else matches_gold(a, gold))
+        n3_checked += 1
+        n3_all_agree += len(set(vals)) == 1
+    print(f"n={n3_checked}  all-three-agree={n3_all_agree}/{n3_checked} "
+          f"({100*n3_all_agree/n3_checked:.1f}%)")
 
     out = {
         "l1_n_rows": len(l1_answers), "l1_n_usable": len(records), "l1_n_indeterminate": n_indeterminate,
         "l1_n_scorer_wrong": n_wrong,
         "item_level_test": item_result,
         "l1_records": records,
-        "agreement_l1_l2": {
-            "n_overlap": n_checked, "n_raw_match": int(n_raw_match), "n_derived_match": int(n_derived_match),
-            "raw_agreement_rate": n_raw_match / n_checked, "derived_agreement_rate": n_derived_match / n_checked,
-            "disagreements": disagreements,
-        },
-        "l3_status": "still using the broken binary 0/1 scheme, not included in this run",
+        "agreement_l1_l2": agree_12,
+        "agreement_l1_l3": agree_13,
+        "agreement_l2_l3": agree_23,
+        "agreement_three_way": {"n": n3_checked, "n_all_agree": n3_all_agree,
+                                 "rate": n3_all_agree / n3_checked},
     }
     with open("results/flipbudget/tc_real_analysis.json", "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2)
