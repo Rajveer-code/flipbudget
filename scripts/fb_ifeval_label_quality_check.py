@@ -29,8 +29,8 @@ import truststore
 truststore.inject_into_ssl()
 
 
-def load_judged():
-    with open("C:/Users/Asus/Downloads/ifeval_audit_l1_judged.csv", newline="", encoding="utf-8") as f:
+def load_judged(path="C:/Users/Asus/Downloads/ifeval_audit_l1_judged.csv"):
+    with open(path, newline="", encoding="utf-8") as f:
         return {r["uid"]: r for r in csv.DictReader(f)}
 
 
@@ -49,7 +49,11 @@ if __name__ == "__main__":
     print("IFEval label quality check -- per-instruction ground truth")
     print("=" * 70)
 
-    judged = load_judged()
+    judged_path = sys.argv[1] if len(sys.argv) > 1 else "C:/Users/Asus/Downloads/ifeval_audit_l1_judged.csv"
+    judged = load_judged(judged_path)
+    print(f"Judged file: {judged_path}")
+    vals = set(r["your_judgment"].strip() for r in judged.values())
+    print(f"Distinct your_judgment values: {vals}")
     key = load_key()
     flagged_keys = load_flagged_keys()
     process_results = load_ifeval_verifier()
@@ -84,7 +88,8 @@ if __name__ == "__main__":
                 "uid": uid, "model": model, "key": k_key,
                 "instruction_id_list": doc["instruction_id_list"],
                 "inst_level_strict": out["inst_level_strict_acc"],
-                "human_marked_compliant": judged[uid]["your_judgment"].strip() == "1",
+                "human_marked_compliant": judged[uid]["your_judgment"].strip().upper() == "YES",
+                "human_judgment_raw": judged[uid]["your_judgment"].strip(),
             })
 
     print(f"\nText mismatches on refetch (should be 0): {n_text_mismatch}")
@@ -120,8 +125,10 @@ if __name__ == "__main__":
           f"{len(contradicted)} ({100*len(contradicted)/n_human_compliant_nonflagged:.1f}%) "
           f"are contradicted by a concrete, deterministic, non-flagged instruction failure.")
 
-    with open("results/flipbudget/ifeval_label_quality_check.json", "w", encoding="utf-8") as f:
+    out_path = sys.argv[2] if len(sys.argv) > 2 else "results/flipbudget/ifeval_label_quality_check.json"
+    with open(out_path, "w", encoding="utf-8") as f:
         json.dump({
+            "judged_path": judged_path, "judgment_values_seen": sorted(vals),
             "n_rows_checked": len(rows), "n_text_mismatch": n_text_mismatch,
             "n_human_compliant_nonflagged": n_human_compliant_nonflagged,
             "n_contradicted": len(contradicted),
@@ -129,4 +136,4 @@ if __name__ == "__main__":
             "by_instruction_type": dict(by_instruction_type),
             "contradicted_rows": contradicted,
         }, f, indent=2)
-    print("\nWritten to results/flipbudget/ifeval_label_quality_check.json")
+    print(f"\nWritten to {out_path}")
