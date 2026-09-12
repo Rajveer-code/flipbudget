@@ -24,19 +24,74 @@ def test_g_can_fall_outside_unit_interval():
 ])
 def test_single_model_extrema_matches_grid_search(a, alpha0, beta0, d):
     """Grid a box identical to what single_model_extrema itself searches
-    (alpha0-d..alpha0+d, beta0-d..beta0+d, clipped to [0,1]) and confirm the
-    corner-based extrema match the grid's extrema to numerical tolerance."""
+    (alpha0-d..alpha0+d, beta0-d..beta0+d), intersect with [0,1] (A* is a
+    proportion, bounded by definition -- see single_model_extrema's own
+    docstring), and confirm the corner-based extrema match to tolerance."""
     n = 401
     alphas = np.linspace(max(0.0, alpha0 - d), min(1.0, alpha0 + d), n)
     betas = np.linspace(max(0.0, beta0 - d), min(1.0, beta0 + d), n)
     AA, BB = np.meshgrid(alphas, betas)
     feasible = (AA + BB) < 0.999
     GG = np.where(feasible, g(a, AA, BB), np.nan)
-    grid_min, grid_max = np.nanmin(GG), np.nanmax(GG)
+    grid_min = max(0.0, float(np.nanmin(GG)))
+    grid_max = min(1.0, float(np.nanmax(GG)))
 
     corner_min, corner_max = single_model_extrema(a, alpha0, beta0, d)
     assert corner_min == pytest.approx(grid_min, abs=1e-3)
     assert corner_max == pytest.approx(grid_max, abs=1e-3)
+
+
+def test_single_model_extrema_always_within_unit_interval_or_empty():
+    """A* is a proportion, bounded in [0,1] by definition, always. When the
+    box is entirely inconsistent with the data (found on REAL MATH-Hard data
+    this project audited, not just a synthetic edge case -- see
+    RECONCILIATION_EMPTY_SET_BUG.md: a=0.0 with an audit-derived alpha range
+    entirely above 0), the identified set is empty (NaN), not an inverted or
+    fabricated bounded interval -- that inversion was the actual bug found
+    and fixed here."""
+    rng = np.random.default_rng(7)
+    n_empty = 0
+    for _ in range(500):
+        a = rng.uniform(0, 1)
+        alpha0, beta0 = rng.uniform(0, 0.4, 2)
+        d = rng.uniform(0.01, 0.4)
+        lo, hi = single_model_extrema(a, alpha0, beta0, d)
+        if np.isnan(lo):
+            n_empty += 1
+            assert np.isnan(hi)  # both NaN together, never one alone
+        else:
+            assert 0.0 <= lo <= hi <= 1.0
+    assert n_empty > 0  # this random sweep is expected to hit real empty cases
+
+
+def test_single_model_extrema_empty_set_on_real_case():
+    """The exact real case that surfaced this bug: a model with a_hat=0.0
+    (CohereForAI/c4ai-command-r-v01 on MATH-Hard) whose audit-derived alpha
+    range [0.30, 0.90] is entirely above its own observed accuracy -- every
+    (alpha,beta) in the box implies a negative A*, so the identified set is
+    empty, not [0, -0.43] (what independent clipping silently produced
+    before this fix)."""
+    lo, hi = single_model_extrema(a=0.0, alpha0=0.6, beta0=0.09, d=0.3)
+    assert np.isnan(lo) and np.isnan(hi)
+
+
+def test_flip_budget_returns_none_not_fabricated_on_empty_baseline():
+    """If the point estimate (alpha0, beta0) alone already implies an
+    impossible A* for either model, flip_budget must say so (None,
+    degenerate=True), not silently bisect toward a number."""
+    d_star, degenerate = flip_budget(a1=0.0, a2=0.5, alpha0=0.6, beta0=0.09)
+    assert d_star is None and degenerate is True
+
+
+def test_single_model_extrema_straddling_box_clips_to_01():
+    """The known-straddling example from fb_ta_compound_interval.py's own
+    proof (a box whose worst corner crosses alpha+beta=1, where the
+    unconstrained supremum/infimum diverges): the correct, bounded answer is
+    exactly [0,1] (fully uninformative), not a smaller number and not
+    literally unbounded."""
+    lo, hi = single_model_extrema(0.4, alpha0=0.5, beta0=0.4, d=0.35)
+    assert lo == pytest.approx(0.0, abs=1e-6)
+    assert hi == pytest.approx(1.0, abs=1e-6)
 
 
 def test_case_a_preserves_sign():
