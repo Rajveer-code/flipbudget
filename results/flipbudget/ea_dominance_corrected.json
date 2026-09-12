@@ -1,0 +1,7 @@
+{
+  "n_scored": 16,
+  "median_ratio": 3.2198208339180523,
+  "mean_ratio": 4.867874301399463,
+  "fraction_dominant": 1.0,
+  "note": "recomputed under bounded_single_model_extrema (clip-to-[0,1]), not the original corner-drop 0.95-floor method in ea_dominance_study.py"
+}
