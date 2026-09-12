@@ -32,6 +32,7 @@ gap this phase should close).
 | B5 | T-C inter-rater agreement | **SUPPORTED** | 100% derived agreement, all pairs and 3-way (14/14) | `TC_REAL_ANALYSIS.md` | Genuine, strong, reportable. |
 | B6 | T-C alpha/beta pooling update | **SUPPORTED** | global α anchor 0.0314→0.0216; 8/27 models newly qualify (17→25); scorer-only-layer unresolved count *worsened* 15→22 via anchor propagation to untouched models | `TC_ALPHA_BETA_UPDATE.md` | Real, verified secondary finding: EB pooling propagates a local audit's effect to un-audited models. |
 | B7 | T-C resubmission (`task1_math_answers.csv`) | **EXCLUDED — corrupted** | every `\frac{X}{Y}` → `\frac{X{Y`; lost `CONTRADICTORY` flag; `NOT FOUND` on items with a stated answer | `IFEVAL_LABEL_QUALITY_ISSUE.md` §T-C | Preserved as provenance only, per your instruction. Never entered any result. |
+| B8 | MATH-Hard comparator (`is_equiv`) is silently broken on Windows (`SIGALRM` missing) | **REVISED, fixed** | T-C's 69-row result: **0 rows change, unaffected.** Original 400-item companion audit: **1 row changes (5→6 true scorer-wrong events)**. | `MATH_COMPARATOR_BUG.md` | Found via the adversarial suite (item 13), root-caused, fixed in `fb_math_comparator_fixed.py`. E-E's AUC=0.830 not re-derived with the corrected 6th event — flagged as a small, real, not-yet-done follow-up, not silently left stale. |
 
 ## C. IFEval (E-B scale-out)
 
