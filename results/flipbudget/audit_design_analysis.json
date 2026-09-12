@@ -1,0 +1,404 @@
+{
+  "q1_required_sample_size": [
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "n0_current": 29,
+      "n1_current": 9,
+      "reqA_n0": 354,
+      "reqA_n1": 110,
+      "reqB_n0": 309,
+      "reqB_n1": 96
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "n0_current": 6,
+      "n1_current": 1,
+      "reqA_n0": 396,
+      "reqA_n1": 66,
+      "reqB_n0": 337,
+      "reqB_n1": 56
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "n0_current": 2,
+      "n1_current": 9,
+      "reqA_n0": 17,
+      "reqA_n1": 74,
+      "reqB_n0": 17,
+      "reqB_n1": 74
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "n0_current": 6,
+      "n1_current": 14,
+      "reqA_n0": 327,
+      "reqA_n1": 763,
+      "reqB_n0": 271,
+      "reqB_n1": 633
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "n0_current": 6,
+      "n1_current": 17,
+      "reqA_n0": 6,
+      "reqA_n1": 17,
+      "reqB_n0": 6,
+      "reqB_n1": 17
+    },
+    {
+      "model": "EleutherAI/gpt-j-6b",
+      "n0_current": 1,
+      "n1_current": 7,
+      "reqA_n0": 1,
+      "reqA_n1": 7,
+      "reqB_n0": 1,
+      "reqB_n1": 7
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "n0_current": 15,
+      "n1_current": 2,
+      "reqA_n0": 456,
+      "reqA_n1": 61,
+      "reqB_n0": 393,
+      "reqB_n1": 52
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "n0_current": 42,
+      "n1_current": 4,
+      "reqA_n0": 643,
+      "reqA_n1": 61,
+      "reqB_n0": 564,
+      "reqB_n1": 54
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "n0_current": 15,
+      "n1_current": 11,
+      "reqA_n0": 281,
+      "reqA_n1": 206,
+      "reqB_n0": 242,
+      "reqB_n1": 178
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "n0_current": 4,
+      "n1_current": 10,
+      "reqA_n0": 246,
+      "reqA_n1": 616,
+      "reqB_n0": 116,
+      "reqB_n1": 290
+    },
+    {
+      "model": "google/gemma-7b",
+      "n0_current": 2,
+      "n1_current": 6,
+      "reqA_n0": 330,
+      "reqA_n1": 990,
+      "reqB_n0": 286,
+      "reqB_n1": 858
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "n0_current": 27,
+      "n1_current": 10,
+      "reqA_n0": 303,
+      "reqA_n1": 112,
+      "reqB_n0": 264,
+      "reqB_n1": 98
+    },
+    {
+      "model": "microsoft/phi-2",
+      "n0_current": 2,
+      "n1_current": 4,
+      "reqA_n0": 3,
+      "reqA_n1": 7,
+      "reqB_n0": 2,
+      "reqB_n1": 5
+    },
+    {
+      "model": "mistralai/Mistral-7B-v0.1",
+      "n0_current": 1,
+      "n1_current": 7,
+      "reqA_n0": 1,
+      "reqA_n1": 7,
+      "reqB_n0": 1,
+      "reqB_n1": 7
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "n0_current": 2,
+      "n1_current": 8,
+      "reqA_n0": 2,
+      "reqA_n1": 8,
+      "reqB_n0": 2,
+      "reqB_n1": 8
+    },
+    {
+      "model": "tiiuae/falcon-40b",
+      "n0_current": 1,
+      "n1_current": 5,
+      "reqA_n0": 1,
+      "reqA_n1": 5,
+      "reqB_n0": 1,
+      "reqB_n1": 5
+    },
+    {
+      "model": "tiiuae/falcon-7b",
+      "n0_current": 1,
+      "n1_current": 3,
+      "reqA_n0": 1,
+      "reqA_n1": 3,
+      "reqB_n0": 1,
+      "reqB_n1": 3
+    }
+  ],
+  "q2_neyman_allocation": [
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "neyman_frac_credited": 0.7706738087113846,
+      "actual_frac_credited": 0.7631578947368421,
+      "gap": -0.007515913974542432
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "neyman_frac_credited": 0.7666706989546979,
+      "actual_frac_credited": 0.8571428571428571,
+      "gap": 0.09047215818815924
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "neyman_frac_credited": 0.76855550097412,
+      "actual_frac_credited": 0.18181818181818182,
+      "gap": -0.5867373191559382
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "neyman_frac_credited": 0.7666706989546979,
+      "actual_frac_credited": 0.3,
+      "gap": -0.46667069895469787
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "neyman_frac_credited": 0.8094870068782691,
+      "actual_frac_credited": 0.2608695652173913,
+      "gap": -0.5486174416608778
+    },
+    {
+      "model": "EleutherAI/gpt-j-6b",
+      "neyman_frac_credited": 0.7690325991278423,
+      "actual_frac_credited": 0.125,
+      "gap": -0.6440325991278423
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "neyman_frac_credited": 0.7625620088447365,
+      "actual_frac_credited": 0.8823529411764706,
+      "gap": 0.1197909323317341
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "neyman_frac_credited": 0.751212012430016,
+      "actual_frac_credited": 0.9130434782608695,
+      "gap": 0.1618314658308535
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "neyman_frac_credited": 0.7625620088447365,
+      "actual_frac_credited": 0.5769230769230769,
+      "gap": -0.1856389319216596
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "neyman_frac_credited": 0.7676084267487372,
+      "actual_frac_credited": 0.2857142857142857,
+      "gap": -0.4818941410344515
+    },
+    {
+      "model": "google/gemma-7b",
+      "neyman_frac_credited": 0.76855550097412,
+      "actual_frac_credited": 0.25,
+      "gap": -0.51855550097412
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "neyman_frac_credited": 0.7573476401388615,
+      "actual_frac_credited": 0.7297297297297297,
+      "gap": -0.027617910409131752
+    },
+    {
+      "model": "microsoft/phi-2",
+      "neyman_frac_credited": 0.76855550097412,
+      "actual_frac_credited": 0.3333333333333333,
+      "gap": -0.43522216764078664
+    },
+    {
+      "model": "mistralai/Mistral-7B-v0.1",
+      "neyman_frac_credited": 0.7690325991278423,
+      "actual_frac_credited": 0.125,
+      "gap": -0.6440325991278423
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "neyman_frac_credited": 0.76855550097412,
+      "actual_frac_credited": 0.2,
+      "gap": -0.5685555009741199
+    },
+    {
+      "model": "tiiuae/falcon-40b",
+      "neyman_frac_credited": 0.7690325991278423,
+      "actual_frac_credited": 0.16666666666666666,
+      "gap": -0.6023659324611756
+    },
+    {
+      "model": "tiiuae/falcon-7b",
+      "neyman_frac_credited": 0.7690325991278423,
+      "actual_frac_credited": 0.25,
+      "gap": -0.5190325991278423
+    }
+  ],
+  "q4_shrinkage_curve": [
+    {
+      "multiplier": 1,
+      "median_width": 0.43451516706181437,
+      "n_unresolved": 125,
+      "n_total": 136
+    },
+    {
+      "multiplier": 2,
+      "median_width": 0.29544937023310397,
+      "n_unresolved": 99,
+      "n_total": 136
+    },
+    {
+      "multiplier": 5,
+      "median_width": 0.19012220811798244,
+      "n_unresolved": 80,
+      "n_total": 136
+    },
+    {
+      "multiplier": 10,
+      "median_width": 0.12944031808070494,
+      "n_unresolved": 68,
+      "n_total": 136
+    },
+    {
+      "multiplier": 20,
+      "median_width": 0.09813267731758206,
+      "n_unresolved": 63,
+      "n_total": 136
+    },
+    {
+      "multiplier": 50,
+      "median_width": 0.07794935303821615,
+      "n_unresolved": 50,
+      "n_total": 136
+    }
+  ],
+  "q5_crossover": [
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "n_bench_actual": 1324,
+      "n_bench_crossover": 43.043852787291385,
+      "past_crossover": true
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "n_bench_actual": 1324,
+      "n_bench_crossover": 4.980345388534999,
+      "past_crossover": true
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "n_bench_actual": 1324,
+      "n_bench_crossover": 161.82938760785422,
+      "past_crossover": true
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "n_bench_actual": 1324,
+      "n_bench_crossover": 115.80892392919584,
+      "past_crossover": true
+    },
+    {
+      "model": "EleutherAI/gpt-j-6b",
+      "n_bench_actual": 1324,
+      "n_bench_crossover": 523.6838917679804,
+      "past_crossover": true
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "n_bench_actual": 1324,
+      "n_bench_crossover": 8.012866635853998,
+      "past_crossover": true
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "n_bench_actual": 1324,
+      "n_bench_crossover": 22.255728148177106,
+      "past_crossover": true
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "n_bench_actual": 1324,
+      "n_bench_crossover": 36.44224942421638,
+      "past_crossover": true
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "n_bench_actual": 1324,
+      "n_bench_crossover": 141.5442615380175,
+      "past_crossover": true
+    },
+    {
+      "model": "google/gemma-7b",
+      "n_bench_actual": 1324,
+      "n_bench_crossover": 83.2521764660997,
+      "past_crossover": true
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "n_bench_actual": 1324,
+      "n_bench_crossover": 69.61216794358971,
+      "past_crossover": true
+    },
+    {
+      "model": "microsoft/phi-2",
+      "n_bench_actual": 1324,
+      "n_bench_crossover": 161.4341018062556,
+      "past_crossover": true
+    },
+    {
+      "model": "mistralai/Mistral-7B-v0.1",
+      "n_bench_actual": 1324,
+      "n_bench_crossover": 250.6073224992911,
+      "past_crossover": true
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "n_bench_actual": 1324,
+      "n_bench_crossover": 539.2100777487506,
+      "past_crossover": true
+    },
+    {
+      "model": "tiiuae/falcon-40b",
+      "n_bench_actual": 1189,
+      "n_bench_crossover": 319.6942360575053,
+      "past_crossover": true
+    },
+    {
+      "model": "tiiuae/falcon-7b",
+      "n_bench_actual": 1324,
+      "n_bench_crossover": 555.8876429542134,
+      "past_crossover": true
+    }
+  ],
+  "q6_adaptive_bound": {
+    "var_current": 0.02428208980367818,
+    "var_neyman": 0.0055771491968300765,
+    "var_oracle": 0.0055771491968300765,
+    "gain_pct": 77.03184016729374,
+    "total_budget": 2890
+  }
+}
