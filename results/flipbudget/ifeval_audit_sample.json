@@ -1,0 +1,3639 @@
+{
+  "seed": 42,
+  "n_comparison_per_stratum": 40,
+  "n_total": 454,
+  "sample": [
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1075,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1094,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1122,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1187,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1217,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 136,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1466,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1580,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1582,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1601,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 163,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 164,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1658,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1730,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1776,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1845,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1880,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1939,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1943,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1954,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 2035,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 2143,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 2275,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 2357,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 2416,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 2596,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 2857,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 2889,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 2957,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 2985,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 3041,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 3079,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 321,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 3224,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 3345,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 3367,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 3371,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 3506,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 3709,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 371,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 3739,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 2372,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 3536,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 2779,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 3445,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 1259,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 2436,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 3287,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 3386,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 1262,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 2571,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 136,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 1466,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 3035,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 3633,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 1092,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 1845,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 1980,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 2585,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 2977,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 3434,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 164,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 1659,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 181,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 2617,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 3371,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "key": 1001,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "key": 1012,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "key": 1139,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "key": 1476,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "key": 1738,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "key": 2035,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "key": 2239,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "key": 2417,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "key": 2677,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "key": 281,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "key": 3048,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "key": 3442,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "key": 3536,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 1051,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 1107,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 1154,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 1162,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 1217,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 1389,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 164,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 1730,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 181,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 1944,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 2250,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 2324,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 2357,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 2380,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 2395,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 2532,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 2534,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 2779,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 2857,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 3223,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 332,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 3367,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 3442,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 349,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 3518,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 3615,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 374,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 1075,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 1259,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 1268,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 1609,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 1627,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 2216,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 2250,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 2549,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 3069,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 3223,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 3327,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 3369,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 3371,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 3409,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 349,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 1012,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 1075,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 1174,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 1268,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 1325,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 136,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 1546,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 1566,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 164,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 1653,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 1658,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 1738,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 19,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 2063,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 2180,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 2395,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 2605,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 2736,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 3073,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 3327,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 3367,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 3369,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 3371,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 3409,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 3484,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 349,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 3572,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Deci/DeciLM-7B",
+      "key": 251,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Deci/DeciLM-7B",
+      "key": 1738,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Deci/DeciLM-7B",
+      "key": 1127,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Deci/DeciLM-7B",
+      "key": 1268,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Deci/DeciLM-7B",
+      "key": 2857,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Deci/DeciLM-7B",
+      "key": 331,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/gpt-j-6b",
+      "key": 2505,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/gpt-j-6b",
+      "key": 3079,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/gpt-j-6b",
+      "key": 2028,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/gpt-neox-20b",
+      "key": 3079,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/pythia-160m",
+      "key": 3079,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 1325,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 2035,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 3415,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 3669,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 1377,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 1580,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 2779,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 3069,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 1075,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 1122,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 1262,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 1436,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 2215,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 2309,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 301,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 3362,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 3025,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 3073,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 3367,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 1268,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 1967,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 2314,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 2357,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 1845,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 3434,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 164,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 3617,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 349,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 1332,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 1342,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 1075,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 301,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 3362,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 136,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 1389,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 3025,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 3327,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 3367,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 102,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 163,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 2314,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 1092,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 1845,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 164,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 19,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 1187,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 1217,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 1262,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 1609,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 1627,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 1738,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 181,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 1967,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 2078,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 2207,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 2215,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 2230,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 2266,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 2380,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 2436,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 2449,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 2577,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 2674,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 3305,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 332,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 3324,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 3362,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 3367,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 3442,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 349,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 3617,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 3633,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 374,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 1075,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 1108,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 1392,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 1446,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 1535,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 1670,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 2243,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 2299,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 2309,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 2422,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 2534,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 2857,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 3041,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 3130,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 3369,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 3371,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 1051,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 2195,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 2497,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 2207,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 2779,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 32,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 1187,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 1508,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 1922,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 2309,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 2811,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 301,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 2517,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 1967,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 2359,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 3041,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 3518,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 1094,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 2084,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 2674,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 3653,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "key": 1092,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "key": 1220,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "key": 1233,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "key": 1705,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "key": 1738,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "key": 2314,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "key": 2467,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "key": 3081,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "key": 3198,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "key": 3407,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "databricks/dolly-v2-12b",
+      "key": 3380,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "databricks/dolly-v2-12b",
+      "key": 143,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "databricks/dolly-v2-12b",
+      "key": 2667,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "databricks/dolly-v2-12b",
+      "key": 19,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "google/gemma-7b",
+      "key": 2195,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "google/gemma-7b",
+      "key": 3415,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "google/gemma-7b",
+      "key": 2069,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "google/gemma-7b",
+      "key": 3595,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "google/gemma-7b",
+      "key": 1268,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "google/gemma-7b",
+      "key": 3615,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "google/gemma-7b",
+      "key": 1402,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "google/gemma-7b",
+      "key": 1705,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "google/gemma-7b",
+      "key": 2034,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "google/gemma-7b",
+      "key": 2674,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "ibm/merlinite-7b",
+      "key": 136,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "ibm/merlinite-7b",
+      "key": 3653,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 1148,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 1259,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 1268,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 13,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 1342,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 1379,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 1535,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 1561,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 1609,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 1691,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 1793,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 181,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 1883,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 1996,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 2215,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 2266,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 2299,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 2309,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 2395,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 2404,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 2417,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 2549,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 260,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 2649,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 2716,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 2811,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 2857,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 2889,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 3073,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 3195,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 321,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 332,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 3326,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 3369,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 3371,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 3414,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 3445,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 349,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 3563,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "microsoft/phi-1_5",
+      "key": 2811,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "microsoft/phi-1_5",
+      "key": 3407,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "microsoft/phi-2",
+      "key": 2801,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "microsoft/phi-2",
+      "key": 1132,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "microsoft/phi-2",
+      "key": 2736,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 3709,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 2591,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 3623,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 371,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 2309,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 136,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 1739,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 3112,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 3367,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 3456,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 1516,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 2857,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 3407,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 3691,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 1476,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 3565,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 181,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 3617,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 3703,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-v0.1",
+      "key": 2350,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-v0.1",
+      "key": 1705,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "key": 2266,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "key": 142,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "key": 2505,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "key": 251,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "key": 1837,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "key": 3407,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "key": 1314,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "key": 1634,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "key": 19,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "key": 3048,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "tiiuae/falcon-40b",
+      "key": 1381,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "tiiuae/falcon-40b",
+      "key": 2475,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "tiiuae/falcon-7b",
+      "key": 164,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "tiiuae/falcon-7b",
+      "key": 3414,
+      "stratum": "disagree",
+      "strict": false,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "key": 2602,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "microsoft/phi-2",
+      "key": 2909,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 1131,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/gpt-j-6b",
+      "key": 3753,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 1108,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "key": 1886,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "databricks/dolly-v2-12b",
+      "key": 3744,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "tiiuae/falcon-7b",
+      "key": 3455,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "ibm/merlinite-7b",
+      "key": 1393,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/pythia-160m",
+      "key": 2779,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 2749,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-v0.1",
+      "key": 2844,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 2097,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "google/gemma-7b",
+      "key": 2787,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 1858,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 1893,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "microsoft/phi-1_5",
+      "key": 2828,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Deci/DeciLM-7B",
+      "key": 2449,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 1845,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/gpt-neox-20b",
+      "key": 2616,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 292,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 1128,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 2532,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 168,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "key": 343,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1592,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "tiiuae/falcon-40b",
+      "key": 2811,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "google/gemma-7b",
+      "key": 1476,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 2977,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 3644,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 3386,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 3401,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 3150,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 2889,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/pythia-160m",
+      "key": 2534,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 2622,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 1802,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 3409,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 3434,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "tiiuae/falcon-40b",
+      "key": 295,
+      "stratum": "both_pass",
+      "strict": true,
+      "loose": true,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 2355,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-v0.1",
+      "key": 1021,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "key": 2912,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "key": 2713,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "key": 16,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/gpt-j-6b",
+      "key": 2266,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/pythia-160m",
+      "key": 3276,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+      "key": 286,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/gpt-neox-20b",
+      "key": 295,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "ibm/merlinite-7b",
+      "key": 3631,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "key": 1040,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "databricks/dolly-v2-12b",
+      "key": 1040,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "tiiuae/falcon-7b",
+      "key": 3380,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-9B-Chat",
+      "key": 1964,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "key": 2736,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-alpha",
+      "key": 3624,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-7B",
+      "key": 1132,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-1.5-34B-Chat",
+      "key": 1069,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-plus",
+      "key": 3756,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B",
+      "key": 3757,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "microsoft/phi-1_5",
+      "key": 2357,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "tiiuae/falcon-40b",
+      "key": 3567,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "google/gemma-7b",
+      "key": 1516,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Deci/DeciLM-7B",
+      "key": 3186,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "01-ai/Yi-34B-Chat",
+      "key": 2828,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "Qwen/Qwen2-72B-Instruct",
+      "key": 1265,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "microsoft/phi-2",
+      "key": 2728,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/gpt-j-6b",
+      "key": 3335,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": true
+    },
+    {
+      "model": "microsoft/phi-1_5",
+      "key": 164,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/gpt-j-6b",
+      "key": 1943,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/pythia-160m",
+      "key": 1012,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/pythia-160m",
+      "key": 3534,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/pythia-160m",
+      "key": 1551,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "key": 2243,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "key": 2243,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "tiiuae/falcon-7b",
+      "key": 1516,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "mosaicml/mpt-7b",
+      "key": 3534,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/gpt-j-6b",
+      "key": 2677,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "EleutherAI/pythia-160m",
+      "key": 3724,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    },
+    {
+      "model": "HuggingFaceH4/zephyr-7b-beta",
+      "key": 1548,
+      "stratum": "both_fail",
+      "strict": false,
+      "loose": false,
+      "nondeterminism_flagged": false
+    }
+  ]
+}
