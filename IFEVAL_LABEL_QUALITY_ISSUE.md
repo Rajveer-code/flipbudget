@@ -120,3 +120,17 @@ need to be redone or narrowed. Three options, not chosen here:
 No further analysis or verdict was produced pending a decision — proceeding
 past this without saying so would misrepresent the confidence of any
 scorer-vs-human conclusion drawn from this batch.
+
+## Update — round 2 and final status
+
+README rewritten per option 1 (relabel with a stricter, example-led README).
+Round 2 (`task2_compliance_audit.csv`, YES/NO this time) checked the same
+way: **90.5% contradiction rate (335/370)** — worse than round 1's 89.3%,
+only 1/454 rows marked NO. No measurable improvement from the rewrite.
+
+Decision: **paused, not attempted a third time.** IFEval's human-audit angle
+is set aside; the verifier-bug/reproducibility finding
+(`IFEVAL_REPRODUCIBILITY_CHECK.md`) stands on its own and does not depend on
+this. The 83.2% of real disagreement unexplained by a known mechanism
+remains genuinely unresolved — not assumed to be scorer error. See
+`CONSOLIDATED_VERDICT.md` for how this fits the project's overall verdict.
