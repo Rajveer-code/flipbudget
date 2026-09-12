@@ -1,0 +1,454 @@
+{
+  "n_results": 40,
+  "n_no_writer_found": 0,
+  "entries": [
+    {
+      "output": "results/flipbudget/adversarial_suite.json",
+      "size_bytes": 6588,
+      "writer_script": "scripts/fb_adversarial_suite.py",
+      "last_commit": {
+        "commit": "8dbf03cf3f4e8710ccc21df03fb9b8c1cabcd572",
+        "date": "2026-09-13 01:48:40 +0530",
+        "message": "fix: MATH-Hard comparator silently broken on Windows (SIGALRM missing)"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/audit_design_analysis.json",
+      "size_bytes": 10238,
+      "writer_script": "scripts/fb_audit_design_analysis.py",
+      "last_commit": {
+        "commit": "22a9b9723626da3d7bd0f35769ccf7f35b564730",
+        "date": "2026-09-12 11:41:46 +0530",
+        "message": "feat: audit-design analysis -- second-contribution evaluation, verdict D"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/audit_design_stress_test.json",
+      "size_bytes": 3923,
+      "writer_script": "scripts/fb_audit_design_stress_test.py",
+      "last_commit": {
+        "commit": "a34ec964ba6ec3a23b525b50c685cb5aab855e6b",
+        "date": "2026-09-13 01:32:14 +0530",
+        "message": "feat: theory extensions (correlated error, ranking preservation, T-D/T-E) + audit-design stress test"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/audit_expansion_design.json",
+      "size_bytes": 60101,
+      "writer_script": "scripts/fb_audit_expansion_design.py",
+      "last_commit": {
+        "commit": "d64d005c7ad0a62d10c34a0cad5dbb770eca96d7",
+        "date": "2026-09-11 12:34:52 +0530",
+        "message": "feat: audit-expansion design for T-C/E-E, computation only"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/blinding_verification.json",
+      "size_bytes": 1738,
+      "writer_script": "scripts/fb_blinding_verification.py",
+      "last_commit": {
+        "commit": "a7c8d9fd72a84f2c7a71a453d0761cb1ded1040a",
+        "date": "2026-09-12 15:46:08 +0530",
+        "message": "docs: final labeling package -- blinding re-verified, plain-language README"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/d4_data_sources.json",
+      "size_bytes": 3040,
+      "writer_script": "scripts/fb_d4_data_sources.py",
+      "last_commit": {
+        "commit": "f2b7f6026f04a293e35c873e9d3e175356e2607b",
+        "date": "2026-09-09 13:17:08 +0530",
+        "message": "data: D4/D5 audit output"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/e1_case_b_TRUE.json",
+      "size_bytes": 87145,
+      "writer_script": "scripts/ea_dominance_study.py",
+      "last_commit": {
+        "commit": "ad1d3f2fba48c8ce9317f43a7a2ff5ddd9a12d84",
+        "date": "2026-09-09 13:50:05 +0530",
+        "message": "feat: E1 Case B -- the real GO/NO-GO result, unblocked"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/e1_pilot_case_a.json",
+      "size_bytes": 449,
+      "writer_script": "scripts/fb_e1_pilot.py",
+      "last_commit": {
+        "commit": "a266f9cfbca5d5379f804cc6b9b8bb28045b96de",
+        "date": "2026-09-09 13:33:35 +0530",
+        "message": "feat: E1 -- Case A pilot on all 378 real MATH-Hard pairs"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/e4_mathhard_per_model.json",
+      "size_bytes": 10874,
+      "writer_script": "scripts/ea_dominance_study.py",
+      "last_commit": {
+        "commit": "96e20ee20f51749d23014dd6ebdbda4a750a8137",
+        "date": "2026-09-09 13:31:49 +0530",
+        "message": "feat: E4 -- real per-model MATH-Hard misclassification, partial pooling"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/e5_leaderboard.json",
+      "size_bytes": 86943,
+      "writer_script": "scripts/fb_e5_leaderboard.py",
+      "last_commit": {
+        "commit": "c059cdcc1def3efac71e0647456de3f66d5bf7c2",
+        "date": "2026-09-09 13:50:57 +0530",
+        "message": "feat: E5 -- real identified/unidentified partial order on MATH-Hard"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/e6_version_drift_summary.json",
+      "size_bytes": 336,
+      "writer_script": "scripts/fb_e6_version_drift.py",
+      "last_commit": {
+        "commit": "9e086f40c0ea44749c3810d7414f0d1f76efa378",
+        "date": "2026-09-09 14:06:47 +0530",
+        "message": "feat: S1 -- the scoretrace/flipbudget package, installed and tested"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ea_dominance_corrected.json",
+      "size_bytes": 275,
+      "writer_script": "inline snippet re-deriving E-A single-model dominance under bounded_single_model_extrema (EVIDENCE_TABLE.md item A2)",
+      "last_commit": {
+        "commit": "9db11b0f8c586521ec48a23bdf54c36fb5d5c51f",
+        "date": "2026-09-13 01:24:32 +0530",
+        "message": "fix: E-A dominance ratio was overstated ~26x by a corner-drop artifact"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ea_dominance_pairwise_corrected.json",
+      "size_bytes": 789,
+      "writer_script": "inline snippet re-deriving E-A pairwise dominance from reconciliation_four_layers.json's per-pair widths (EVIDENCE_TABLE.md item A1)",
+      "last_commit": {
+        "commit": "9db11b0f8c586521ec48a23bdf54c36fb5d5c51f",
+        "date": "2026-09-13 01:24:32 +0530",
+        "message": "fix: E-A dominance ratio was overstated ~26x by a corner-drop artifact"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ea_dominance_study.json",
+      "size_bytes": 35602,
+      "writer_script": "scripts/ea_dominance_study.py",
+      "last_commit": {
+        "commit": "fed20abf692a099b79e828d0dd8c5b360d1b56ef",
+        "date": "2026-09-09 16:04:04 +0530",
+        "message": "feat: E-A -- the dominance study, Tier 1 item 1. RESULT: dominates."
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ee_feature_stability.json",
+      "size_bytes": 3165,
+      "writer_script": "scripts/fb_ee_feature_stability.py",
+      "last_commit": {
+        "commit": "3e873f06763b6f7ca3b4aad78f40bc19b7fd02b1",
+        "date": "2026-09-11 12:57:33 +0530",
+        "message": "feat: E-E feature-selection stability check, before any new labeling"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ee_format_association.json",
+      "size_bytes": 819,
+      "writer_script": "scripts/ee_format_association.py",
+      "last_commit": {
+        "commit": "2ab3aefde058dc4da7f0b8cf6d3e96cd5c26462f",
+        "date": "2026-09-09 16:08:49 +0530",
+        "message": "feat: E-E -- format-wrongness association. RESULT: underpowered, not confirmed."
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ee_reduced_feature_worklist.json",
+      "size_bytes": 794107,
+      "writer_script": "scripts/fb_ee_reduced_feature_worklist.py",
+      "last_commit": {
+        "commit": "ec5c2ecd625f162358200540dbd512c238a73f4e",
+        "date": "2026-09-11 12:51:54 +0530",
+        "message": "feat: reduced-feature E-E worklist, real capacity-checked"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ifeval_audit_key.json",
+      "size_bytes": 152191,
+      "writer_script": "scripts/fb_ifeval_key_reflag.py",
+      "last_commit": {
+        "commit": "e50fb54aceeb96b544837b933419950fde4ee9b1",
+        "date": "2026-09-12 15:30:58 +0530",
+        "message": "fix: IFEval nondeterminism scan was incomplete (33 -> 96 flagged items)"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ifeval_audit_sample.json",
+      "size_bytes": 88434,
+      "writer_script": "scripts/fb_ifeval_audit_design.py",
+      "last_commit": {
+        "commit": "736eae6c0bb544330fa18a27afeedfd177898276",
+        "date": "2026-09-12 14:09:13 +0530",
+        "message": "feat: IFEval audit design -- real verifier bug found, 454-item sample ready"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ifeval_label_quality_check.json",
+      "size_bytes": 116293,
+      "writer_script": "scripts/fb_ifeval_label_quality_check.py",
+      "last_commit": {
+        "commit": "5e6491826e1d7b3a4ca9f075ab3e2e094ae0cf3e",
+        "date": "2026-09-13 00:48:30 +0530",
+        "message": "fix: IFEval returned labels fail direct verification, not usable as-is"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ifeval_label_quality_check_round2.json",
+      "size_bytes": 149105,
+      "writer_script": "scripts/fb_ifeval_label_quality_check.py, run with CLI args pointing at the round-2 judged file (not the hardcoded default path)",
+      "last_commit": {
+        "commit": "de379a0f1c145b53368e161eb6a2209f1c722649",
+        "date": "2026-09-13 01:11:12 +0530",
+        "message": "fix: IFEval round-2 relabel shows no improvement; T-C resubmission looks corrupted"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ifeval_nondeterminism_flagged_items.json",
+      "size_bytes": 16188,
+      "writer_script": "scripts/fb_ifeval_audit_design.py",
+      "last_commit": {
+        "commit": "e50fb54aceeb96b544837b933419950fde4ee9b1",
+        "date": "2026-09-12 15:30:58 +0530",
+        "message": "fix: IFEval nondeterminism scan was incomplete (33 -> 96 flagged items)"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ifeval_per_model.json",
+      "size_bytes": 4616,
+      "writer_script": "inline snippet during EB_IFEVAL_STATUS.md's per-model breakdown",
+      "last_commit": {
+        "commit": "500f684ab737553c90c43e5e547140dc6b83fca4",
+        "date": "2026-09-12 13:41:17 +0530",
+        "message": "feat: E-B unblocked -- real IFEval data, 27 models, 14607 rows"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ifeval_real_analysis.json",
+      "size_bytes": 162886,
+      "writer_script": "scripts/fb_ifeval_real_analysis.py",
+      "last_commit": {
+        "commit": "5e6491826e1d7b3a4ca9f075ab3e2e094ae0cf3e",
+        "date": "2026-09-13 00:48:30 +0530",
+        "message": "fix: IFEval returned labels fail direct verification, not usable as-is"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ifeval_repro_rowcache.json",
+      "size_bytes": 11736077,
+      "writer_script": "scripts/fb_ifeval_repro_cache.py",
+      "last_commit": {
+        "commit": "e50fb54aceeb96b544837b933419950fde4ee9b1",
+        "date": "2026-09-12 15:30:58 +0530",
+        "message": "fix: IFEval nondeterminism scan was incomplete (33 -> 96 flagged items)"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ifeval_reproducibility_check.json",
+      "size_bytes": 5716,
+      "writer_script": "scripts/fb_ifeval_reproducibility_check.py",
+      "last_commit": {
+        "commit": "e50fb54aceeb96b544837b933419950fde4ee9b1",
+        "date": "2026-09-12 15:30:58 +0530",
+        "message": "fix: IFEval nondeterminism scan was incomplete (33 -> 96 flagged items)"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/is_equiv_bug_verification.json",
+      "size_bytes": 291,
+      "writer_script": "scripts/fb_verify_is_equiv_bug.py",
+      "last_commit": {
+        "commit": "8dbf03cf3f4e8710ccc21df03fb9b8c1cabcd572",
+        "date": "2026-09-13 01:48:40 +0530",
+        "message": "fix: MATH-Hard comparator silently broken on Windows (SIGALRM missing)"
+      },
+      "human_label_inputs": [
+        "labeling/tc_expansion_l1_completed.csv"
+      ]
+    },
+    {
+      "output": "results/flipbudget/kill_criterion_6_post_tc.json",
+      "size_bytes": 472,
+      "writer_script": "inline snippet re-verifying pooling spread on the T-C-updated pool (THEORY_EXTENSIONS.md \u00a76)",
+      "last_commit": {
+        "commit": "a34ec964ba6ec3a23b525b50c685cb5aab855e6b",
+        "date": "2026-09-13 01:32:14 +0530",
+        "message": "feat: theory extensions (correlated error, ranking preservation, T-D/T-E) + audit-design stress test"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/original_audit_bug_verification.json",
+      "size_bytes": 494,
+      "writer_script": "scripts/fb_verify_original_audit_bug.py",
+      "last_commit": {
+        "commit": "8dbf03cf3f4e8710ccc21df03fb9b8c1cabcd572",
+        "date": "2026-09-13 01:48:40 +0530",
+        "message": "fix: MATH-Hard comparator silently broken on Windows (SIGALRM missing)"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/reconciliation_four_layers.json",
+      "size_bytes": 67510,
+      "writer_script": "scripts/fb_reconcile_layers.py",
+      "last_commit": {
+        "commit": "c94c54815109ff521b6a4a2b68bb5904b3d44a3e",
+        "date": "2026-09-11 13:33:22 +0530",
+        "message": "fix: four-layer reconciliation -- verdict B, math correction on \"unbounded\""
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ta_boundary_audit.json",
+      "size_bytes": 8656,
+      "writer_script": "scripts/fb_ta_boundary_audit.py",
+      "last_commit": {
+        "commit": "49270e6618d11deb37b1f52c43cef72104731066",
+        "date": "2026-09-11 13:17:48 +0530",
+        "message": "fix: T-A boundary audit -- zero-width claim was a raw-anchor artifact"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ta_compound_interval.json",
+      "size_bytes": 4898,
+      "writer_script": "scripts/fb_ta_compound_interval.py",
+      "last_commit": {
+        "commit": "a62b1a6ee723f7e25dc049906bd75c660853141b",
+        "date": "2026-09-11 13:06:42 +0530",
+        "message": "feat: T-A compound step, Wilson-CI + Lambda-sensitivity composed"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/tb_compound_design_sensitivity.json",
+      "size_bytes": 33774,
+      "writer_script": "scripts/fb_tb_compound_design_sensitivity.py",
+      "last_commit": {
+        "commit": "7b47d084ed536eb04994cdecbb3455102719276c",
+        "date": "2026-09-11 13:24:52 +0530",
+        "message": "feat: T-B compound design sensitivity -- saturation finding"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/tb_design_sensitivity.json",
+      "size_bytes": 26416,
+      "writer_script": "scripts/fb_tb_design_sensitivity.py",
+      "last_commit": {
+        "commit": "daafd82a25d36beaa9756d09db908f6dd6639e83",
+        "date": "2026-09-11 12:29:41 +0530",
+        "message": "feat: T-B design sensitivity Lambda-tilde, real MATH-Hard results"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/tc_alpha_beta_update.json",
+      "size_bytes": 105591,
+      "writer_script": "scripts/fb_tc_alpha_beta_update.py",
+      "last_commit": {
+        "commit": "17ee32083043a702712965851aee5d5a6c89e5fc",
+        "date": "2026-09-12 15:54:39 +0530",
+        "message": "feat: fold T-C's 69 new audit trials into alpha/beta pooling"
+      },
+      "human_label_inputs": [
+        "labeling/tc_expansion_l1_completed.csv"
+      ]
+    },
+    {
+      "output": "results/flipbudget/tc_correlated_error.json",
+      "size_bytes": 13498,
+      "writer_script": "scripts/tc_correlated_error.py",
+      "last_commit": {
+        "commit": "a8c2f420091b41e69767af588f72d90eecd27381",
+        "date": "2026-09-09 16:07:03 +0530",
+        "message": "feat: T-C -- correlated scorer error test. RESULT: inconclusive/underpowered."
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/tc_ee_real_worklist.json",
+      "size_bytes": 614286,
+      "writer_script": "scripts/fb_tc_ee_real_worklist.py",
+      "last_commit": {
+        "commit": "e1d3d38413d3a35ac9f9324e5128ca467aa01c52",
+        "date": "2026-09-11 12:47:29 +0530",
+        "message": "feat: pull real per-model item roster, solve T-C worklist, correct E-E ceiling"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/tc_expansion_key.json",
+      "size_bytes": 34679,
+      "writer_script": "scripts/fb_tc_labeling_package.py",
+      "last_commit": {
+        "commit": "42796e1f0ffe9d032f4d0768665dbbe636c1c777",
+        "date": "2026-09-11 13:09:35 +0530",
+        "message": "feat: T-C blinded labeling package, 70 rows, ready to label"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/tc_multi_labeler_split.json",
+      "size_bytes": 1471,
+      "writer_script": "scripts/fb_tc_multi_labeler_split.py",
+      "last_commit": {
+        "commit": "3aedf3828dbd84f61bc516c74b22278e84243ee3",
+        "date": "2026-09-12 12:35:13 +0530",
+        "message": "feat: T-C three-labeler split, nested overlap (l1/l2/l3)"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/tc_real_analysis.json",
+      "size_bytes": 27699,
+      "writer_script": "scripts/fb_tc_real_analysis.py",
+      "last_commit": {
+        "commit": "f2572be53568ed2b83978d9a723ef09fe928a335",
+        "date": "2026-09-12 13:36:47 +0530",
+        "message": "feat: T-C complete -- all three labelers in, perfect agreement"
+      },
+      "human_label_inputs": [
+        "labeling/tc_expansion_l1_completed.csv",
+        "labeling/tc_expansion_l2_answers.csv",
+        "labeling/tc_expansion_l3_answers.csv"
+      ]
+    }
+  ]
+}
