@@ -490,7 +490,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "length_constraints:number_words",
         "keywords:letter_frequency",
@@ -583,7 +583,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital",
         "punctuation:no_comma",
@@ -762,7 +762,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "detectable_format:number_highlighted_sections",
         "change_case:english_lowercase"
@@ -812,7 +812,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "detectable_content:number_placeholders",
         "change_case:english_lowercase"
@@ -837,7 +837,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "length_constraints:nth_paragraph_first_word"
@@ -1158,7 +1158,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase"
       ]
@@ -1430,7 +1430,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital",
         "keywords:letter_frequency"
@@ -1493,7 +1493,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "punctuation:no_comma",
@@ -1608,7 +1608,7 @@
       "stratum": "both_pass",
       "strict": true,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase"
       ]
@@ -1698,7 +1698,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "detectable_format:number_bullet_lists",
         "change_case:english_lowercase",
@@ -1829,7 +1829,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital"
       ]
@@ -1931,7 +1931,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital",
         "startend:end_checker"
@@ -2058,7 +2058,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital"
       ]
@@ -2160,7 +2160,7 @@
       "stratum": "both_fail",
       "strict": false,
       "loose": false,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital"
       ]
@@ -2356,7 +2356,7 @@
       "stratum": "both_fail",
       "strict": false,
       "loose": false,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital",
         "length_constraints:number_sentences",
@@ -2384,7 +2384,7 @@
       "stratum": "both_fail",
       "strict": false,
       "loose": false,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "length_constraints:number_sentences",
@@ -2471,7 +2471,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "keywords:forbidden_words"
@@ -2484,7 +2484,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital"
       ]
@@ -2607,7 +2607,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "length_constraints:number_sentences"
@@ -2746,7 +2746,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "length_constraints:nth_paragraph_first_word"
@@ -2798,7 +2798,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "detectable_format:number_bullet_lists",
         "change_case:english_lowercase",
@@ -3049,7 +3049,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital",
         "keywords:letter_frequency"
@@ -3152,7 +3152,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital"
       ]
@@ -3214,7 +3214,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "length_constraints:number_sentences"
@@ -3393,7 +3393,7 @@
       "stratum": "both_pass",
       "strict": true,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "length_constraints:nth_paragraph_first_word"
@@ -3659,7 +3659,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital",
         "detectable_format:title"
@@ -3696,7 +3696,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "length_constraints:number_sentences"
@@ -3745,7 +3745,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase"
       ]
@@ -3818,7 +3818,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "length_constraints:number_sentences"
@@ -3905,7 +3905,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase"
       ]
@@ -3955,7 +3955,7 @@
       "stratum": "both_fail",
       "strict": false,
       "loose": false,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital",
         "keywords:forbidden_words"
@@ -4217,7 +4217,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "keywords:existence"
@@ -4281,7 +4281,7 @@
       "stratum": "both_fail",
       "strict": false,
       "loose": false,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "keywords:existence"
@@ -4962,7 +4962,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "length_constraints:number_sentences"
@@ -5036,7 +5036,7 @@
       "stratum": "both_fail",
       "strict": false,
       "loose": false,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase"
       ]
@@ -5048,7 +5048,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital",
         "keywords:forbidden_words"
@@ -5061,7 +5061,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital",
         "startend:end_checker"
@@ -5099,7 +5099,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "detectable_format:number_highlighted_sections",
         "change_case:english_capital"
@@ -5150,7 +5150,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital"
       ]
@@ -5212,7 +5212,7 @@
       "stratum": "both_fail",
       "strict": false,
       "loose": false,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital",
         "startend:end_checker"
@@ -5314,7 +5314,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "keywords:existence"
@@ -5353,7 +5353,7 @@
       "stratum": "disagree",
       "strict": false,
       "loose": true,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase"
       ]
@@ -5404,7 +5404,7 @@
       "stratum": "both_fail",
       "strict": false,
       "loose": false,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_capital",
         "detectable_format:multiple_sections"
@@ -5530,7 +5530,7 @@
       "stratum": "both_fail",
       "strict": false,
       "loose": false,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "length_constraints:number_sentences",
@@ -5678,7 +5678,7 @@
       "stratum": "both_fail",
       "strict": false,
       "loose": false,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "keywords:existence"
@@ -5691,7 +5691,7 @@
       "stratum": "both_fail",
       "strict": false,
       "loose": false,
-      "nondeterminism_flagged": false,
+      "nondeterminism_flagged": true,
       "instruction_id_list": [
         "change_case:english_lowercase",
         "keywords:existence"
@@ -5722,5 +5722,8 @@
         "change_case:capital_word_frequency"
       ]
     }
-  ]
+  ],
+  "reflagged_with_corrected_scan": true,
+  "n_flagged_before_correction": 29,
+  "n_flagged_after_correction": 75
 }
