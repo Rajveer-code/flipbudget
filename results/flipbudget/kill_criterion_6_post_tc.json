@@ -1,0 +1,14 @@
+{
+  "alpha_pooled_std_before_tc_update": 0.00469,
+  "alpha_pooled_range_before": [
+    0.0249,
+    0.0541
+  ],
+  "alpha_pooled_std_after_tc_update": 0.00423,
+  "alpha_pooled_range_after": [
+    0.0172,
+    0.0427
+  ],
+  "kill_criterion_6_fires": false,
+  "note": "Re-verification of PLAN_FLIPBUDGET.md Kill Criterion 6 on the T-C-updated pool (tc_alpha_beta_update.py rebuild). Spread survives -- pooling remains informative, not collapsed to a point mass."
+}
