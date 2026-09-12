@@ -20,7 +20,15 @@ if __name__ == "__main__":
     with open(KEY_PATH, encoding="utf-8") as f:
         data = json.load(f)
 
-    n_before = sum(1 for r in data["key"] if r["nondeterminism_flagged"])
+    # Idempotency: this file records its own before/after once corrected. A
+    # second run must not recompute n_before from the ALREADY-corrected
+    # nondeterminism_flagged values on disk -- that would silently replace
+    # the true historical "29" with "75" (the same self-comparison bug
+    # fb_ifeval_mechanism_rescan.py had, caught by fb_reproduce_all.py).
+    already_corrected = data.get("reflagged_with_corrected_scan", False)
+    n_before = data["n_flagged_before_correction"] if already_corrected else \
+        sum(1 for r in data["key"] if r["nondeterminism_flagged"])
+
     newly_flagged_uids = []
     for r in data["key"]:
         was = r["nondeterminism_flagged"]
@@ -30,7 +38,10 @@ if __name__ == "__main__":
     n_after = sum(1 for r in data["key"] if r["nondeterminism_flagged"])
 
     print(f"nondeterminism_flagged on the 454-row sample: {n_before} -> {n_after} "
-          f"(+{len(newly_flagged_uids)} rows newly flagged, corrected mechanism scan)")
+          f"(+{len(newly_flagged_uids)} rows newly flagged vs. original, corrected mechanism scan)")
+    if already_corrected:
+        print(f"  (n_before={n_before} preserved from the original correction, not "
+              f"recomputed from already-corrected data on disk)")
 
     data["reflagged_with_corrected_scan"] = True
     data["n_flagged_before_correction"] = n_before

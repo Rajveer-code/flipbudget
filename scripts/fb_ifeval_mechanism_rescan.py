@@ -46,6 +46,11 @@ LANGDETECT_CHECKER_IDS = {
 OLD_FLAGGED_PATH = Path("results/flipbudget/ifeval_nondeterminism_flagged_items.json")
 OUT_PATH = Path("results/flipbudget/ifeval_nondeterminism_flagged_items.json")
 
+# Fixed historical fact: the original, incomplete scan (before this script
+# existed) flagged 33/541 items, checking only language:response_language
+# and keywords:letter_frequency. See IFEVAL_REPRODUCIBILITY_CHECK.md.
+ORIGINAL_SCAN_N_FLAGGED = 33
+
 
 def fetch_all_docs(token):
     models = load_roster_models()
@@ -135,18 +140,25 @@ if __name__ == "__main__":
     print(f"  random-fallback-only: {n_type2_only}")
     print(f"  both mechanisms: {n_both}")
 
-    old_n = None
+    # old_n is a fixed historical fact (the incomplete scan's count BEFORE this
+    # script existed) -- NOT re-derived from OUT_PATH's live content.
+    # OLD_FLAGGED_PATH and OUT_PATH are the same file, so on a re-run (e.g.
+    # fb_reproduce_all.py's reproducibility check) reading "prior" from it
+    # would compare this run against ITSELF: a real bug this project's own
+    # reproducibility pipeline caught -- the first re-run silently replaced
+    # the true historical 33 with 96 in the recorded "prior_n_flagged" field.
+    old_n = ORIGINAL_SCAN_N_FLAGGED
+    print(f"\nOriginal (pre-correction) flagged-set size: {old_n} (fixed historical constant)")
+
     if OLD_FLAGGED_PATH.exists():
         with open(OLD_FLAGGED_PATH, encoding="utf-8") as f:
-            old = json.load(f)
-        old_n = old.get("n_flagged")
-        old_keys = set(old.get("flagged_keys", {}).keys())
+            prev_run = json.load(f)
+        prev_keys = set(prev_run.get("flagged_keys", {}).keys())
         new_keys = set(flagged.keys())
-        print(f"\nPrior flagged-set size: {old_n}")
-        print(f"New keys not in prior set: {len(new_keys - old_keys)}")
-        print(f"Prior keys missing from new set: {len(old_keys - new_keys)} (should be 0 -- superset check)")
-        if old_keys - new_keys:
-            print(f"  WARNING -- lost keys: {sorted(old_keys - new_keys)}")
+        idempotent = prev_keys == new_keys
+        print(f"Idempotency check against the file currently on disk "
+              f"({prev_run.get('n_flagged')} keys): "
+              f"{'identical -- reproducible' if idempotent else 'DIFFERENT -- investigate before trusting'}")
 
     out = {
         "n_total_items": len(docs),
