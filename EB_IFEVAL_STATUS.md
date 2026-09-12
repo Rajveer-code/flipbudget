@@ -44,21 +44,40 @@ with granted access to this specific gated dataset**, not just any
 `HF_TOKEN` — `HF_TOKEN` alone will fail the same way if the account behind it
 hasn't been granted access.
 
-## Concrete next step
+## Unblocked and run — real results
 
-Once you (a) confirm your HF account already has access (the original
-`cache_l1` MATH-Hard pull had to have gone through this same gate at some
-point) and (b) set `HF_TOKEN` in the environment, `fb_eb_ifeval_pull.py` runs
-immediately — no further code changes needed. It will pull real per-model
-IFEval generations, score them with the verified real verifier, and report the
-strict/loose disagreement rate per model directly (the human-label-free
-ambiguity signal) — the first real number toward answering whether E-A/the
-reconciliation's verdict generalizes to a second, differently-scored
-benchmark.
+Access resolved: Rajveer's own already-authenticated HF token (found locally,
+`huggingface_hub.get_token()`) already had access to the gated repos — the
+earlier 401 was purely anonymous access, not a real block on his account. One
+more real bug caught before trusting anything: the fetch script used plain
+`urllib.request` without the `truststore.inject_into_ssl()` fix this machine
+already needs for every other HF call this session — fixed, then ran clean.
 
-## What this does not do
+**All 27 models fetched, 0 failures, 14,607 real rows.**
 
-No data fetched, no numbers computed, nothing fabricated in its place. Does
-not start a human audit for IFEval (that decision, and its own audit-design
-sizing, comes after real strict/loose disagreement data exists to plan
-around).
+- **Overall strict/loose disagreement: 380/14,607 = 2.6%.** Real, nonzero,
+  human-label-free scorer-ambiguity signal — unlike MATH-Hard's near-zero β,
+  IFEval's verifier disagrees with itself often enough to matter.
+- **Per-model rate varies substantially: 0.2%–7.6% (median 1.9%)** —
+  `results/flipbudget/ifeval_per_model.json`. Not uniform, and not randomly
+  scattered: **the highest-disagreement models are mostly the higher-scoring
+  ones** (Llama-3-70B-Instruct: 7.6% disagreement at 77.1% strict accuracy;
+  Yi-1.5-34B-Chat: 7.6% at 55.1%) while the weakest models disagree least
+  (falcon-7b: 0.4% at 11.8% accuracy). Plausible mechanism, not yet proven:
+  weak models produce short/garbage output that's unambiguously
+  non-compliant either way; stronger models produce nuanced, well-formatted
+  responses where the strict-vs-loose boundary (trailing lines, markdown)
+  actually has room to flip the verdict. **If this holds up, it matters more
+  for the comparisons that matter most** — rankings among competitive,
+  capable models, not against weak baselines.
+
+## What this does not do yet
+
+This is a strict/loose proxy, not the full [0,1]-bounded Wilson-CI/Λ
+machinery built for MATH-Hard — that needs a real human audit of IFEval
+specifically (does the verifier's strict-or-loose call match what a human
+reads the response as actually doing), not yet run. The per-model pattern
+above is a real, observed correlation, not yet tested for statistical
+significance or causally explained. Next real step, not started: design an
+IFEval audit sample (same audit-design methodology already built) sized
+around this real 2.6%/per-model-varying rate instead of a guess.
