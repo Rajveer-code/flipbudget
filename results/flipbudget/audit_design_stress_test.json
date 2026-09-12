@@ -1,0 +1,166 @@
+{
+  "scenario_sweep": [
+    {
+      "scenario": "MATH-Hard-like (baseline)",
+      "p_h": [
+        0.031,
+        0.12
+      ],
+      "N_h": [
+        175,
+        1149
+      ],
+      "total_n": 400,
+      "var_neyman": 0.00023243741831841804,
+      "var_proportional": 0.0002390317692598187,
+      "var_equal": 0.0004006460744471117,
+      "neyman_beats_proportional": true,
+      "neyman_beats_equal": true,
+      "pct_variance_cut_vs_proportional": 2.758775940880409,
+      "neyman_allocation_pct": [
+        7.5,
+        92.5
+      ]
+    },
+    {
+      "scenario": "Rare error (both < 1%)",
+      "p_h": [
+        0.003,
+        0.006
+      ],
+      "N_h": [
+        5000,
+        5000
+      ],
+      "total_n": 500,
+      "var_neyman": 8.701044009478294e-06,
+      "var_proportional": 8.955e-06,
+      "var_equal": 8.955e-06,
+      "neyman_beats_proportional": true,
+      "neyman_beats_equal": true,
+      "pct_variance_cut_vs_proportional": 2.835912791978845,
+      "neyman_allocation_pct": [
+        41.5,
+        58.5
+      ]
+    },
+    {
+      "scenario": "Common error (both > 20%)",
+      "p_h": [
+        0.25,
+        0.35
+      ],
+      "N_h": [
+        5000,
+        5000
+      ],
+      "total_n": 500,
+      "var_neyman": 0.00041403389552322877,
+      "var_proportional": 0.000415,
+      "var_equal": 0.000415,
+      "neyman_beats_proportional": true,
+      "neyman_beats_equal": true,
+      "pct_variance_cut_vs_proportional": 0.2327962594629529,
+      "neyman_allocation_pct": [
+        47.6,
+        52.4
+      ]
+    },
+    {
+      "scenario": "Balanced strata",
+      "p_h": [
+        0.05,
+        0.08
+      ],
+      "N_h": [
+        2500,
+        2500
+      ],
+      "total_n": 500,
+      "var_neyman": 0.00011967698199637796,
+      "var_proportional": 0.0001211,
+      "var_equal": 0.0001211,
+      "neyman_beats_proportional": true,
+      "neyman_beats_equal": true,
+      "pct_variance_cut_vs_proportional": 1.175076799027286,
+      "neyman_allocation_pct": [
+        44.5,
+        55.5
+      ]
+    },
+    {
+      "scenario": "One tiny stratum",
+      "p_h": [
+        0.05,
+        0.05
+      ],
+      "N_h": [
+        50,
+        9950
+      ],
+      "total_n": 500,
+      "var_neyman": 9.499999999999999e-05,
+      "var_proportional": 9.5e-05,
+      "var_equal": 0.0001881285,
+      "neyman_beats_proportional": true,
+      "neyman_beats_equal": true,
+      "pct_variance_cut_vs_proportional": 1.1102230246251565e-14,
+      "neyman_allocation_pct": [
+        0.5,
+        99.5
+      ]
+    }
+  ],
+  "three_strata_scenario": {
+    "scenario": "IFEval-like (3 strata)",
+    "p_h": [
+      0.025,
+      0.9,
+      0.9
+    ],
+    "N_h": [
+      5071,
+      374,
+      9162
+    ],
+    "total_n": 454,
+    "var_neyman": 0.0001377224772334368,
+    "var_proportional": 0.00014805610746039625,
+    "var_equal": 0.00025377546610808635,
+    "neyman_beats_proportional": true,
+    "neyman_beats_equal": true,
+    "pct_variance_cut_vs_proportional": 6.979536612310033,
+    "neyman_allocation_pct": [
+      21.7,
+      3.1,
+      75.3
+    ]
+  },
+  "all_neyman_wins_every_scenario": true,
+  "confidence_level_sensitivity": {
+    "n90": 803,
+    "n95": 1139,
+    "n99": 1987,
+    "monotonic": true
+  },
+  "precision_target_sensitivity": {
+    "0.005": 17906,
+    "0.01": 4499,
+    "0.02": 1139,
+    "0.05": 201,
+    "0.1": 63
+  },
+  "precision_monotonic": true,
+  "model_heterogeneity": {
+    "n_simulated_models": 30,
+    "true_alpha_range": [
+      0.01613252721021203,
+      0.14658712922914582
+    ],
+    "shared_beta": 0.01,
+    "pooled_alpha": 0.0882794239248157,
+    "mean_variance_pooled_allocation": 0.000180751472612451,
+    "mean_variance_own_allocation": 0.0001786157445034436,
+    "heterogeneity_regret_pct": 1.195711002378208
+  }
+}
