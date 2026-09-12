@@ -1,105 +1,790 @@
 {
   "n_total_items": 541,
-  "n_flagged": 33,
+  "n_flagged": 96,
+  "n_flagged_langdetect_only": 94,
+  "n_flagged_random_fallback_only": 1,
+  "n_flagged_both_mechanisms": 1,
+  "doc_source_model": "01-ai/Yi-1.5-34B-Chat",
+  "scan_errors": [],
+  "prior_n_flagged": 33,
+  "prior_scan_was_incomplete": true,
+  "correction_note": "Prior scan (n=33) checked only language:response_language and keywords:letter_frequency. This rescan additionally found change_case:english_capital and change_case:english_lowercase call unseeded langdetect.detect() (source: instructions.py lines ~1469, ~1501), and empirically detects ANY kwarg-driven random.choice/randint fallback via monkeypatch rather than manual field mapping.",
   "flagged_keys": {
-    "1108": [
-      "response_language_langdetect(lang='kn')"
+    "24": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
     ],
-    "1122": [
-      "letter_frequency_invalid_letter('#')"
+    "152": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
     ],
-    "1129": [
-      "letter_frequency_invalid_letter('!')"
+    "202": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
     ],
-    "1154": [
-      "response_language_langdetect(lang='pa')"
-    ],
-    "1259": [
-      "response_language_langdetect(lang='mr')"
-    ],
-    "1477": [
-      "response_language_langdetect(lang='fa')"
-    ],
-    "1582": [
-      "response_language_langdetect(lang='vi')"
-    ],
-    "1739": [
-      "response_language_langdetect(lang='vi')"
-    ],
-    "2225": [
-      "response_language_langdetect(lang='ko')"
-    ],
-    "2299": [
-      "response_language_langdetect(lang='sw')"
-    ],
-    "2309": [
-      "response_language_langdetect(lang='sw')"
+    "218": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
     ],
     "240": [
-      "response_language_langdetect(lang='ru')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "279": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "296": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "1019": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "1021": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "1051": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "1087": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "1108": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "1122": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      },
+      {
+        "type": "random_fallback_kwarg",
+        "random_calls": {
+          "choice": 2,
+          "randint": 0
+        }
+      }
+    ],
+    "1129": [
+      {
+        "type": "random_fallback_kwarg",
+        "random_calls": {
+          "choice": 2,
+          "randint": 0
+        }
+      }
+    ],
+    "1132": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "1153": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "1154": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "1219": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "1259": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "1287": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "1361": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "1389": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "1436": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "1477": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "1516": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "1535": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "1566": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "1571": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "1582": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "1593": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "1645": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "1667": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "1739": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "1779": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "1781": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "1813": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "1843": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "1967": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "1999": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "2100": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "2216": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "2225": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "2247": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "2299": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "2309": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "2341": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "2372": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "2391": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "2416": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "2422": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
     ],
     "2464": [
-      "response_language_langdetect(lang='hi')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "2517": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "2531": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "2563": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "2571": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
     ],
     "2596": [
-      "response_language_langdetect(lang='bg')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
     ],
     "2685": [
-      "response_language_langdetect(lang='kn')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
     ],
     "2724": [
-      "response_language_langdetect(lang='pt')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "2728": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "2736": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "2765": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "2817": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "2908": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "2943": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "3035": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
     ],
     "3063": [
-      "response_language_langdetect(lang='mr')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "3069": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
     ],
     "3112": [
-      "response_language_langdetect(lang='gu')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
     ],
     "3130": [
-      "response_language_langdetect(lang='hi')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "3150": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "3186": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
     ],
     "3191": [
-      "response_language_langdetect(lang='te')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
     ],
     "3195": [
-      "response_language_langdetect(lang='it')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "3204": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
     ],
     "3241": [
-      "response_language_langdetect(lang='ar')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "3276": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
     ],
     "3305": [
-      "response_language_langdetect(lang='hi')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
     ],
     "3311": [
-      "response_language_langdetect(lang='ko')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
     ],
     "3335": [
-      "response_language_langdetect(lang='ta')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "3380": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "3424": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "3434": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "3456": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
     ],
     "3494": [
-      "response_language_langdetect(lang='de')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
     ],
     "3502": [
-      "response_language_langdetect(lang='fi')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "3534": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
     ],
     "3567": [
-      "response_language_langdetect(lang='ur')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "3572": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
+    ],
+    "3608": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
+    ],
+    "3617": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_capital"
+        ]
+      }
     ],
     "3623": [
-      "response_language_langdetect(lang='th')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
     ],
     "3653": [
-      "response_language_langdetect(lang='ne')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
     ],
     "3669": [
-      "response_language_langdetect(lang='hi')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
     ],
     "3682": [
-      "response_language_langdetect(lang='de')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
+    ],
+    "3703": [
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "change_case:english_lowercase"
+        ]
+      }
     ],
     "3744": [
-      "response_language_langdetect(lang='bn')"
+      {
+        "type": "langdetect_unseeded",
+        "checker_ids": [
+          "language:response_language"
+        ]
+      }
     ]
   }
 }
