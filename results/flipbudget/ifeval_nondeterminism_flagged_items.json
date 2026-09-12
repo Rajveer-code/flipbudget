@@ -1,0 +1,105 @@
+{
+  "n_total_items": 541,
+  "n_flagged": 33,
+  "flagged_keys": {
+    "1108": [
+      "response_language_langdetect(lang='kn')"
+    ],
+    "1122": [
+      "letter_frequency_invalid_letter('#')"
+    ],
+    "1129": [
+      "letter_frequency_invalid_letter('!')"
+    ],
+    "1154": [
+      "response_language_langdetect(lang='pa')"
+    ],
+    "1259": [
+      "response_language_langdetect(lang='mr')"
+    ],
+    "1477": [
+      "response_language_langdetect(lang='fa')"
+    ],
+    "1582": [
+      "response_language_langdetect(lang='vi')"
+    ],
+    "1739": [
+      "response_language_langdetect(lang='vi')"
+    ],
+    "2225": [
+      "response_language_langdetect(lang='ko')"
+    ],
+    "2299": [
+      "response_language_langdetect(lang='sw')"
+    ],
+    "2309": [
+      "response_language_langdetect(lang='sw')"
+    ],
+    "240": [
+      "response_language_langdetect(lang='ru')"
+    ],
+    "2464": [
+      "response_language_langdetect(lang='hi')"
+    ],
+    "2596": [
+      "response_language_langdetect(lang='bg')"
+    ],
+    "2685": [
+      "response_language_langdetect(lang='kn')"
+    ],
+    "2724": [
+      "response_language_langdetect(lang='pt')"
+    ],
+    "3063": [
+      "response_language_langdetect(lang='mr')"
+    ],
+    "3112": [
+      "response_language_langdetect(lang='gu')"
+    ],
+    "3130": [
+      "response_language_langdetect(lang='hi')"
+    ],
+    "3191": [
+      "response_language_langdetect(lang='te')"
+    ],
+    "3195": [
+      "response_language_langdetect(lang='it')"
+    ],
+    "3241": [
+      "response_language_langdetect(lang='ar')"
+    ],
+    "3305": [
+      "response_language_langdetect(lang='hi')"
+    ],
+    "3311": [
+      "response_language_langdetect(lang='ko')"
+    ],
+    "3335": [
+      "response_language_langdetect(lang='ta')"
+    ],
+    "3494": [
+      "response_language_langdetect(lang='de')"
+    ],
+    "3502": [
+      "response_language_langdetect(lang='fi')"
+    ],
+    "3567": [
+      "response_language_langdetect(lang='ur')"
+    ],
+    "3623": [
+      "response_language_langdetect(lang='th')"
+    ],
+    "3653": [
+      "response_language_langdetect(lang='ne')"
+    ],
+    "3669": [
+      "response_language_langdetect(lang='hi')"
+    ],
+    "3682": [
+      "response_language_langdetect(lang='de')"
+    ],
+    "3744": [
+      "response_language_langdetect(lang='bn')"
+    ]
+  }
+}
