@@ -1,0 +1,191 @@
+[
+  {
+    "model": "01-ai/Yi-1.5-34B-Chat",
+    "n": 541,
+    "n_disagree": 41,
+    "disagree_rate": 0.07578558225508318,
+    "strict_acc": 0.5508317929759704
+  },
+  {
+    "model": "meta-llama/Meta-Llama-3-70B-Instruct",
+    "n": 541,
+    "n_disagree": 41,
+    "disagree_rate": 0.07578558225508318,
+    "strict_acc": 0.7707948243992606
+  },
+  {
+    "model": "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+    "n": 541,
+    "n_disagree": 29,
+    "disagree_rate": 0.053604436229205174,
+    "strict_acc": 0.600739371534196
+  },
+  {
+    "model": "01-ai/Yi-34B-Chat",
+    "n": 541,
+    "n_disagree": 27,
+    "disagree_rate": 0.04990757855822551,
+    "strict_acc": 0.4121996303142329
+  },
+  {
+    "model": "CohereForAI/c4ai-command-r-v01",
+    "n": 541,
+    "n_disagree": 27,
+    "disagree_rate": 0.04990757855822551,
+    "strict_acc": 0.6266173752310537
+  },
+  {
+    "model": "HuggingFaceH4/zephyr-7b-alpha",
+    "n": 541,
+    "n_disagree": 27,
+    "disagree_rate": 0.04990757855822551,
+    "strict_acc": 0.4602587800369686
+  },
+  {
+    "model": "01-ai/Yi-1.5-9B-Chat",
+    "n": 541,
+    "n_disagree": 25,
+    "disagree_rate": 0.04621072088724584,
+    "strict_acc": 0.5508317929759704
+  },
+  {
+    "model": "Qwen/Qwen2-7B",
+    "n": 541,
+    "n_disagree": 21,
+    "disagree_rate": 0.038817005545286505,
+    "strict_acc": 0.2532347504621072
+  },
+  {
+    "model": "mistralai/Mistral-7B-Instruct-v0.3",
+    "n": 541,
+    "n_disagree": 20,
+    "disagree_rate": 0.036968576709796676,
+    "strict_acc": 0.49353049907578556
+  },
+  {
+    "model": "HuggingFaceH4/zephyr-7b-beta",
+    "n": 541,
+    "n_disagree": 18,
+    "disagree_rate": 0.033271719038817,
+    "strict_acc": 0.43253234750462105
+  },
+  {
+    "model": "Qwen/Qwen2-72B-Instruct",
+    "n": 541,
+    "n_disagree": 17,
+    "disagree_rate": 0.031423290203327174,
+    "strict_acc": 0.7578558225508318
+  },
+  {
+    "model": "CohereForAI/c4ai-command-r-plus",
+    "n": 541,
+    "n_disagree": 15,
+    "disagree_rate": 0.027726432532347505,
+    "strict_acc": 0.7301293900184843
+  },
+  {
+    "model": "01-ai/Yi-34B",
+    "n": 541,
+    "n_disagree": 13,
+    "disagree_rate": 0.024029574861367836,
+    "strict_acc": 0.24584103512014788
+  },
+  {
+    "model": "bigcode/starcoder2-15b",
+    "n": 541,
+    "n_disagree": 10,
+    "disagree_rate": 0.018484288354898338,
+    "strict_acc": 0.21072088724584104
+  },
+  {
+    "model": "google/gemma-7b",
+    "n": 541,
+    "n_disagree": 10,
+    "disagree_rate": 0.018484288354898338,
+    "strict_acc": 0.2033271719038817
+  },
+  {
+    "model": "mosaicml/mpt-7b",
+    "n": 541,
+    "n_disagree": 10,
+    "disagree_rate": 0.018484288354898338,
+    "strict_acc": 0.1534195933456562
+  },
+  {
+    "model": "Deci/DeciLM-7B",
+    "n": 541,
+    "n_disagree": 6,
+    "disagree_rate": 0.011090573012939002,
+    "strict_acc": 0.21072088724584104
+  },
+  {
+    "model": "databricks/dolly-v2-12b",
+    "n": 541,
+    "n_disagree": 4,
+    "disagree_rate": 0.0073937153419593345,
+    "strict_acc": 0.17005545286506468
+  },
+  {
+    "model": "EleutherAI/gpt-j-6b",
+    "n": 541,
+    "n_disagree": 3,
+    "disagree_rate": 0.005545286506469501,
+    "strict_acc": 0.1866913123844732
+  },
+  {
+    "model": "microsoft/phi-2",
+    "n": 541,
+    "n_disagree": 3,
+    "disagree_rate": 0.005545286506469501,
+    "strict_acc": 0.21072088724584104
+  },
+  {
+    "model": "tiiuae/falcon-40b",
+    "n": 541,
+    "n_disagree": 3,
+    "disagree_rate": 0.005545286506469501,
+    "strict_acc": 0.1977818853974122
+  },
+  {
+    "model": "ibm/merlinite-7b",
+    "n": 541,
+    "n_disagree": 2,
+    "disagree_rate": 0.0036968576709796672,
+    "strict_acc": 0.19038817005545286
+  },
+  {
+    "model": "microsoft/phi-1_5",
+    "n": 541,
+    "n_disagree": 2,
+    "disagree_rate": 0.0036968576709796672,
+    "strict_acc": 0.1367837338262477
+  },
+  {
+    "model": "mistralai/Mistral-7B-v0.1",
+    "n": 541,
+    "n_disagree": 2,
+    "disagree_rate": 0.0036968576709796672,
+    "strict_acc": 0.17375231053604437
+  },
+  {
+    "model": "tiiuae/falcon-7b",
+    "n": 541,
+    "n_disagree": 2,
+    "disagree_rate": 0.0036968576709796672,
+    "strict_acc": 0.11829944547134935
+  },
+  {
+    "model": "EleutherAI/gpt-neox-20b",
+    "n": 541,
+    "n_disagree": 1,
+    "disagree_rate": 0.0018484288354898336,
+    "strict_acc": 0.19963031423290203
+  },
+  {
+    "model": "EleutherAI/pythia-160m",
+    "n": 541,
+    "n_disagree": 1,
+    "disagree_rate": 0.0018484288354898336,
+    "strict_acc": 0.1256931608133087
+  }
+]

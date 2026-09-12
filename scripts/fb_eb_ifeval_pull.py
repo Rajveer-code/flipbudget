@@ -30,6 +30,10 @@ import sys
 import types
 from pathlib import Path
 
+import truststore
+truststore.inject_into_ssl()  # local Windows CA-cert workaround, same fix already
+                               # needed for every other HF Hub call this session
+
 KNOWLEDGESHIFT_ROOT = Path(r"D:\Projects\knowledgeshift")
 VENDOR_ROOT = KNOWLEDGESHIFT_ROOT / "vendor" / "lm-evaluation-harness"
 
