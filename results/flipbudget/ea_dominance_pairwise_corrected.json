@@ -1,0 +1,14 @@
+{
+  "n_scored": 136,
+  "median_ratio": 5.238973666639818,
+  "mean_ratio": 4.6122408998353475,
+  "fraction_dominant": 0.8970588235294118,
+  "fraction_gt_2x": 0.8970588235294118,
+  "fraction_gt_10x": 0.21323529411764705,
+  "note": "recomputed directly from reconciliation_four_layers.json's per-pair w_audit_only/w_sampling (bounded_comparison / bounded_single_model_extrema methodology), NOT ea_dominance_study.py's original corner-drop 0.95-floor method. Supersedes ea_dominance_study.json's pairwise section: original claim was median 134.32x, 100% dominant; corrected is below.",
+  "superseded_original": {
+    "median_ratio": 134.31931160916486,
+    "fraction_dominant": 1.0,
+    "source": "results/flipbudget/ea_dominance_study.json (pairwise), see TIER1_VERDICT.md"
+  }
+}
