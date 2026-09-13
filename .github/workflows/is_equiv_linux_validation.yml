@@ -1,0 +1,59 @@
+name: is_equiv Linux validation
+
+# Item 3 of the final validation phase: the Windows SIGALRM/is_equiv bug
+# (MATH_COMPARATOR_BUG.md) was root-caused and fixed, but never verified on a
+# real Linux environment where signal.SIGALRM actually exists (no WSL/Docker
+# available on the dev machine). This workflow runs the SAME verification
+# script (scripts/fb_verify_is_equiv_bug.py) on ubuntu-latest, where the
+# ORIGINAL, unmodified vendor is_equiv() should already work correctly (its
+# signal.alarm timeout has a real SIGALRM to call). If the "broken" and
+# "fixed" code paths agree on Linux, that confirms the bug is Windows-specific
+# and the platform-independent fix changes nothing on a platform where the
+# original code already worked.
+
+on:
+  workflow_dispatch: {}
+  push:
+    paths:
+      - '.github/workflows/is_equiv_linux_validation.yml'
+      - 'scripts/fb_verify_is_equiv_bug.py'
+      - 'scripts/fb_tc_real_analysis.py'
+      - 'vendor/leaderboard_math/utils.py'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Confirm SIGALRM exists on this runner
+        run: python -c "import signal; assert hasattr(signal,'SIGALRM'); print('SIGALRM present:', hasattr(signal,'SIGALRM'))"
+
+      - name: Install pinned dependencies
+        run: |
+          pip install numpy scipy "sympy==1.13.1" "math-verify==0.9.0" "antlr4-python3-runtime==4.11.0"
+
+      - name: Run the same verification script used on Windows
+        run: python scripts/fb_verify_is_equiv_bug.py
+
+      - name: Rename output with CI provenance (do not overwrite the Windows-run file)
+        run: |
+          cp results/flipbudget/is_equiv_bug_verification.json results/flipbudget/is_equiv_bug_verification_ubuntu_ci.json
+          python - <<'PY'
+          import json, platform, sys
+          with open("results/flipbudget/is_equiv_bug_verification_ubuntu_ci.json") as f:
+              d = json.load(f)
+          d["_ci_platform"] = platform.platform()
+          d["_ci_python_version"] = sys.version
+          with open("results/flipbudget/is_equiv_bug_verification_ubuntu_ci.json", "w") as f:
+              json.dump(d, f, indent=2)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: is_equiv_ubuntu_ci_result
+          path: results/flipbudget/is_equiv_bug_verification_ubuntu_ci.json
