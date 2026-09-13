@@ -1,0 +1,95 @@
+{
+  "scenarios": [
+    {
+      "name": "perfect_scorer_realistic_audit_n",
+      "a_hat": 0.5,
+      "n_bench": 1000,
+      "x_alpha": 0,
+      "n0": 11,
+      "x_beta": 0,
+      "n1": 11,
+      "alpha_ci": [
+        2.7755575615628914e-17,
+        0.2588400172488141
+      ],
+      "beta_ci": [
+        2.7755575615628914e-17,
+        0.2588400172488141
+      ],
+      "w_sampling": 0.06198064213930023,
+      "w_identification": 0.34923636363636357,
+      "ratio": 5.634603830845475
+    },
+    {
+      "name": "perfect_scorer_large_audit",
+      "a_hat": 0.5,
+      "n_bench": 1000,
+      "x_alpha": 0,
+      "n0": 2000,
+      "x_beta": 0,
+      "n1": 2000,
+      "alpha_ci": [
+        0.0,
+        0.0019171176005129348
+      ],
+      "beta_ci": [
+        0.0,
+        0.0019171176005129348
+      ],
+      "w_sampling": 0.06198064213930023,
+      "w_identification": 0.0019208000000000003,
+      "ratio": 0.030990321069650127
+    },
+    {
+      "name": "high_accuracy_scorer_modest_audit",
+      "a_hat": 0.6,
+      "n_bench": 1000,
+      "x_alpha": 1,
+      "n0": 100,
+      "x_beta": 1,
+      "n1": 100,
+      "alpha_ci": [
+        0.0017673865655472645,
+        0.0544875247609346
+      ],
+      "beta_ci": [
+        0.0017673865655472645,
+        0.0544875247609346
+      ],
+      "w_sampling": 0.060728378868532294,
+      "w_identification": 0.055862688800307314,
+      "ratio": 0.9198778205695486
+    },
+    {
+      "name": "audit_sized_to_own_required_n",
+      "a_hat": 0.5,
+      "n_bench": 1000,
+      "x_alpha": 13,
+      "n0": 415,
+      "x_beta": 13,
+      "n1": 415,
+      "alpha_ci": [
+        0.01839629154203762,
+        0.05285164562561717
+      ],
+      "beta_ci": [
+        0.01839629154203762,
+        0.05285164562561717
+      ],
+      "w_sampling": 0.06198064213930023,
+      "w_identification": 0.037098549184917784,
+      "ratio": 0.5985505781230783
+    },
+    {
+      "name": "null_true_effect_identical_models",
+      "a1": 0.5,
+      "a2": 0.5,
+      "identification_interval": [
+        -0.34923636363636357,
+        0.34923636363636357
+      ],
+      "identification_contains_zero": true,
+      "sampling_contains_zero": true
+    }
+  ]
+}
