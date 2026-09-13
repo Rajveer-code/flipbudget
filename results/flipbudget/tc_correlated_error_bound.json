@@ -1,0 +1,46 @@
+{
+  "real_audit_bound": {
+    "n_paired": 51,
+    "x_either_wrong": 0,
+    "upper_95_either_wrong": 0.06977703074953864,
+    "implied_p_upper_rho0": 0.03551932665788404,
+    "implied_p_upper_rho1": 0.06977703074953864
+  },
+  "sensitivity_to_rho": [
+    {
+      "rho": 0.0,
+      "n_unresolved": 15,
+      "pct_unresolved": 22.727272727272727
+    },
+    {
+      "rho": 0.25,
+      "n_unresolved": 15,
+      "pct_unresolved": 22.727272727272727
+    },
+    {
+      "rho": 0.5,
+      "n_unresolved": 13,
+      "pct_unresolved": 19.696969696969695
+    },
+    {
+      "rho": 0.75,
+      "n_unresolved": 8,
+      "pct_unresolved": 12.121212121212121
+    },
+    {
+      "rho": 1.0,
+      "n_unresolved": 0,
+      "pct_unresolved": 0.0
+    }
+  ],
+  "n_pairs_in_sensitivity": 66,
+  "max_possible_pairs_changed_by_correlation": 15,
+  "required_additional_labels": {
+    "target_either_wrong_events": 20,
+    "assumed_p": 0.03,
+    "required_paired_n": 338.40947546531305,
+    "required_raw_audit_n": 457.84811386483534,
+    "current_raw_audit_n": 69,
+    "multiplier_vs_current": 6.635479911084571
+  }
+}
