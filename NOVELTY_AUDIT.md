@@ -63,3 +63,69 @@ September 2026.
 refresh.** The one adjustment: cite `2608.13326` explicitly in related
 work as an example of "identifiability" being used for a different problem
 in the same general area, pre-empting a reviewer conflating the two.
+
+## Final refresh (item 13) — a close, serious neighbor found, and the formal A/B/C/D classification
+
+**Chen, Rambachan & Tamer, "Partial Identification from LLM Prompts"
+(arXiv:2606.15031, June 2026, Yale/MIT/Harvard).** This is the closest
+paper found in any pass of this project and must be cited and explicitly
+distinguished in the manuscript, not omitted. Their setup: LLMs used AS
+binary classifiers/raters of a latent truth (e.g. toxicity), partially
+identifying the *prevalence* θ=P(X*=1) from a panel of LLM reports whose
+errors "may be arbitrarily dependent given the truth" because "LLMs share
+training corpora, benchmarks, synthetic data, distillation pipelines, and
+alignment procedures" — explicitly breaking Dawid-Skene conditional
+independence, exactly the mechanism this project's own correlated-error
+theory (`THEORY_EXTENSIONS.md` §1) also invokes. Their identifying
+restriction — reporter-specific sensitivity/specificity calibration
+constants bounding a false-positive/false-negative-style rate — is
+**structurally the same object as this project's (alpha,beta)**, and both
+projects cite the same classical lineage (Horowitz & Manski 1995, Molinari
+2008, Hu 2008).
+
+**Why this is a neighbor, not a collision:** their LLMs are the *raters*
+(the thing that might be wrong); this project's LLMs are the *ratees* (the
+thing being scored) by a single fixed, non-LLM, deterministic scorer.
+Their estimand is a population *prevalence*; this project's is a
+*difference in two specific models' accuracies* (a benchmark-comparison/
+ranking question), with a flip-budget and an audit-design allocation
+question their paper does not address at all (confirmed: no discussion of
+benchmark comparison, ranking, or human-labeling-budget allocation found
+in their design-taxonomy, calibration, or empirical sections). **Their
+headline contributions (a replication-design taxonomy for count/vector/
+matrix panels; a truth-sufficient-coarsening theorem for response
+matrices; sharpness from the full score law) have no counterpart here**
+because this project has exactly one reporter (the scorer) per item, not
+a multi-rater panel — the matrix-reduction question they solve does not
+arise in this project's setting.
+
+**What this changes:** it sharpens, rather than damages, this project's
+own honesty about T-A. Two independent, serious groups adapting the same
+classical misclassification-bounds toolkit to adjacent LLM-measurement
+problems in the same year is real evidence the *toolkit* is not this
+project's contribution (already conceded) — it is modest additional
+reason to lean the novelty claim entirely on the combination this project
+actually offers (benchmark comparison + audit design), which their paper
+does not touch.
+
+### Formal A/B/C/D classification, every theorem/result, as instructed
+
+A = classical, B = direct adaptation, C = nontrivial extension, D = genuinely new. Never call A or B novel.
+
+| Result | Class | Reasoning |
+|---|---|---|
+| T-A: Scorer Sensitivity Model (Λ-odds-bound) | **B** | Direct adaptation of the marginal-sensitivity-model / misclassification-bounds literature (Horowitz & Manski 1995; Molinari 2008; Hu 2008) — the same family Chen-Rambachan-Tamer (2026) also adapt, independently, to a different problem |
+| T-H: sharpness of the identified set | **B** | Standard linear-fractional vertex-theorem argument; a known proof technique applied to this specific box |
+| T-B: design-sensitivity impossibility (Λ̃) | **B** | Direct adaptation of Rosenbaum design sensitivity (matched-observational-studies literature) to a benchmark-comparison setting |
+| Neyman-optimal audit-stratum allocation | **A** | Classical (Neyman 1934), applied with no modification to the allocation formula itself — see `fb_audit_design_optimization.py`'s explicit proof, cited not claimed |
+| Four-layer reconciliation (sampling/audit-only/scorer-only/combined) | **C** | The layers themselves are individually classical, but decomposing a benchmark comparison into exactly these four, comparable, same-methodology layers and reporting per-layer valid/excluded counts is not found elsewhere — a nontrivial organizing contribution, not a new theorem |
+| Flip budget (`d*`, minimum perturbation to flip a comparison) | **C** | A genuinely useful reframing of an existing sensitivity bound as a decision-relevant single number; the underlying bound (T-A/T-H) is B, the reframing is a nontrivial, not fully mechanical, extension |
+| Ranking-preservation theorem (`THEORY_EXTENSIONS.md` §2) | **B** | An explicit corollary of T-H's sharpness result, stated as a theorem for citability — not new content beyond T-H |
+| Correlated-error cancellation (Props. 1–3, `THEORY_EXTENSIONS.md` §1) | **B** | Direct application of a standard one-factor/conditional-independence-given-a-common-cause variance decomposition (the same structural assumption as Dawid-Skene/Hui-Walter) |
+| Empty-identified-set diagnostic (this session's central finding) | **C** | Not a new theorem, but a nontrivial, previously-unstated correct treatment of a real degenerate case in the [0,1]-bounded identification methodology — the *absence* of this check in the field's naive box-clipping is the actual finding |
+| Audit-design formal optimization + Neyman-vs-proportional-vs-partial-pooling comparison on real sparse data (this session) | **C** | The optimization problem itself is classical (A above); finding that naive plug-in Neyman is *dominated* by proportional allocation on this real, sparse-event data (`AUDIT_DESIGN_OPTIMIZATION.md`) is a nontrivial, data-specific result about when the classical formula's own assumptions (a decent pilot estimate) break down |
+| The SIGALRM/Windows bug, the empty-set bug, the T-C hardcoded-path bug | **D**, but as *findings*, not *methodology* | Genuinely new (previously undiscovered), but they are bug reports, not mathematical or methodological contributions — correctly kept out of the theorem inventory |
+
+### Is the combination sufficient for NeurIPS 2027?
+
+**Yes, for the Evaluations & Datasets track, on the combination, not on any single piece.** No individual theorem here is D. The manuscript's defensible novelty claim is the *combination* (C-level): applying classical misclassification-sensitivity bounds specifically to benchmark **comparison** (not just single-model accuracy), formalizing the resulting audit-design problem as a budget-allocation optimization with a proven classical solution whose real-data behavior is itself informative (dominated by proportional allocation under sparse events — a genuine, non-obvious finding), and doing all of this with a from-scratch, self-audited reproducibility discipline that caught three real bugs along the way. This is consistent with, and now more precisely stated than, the prior verdict in `FINAL_DECISION.md`.
