@@ -69,17 +69,17 @@ def matches_gold(answer, gold):
 
 
 def load_l1():
-    with open(r"C:\Users\Asus\Downloads\tc_expansion_l1 (2).csv", newline="", encoding="utf-8") as f:
+    with open("labeling/tc_expansion_l1_completed.csv", newline="", encoding="utf-8") as f:
         return {r["uid"]: r["your_answer"] for r in csv.DictReader(f)}
 
 
 def load_l2():
-    with open(r"C:\Users\Asus\Downloads\tc_expansion_l2_answers.csv", newline="", encoding="utf-8") as f:
+    with open("labeling/tc_expansion_l2_answers.csv", newline="", encoding="utf-8") as f:
         return {r["uid"]: r["your_answer"] for r in csv.DictReader(f)}
 
 
 def load_l3():
-    with open(r"C:\Users\Asus\Downloads\tc_expansion_l3_answers.csv", newline="", encoding="utf-8") as f:
+    with open("labeling/tc_expansion_l3_answers.csv", newline="", encoding="utf-8") as f:
         return {r["uid"]: r["your_answer"] for r in csv.DictReader(f)}
 
 
