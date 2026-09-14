@@ -40,6 +40,11 @@ STEPS = [
     ("IFEval: reproducibility check (15+5 replicates)", "scripts/fb_ifeval_reproducibility_check.py", "network"),
     ("IFEval: key re-flag", "scripts/fb_ifeval_key_reflag.py", "pure"),
     ("Provenance manifest", "scripts/fb_provenance_manifest.py", "pure"),
+    ("E-A: canonical dominance recomputation (final validation phase)", "scripts/fb_ea_dominance_canonical.py", "pure"),
+    ("Root-cause: 70 empty scorer-only sets (final validation phase)", "scripts/fb_rootcause_empty_scorer_layer.py", "pure"),
+    ("Negative controls (final validation phase)", "scripts/fb_negative_controls.py", "pure"),
+    ("T-C: correlated-error bound (final validation phase)", "scripts/fb_tc_correlated_error_bound.py", "human-label"),
+    ("Audit design: formal optimization + budget curve (final validation phase)", "scripts/fb_audit_design_optimization.py", "pure"),
 ]
 
 

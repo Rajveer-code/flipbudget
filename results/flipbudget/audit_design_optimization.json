@@ -1,0 +1,183 @@
+{
+  "greedy_at_4x": {
+    "B": 1156,
+    "n_valid": 120,
+    "n_unresolved": 48,
+    "median_width": 0.11877381879094978
+  },
+  "current_total_budget": 289,
+  "baseline": {
+    "n_valid": 120,
+    "n_unresolved": 91,
+    "median_width": 0.28000766157679446
+  },
+  "budget_multipliers": [
+    0,
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "curves": {
+    "proportional": [
+      {
+        "B": 0,
+        "n_valid": 120,
+        "n_unresolved": 91,
+        "median_width": 0.28000766157679446
+      },
+      {
+        "B": 289,
+        "n_valid": 120,
+        "n_unresolved": 72,
+        "median_width": 0.180987223014573
+      },
+      {
+        "B": 578,
+        "n_valid": 120,
+        "n_unresolved": 64,
+        "median_width": 0.14378583661441255
+      },
+      {
+        "B": 1156,
+        "n_valid": 120,
+        "n_unresolved": 57,
+        "median_width": 0.10691044216699903
+      },
+      {
+        "B": 2312,
+        "n_valid": 120,
+        "n_unresolved": 42,
+        "median_width": 0.07369188033503603
+      },
+      {
+        "B": 4624,
+        "n_valid": 120,
+        "n_unresolved": 26,
+        "median_width": 0.050415038576197425
+      }
+    ],
+    "neyman": [
+      {
+        "B": 0,
+        "n_valid": 120,
+        "n_unresolved": 91,
+        "median_width": 0.28000766157679446
+      },
+      {
+        "B": 289,
+        "n_valid": 120,
+        "n_unresolved": 89,
+        "median_width": 0.2599453289238875
+      },
+      {
+        "B": 578,
+        "n_valid": 120,
+        "n_unresolved": 89,
+        "median_width": 0.24690463216135095
+      },
+      {
+        "B": 1156,
+        "n_valid": 120,
+        "n_unresolved": 89,
+        "median_width": 0.24078755269230062
+      },
+      {
+        "B": 2312,
+        "n_valid": 120,
+        "n_unresolved": 89,
+        "median_width": 0.23986258694129498
+      },
+      {
+        "B": 4624,
+        "n_valid": 120,
+        "n_unresolved": 89,
+        "median_width": 0.23804633057801988
+      }
+    ],
+    "oracle": [
+      {
+        "B": 0,
+        "n_valid": 120,
+        "n_unresolved": 91,
+        "median_width": 0.28000766157679446,
+        "note": "identical to Neyman in this one-shot-data setting"
+      },
+      {
+        "B": 289,
+        "n_valid": 120,
+        "n_unresolved": 89,
+        "median_width": 0.2599453289238875,
+        "note": "identical to Neyman in this one-shot-data setting"
+      },
+      {
+        "B": 578,
+        "n_valid": 120,
+        "n_unresolved": 89,
+        "median_width": 0.24690463216135095,
+        "note": "identical to Neyman in this one-shot-data setting"
+      },
+      {
+        "B": 1156,
+        "n_valid": 120,
+        "n_unresolved": 89,
+        "median_width": 0.24078755269230062,
+        "note": "identical to Neyman in this one-shot-data setting"
+      },
+      {
+        "B": 2312,
+        "n_valid": 120,
+        "n_unresolved": 89,
+        "median_width": 0.23986258694129498,
+        "note": "identical to Neyman in this one-shot-data setting"
+      },
+      {
+        "B": 4624,
+        "n_valid": 120,
+        "n_unresolved": 89,
+        "median_width": 0.23804633057801988,
+        "note": "identical to Neyman in this one-shot-data setting"
+      }
+    ],
+    "partial_pooling_aware": [
+      {
+        "B": 0,
+        "n_valid": 120,
+        "n_unresolved": 91,
+        "median_width": 0.28000766157679446
+      },
+      {
+        "B": 289,
+        "n_valid": 120,
+        "n_unresolved": 74,
+        "median_width": 0.23128119543950332
+      },
+      {
+        "B": 578,
+        "n_valid": 120,
+        "n_unresolved": 65,
+        "median_width": 0.20288703745425812
+      },
+      {
+        "B": 1156,
+        "n_valid": 120,
+        "n_unresolved": 55,
+        "median_width": 0.17496123857182838
+      },
+      {
+        "B": 2312,
+        "n_valid": 120,
+        "n_unresolved": 44,
+        "median_width": 0.15416671008286525
+      },
+      {
+        "B": 4624,
+        "n_valid": 120,
+        "n_unresolved": 37,
+        "median_width": 0.13135912922867138
+      }
+    ]
+  },
+  "stopping_rule_B": 289
+}

@@ -137,3 +137,46 @@ Lower-value, not pursued further here: re-litigating T-A/T-H's novelty
 framing (Reviewer 1) — the masterplan's existing language is already the
 correct, defensible position; further hedging would read as insecure, not
 rigorous.
+
+## Final validation phase update — how each reviewer's attack changes
+
+1. **Reproducibility reviewer (5).** The four selected fixes above are
+   now done: `is_equiv` verified on real Linux CI (not just "should work
+   the same," `MATH_COMPARATOR_LINUX_VALIDATION.md`), a one-command
+   reproducibility pipeline exists and caught two further real bugs in the
+   course of being run (a mutable self-comparison bug, and — found again
+   this phase — `fb_tc_real_analysis.py`'s hardcoded absolute Windows
+   paths, only surfaced because the CI run tried to execute on a machine
+   that wasn't the author's own). **This reviewer's attack is now
+   substantially defused**, and the methods-integrity narrative (item 4's
+   suggestion) is stronger, not just present: four real bugs, not one,
+   found and fixed by the project's own adversarial tooling, with two of
+   the four found specifically *because* this final validation phase
+   tried to run the project somewhere other than the dev machine.
+2. **Benchmark researcher (3).** The independent-third-benchmark gap is
+   now more precisely characterized, not narrowed: HELM and AlpacaEval are
+   real, licensed, response-level candidates that were not checked before
+   (`INDEPENDENT_BENCHMARK_SEARCH.md`) — the honest position is "a properly
+   scoped follow-up, needs new human labeling," not "impossible" or
+   "done." A sharp version of this reviewer's attack would also now ask
+   about Chen, Rambachan & Tamer (2026) — checked directly
+   (`NOVELTY_AUDIT.md`'s final refresh) and found to be a close neighbor
+   using the same classical misclassification-bounds lineage for a
+   different problem (LLM-as-rater prevalence, not benchmark comparison).
+   Pre-empted, not discovered by a reviewer after submission.
+3. **Statistics/econometrics reviewer (1).** New material to defend
+   against, found by this project's own stress-testing, not by the
+   reviewer: naive plug-in Neyman allocation is *dominated* by simple
+   proportional allocation on this project's real, sparse audit data
+   (`AUDIT_DESIGN_OPTIMIZATION.md`) — a sophisticated reviewer would ask
+   "did you even check Neyman actually helps here?" This is now answered
+   before being asked, and the answer is more interesting than "yes":
+   Neyman is provably optimal for its stated objective (variance, given
+   the true `p`) but a poor proxy for the discrete resolved-pair-count
+   objective when planning estimates are this noisy — reported as a
+   genuine limitation, which is a stronger position for a stats reviewer
+   than silently assuming Neyman is unconditionally best.
+4. **ML evaluation reviewer (2).** The `is_equiv` platform check (this
+   reviewer's strongest point, per the original assessment) is resolved.
+   Remaining open item unchanged: a genuinely independent third
+   benchmark, now with named candidates rather than a dead end.

@@ -285,6 +285,45 @@ open design-space question, not claimed to be dominated, since the current
 comparison only optimizes allocation *within* the already-chosen
 stratification, not the choice of stratifying variable itself.
 
+**Update (final validation phase — item 5/8, `AUDIT_DESIGN_OPTIMIZATION.md`,
+`fb_audit_design_optimization.py`).** Neyman allocation's optimality claim
+above is about *minimizing total variance given the true `p_h`* — proven,
+classical (Neyman 1934), unchanged. Computing it in practice requires a
+*planning* point estimate for `p_h`, and on this project's real audit data
+(15/17 models have exactly zero observed false-credit events, 17/17 zero
+false-miss events) that plug-in estimate is itself extremely noisy. Swept
+as an actual budget curve on the real 136 pairs' audit-only layer, **naive
+plug-in Neyman allocation is dominated by simple proportional allocation on
+the project's actual decision-relevant objective** (number of resolved
+pairwise comparisons): proportional reaches 22% unresolved at 16× the
+current budget, Neyman stalls at 74% because it assigns nearly all
+additional budget to the one or two cells with the largest (and noisiest)
+observed `p̂(1-p̂)`, starving every zero-count cell of the very additional
+labels that would inform it. **This does not contradict the variance-
+optimality proof — it shows variance-optimality-given-the-true-`p`
+is a poor proxy for this discrete objective when the planning estimate
+itself is this unreliable**, and is reported as a real limitation of naive
+plug-in Neyman on sparse real audit data, not a flaw in the classical
+theorem.
+
+**Update (item 7 — connecting the sensitivity bound to the headline
+finding, not just to T-C's own 0/69 result).** The `q_max(η)` bound above
+was derived for T-C's own scorer-wrong rate target. The same logic bears
+on whether human-reference error could explain away the *headline*
+audit-estimation-dominance finding (median 6.10×, `CANONICAL_EA_RESULT.md`):
+since the reconciliation's audit-only layer (75.8% unresolved) and the
+6.10× ratio are both driven by the *width* of Wilson-CI boxes on the
+audited α/β, not by whether any individual disagreement was flagged, human-
+reference error would have to bias the audited x_alpha/x_beta *counts*
+themselves, not just mask isolated disagreements. **Given T-C's measured
+100% three-way agreement (B5) and the `q_max(η)` bound's own conclusion
+(no concerning breakdown point below η≈5%), there is no evidence available
+that would let human-reference error meaningfully shrink the observed
+audit-CI widths that drive the 6.10× finding** — the two questions (does
+reference error hide a scorer-wrong event; does it shrink audit-CI width)
+are related but distinct, and this project's data speaks more directly to
+the first than the second, named here rather than silently conflated.
+
 ---
 
 ## 6. Partial pooling — when it helps, when it hurts
