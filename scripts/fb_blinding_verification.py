@@ -22,6 +22,7 @@ SHEETS = [
     ("T-C L2 (26-row)", "labeling/tc_expansion_l2.csv"),
     ("T-C L3 (14-row)", "labeling/tc_expansion_l3.csv"),
     ("IFEval L1 (454-row)", "labeling/ifeval_audit_l1.csv"),
+    ("T-C expansion 2 (458-row)", "labeling/tc_expansion2_l1.csv"),
 ]
 
 
