@@ -1,0 +1,556 @@
+{
+  "part_a_taxonomy_cases": [
+    {
+      "category": "formatting",
+      "tag": "dfrac_vs_frac_credit",
+      "response": "The answer is \\boxed{\\dfrac{1}{2}}.",
+      "gold_solution": "\\boxed{\\frac{1}{2}}",
+      "expect_credit": true,
+      "exact_match": true,
+      "exact_match_original": true,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "formatting",
+      "tag": "different_value_no_credit",
+      "response": "The answer is \\boxed{\\dfrac{1}{3}}.",
+      "gold_solution": "\\boxed{\\frac{1}{2}}",
+      "expect_credit": false,
+      "exact_match": false,
+      "exact_match_original": false,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "latex",
+      "tag": "sign_placement_credit",
+      "response": "So the result is \\boxed{\\frac{-1}{2}}.",
+      "gold_solution": "\\boxed{-\\frac{1}{2}}",
+      "expect_credit": true,
+      "exact_match": true,
+      "exact_match_original": true,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "latex",
+      "tag": "genuinely_wrong_sign_no_credit",
+      "response": "So the result is \\boxed{\\frac{1}{2}}.",
+      "gold_solution": "\\boxed{-\\frac{1}{2}}",
+      "expect_credit": false,
+      "exact_match": false,
+      "exact_match_original": false,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "whitespace",
+      "tag": "extra_spacing_credit",
+      "response": "Final Answer:  \\boxed{  5x + 2y  }  \n\n",
+      "gold_solution": "\\boxed{5x+2y}",
+      "expect_credit": true,
+      "exact_match": true,
+      "exact_match_original": true,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "whitespace",
+      "tag": "spacing_cannot_rescue_wrong_value",
+      "response": "Final Answer:  \\boxed{  6x + 2y  }  \n\n",
+      "gold_solution": "\\boxed{5x+2y}",
+      "expect_credit": false,
+      "exact_match": false,
+      "exact_match_original": false,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "delimiters",
+      "tag": "dollar_wrapped_credit",
+      "response": "The answer is \\boxed{$7$}.",
+      "gold_solution": "\\boxed{7}",
+      "expect_credit": true,
+      "exact_match": true,
+      "exact_match_original": true,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "delimiters",
+      "tag": "bracket_wrapped_credit",
+      "response": "The answer is \\boxed{\\[7\\]}.",
+      "gold_solution": "\\boxed{7}",
+      "expect_credit": true,
+      "exact_match": true,
+      "exact_match_original": false,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "false_miss"
+    },
+    {
+      "category": "answer_position",
+      "tag": "unboxed_prose_final_answer",
+      "response": "We simplify step by step.\nFinal Answer: The final answer is $2015$. I hope it is correct.\n",
+      "gold_solution": "\\boxed{2015}",
+      "expect_credit": true,
+      "exact_match": true,
+      "exact_match_original": false,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "false_miss"
+    },
+    {
+      "category": "answer_position",
+      "tag": "unboxed_prose_wrong_answer_no_credit",
+      "response": "We simplify step by step.\nFinal Answer: The final answer is $2016$. I hope it is correct.\n",
+      "gold_solution": "\\boxed{2015}",
+      "expect_credit": false,
+      "exact_match": false,
+      "exact_match_original": false,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "verbosity",
+      "tag": "long_preamble_credit",
+      "response": "Let me think about this very carefully, considering several possible approaches before committing to one. Let me think about this very carefully, considering several possible approaches before committing to one. Let me think about this very carefully, considering several possible approaches before committing to one. Let me think about this very carefully, considering several possible approaches before committing to one. Let me think about this very carefully, considering several possible approaches before committing to one. Let me think about this very carefully, considering several possible approaches before committing to one. Let me think about this very carefully, considering several possible approaches before committing to one. Let me think about this very carefully, considering several possible approaches before committing to one. \\boxed{42}",
+      "gold_solution": "\\boxed{42}",
+      "expect_credit": true,
+      "exact_match": true,
+      "exact_match_original": true,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "verbosity",
+      "tag": "terse_correct_credit",
+      "response": "\\boxed{42}",
+      "gold_solution": "\\boxed{42}",
+      "expect_credit": true,
+      "exact_match": true,
+      "exact_match_original": true,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "multiple_answers",
+      "tag": "two_boxed_last_is_correct",
+      "response": "First I get \\boxed{2012401}, but checking again, \\boxed{2012402}.",
+      "gold_solution": "\\boxed{2012402}",
+      "expect_credit": true,
+      "exact_match": false,
+      "exact_match_original": true,
+      "error": null,
+      "exact_match_classification": "false_miss",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "multiple_answers",
+      "tag": "two_boxed_last_is_WRONG_true_answer_in_prose",
+      "response": "First I get \\boxed{2012401}, but checking again, \\boxed{2012402}. Actually wait, let me redo this. Final Answer: The final answer is $2015$. I hope it is correct.",
+      "gold_solution": "\\boxed{2015}",
+      "expect_credit": true,
+      "exact_match": true,
+      "exact_match_original": false,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "false_miss"
+    },
+    {
+      "category": "self_correction",
+      "tag": "explicit_correction_final_right",
+      "response": "The answer is \\boxed{10}. Wait, that's wrong. The correct answer is \\boxed{15}.",
+      "gold_solution": "\\boxed{15}",
+      "expect_credit": true,
+      "exact_match": false,
+      "exact_match_original": true,
+      "error": null,
+      "exact_match_classification": "false_miss",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "self_correction",
+      "tag": "explicit_correction_final_still_wrong",
+      "response": "The answer is \\boxed{10}. Wait, that's wrong. The correct answer is \\boxed{15}.",
+      "gold_solution": "\\boxed{20}",
+      "expect_credit": false,
+      "exact_match": false,
+      "exact_match_original": false,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "numerical_formatting",
+      "tag": "decimal_vs_fraction_credit",
+      "response": "\\boxed{0.5}",
+      "gold_solution": "\\boxed{\\frac{1}{2}}",
+      "expect_credit": true,
+      "exact_match": true,
+      "exact_match_original": true,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "numerical_formatting",
+      "tag": "trailing_zero_credit",
+      "response": "\\boxed{4.0}",
+      "gold_solution": "\\boxed{4}",
+      "expect_credit": true,
+      "exact_match": true,
+      "exact_match_original": true,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "case",
+      "tag": "lowercase_word_answer_credit",
+      "response": "\\boxed{\\text{even}}",
+      "gold_solution": "\\boxed{\\text{EVEN}}",
+      "expect_credit": true,
+      "exact_match": true,
+      "exact_match_original": false,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "false_miss"
+    },
+    {
+      "category": "case",
+      "tag": "case_cannot_rescue_wrong_word",
+      "response": "\\boxed{\\text{odd}}",
+      "gold_solution": "\\boxed{\\text{EVEN}}",
+      "expect_credit": false,
+      "exact_match": false,
+      "exact_match_original": false,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "units",
+      "tag": "unit_suffix_null_case",
+      "response": "\\boxed{9 \\text{ meters}}",
+      "gold_solution": "\\boxed{9}",
+      "expect_credit": null,
+      "exact_match": true,
+      "exact_match_original": true,
+      "error": null,
+      "exact_match_classification": "null_or_error",
+      "exact_match_original_classification": "null_or_error"
+    },
+    {
+      "category": "units",
+      "tag": "unit_mismatch_should_not_equate",
+      "response": "\\boxed{9 \\text{ meters}}",
+      "gold_solution": "\\boxed{9 \\text{ seconds}}",
+      "expect_credit": false,
+      "exact_match": true,
+      "exact_match_original": false,
+      "error": null,
+      "exact_match_classification": "false_credit",
+      "exact_match_original_classification": "correct"
+    },
+    {
+      "category": "other_scorer_specific",
+      "tag": "interval_union_reordered",
+      "response": "\\boxed{(-\\infty, -7) \\cup (-7, 3) \\cup (3, \\infty)}",
+      "gold_solution": "\\boxed{(-\\infty, 3) \\cup (3, -7) \\cup (-7, \\infty)}",
+      "expect_credit": true,
+      "exact_match": false,
+      "exact_match_original": false,
+      "error": null,
+      "exact_match_classification": "false_miss",
+      "exact_match_original_classification": "false_miss"
+    },
+    {
+      "category": "other_scorer_specific",
+      "tag": "no_commit_never_credited",
+      "response": "I am not sure.",
+      "gold_solution": "\\boxed{4}",
+      "expect_credit": false,
+      "exact_match": false,
+      "exact_match_original": false,
+      "error": null,
+      "exact_match_classification": "correct",
+      "exact_match_original_classification": "correct"
+    }
+  ],
+  "part_a_category_summary": {
+    "formatting": {
+      "n_cases": 2,
+      "exact_match_false_credit": 0,
+      "exact_match_false_miss": 0,
+      "exact_match_original_false_credit": 0,
+      "exact_match_original_false_miss": 0,
+      "n_the_two_real_scorers_disagree_on_this_category": 0,
+      "effect_is_general_across_both_scorers": false,
+      "effect_is_scorer_specific": false,
+      "null_result": true
+    },
+    "latex": {
+      "n_cases": 2,
+      "exact_match_false_credit": 0,
+      "exact_match_false_miss": 0,
+      "exact_match_original_false_credit": 0,
+      "exact_match_original_false_miss": 0,
+      "n_the_two_real_scorers_disagree_on_this_category": 0,
+      "effect_is_general_across_both_scorers": false,
+      "effect_is_scorer_specific": false,
+      "null_result": true
+    },
+    "whitespace": {
+      "n_cases": 2,
+      "exact_match_false_credit": 0,
+      "exact_match_false_miss": 0,
+      "exact_match_original_false_credit": 0,
+      "exact_match_original_false_miss": 0,
+      "n_the_two_real_scorers_disagree_on_this_category": 0,
+      "effect_is_general_across_both_scorers": false,
+      "effect_is_scorer_specific": false,
+      "null_result": true
+    },
+    "delimiters": {
+      "n_cases": 2,
+      "exact_match_false_credit": 0,
+      "exact_match_false_miss": 0,
+      "exact_match_original_false_credit": 0,
+      "exact_match_original_false_miss": 1,
+      "n_the_two_real_scorers_disagree_on_this_category": 1,
+      "effect_is_general_across_both_scorers": false,
+      "effect_is_scorer_specific": true,
+      "null_result": false
+    },
+    "answer_position": {
+      "n_cases": 2,
+      "exact_match_false_credit": 0,
+      "exact_match_false_miss": 0,
+      "exact_match_original_false_credit": 0,
+      "exact_match_original_false_miss": 1,
+      "n_the_two_real_scorers_disagree_on_this_category": 1,
+      "effect_is_general_across_both_scorers": false,
+      "effect_is_scorer_specific": true,
+      "null_result": false
+    },
+    "verbosity": {
+      "n_cases": 2,
+      "exact_match_false_credit": 0,
+      "exact_match_false_miss": 0,
+      "exact_match_original_false_credit": 0,
+      "exact_match_original_false_miss": 0,
+      "n_the_two_real_scorers_disagree_on_this_category": 0,
+      "effect_is_general_across_both_scorers": false,
+      "effect_is_scorer_specific": false,
+      "null_result": true
+    },
+    "multiple_answers": {
+      "n_cases": 2,
+      "exact_match_false_credit": 0,
+      "exact_match_false_miss": 1,
+      "exact_match_original_false_credit": 0,
+      "exact_match_original_false_miss": 1,
+      "n_the_two_real_scorers_disagree_on_this_category": 2,
+      "effect_is_general_across_both_scorers": true,
+      "effect_is_scorer_specific": false,
+      "null_result": false
+    },
+    "self_correction": {
+      "n_cases": 2,
+      "exact_match_false_credit": 0,
+      "exact_match_false_miss": 1,
+      "exact_match_original_false_credit": 0,
+      "exact_match_original_false_miss": 0,
+      "n_the_two_real_scorers_disagree_on_this_category": 1,
+      "effect_is_general_across_both_scorers": false,
+      "effect_is_scorer_specific": true,
+      "null_result": false
+    },
+    "numerical_formatting": {
+      "n_cases": 2,
+      "exact_match_false_credit": 0,
+      "exact_match_false_miss": 0,
+      "exact_match_original_false_credit": 0,
+      "exact_match_original_false_miss": 0,
+      "n_the_two_real_scorers_disagree_on_this_category": 0,
+      "effect_is_general_across_both_scorers": false,
+      "effect_is_scorer_specific": false,
+      "null_result": true
+    },
+    "case": {
+      "n_cases": 2,
+      "exact_match_false_credit": 0,
+      "exact_match_false_miss": 0,
+      "exact_match_original_false_credit": 0,
+      "exact_match_original_false_miss": 1,
+      "n_the_two_real_scorers_disagree_on_this_category": 1,
+      "effect_is_general_across_both_scorers": false,
+      "effect_is_scorer_specific": true,
+      "null_result": false
+    },
+    "units": {
+      "n_cases": 2,
+      "exact_match_false_credit": 1,
+      "exact_match_false_miss": 0,
+      "exact_match_original_false_credit": 0,
+      "exact_match_original_false_miss": 0,
+      "n_the_two_real_scorers_disagree_on_this_category": 1,
+      "effect_is_general_across_both_scorers": false,
+      "effect_is_scorer_specific": true,
+      "null_result": false
+    },
+    "other_scorer_specific": {
+      "n_cases": 2,
+      "exact_match_false_credit": 0,
+      "exact_match_false_miss": 1,
+      "exact_match_original_false_credit": 0,
+      "exact_match_original_false_miss": 1,
+      "n_the_two_real_scorers_disagree_on_this_category": 0,
+      "effect_is_general_across_both_scorers": true,
+      "effect_is_scorer_specific": false,
+      "null_result": false
+    }
+  },
+  "part_b_real_data_grounding": {
+    "per_model": {
+      "01-ai/Yi-1.5-34B-Chat": {
+        "n": 307,
+        "agree_pct": 89.25081433224756,
+        "unparsed_by_original_pct": 19.86970684039088,
+        "exactmatch1_original0": 20,
+        "exactmatch0_original1": 13
+      },
+      "01-ai/Yi-1.5-9B-Chat": {
+        "n": 307,
+        "agree_pct": 81.43322475570032,
+        "unparsed_by_original_pct": 13.029315960912053,
+        "exactmatch1_original0": 4,
+        "exactmatch0_original1": 53
+      },
+      "01-ai/Yi-34B": {
+        "n": 307,
+        "agree_pct": 93.15960912052117,
+        "unparsed_by_original_pct": 48.85993485342019,
+        "exactmatch1_original0": 15,
+        "exactmatch0_original1": 6
+      },
+      "CohereForAI/c4ai-command-r-plus": {
+        "n": 307,
+        "agree_pct": 96.41693811074919,
+        "unparsed_by_original_pct": 7.166123778501628,
+        "exactmatch1_original0": 7,
+        "exactmatch0_original1": 4
+      },
+      "CohereForAI/c4ai-command-r-v01": {
+        "n": 307,
+        "agree_pct": 97.06840390879479,
+        "unparsed_by_original_pct": 0.9771986970684039,
+        "exactmatch1_original0": 0,
+        "exactmatch0_original1": 9
+      },
+      "EleutherAI/gpt-j-6b": {
+        "n": 307,
+        "agree_pct": 99.3485342019544,
+        "unparsed_by_original_pct": 67.42671009771988,
+        "exactmatch1_original0": 1,
+        "exactmatch0_original1": 1
+      },
+      "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1": {
+        "n": 307,
+        "agree_pct": 90.55374592833876,
+        "unparsed_by_original_pct": 31.921824104234528,
+        "exactmatch1_original0": 22,
+        "exactmatch0_original1": 7
+      },
+      "Qwen/Qwen2-72B-Instruct": {
+        "n": 307,
+        "agree_pct": 84.03908794788273,
+        "unparsed_by_original_pct": 15.309446254071661,
+        "exactmatch1_original0": 23,
+        "exactmatch0_original1": 26
+      },
+      "Qwen/Qwen2-7B": {
+        "n": 307,
+        "agree_pct": 88.92508143322476,
+        "unparsed_by_original_pct": 18.241042345276874,
+        "exactmatch1_original0": 15,
+        "exactmatch0_original1": 19
+      },
+      "bigcode/starcoder2-15b": {
+        "n": 307,
+        "agree_pct": 96.41693811074919,
+        "unparsed_by_original_pct": 33.55048859934853,
+        "exactmatch1_original0": 6,
+        "exactmatch0_original1": 5
+      },
+      "google/gemma-7b": {
+        "n": 307,
+        "agree_pct": 92.50814332247558,
+        "unparsed_by_original_pct": 30.618892508143322,
+        "exactmatch1_original0": 14,
+        "exactmatch0_original1": 9
+      },
+      "meta-llama/Meta-Llama-3-70B-Instruct": {
+        "n": 307,
+        "agree_pct": 89.57654723127035,
+        "unparsed_by_original_pct": 2.9315960912052117,
+        "exactmatch1_original0": 12,
+        "exactmatch0_original1": 20
+      },
+      "microsoft/phi-2": {
+        "n": 307,
+        "agree_pct": 97.39413680781759,
+        "unparsed_by_original_pct": 60.26058631921824,
+        "exactmatch1_original0": 7,
+        "exactmatch0_original1": 1
+      },
+      "mistralai/Mistral-7B-v0.1": {
+        "n": 307,
+        "agree_pct": 97.06840390879479,
+        "unparsed_by_original_pct": 52.76872964169381,
+        "exactmatch1_original0": 8,
+        "exactmatch0_original1": 1
+      },
+      "mosaicml/mpt-7b": {
+        "n": 307,
+        "agree_pct": 98.6970684039088,
+        "unparsed_by_original_pct": 65.79804560260587,
+        "exactmatch1_original0": 3,
+        "exactmatch0_original1": 1
+      },
+      "tiiuae/falcon-40b": {
+        "n": 307,
+        "agree_pct": 98.37133550488599,
+        "unparsed_by_original_pct": 65.14657980456026,
+        "exactmatch1_original0": 3,
+        "exactmatch0_original1": 2
+      },
+      "tiiuae/falcon-7b": {
+        "n": 307,
+        "agree_pct": 99.0228013029316,
+        "unparsed_by_original_pct": 72.63843648208469,
+        "exactmatch1_original0": 1,
+        "exactmatch0_original1": 2
+      }
+    },
+    "totals": {
+      "n_total": 5219,
+      "n_match": 4879,
+      "n_unparsed_by_original": 1862,
+      "n_exactmatch1_original0": 161,
+      "n_exactmatch0_original1": 179
+    }
+  }
+}
