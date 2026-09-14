@@ -41,6 +41,16 @@ turn on wrap-text rather than skimming.
 
 ---
 
+## `tc_expansion2_l1.csv` — math problems, round 2 (458 rows)
+
+**Identical task to `tc_expansion_l1.csv` above — same column (`your_answer`),
+same rules, including the self-correction rule.** Read that section, not this
+one, for what to actually do. This is a fresh set of 458 problems (no overlap
+with the ones you already did), sized to get a properly-powered estimate
+instead of the small first round. Same instructions apply exactly.
+
+---
+
 ## `ifeval_audit_l1.csv` — instruction-following (redo — read this fully before starting)
 
 An earlier pass on this same sheet was checked against the real automated

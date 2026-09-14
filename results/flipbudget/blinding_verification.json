@@ -64,6 +64,21 @@
         "credited"
       ],
       "manual_review": "Confirmed false positive by inspection: uid 58d3d59866a69e88, ordinary English usage (\"credited with creating\" a candy), unrelated to any stratum label. No real leak."
+    },
+    {
+      "name": "T-C expansion 2 (458-row)",
+      "path": "labeling/tc_expansion2_l1.csv",
+      "n_rows": 458,
+      "columns": [
+        "problem",
+        "response",
+        "uid",
+        "your_answer"
+      ],
+      "forbidden_columns_present": [],
+      "uid_unique": true,
+      "model_name_hits": [],
+      "stratum_word_hits": []
     }
   ]
 }
