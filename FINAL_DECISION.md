@@ -1,4 +1,58 @@
-# Final decision (item 25)
+# Final decision (item 25, updated by the final validation phase — item 18)
+
+**Updated verdict, after a full second round of self-audit (18-item final
+validation phase, this session): B stands — strong, ready for the
+Evaluations & Datasets track, on firmer footing than the previous pass, not
+yet ICML/JMLR-standalone.** Nothing here overturns the prior verdict; this
+phase closed the two biggest remaining honesty gaps (a canonical,
+fully-cascaded headline number; the empty-set root cause) and found one
+more genuine, reportable limitation (naive Neyman allocation is dominated
+by proportional on this real sparse data) that makes the audit-design
+contribution more credible, not less, for having been caught and fixed
+before submission rather than by a reviewer after. Full detail:
+`EVIDENCE_TABLE.md`, `CANONICAL_EA_RESULT.md`, `RECONCILIATION_EMPTY_SET_ROOTCAUSE.md`,
+`AUDIT_DESIGN_OPTIMIZATION.md`, `TC_CORRELATED_ERROR_BOUND.md`,
+`NEGATIVE_CONTROLS.md`, `MATH_COMPARATOR_LINUX_VALIDATION.md`,
+`NOVELTY_AUDIT.md`, `CLAIM_AUDIT.md`, `REVIEWER_ATTACK.md`.
+
+**What changed this phase, concretely:**
+1. The 6.10×/100% figure is now traced to a saved, re-runnable script with
+   every exclusion stage counted (378 candidate → 136 scored → 120 valid),
+   not an untracked calculation that happened to match.
+2. The 70/136 scorer-only empty-set rate — an open question last time — is
+   fully closed: 5 specific low-accuracy models, 100% driven by the pooled
+   anchor exceeding their own accuracy, 0% by the Λ-band width.
+3. `is_equiv`'s fix is verified on real Linux CI, not assumed equivalent —
+   and building that CI surfaced a second real bug (hardcoded absolute
+   paths in the T-C loader), fixed, re-verified identical output.
+4. T-C's correlated-error question now has an honest bound (not a point
+   estimate): 0–22.7% of the 66 valid scorer-only pairs could flip
+   depending on an unmeasurable correlation, with an exact required-n
+   (~458) to close it.
+5. Audit-design's classical Neyman recommendation is now qualified with a
+   real, quantified failure mode on this project's own sparse data (74%
+   stuck vs. proportional's 22% at the same budget) and a concrete fix
+   (pooled estimates or greedy search) — a more honest, more useful
+   practical contribution than an untested "Neyman is optimal" claim.
+6. Negative controls confirm the method is falsifiable: three of five
+   constructed scenarios correctly report "stable," including one sized to
+   this project's own required-n target.
+7. A close 2026 neighbor (Chen, Rambachan & Tamer, "Partial Identification
+   from LLM Prompts") was found, read carefully, and distinguished — a
+   must-cite, not a collision, and the A/B/C/D classification instructed
+   by item 13 is now applied to every result in the project (nothing above
+   B individually; novelty is in the combination).
+8. Full 21-step reproducibility pipeline passes clean end-to-end for the
+   first time (previously blocked on a timeout using pre-fix code).
+
+**What did not change:** verdict D/B's qualitative content, the strongest
+theorem (T-B), and the weakest link (T-C's correlation question, IFEval's
+failed human-audit layer) — both still open, now with sharper, honestly
+bounded statements instead of silence.
+
+---
+
+# Original decision (superseded in framing, not in substance, by the update above)
 
 Evidence-based, drawing on `EVIDENCE_TABLE.md`, `THEORY_EXTENSIONS.md`,
 `AUDIT_DESIGN_STRESS_TEST.md`, `MATH_COMPARATOR_BUG.md`,
@@ -96,13 +150,15 @@ size target rather than a guess. **This requires new human labeling and is
 therefore the one action item for you, not something to execute
 autonomously.**
 
-Among what genuinely is blocked pending external access (not effort):
-independent verification of `is_equiv` on a non-Windows environment (needs
-WSL, not installed, an OS-level change I should not make autonomously), and
-a fully independent third benchmark/model roster (needs a data source
-beyond the already-authenticated open-llm-leaderboard details repos, which
-contain no execution- or judge-scored tasks — confirmed directly by listing
-every available task file).
+**Update: `is_equiv` non-Windows verification is no longer blocked** —
+resolved via GitHub Actions on `ubuntu-latest`
+(`MATH_COMPARATOR_LINUX_VALIDATION.md`), not WSL, which remains
+unavailable. **The independent-third-benchmark question is also no longer
+a dead end**: HELM and AlpacaEval are real, licensed, response-level
+candidates (`INDEPENDENT_BENCHMARK_SEARCH.md`) — what remains blocked is
+narrower: executing a full replication needs a new human-audit round on
+whichever source is chosen, the same kind of action item as the T-C
+expansion above, not a data-access problem anymore.
 
 ## Is this genuinely strong enough for NeurIPS 2027?
 
@@ -127,15 +183,16 @@ scoped as extensions, not this paper's spine.
    larger, properly-powered T-C audit (the highest-value experiment above)
    or a genuinely independent third benchmark would give the paper two
    independent legs instead of one plus two honest partial ones.
-2. **The correlated-error theory (`THEORY_EXTENSIONS.md` §1) has zero
-   fitted real data.** It is real, verified-by-simulation theory answering
-   a real reviewer objection, but "we prove the mechanism exists" is a
-   weaker sentence than "we show it operates at rate X on real data" — the
-   latter needs more scorer-wrong events than either audit round has
-   produced.
-3. **`is_equiv`'s behavior off this specific machine is unverified.** A
-   one-line, high-consequence gap for a reproducibility reviewer, cheap to
-   close once WSL or any Linux environment is available.
+2. **The correlated-error theory (`THEORY_EXTENSIONS.md` §1) still has no
+   point estimate of the actual correlation.** Updated this phase
+   (`TC_CORRELATED_ERROR_BOUND.md`): the real 0/51 audit now yields an
+   honest bound (0–22.7% of the 66 valid scorer-only pairs could flip
+   depending on an unmeasurable ρ) and an exact required-n (~458) to close
+   it — real progress, but "we prove the mechanism exists and bound its
+   maximum possible effect" is still a weaker sentence than "we show it
+   operates at rate X," which needs those ~458 rows.
+3. ~~`is_equiv`'s behavior off this specific machine is unverified.~~
+   **Resolved this phase** — see the update above.
 4. **No manuscript prose exists yet.** Every piece above is real,
    verified, and mapped (`MANUSCRIPT_ARCHITECTURE.md`) — but the actual
    writing, where repetition gets killed and the argument gets one

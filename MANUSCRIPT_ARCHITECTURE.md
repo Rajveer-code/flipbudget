@@ -56,8 +56,26 @@ things were discovered.
    list must either refit first or footnote the discrepancy — do not carry
    the stale number forward silently.
 
+## Final validation phase additions — new rows earned by this pass
+
+| § | Claim | Theorem/result | Dataset | Experiment | Uncertainty estimate | Falsification test | Reviewer objection answered |
+|---|---|---|---|---|---|---|---|
+| 14. Canonical headline | The 6.10× dominance figure, with a full denominator cascade (378→136→120), not just "n=120 of 136" | A1 (revised) | Same 136 pairs | `fb_ea_dominance_canonical.py` | Full percentile distribution reported, not just median/IQR | A different cascade count would mean the prior ad-hoc number was wrong — matched exactly | "State the denominator or the '100%' claim is meaningless" |
+| 15. Empty-set diagnostic | Formal definition + full root-cause of the 70 scorer-only empty sets: 5 models, 100% point-estimate-driven, 0% Λ-width-driven | `RECONCILIATION_EMPTY_SET_ROOTCAUSE.md` | Same 17-model roster | `fb_rootcause_empty_scorer_layer.py` | Exact roll-up (70=60+10) independently re-derived, matches | A mixed-cause breakdown would have meant the "one clean mechanism" claim was wrong — it wasn't | "You found a bug — is the story actually this clean?" |
+| 16. Platform validation | `is_equiv` fix verified correct on real Linux, not just "should work the same" | `MATH_COMPARATOR_LINUX_VALIDATION.md` | GitHub Actions, ubuntu-latest | CI run 34764225948 | Exact match to Windows result (0/69 both platforms) | A discrepancy would mean the fix itself was platform-dependent — none found | "Verify on the platform your dependency actually assumes" |
+| 17. Negative controls | The method concludes "stable" when it should: audit sized to the project's own required-n gives ratio 0.599, not >1 | `NEGATIVE_CONTROLS.md` | Synthetic, parameter-matched to real roster | `fb_negative_controls.py` | 5 scenarios, 3 stable, 2 dominant, matching theory | The method reporting dominance regardless of input would have failed this test — it didn't | "Does this just always say 'more uncertainty'?" |
+| 18. Audit-design reality check | Naive Neyman allocation is dominated by proportional allocation on real sparse audit data (74% vs. 22% unresolved at 16× budget) | `AUDIT_DESIGN_OPTIMIZATION.md` | Same 120 pairs | `fb_audit_design_optimization.py` | Full budget sweep (6 levels) + greedy near-oracle comparison | Neyman matching or beating proportional would have undercut this finding — it didn't | "Did you even check the classical formula works here?" |
+
 ## What is genuinely blocked, requiring external input (not a paper-writing gap)
 
+- **`is_equiv` non-Windows verification: RESOLVED this phase**, no longer
+  blocked — see row 16 above.
+- **A genuinely independent third benchmark: candidates now named, not a
+  dead end** (`INDEPENDENT_BENCHMARK_SEARCH.md` — HELM, AlpacaEval), but
+  executing a full replication still needs a new human-audit round on
+  whichever source is chosen — the external-access decision has moved from
+  "no data exists" to "which new labeling round to fund," a smaller and
+  more concrete ask.
 - **E-H (execution-scored control) and any judge-scored paradigm test**:
   the only currently-accessible data source (open-llm-leaderboard details
   repos, already-authenticated) contains no execution-scored or
