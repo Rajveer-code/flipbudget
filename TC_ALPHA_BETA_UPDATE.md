@@ -1,5 +1,24 @@
 # T-C's contribution to the joint scorer-verdict-vs-human-verdict analysis
 
+**Provenance note (final validation phase, added after a clean pipeline
+re-run):** this file's numbers (91/136→89/136, 15/136→22/136, 110/136→105/136
+below) were computed **before** the empty-identified-set fix
+(`RECONCILIATION_EMPTY_SET_BUG.md`) — they use a constant `/136` denominator
+throughout, the same pre-fix convention as the original
+`reconciliation_four_layers.json`. A fresh re-run of
+`fb_tc_alpha_beta_update.py` now correctly returns `NaN` for pairs whose box
+does not overlap `[0,1]` (338 such leaves in the regenerated
+`tc_alpha_beta_update.json`, consistent in scale with the reconciliation's
+own ~12–52% per-layer empty rates), which the `/136`-denominator table below
+does not reflect. **The qualitative finding this file's title makes
+(empirical-Bayes shrinkage propagates a local audit's effect to un-audited
+models) is unaffected** — it concerns the pooled anchor's numeric shift
+(0.0314→0.0216), not the per-pair width bookkeeping — but the specific
+before/after unresolved-pair-count table below should be read as historical,
+same as `reconciliation_four_layers.json` itself, not re-derived under the
+corrected methodology in this pass (flagged as a concrete, not-yet-done
+follow-up, not silently left stale).
+
 Script: `scripts/fb_tc_alpha_beta_update.py`. Result:
 `results/flipbudget/tc_alpha_beta_update.json`. Reuses every existing
 function exactly (`fb_e4_mathhard.partial_pool`, `ea_dominance_study.

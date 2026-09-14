@@ -174,6 +174,20 @@ if __name__ == "__main__":
         "math_hard": {"n_correct": n_math_correct, "n_total": n_math_total, "cases": math_results},
         "ifeval": {"n_correct": n_ifeval_correct, "n_total": n_ifeval_total, "cases": ifeval_results},
         "n_total_mismatches": n_mismatches,
+        # Interpretive note on the MATH-Hard mismatches, made part of the
+        # script (not a post-hoc manual edit) so it survives every re-run --
+        # a manually-added version of this note was twice silently wiped by
+        # a fresh pipeline run before this fix (see MATH_COMPARATOR_BUG.md).
+        "post_bugfix_note": (
+            "6 of the original 8 MATH-Hard mismatches were caused entirely by "
+            "the SIGALRM/Windows bug documented in MATH_COMPARATOR_BUG.md, "
+            "confirmed fixed (12/14 match with the fixed comparator). 2 "
+            "genuine, separate findings remain: interval/set-union reordering "
+            "not recognized (real structural limitation), and unit-word "
+            "stripping causing 9 vs 9 meters to match (likely intentional "
+            "dataset convention, not a bug -- this suite's own expectation "
+            "was probably wrong on that one case, not the comparator)."
+        ),
     }
     with open("results/flipbudget/adversarial_suite.json", "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2)

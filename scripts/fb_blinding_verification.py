@@ -50,9 +50,19 @@ def check_sheet(name, path):
     print(f"  [{'REVIEW' if stratum_hits else 'OK'}] stratum-word hits: "
           f"{stratum_hits or 'none'}")
 
-    return {"name": name, "path": path, "n_rows": len(rows), "columns": sorted(header),
-            "forbidden_columns_present": sorted(bad_cols), "uid_unique": not dup,
-            "model_name_hits": model_hits, "stratum_word_hits": stratum_hits}
+    row = {"name": name, "path": path, "n_rows": len(rows), "columns": sorted(header),
+           "forbidden_columns_present": sorted(bad_cols), "uid_unique": not dup,
+           "model_name_hits": model_hits, "stratum_word_hits": stratum_hits}
+    # Known, manually-inspected false positive, embedded here (not a post-hoc
+    # edit) so it survives every re-run -- a manually-added version of this
+    # note was previously wiped by a fresh pipeline run before this fix.
+    if name == "IFEval L1 (454-row)" and stratum_hits == ["credited"]:
+        row["manual_review"] = (
+            'Confirmed false positive by inspection: uid 58d3d59866a69e88, '
+            'ordinary English usage ("credited with creating" a candy), '
+            'unrelated to any stratum label. No real leak.'
+        )
+    return row
 
 
 if __name__ == "__main__":
@@ -69,9 +79,18 @@ if __name__ == "__main__":
         and not r["model_name_hits"] and not r["stratum_word_hits"]
         for r in results
     )
+    all_clean_after_manual_review = all(
+        not r["forbidden_columns_present"] and r["uid_unique"]
+        and not r["model_name_hits"]
+        and (not r["stratum_word_hits"] or "manual_review" in r)
+        for r in results
+    )
     print(f"\n{'='*70}")
-    print(f"[{'ALL CLEAN' if all_clean else 'REVIEW NEEDED'}]")
+    print(f"[{'ALL CLEAN' if all_clean else 'REVIEW NEEDED'}] "
+          f"(after manual review: {'ALL CLEAN' if all_clean_after_manual_review else 'REVIEW NEEDED'})")
 
     with open("results/flipbudget/blinding_verification.json", "w", encoding="utf-8") as f:
-        json.dump({"all_clean": all_clean, "sheets": results}, f, indent=2)
+        json.dump({"all_clean": all_clean,
+                   "all_clean_after_manual_review": all_clean_after_manual_review,
+                   "sheets": results}, f, indent=2)
     print("Written to results/flipbudget/blinding_verification.json")

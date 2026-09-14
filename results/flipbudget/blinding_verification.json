@@ -1,5 +1,6 @@
 {
   "all_clean": false,
+  "all_clean_after_manual_review": true,
   "sheets": [
     {
       "name": "T-C L1 (70-row)",
@@ -64,6 +65,5 @@
       ],
       "manual_review": "Confirmed false positive by inspection: uid 58d3d59866a69e88, ordinary English usage (\"credited with creating\" a candy), unrelated to any stratum label. No real leak."
     }
-  ],
-  "all_clean_after_manual_review": true
+  ]
 }

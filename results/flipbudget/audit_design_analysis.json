@@ -267,31 +267,31 @@
     },
     {
       "multiplier": 2,
-      "median_width": 0.29544937023310397,
+      "median_width": NaN,
       "n_unresolved": 99,
       "n_total": 136
     },
     {
       "multiplier": 5,
-      "median_width": 0.19012220811798244,
+      "median_width": NaN,
       "n_unresolved": 80,
       "n_total": 136
     },
     {
       "multiplier": 10,
-      "median_width": 0.12944031808070494,
+      "median_width": NaN,
       "n_unresolved": 68,
       "n_total": 136
     },
     {
       "multiplier": 20,
-      "median_width": 0.09813267731758206,
+      "median_width": NaN,
       "n_unresolved": 63,
       "n_total": 136
     },
     {
       "multiplier": 50,
-      "median_width": 0.07794935303821615,
+      "median_width": NaN,
       "n_unresolved": 50,
       "n_total": 136
     }
@@ -320,6 +320,12 @@
       "n_bench_actual": 1324,
       "n_bench_crossover": 115.80892392919584,
       "past_crossover": true
+    },
+    {
+      "model": "CohereForAI/c4ai-command-r-v01",
+      "n_bench_actual": 1324,
+      "n_bench_crossover": NaN,
+      "past_crossover": false
     },
     {
       "model": "EleutherAI/gpt-j-6b",
