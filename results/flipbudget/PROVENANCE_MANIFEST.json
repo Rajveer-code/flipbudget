@@ -1,10 +1,10 @@
 {
-  "n_results": 40,
-  "n_no_writer_found": 0,
+  "n_results": 49,
+  "n_no_writer_found": 1,
   "entries": [
     {
       "output": "results/flipbudget/adversarial_suite.json",
-      "size_bytes": 6588,
+      "size_bytes": 6071,
       "writer_script": "scripts/fb_adversarial_suite.py",
       "last_commit": {
         "commit": "8dbf03cf3f4e8710ccc21df03fb9b8c1cabcd572",
@@ -15,13 +15,20 @@
     },
     {
       "output": "results/flipbudget/audit_design_analysis.json",
-      "size_bytes": 10238,
+      "size_bytes": 10318,
       "writer_script": "scripts/fb_audit_design_analysis.py",
       "last_commit": {
         "commit": "22a9b9723626da3d7bd0f35769ccf7f35b564730",
         "date": "2026-09-12 11:41:46 +0530",
         "message": "feat: audit-design analysis -- second-contribution evaluation, verdict D"
       },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/audit_design_optimization.json",
+      "size_bytes": 4099,
+      "writer_script": "scripts/fb_audit_design_optimization.py",
+      "last_commit": null,
       "human_label_inputs": null
     },
     {
@@ -48,7 +55,7 @@
     },
     {
       "output": "results/flipbudget/blinding_verification.json",
-      "size_bytes": 1738,
+      "size_bytes": 1500,
       "writer_script": "scripts/fb_blinding_verification.py",
       "last_commit": {
         "commit": "a7c8d9fd72a84f2c7a71a453d0761cb1ded1040a",
@@ -124,6 +131,17 @@
       "human_label_inputs": null
     },
     {
+      "output": "results/flipbudget/ea_dominance_canonical.json",
+      "size_bytes": 44667,
+      "writer_script": "scripts/fb_ea_dominance_canonical.py",
+      "last_commit": {
+        "commit": "3e6d701a99eb8e31c5d5590eb56457cc2b8e4887",
+        "date": "2026-09-13 20:24:17 +0530",
+        "message": "feat: canonical E-A dominance recomputation from rawest inputs"
+      },
+      "human_label_inputs": null
+    },
+    {
       "output": "results/flipbudget/ea_dominance_corrected.json",
       "size_bytes": 275,
       "writer_script": "inline snippet re-deriving E-A single-model dominance under bounded_single_model_extrema (EVIDENCE_TABLE.md item A2)",
@@ -135,6 +153,17 @@
       "human_label_inputs": null
     },
     {
+      "output": "results/flipbudget/ea_dominance_corrected_v2.json",
+      "size_bytes": 285,
+      "writer_script": "scripts/fb_ea_dominance_canonical.py",
+      "last_commit": {
+        "commit": "b80b22a1509d025a5973a9b9d4e4fbbd01502132",
+        "date": "2026-09-13 02:11:24 +0530",
+        "message": "fix: the [0,1]-bound fix itself silently inverted empty identified sets"
+      },
+      "human_label_inputs": null
+    },
+    {
       "output": "results/flipbudget/ea_dominance_pairwise_corrected.json",
       "size_bytes": 789,
       "writer_script": "inline snippet re-deriving E-A pairwise dominance from reconciliation_four_layers.json's per-pair widths (EVIDENCE_TABLE.md item A1)",
@@ -142,6 +171,17 @@
         "commit": "9db11b0f8c586521ec48a23bdf54c36fb5d5c51f",
         "date": "2026-09-13 01:24:32 +0530",
         "message": "fix: E-A dominance ratio was overstated ~26x by a corner-drop artifact"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/ea_dominance_pairwise_corrected_v2.json",
+      "size_bytes": 527,
+      "writer_script": "scripts/fb_ea_dominance_canonical.py",
+      "last_commit": {
+        "commit": "b80b22a1509d025a5973a9b9d4e4fbbd01502132",
+        "date": "2026-09-13 02:11:24 +0530",
+        "message": "fix: the [0,1]-bound fix itself silently inverted empty identified sets"
       },
       "human_label_inputs": null
     },
@@ -279,7 +319,7 @@
     },
     {
       "output": "results/flipbudget/ifeval_reproducibility_check.json",
-      "size_bytes": 5716,
+      "size_bytes": 5717,
       "writer_script": "scripts/fb_ifeval_reproducibility_check.py",
       "last_commit": {
         "commit": "e50fb54aceeb96b544837b933419950fde4ee9b1",
@@ -302,6 +342,17 @@
       ]
     },
     {
+      "output": "results/flipbudget/is_equiv_bug_verification_ubuntu_ci.json",
+      "size_bytes": 426,
+      "writer_script": null,
+      "last_commit": {
+        "commit": "5db6049585b3daff02ae73d442a0ff2c3d65b7e7",
+        "date": "2026-09-13 20:32:22 +0530",
+        "message": "feat: T-C correlated-error bound + is_equiv Linux CI validation (items 3, 4)"
+      },
+      "human_label_inputs": null
+    },
+    {
       "output": "results/flipbudget/kill_criterion_6_post_tc.json",
       "size_bytes": 472,
       "writer_script": "inline snippet re-verifying pooling spread on the T-C-updated pool (THEORY_EXTENSIONS.md \u00a76)",
@@ -309,6 +360,17 @@
         "commit": "a34ec964ba6ec3a23b525b50c685cb5aab855e6b",
         "date": "2026-09-13 01:32:14 +0530",
         "message": "feat: theory extensions (correlated error, ranking preservation, T-D/T-E) + audit-design stress test"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/negative_controls.json",
+      "size_bytes": 2264,
+      "writer_script": "scripts/fb_negative_controls.py",
+      "last_commit": {
+        "commit": "c74d85818ac0b4b54f6067462e7f16885aa2ade4",
+        "date": "2026-09-13 20:29:02 +0530",
+        "message": "feat: negative controls + IFEval final position (items 10, 11)"
       },
       "human_label_inputs": null
     },
@@ -331,6 +393,28 @@
         "commit": "c94c54815109ff521b6a4a2b68bb5904b3d44a3e",
         "date": "2026-09-11 13:33:22 +0530",
         "message": "fix: four-layer reconciliation -- verdict B, math correction on \"unbounded\""
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/reconciliation_four_layers_corrected.json",
+      "size_bytes": 66981,
+      "writer_script": "scripts/fb_reconcile_layers.py",
+      "last_commit": {
+        "commit": "b80b22a1509d025a5973a9b9d4e4fbbd01502132",
+        "date": "2026-09-13 02:11:24 +0530",
+        "message": "fix: the [0,1]-bound fix itself silently inverted empty identified sets"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/rootcause_empty_scorer_layer.json",
+      "size_bytes": 12279,
+      "writer_script": "scripts/fb_rootcause_empty_scorer_layer.py",
+      "last_commit": {
+        "commit": "fba5393a96d32795df4b50d93cb544129b848d36",
+        "date": "2026-09-13 20:24:17 +0530",
+        "message": "fix: root-cause the 70 scorer-only-layer empty identified sets"
       },
       "human_label_inputs": null
     },
@@ -380,7 +464,7 @@
     },
     {
       "output": "results/flipbudget/tc_alpha_beta_update.json",
-      "size_bytes": 105591,
+      "size_bytes": 100332,
       "writer_script": "scripts/fb_tc_alpha_beta_update.py",
       "last_commit": {
         "commit": "17ee32083043a702712965851aee5d5a6c89e5fc",
@@ -399,6 +483,17 @@
         "commit": "a8c2f420091b41e69767af588f72d90eecd27381",
         "date": "2026-09-09 16:07:03 +0530",
         "message": "feat: T-C -- correlated scorer error test. RESULT: inconclusive/underpowered."
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/tc_correlated_error_bound.json",
+      "size_bytes": 1137,
+      "writer_script": "scripts/fb_tc_correlated_error_bound.py",
+      "last_commit": {
+        "commit": "5db6049585b3daff02ae73d442a0ff2c3d65b7e7",
+        "date": "2026-09-13 20:32:22 +0530",
+        "message": "feat: T-C correlated-error bound + is_equiv Linux CI validation (items 3, 4)"
       },
       "human_label_inputs": null
     },
