@@ -23,6 +23,8 @@ gap this phase should close).
 
 ## B. T-C (MATH-Hard human audit)
 
+**All α/β/scorer-wrong figures below are `score_boxed`-specific, not a generic "the scorer."** MATH-Hard's harness computes two different automated scores (`exact_match` via `math_verify`, `score_boxed` via last-`\boxed{}`-found) that disagree on 6.51% of real responses (model-range 0.7–18.6%) — T-C has only ever audited `score_boxed`. See `SCORER_MISMATCH_MAJOR_FINDING.md`. This does not change verdict B (tested directly: the headline E-A ratio moves from 6.10× to 5.74× under the self-consistent `score_boxed`-only pairing, still 100% dominant), but every number below must be read as describing `score_boxed`, not `exact_match`.
+
 | # | Claim | Status | Current number | Source | Note |
 |---|---|---|---|---|---|
 | B1 | Original companion-project correlation test | **UNSUPPORTED (underpowered)** | 1/41 paired observations with any wrongness event | `TIER1_VERDICT.md` | Neither confirms nor refutes correlated error. |
