@@ -45,6 +45,18 @@ STEPS = [
     ("Negative controls (final validation phase)", "scripts/fb_negative_controls.py", "pure"),
     ("T-C: correlated-error bound (final validation phase)", "scripts/fb_tc_correlated_error_bound.py", "human-label"),
     ("Audit design: formal optimization + budget curve (final validation phase)", "scripts/fb_audit_design_optimization.py", "pure"),
+    ("Adversarial suite v2: 12-category taxonomy + real-data grounding", "scripts/fb_adversarial_suite_v2.py", "pure"),
+    ("Scorer-choice self-consistency + scorer-choice-width layer", "scripts/fb_scorer_choice_sensitivity.py", "pure"),
+    ("Worst-case sensitivity bound (exact_match, population-weighted extremes)", "scripts/fb_worst_case_sensitivity.py", "pure"),
+    ("Flip-budget uncertainty (real MATH-Hard data)", "scripts/fb_flip_budget_uncertainty_mathhard.py", "pure"),
+    ("T-C expansion2 analysis pipeline smoke test", "scripts/fb_tc_expansion2_analysis.py", "pure", ["--self-test"]),
+    ("Figure 1: uncertainty decomposition", "scripts/fb_fig1_uncertainty_decomposition.py", "pure"),
+    ("Figure 2: audit-budget curve", "scripts/fb_fig2_audit_budget_curve.py", "pure"),
+    ("Figure 3: identified-set geometry", "scripts/fb_fig3_identified_set_geometry.py", "pure"),
+    ("Figure 4: scorer-choice disagreement", "scripts/fb_fig4_scorer_choice_disagreement.py", "pure"),
+    ("Figure 5: worst-case sensitivity", "scripts/fb_fig5_worst_case_sensitivity.py", "pure"),
+    ("Figure 6: flip budget / ranking preservation", "scripts/fb_fig6_flip_budget.py", "pure"),
+    ("Figure 7: conceptual framework (schematic, no data)", "scripts/fb_fig7_conceptual_framework.py", "pure"),
 ]
 
 
@@ -54,9 +66,11 @@ if __name__ == "__main__":
     print("=" * 70)
 
     results = []
-    for name, script, kind in STEPS:
+    for entry in STEPS:
+        name, script, kind = entry[0], entry[1], entry[2]
+        extra_args = entry[3] if len(entry) > 3 else []
         t0 = time.time()
-        proc = subprocess.run([sys.executable, script], capture_output=True, text=True, timeout=900)
+        proc = subprocess.run([sys.executable, script] + extra_args, capture_output=True, text=True, timeout=900)
         elapsed = time.time() - t0
         ok = proc.returncode == 0
         results.append({"name": name, "script": script, "kind": kind, "ok": ok, "elapsed_s": round(elapsed, 1)})
