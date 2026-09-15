@@ -35,6 +35,15 @@ Three distinct sub-goals, each with its own target-n, computed via this project'
 2. **When the two scorers disagree, which one tends to track human judgment?** Directly informs whether `a_hat` (exact_match-based) or the historically-audited number (score_boxed-based) is the more trustworthy accuracy signal going forward.
 3. **Does more audit power (458 new + up to 320 excludable-overlap-avoided from the old 400) shrink the audit-estimation-uncertainty width, and does the "even a perfect scorer at n=11 shows 5.6x dominance" finding (`NEGATIVE_CONTROLS.md`) actually resolve at this larger n, as the theory predicts?** The direct test of whether the current central conclusion survives adequate power — not assumed to survive, per instruction.
 
+## Efficient human-labeling protocol (added after two AI-generated submissions were excluded)
+
+The task and blinding are unchanged (see above). Given 458 rows is a real time commitment and the failure mode just observed (an AI tool substituted for reading), the protocol going forward:
+
+1. **Batch it.** Split the 458-row sheet into ~8 sessions of ~55-60 rows each (a sitting of well under an hour at a sustainable pace), not one continuous pass — the two excluded submissions arrived 6-7 minutes apart for 458 rows each, which is itself the tell; a real pace is closer to 5-15 seconds per row for the ~369 template-following rows and 1-3 minutes for the ~77-90 that need actual reading, i.e. several hours total, not several minutes.
+2. **Submit in the same batches**, not all at once — makes a quality-gate check on each batch (`fb_tc_expansion2_analysis.py`'s gate) meaningful before the whole 458 rows are sunk into one submission.
+3. **No AI tool in the loop for this specific task** — not a compliance rule for its own sake: the whole point of T-C is a judgment independent of automated extraction, so running the response text through any LLM/extraction tool first (even "just to help transcribe") reintroduces exactly the dependency the audit exists to check against. Reading the raw text and typing what it says is the entire task.
+4. **The self-correction and NONE/CONTRADICTORY rules already in the README are the hard part** — those are also exactly what the 12-category adversarial suite targeted, so getting them right here is directly informative for the paper, not busywork.
+
 ## Analysis plan, fixed now, before any label is seen
 
 Once labels return: (1) recompute α, β separately for `exact_match` and `score_boxed` from the `both_credited`/`both_not_credited` cells; (2) recompute the disagreement-resolution rate from the two disagreement cells; (3) recompute scorer-identification, audit-estimation, and combined uncertainty for BOTH scorer targets using the existing, unmodified `fb_reconcile_layers.py` machinery; (4) recompute pairwise identification and compare directly against the 69-row result; (5) report the A/B/C/D interpretation (scorer-error-dominant / audit-uncertainty-dominant / both / small-audit-artifact) strictly from what the numbers show — not decided in advance.
