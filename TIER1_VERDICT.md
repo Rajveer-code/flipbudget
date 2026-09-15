@@ -1,5 +1,7 @@
 # Tier 1 verdict — 2026-09-09
 
+**SUPERSEDED, preserved as historical record — do not cite 74.99×/134.32× as current.** The E-A dominance numbers below were found overstated by a corner-drop artifact, corrected once (5.24×/89.7%), then found still-contaminated by a separate empty-identified-set bug and corrected again (**current, canonical figures: 6.10× pairwise / 3.22× single-model, 100% dominant among valid pairs** — see `CANONICAL_EA_RESULT.md` and `RECONCILIATION_EMPTY_SET_BUG.md` for the full provenance chain). Left unmodified below for audit-trail purposes.
+
 Run in the specified order: E-A → T-C → E-E. Real data throughout. Three real bugs
 caught and fixed before any number was reported (an indexing bug and a near-singular
 denominator blowup in E-A; a CI-blind verdict threshold in E-E). Full derivation in the
