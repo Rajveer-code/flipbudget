@@ -1,5 +1,7 @@
 # Canonical E-A dominance result (item 1 of the final validation phase)
 
+**Scope note, added after the scorer-mismatch audit**: the 6.10×/100% figure below is analysis **A** in `METHODOLOGICAL_AUDIT.md`'s item 6 — the historical *mixed* pairing (`exact_match` accuracy + `score_boxed`-audited α/β). The internally self-consistent `score_boxed` analysis (**B**) gives 5.74×; `exact_match`'s own fully self-consistent analysis (**C**) is not yet established, pending the 458-row human audit. Cite this page's number as "the historical mixed result," not as an unconditional final figure.
+
 Recomputed from the rawest available inputs (`pair_identification_human.json`,
 `e1_case_b_TRUE.json`, `e4_mathhard_per_model.json`), not from an intermediate
 file. Script: `scripts/fb_ea_dominance_canonical.py`. Output:
