@@ -134,6 +134,10 @@ A = classical, B = direct adaptation, C = nontrivial extension, D = genuinely ne
 
 **Recommendation for the manuscript**: state the broader "criterion-dependence is measurable and typically small but occasionally large" claim as a secondary contribution, explicitly scoped to what was tested (one benchmark, two scorers, one model roster) — not as a general theory of evaluation-pipeline measurement, which this evidence does not yet support.
 
+### Re-checked 2026-09-15 (autonomous execution, Phase 6)
+
+No new direct collision found (Chen-Rambachan-Tamer, VerifyBench, CompassVerifier remain the closest neighbors, already accounted for above). Two confirmations worth recording: (1) NeurIPS 2026's Evaluations & Datasets CFP explicitly scopes in "empirical audits... methodological analyses... analysis, critique, redesign, or stress-testing of evaluation practices" — a direct match to this project's shape, reinforcing the venue choice rather than changing the novelty assessment. (2) Independent, general confirmation that "answer format and extraction dependency" is a recognized open problem in the field (not this project's invention) — supports the motivation, doesn't compete with the contribution.
+
 ### Is the combination sufficient for NeurIPS 2027?
 
 **Yes, for the Evaluations & Datasets track, on the combination, not on any single piece.** No individual theorem here is D. The manuscript's defensible novelty claim is the *combination* (C-level): applying classical misclassification-sensitivity bounds specifically to benchmark **comparison** (not just single-model accuracy), formalizing the resulting audit-design problem as a budget-allocation optimization with a proven classical solution whose real-data behavior is itself informative (dominated by proportional allocation under sparse events — a genuine, non-obvious finding), and doing all of this with a from-scratch, self-audited reproducibility discipline that caught three real bugs along the way. This is consistent with, and now more precisely stated than, the prior verdict in `FINAL_DECISION.md`.
