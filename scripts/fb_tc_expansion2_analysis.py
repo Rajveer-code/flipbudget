@@ -111,10 +111,67 @@ def quality_gate(labeled, prov, mathutils):
                      "red_flags": red_flags}
 
 
+# Population sizes per preregistered cell (eligible, non-overlapping with the
+# existing 400-item audit) -- fixed by the design, not re-derived from the
+# sample. Cross-checked directly against tc_expansion_population.json.
+CELL_POPULATION = {"both_credited": 1531, "both_not_credited": 19873,
+                    "disagree_sb_credited_em_not": 291, "disagree_em_credited_sb_not": 493}
+
+# Which cells make up each scorer's credited/wrong union -- NOT the same two
+# cells for both scorers (item 5 of the audit): score_boxed's "credited"
+# stratum is both_credited + disagree_sb_credited_em_not; exact_match's is
+# both_credited + disagree_em_credited_sb_not. Verified against the cell
+# definitions in fb_tc_expansion_sample.py's cell_of().
+SCORER_CELLS = {
+    "score_boxed_stratum": {"credited": ["both_credited", "disagree_sb_credited_em_not"],
+                             "wrong": ["both_not_credited", "disagree_em_credited_sb_not"]},
+    "exact_match_stratum": {"credited": ["both_credited", "disagree_em_credited_sb_not"],
+                             "wrong": ["both_not_credited", "disagree_sb_credited_em_not"]},
+}
+
+
+def _ht_pool(cell_counts, cells):
+    """Horvitz-Thompson / post-stratified pooling across cells with
+    DIFFERENT sampling fractions relative to their population sizes --
+    NOT a naive pooled proportion. Naive pooling here is a real bias risk:
+    verified numerically (this audit's own methodological review) that if
+    a small, densely-oversampled cell (e.g. disagree_em_credited_sb_not,
+    sampled at ~6x the rate of both_not_credited) has a true rate that
+    differs from the majority cell -- exactly the scenario stratifying on
+    disagreement was designed to detect -- naive pooling can be biased by
+    several hundred percent relative to the population-weighted truth.
+    Returns (point_estimate, standard_error) with finite-population
+    correction; falls back gracefully when a cell has zero scored rows."""
+    num, den, var = 0.0, 0.0, 0.0
+    detail = {}
+    for c in cells:
+        n_c, x_c = cell_counts.get(c, (0, 0))
+        Nh = CELL_POPULATION[c]
+        if n_c == 0:
+            detail[c] = {"n": 0, "x": 0, "p": None, "N_pop": Nh}
+            continue
+        ph = x_c / n_c
+        num += Nh * ph
+        den += Nh
+        fpc = max(1 - n_c / Nh, 0.0)
+        var += (Nh ** 2) * fpc * ph * (1 - ph) / max(n_c - 1, 1)
+        detail[c] = {"n": n_c, "x": x_c, "p": ph, "N_pop": Nh}
+    if den == 0:
+        return None, None, detail
+    p_hat = num / den
+    se = np.sqrt(var) / den
+    return p_hat, se, detail
+
+
 def recompute_alpha_beta(labeled, prov, mathutils, scorer_field):
-    """scorer_field: 'score_boxed_stratum' or 'exact_match_stratum'."""
-    credited_n, credited_wrong = 0, 0
-    wrong_n, wrong_right = 0, 0
+    """scorer_field: 'score_boxed_stratum' or 'exact_match_stratum'. Uses
+    the design-weighted (Horvitz-Thompson) estimator across the cells that
+    make up this scorer's credited/wrong union -- see _ht_pool docstring."""
+    cell_counts_credit_wrong = {}  # cell -> (n_credited_scored, n_false_credit), (n_wrong_scored, n_false_miss)
+    per_cell_n = {}
+    per_cell_false_credit = {}
+    per_cell_n_wrong = {}
+    per_cell_false_miss = {}
     for uid, ans in labeled.items():
         p = prov.get(uid)
         if not p:
@@ -122,19 +179,32 @@ def recompute_alpha_beta(labeled, prov, mathutils, scorer_field):
         m = matches_gold(mathutils, ans, p["gold"])
         if m is None:
             continue
+        cell = p["cell"]
         is_credited = p[scorer_field] == "credited"
         if is_credited:
-            credited_n += 1
+            per_cell_n[cell] = per_cell_n.get(cell, 0) + 1
             if not m:
-                credited_wrong += 1  # scorer said correct, human disagrees -> false credit
+                per_cell_false_credit[cell] = per_cell_false_credit.get(cell, 0) + 1
         else:
-            wrong_n += 1
+            per_cell_n_wrong[cell] = per_cell_n_wrong.get(cell, 0) + 1
             if m:
-                wrong_right += 1  # scorer said wrong, human says correct -> false miss
-    alpha = credited_wrong / credited_n if credited_n else None
-    beta = wrong_right / wrong_n if wrong_n else None
-    return {"n_credited": credited_n, "n_false_credit": credited_wrong, "alpha": alpha,
-            "n_wrong": wrong_n, "n_false_miss": wrong_right, "beta": beta}
+                per_cell_false_miss[cell] = per_cell_false_miss.get(cell, 0) + 1
+
+    credited_cells = SCORER_CELLS[scorer_field]["credited"]
+    wrong_cells = SCORER_CELLS[scorer_field]["wrong"]
+    alpha_counts = {c: (per_cell_n.get(c, 0), per_cell_false_credit.get(c, 0)) for c in credited_cells}
+    beta_counts = {c: (per_cell_n_wrong.get(c, 0), per_cell_false_miss.get(c, 0)) for c in wrong_cells}
+    alpha, alpha_se, alpha_detail = _ht_pool(alpha_counts, credited_cells)
+    beta, beta_se, beta_detail = _ht_pool(beta_counts, wrong_cells)
+
+    n_credited_total = sum(per_cell_n.get(c, 0) for c in credited_cells)
+    n_fc_total = sum(per_cell_false_credit.get(c, 0) for c in credited_cells)
+    n_wrong_total = sum(per_cell_n_wrong.get(c, 0) for c in wrong_cells)
+    n_fm_total = sum(per_cell_false_miss.get(c, 0) for c in wrong_cells)
+    return {"n_credited": n_credited_total, "n_false_credit": n_fc_total,
+            "alpha": alpha, "alpha_se": alpha_se, "alpha_cell_detail": alpha_detail,
+            "n_wrong": n_wrong_total, "n_false_miss": n_fm_total,
+            "beta": beta, "beta_se": beta_se, "beta_cell_detail": beta_detail}
 
 
 def main():
@@ -235,8 +305,18 @@ def main():
         if ab["alpha"] is None or ab["beta"] is None or ab["n_credited"] == 0 or ab["n_wrong"] == 0:
             print(f"  {label}: insufficient scored rows for a pooled alpha/beta -- skipped")
             continue
-        alpha_lo, alpha_hi = wilson_ci(ab["n_false_credit"], ab["n_credited"])
-        beta_lo, beta_hi = wilson_ci(ab["n_false_miss"], ab["n_wrong"])
+        # Design-based CI (normal approx around the HT point estimate using its
+        # design SE) -- NOT a Wilson CI on the naively pooled raw counts, which
+        # would assume simple random sampling within each scorer's credited/
+        # wrong union. This audit's disproportionate cell sampling fractions
+        # (e.g. both_not_credited at ~1% vs disagree_em_credited_sb_not at
+        # ~6%) make that assumption wrong -- verified numerically to bias a
+        # naive estimate by several hundred percent when the small, densely-
+        # sampled cell's true rate differs from the majority cell's.
+        alpha_lo = max(0.0, ab["alpha"] - Z * ab["alpha_se"])
+        alpha_hi = min(1.0, ab["alpha"] + Z * ab["alpha_se"])
+        beta_lo = max(0.0, ab["beta"] - Z * ab["beta_se"])
+        beta_hi = min(1.0, ab["beta"] + Z * ab["beta_se"])
         n_unresolved, n_valid_pairs, widths = 0, 0, []
         for p in pair_pop:
             lo_m, hi_m = p["lo"], p["hi"]
