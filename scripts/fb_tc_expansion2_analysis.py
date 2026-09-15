@@ -71,18 +71,45 @@ def matches_gold(mathutils, answer, gold):
     return a.strip() == g.strip() or is_equiv_fixed(a, g)
 
 
-def quality_gate(labeled, prov, mathutils):
+def load_labeled_csv(path):
+    """Reads the CSV preserving duplicate-uid evidence (a plain dict
+    comprehension over DictReader silently collapses duplicate uids to
+    their last value, destroying the evidence a quality gate needs to see).
+    Returns (labeled dict, duplicate_uids list, n_rows_in_file)."""
+    rows = list(csv.DictReader(open(path, encoding="utf-8")))
+    seen, dupes = set(), []
+    labeled = {}
+    for r in rows:
+        uid = r["uid"]
+        if uid in seen:
+            dupes.append(uid)
+        seen.add(uid)
+        labeled[uid] = r["your_answer"]
+    return labeled, dupes, len(rows)
+
+
+def quality_gate(labeled, prov, mathutils, n_rows_in_file=None, duplicate_uids=None):
     """Returns (passed, report_dict). Mirrors the checks that caught the
     two excluded submissions: near-total agreement with both automated
     scorers in the agreement cells, near-zero match in the disagreement-
-    with-both-scorers cell, and zero CONTRADICTORY usage."""
+    with-both-scorers cell, and zero CONTRADICTORY usage -- plus structural
+    checks (duplicate/unmatched uids, expected row count, answer-text
+    corruption heuristics) added after those same two incidents, to catch a
+    THIRD bad submission before it ever reaches the statistical checks."""
     by_cell = {}
+    n_unmatched = 0
+    corrupted = []
     for uid, ans in labeled.items():
         p = prov.get(uid)
         if not p:
+            n_unmatched += 1
             continue
         m = matches_gold(mathutils, ans, p["gold"])
         by_cell.setdefault(p["cell"], []).append(m)
+        stripped = ans.strip()
+        if stripped not in ("NONE", "CONTRADICTORY") and (
+                "\n" in ans or "\r" in ans or len(stripped) > 200):
+            corrupted.append(uid)
 
     n_contra = sum(1 for v in labeled.values() if v.strip() == "CONTRADICTORY")
     n_none = sum(1 for v in labeled.values() if v.strip() == "NONE")
@@ -105,9 +132,24 @@ def quality_gate(labeled, prov, mathutils):
     if bnc.get("match_rate") is not None and bnc["match_rate"] < 0.02:
         red_flags.append(f"both_not_credited match rate implausibly low ({bnc['match_rate']:.1%}) "
                           f"-- exactly reproduces the historical near-zero result on FRESH data")
+    if duplicate_uids:
+        red_flags.append(f"{len(duplicate_uids)} duplicate uid(s) in the submitted CSV "
+                          f"(each collapses to its LAST occurrence unless fixed first)")
+    if n_unmatched:
+        red_flags.append(f"{n_unmatched} uid(s) in the submission do not match any row in "
+                          f"tc_expansion2_provenance.json -- wrong file, or hand-edited uids")
+    if n_rows_in_file is not None and n_rows_in_file != 458:
+        red_flags.append(f"{n_rows_in_file} rows in the file, expected 458 (the preregistered "
+                          f"200/198/30/30 design) -- a partial or merged submission")
+    if corrupted:
+        red_flags.append(f"{len(corrupted)} answer(s) contain embedded newlines or exceed 200 "
+                          f"chars -- resembles the corruption pattern in the second excluded "
+                          f"submission (trailing junk text from a bulk edit), not a normal answer")
 
     passed = len(red_flags) < 2  # one borderline flag alone doesn't block; two or more does
     return passed, {"cell_rates": cell_rates, "n_contradictory": n_contra, "n_none": n_none,
+                     "n_unmatched_uids": n_unmatched, "n_duplicate_uids": len(duplicate_uids or []),
+                     "n_corrupted_answers": len(corrupted), "corrupted_uids": corrupted[:20],
                      "red_flags": red_flags}
 
 
@@ -238,11 +280,12 @@ def main():
             labeled[k] = "CONTRADICTORY"
         for k in keys[20:60]:
             labeled[k] = "NONE"
+        n_rows_in_file, dupes = None, []
     else:
-        with open(args.csv, encoding="utf-8") as f:
-            labeled = {r["uid"]: r["your_answer"] for r in csv.DictReader(f)}
+        labeled, dupes, n_rows_in_file = load_labeled_csv(args.csv)
 
-    passed, gate_report = quality_gate(labeled, prov, mathutils)
+    passed, gate_report = quality_gate(labeled, prov, mathutils,
+                                        n_rows_in_file=n_rows_in_file, duplicate_uids=dupes)
     print("-" * 78)
     print("QUALITY GATE")
     print("-" * 78)
