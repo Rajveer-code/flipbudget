@@ -13,7 +13,9 @@ MATH-Hard's real evaluation harness (`vendor/leaderboard_math/utils.py`, byte-id
 
 | Quantity | Value |
 |---|---|
-| Overall disagreement rate | **6.51%** (single-subject spot check, algebra_hard); model-level range 0.7–18.6% across the full 7-subject population |
+| Overall disagreement rate, FULL population (22,508 rows, 17 models × 7 subjects) | **3.63%** (817/22,508; exact 95% CI [3.39%, 3.88%]) — **the correct headline number**, verified by direct recount from `tc_expansion_population.json` |
+| Overall disagreement rate, algebra_hard subject only (5,219 rows) | 6.51% — a real, correct number, but for one subject, not the population; kept earlier without stating the scope clearly enough — corrected here |
+| Model-level range, full population | **0.60% (falcon-7b) to 9.59% (Yi-1.5-9B-Chat)** — corrected from an earlier, wrongly-scoped "0.7–18.6%" figure |
 | Direction | Bidirectional — neither scorer strictly dominates |
 | Per-model accuracy gap (`a_hat_exact_match − a_hat_score_boxed`) | mean +0.76 pts, but ranges from **−6.87 pts** (Yi-1.5-9B-Chat, score_boxed higher) to **+5.66 pts** (zephyr-orpo, exact_match higher) |
 | `a_hat_exact_match` vs. the already-published `e1_case_b_TRUE.json` | Matches to within rounding on 16/17 models (one model, falcon-40b, differs by 0.15 pts — a snapshot-version artifact, not a methodology error) — **independent confirmation this project's `a_hat` pipeline is correctly reading `exact_match`** |
