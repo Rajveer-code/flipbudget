@@ -1,0 +1,79 @@
+{
+  "quality_gate": {
+    "cell_rates": {
+      "both_not_credited": {
+        "n": 198,
+        "n_match": 18,
+        "n_scored": 175,
+        "match_rate": 0.10285714285714286
+      },
+      "both_credited": {
+        "n": 200,
+        "n_match": 141,
+        "n_scored": 173,
+        "match_rate": 0.815028901734104
+      },
+      "disagree_em_credited_sb_not": {
+        "n": 30,
+        "n_match": 19,
+        "n_scored": 23,
+        "match_rate": 0.8260869565217391
+      },
+      "disagree_sb_credited_em_not": {
+        "n": 30,
+        "n_match": 23,
+        "n_scored": 27,
+        "match_rate": 0.8518518518518519
+      }
+    },
+    "n_contradictory": 20,
+    "n_none": 40,
+    "red_flags": []
+  },
+  "gate_passed": true,
+  "score_boxed_alpha_beta": {
+    "n_credited": 200,
+    "n_false_credit": 36,
+    "alpha": 0.18,
+    "n_wrong": 198,
+    "n_false_miss": 37,
+    "beta": 0.18686868686868688
+  },
+  "exact_match_alpha_beta": {
+    "n_credited": 196,
+    "n_false_credit": 36,
+    "alpha": 0.1836734693877551,
+    "n_wrong": 202,
+    "n_false_miss": 41,
+    "beta": 0.20297029702970298
+  },
+  "reconciliation_by_scorer": {
+    "score_boxed": {
+      "alpha_ci": [
+        0.13294550662534108,
+        0.2391159371623843
+      ],
+      "beta_ci": [
+        0.13872186289889704,
+        0.24693500862808254
+      ],
+      "n_valid_pairs": 10,
+      "n_unresolved": 6,
+      "median_width": 0.25211821317685046
+    },
+    "exact_match": {
+      "alpha_ci": [
+        0.13572411705027793,
+        0.24378445373778623
+      ],
+      "beta_ci": [
+        0.15328793374544522,
+        0.2637395281475833
+      ],
+      "n_valid_pairs": 10,
+      "n_unresolved": 6,
+      "median_width": 0.25502114009577453
+    }
+  },
+  "self_test": true
+}
