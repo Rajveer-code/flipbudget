@@ -3,9 +3,11 @@
 | Quantity | Value |
 |---|---|
 | Benchmark | MATH-Hard (leaderboard harness) |
-| Qualifying models (E-A headline) | 17 |
+| Models in the base pairwise-comparison list | 28 |
+| Models with any accuracy/audit data | 27 |
+| Qualifying models (E-A headline, Wilson-CI-eligible) | 17 |
 | Subjects | 7 |
-| Candidate pairs (17 choose 2) | 378 |
+| Candidate pairs (28 choose 2, base roster) | 378 |
 | Pairs with scored data | 136 |
 | Valid pairs (headline A/B) | 120 |
 | T-C expansion population, (model,item) rows | 22508 |
