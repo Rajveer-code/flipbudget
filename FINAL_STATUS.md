@@ -1,29 +1,34 @@
 # FINAL_STATUS.md — autonomous execution log
 
-## Stop condition (Phase 12): **B**
+## Correct framing of the stop condition (corrected mid-run)
 
-One genuinely unavoidable human dependency remains: the 458-row T-C expansion (`labeling/tc_expansion2_l1.csv`) requires a person to read each response and transcribe its stated answer. This cannot be automated without reintroducing the exact dependency the audit exists to check — confirmed the hard way this session (two AI-generated submissions detected and excluded, `TC_EXPANSION2_LABELING_QUALITY_ISSUE.md`). Everything else has been pushed as far as it can go around that one dependency; this file records exactly how far, so a future session (or the user, resuming) can pick up the next unchecked item directly.
+The 458 human labels block ONLY the analyses that specifically require them (analysis C, exact_match's own α/β and self-consistent identification). They are not a reason to pause everything else. This file reflects the state after continuing through everything that does NOT require them.
 
-## Phase-by-phase status (this run)
+## What's genuinely done, this run
 
-| Phase | Status | What was actually done |
-|---|---|---|
-| 1. Repository audit | Partial | Grepped for stale 6.51% references (found + fixed 2 instances lacking scope qualifiers), Windows-path leakage (none found beyond benign planning-doc cross-references), unqualified "6.10x" citations (added scope note to the highest-traffic source, `CANONICAL_EA_RESULT.md`) |
-| 2. Pipeline verification/hardening | **Done** | Independently re-derived the Horvitz-Thompson math by hand, confirmed the fix in `fb_tc_expansion2_analysis.py` is correct; added `tests/test_tc_expansion2_estimator.py` (7 new tests: synthetic recovery at 4 different stratum-prevalence pairs, a dedicated regression test reproducing the exact bug found and confirming the fix, edge cases). 24/24 tests pass repo-wide |
-| 3. Post-label analysis spec | Mostly done in a prior turn (`fb_tc_expansion2_analysis.py`), not re-extended this pass | Bootstrap CI machinery already exists (`tests/test_inference.py`) but is not yet wired into the T-C-expansion pipeline specifically — flagged, not done |
-| 4. Human-audit track completion | Already done in prior turns (blinded CSV, README, provenance, quality gate) | Not re-touched this pass — stands as-is |
-| 5. External validation search | Already done in a prior turn (IFEval confirmed as a second, structurally different case; BBH checked and ruled out) | Not re-extended this pass |
-| 6. Novelty re-check | **Done** | Two fresh searches, no new collision found; NeurIPS 2026 Evaluations & Datasets CFP language independently confirms venue fit |
-| 7. Manuscript architecture/drafting | Partial | `manuscript/01_introduction.md` — real, complete prose draft, grounded only in established results (A/B), explicit that analysis C is pending. Remaining sections (Methods, Results, Limitations, Discussion) **not yet drafted** |
-| 8. Figures | Partial | `figures/fig1_uncertainty_decomposition.png` (300dpi, serif, colorblind-safe, regenerated from disk, honest caption) — 1 of the ~5 figures Phase 8 lists. Remaining: identified-set geometry, audit-budget curve, worst-case sensitivity, empirical pairwise-dominance figure |
-| 9. Reproducibility sweep | Partial | Covered by Phase 1's grep pass above; a full clean-environment re-run (Phase 9's fuller ask) not repeated this pass — last done and passing 21/21 earlier this session |
-| 10. Hostile review | Not extended this pass | `REVIEWER_ATTACK.md` already substantial from a prior turn; not re-run against this pass's new figure/manuscript content |
-| 11. Packaging | **Correctly not attempted** | A "final PDF" would either omit analysis C or fabricate it — neither is honest while the human audit is outstanding |
+- **Theory**: flip-budget uncertainty computed on current real MATH-Hard data (superseding a stale MMLU placeholder run), added as `THEORY_EXTENSIONS.md` §7. All other theory items in the directive's list (ranking-preservation, correlated-error, imperfect-reference, verification-bias, partial-identification inference) were already complete from prior phases — verified present, not re-derived.
+- **Manuscript**: full draft, all 13 requested sections, written as real prose (`manuscript/MANUSCRIPT_DRAFT.md`), not an outline. Every result depending on the pending audit marked `[PENDING — human audit]` with the exact quantity named. Self-corrected one real weakness (abstract citing only one of two established ratios) via a targeted hostile self-review pass.
+- **Figures**: 2 of the ~7 listed (`fig1_uncertainty_decomposition.png`, `fig2_audit_budget_curve.png`), both regenerated from disk data, 300dpi, captioned honestly including caveats.
+- **Supplementary material**: `manuscript/SUPPLEMENTARY.md` — HT estimator full derivation, sampling design, adversarial-suite taxonomy, a 7-row bug-disclosure table with quantified impact per bug, exact metric definitions, reproducibility instructions.
+- **Consistency audit**: grepped for stale 6.51%, unqualified 6.10×, 134.32×/5.24× without superseding context. Fixed 3 real instances (`CANONICAL_EA_RESULT.md` scope note; `TIER1_VERDICT.md` superseding header; abstract's single-ratio citation).
+- **Auto-update pipeline**: `scripts/fb_final_evidence_update.py` — one command (behind an explicit confirmation flag), runs quality gate + full recompute + figure regeneration + test suite + dated JSON report. Syntax-verified; not run end-to-end (needs real labels to actually execute past the gate).
+- Tests: 24/24 passing throughout this run.
 
-## What changed this pass (results)
+## What's NOT done — honestly, not glossed over
 
-Nothing scientific changed — this pass hardened and documented, it did not re-derive headline numbers. Two real fixes went into the codebase (the estimator regression tests; the scope-qualifier note on the canonical result page).
+- Manuscript sections beyond the ones drafted are complete in substance but not typeset/polished for actual submission (no LaTeX, no venue template, no reference list with real DOIs — citations are author-year placeholders pointing at real papers, not formatted).
+- 5 of the ~7 listed figures not built (conceptual pipeline diagram; identified-set geometry; scorer-choice disagreement chart as its own figure, currently folded into fig1; ranking-preservation/flip-budget visualization).
+- Tables requested (dataset description, theorem summary, scorer comparison, robustness/sensitivity summary) not built as standalone table artifacts — the same numbers exist in prose/markdown tables throughout the manuscript and supplementary, not reformatted into dedicated table files.
+- The 3-reviewer hostile pass was NOT redone from scratch on the new manuscript — one targeted self-review catch was made and fixed (the abstract issue); a full fresh 3-reviewer pass on the assembled manuscript specifically (as opposed to the underlying science, already covered in `REVIEWER_ATTACK.md`) was not performed this run.
+- `fb_final_evidence_update.py` has not been exercised end-to-end against a real labeled file (cannot be, without real labels) — its component pieces (`fb_tc_expansion2_analysis.py`, the two figure scripts, pytest) are each independently verified working.
 
-## The single highest-value next action
+## Exact human-label-dependent components remaining
 
-Continue Phase 7 (draft the remaining manuscript sections — Methods and the theory chapter have the most existing material to draw from, `THEORY_EXTENSIONS.md`, `TA_SSM_DERIVATION.md`, etc.) and Phase 8 (2–3 more figures) in a future session, in parallel with the human labeling track, which needs no further autonomous work to unblock — it is already fully prepared and waiting.
+Everything in `MANUSCRIPT_DRAFT.md` marked `[PENDING — human audit]`: `exact_match`'s own audited α/β; analysis C's median ratio and % dominant; the fully self-consistent four-layer decomposition for `exact_match`.
+
+## Commands to run after labels arrive
+
+```bash
+python scripts/fb_final_evidence_update.py --csv labeling/tc_expansion2_l1.csv --i-confirm-human-labeled
+```
+Then manually transfer the resulting numbers into `MANUSCRIPT_DRAFT.md`'s `[PENDING]` markers (deliberately not automated — see that script's docstring).
