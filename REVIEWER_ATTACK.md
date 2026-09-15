@@ -180,3 +180,5 @@ rigorous.
    reviewer's strongest point, per the original assessment) is resolved.
    Remaining open item unchanged: a genuinely independent third
    benchmark, now with named candidates rather than a dead end.
+
+5. **New attack this pass, self-discovered before a reviewer would find it**: "your α/β were audited against `score_boxed`, but your headline accuracy numbers come from `exact_match` — a different scorer. Doesn't that invalidate the whole correction?" Found via the project's own adversarial suite, not a reviewer — and answered with a direct test, not an assertion: the self-consistent (`score_boxed`-accuracy + `score_boxed`-α/β) pairing gives 5.74× vs. the mixed pairing's 6.10×, both 100% dominant on the same 120 pairs (`SCORER_MISMATCH_MAJOR_FINDING.md`). A reviewer asking this question gets a measured answer, not a promise to check later.
