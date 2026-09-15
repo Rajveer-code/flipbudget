@@ -1,0 +1,30 @@
+{
+  "bounds": {
+    "score_boxed_anchor_alpha": 0.03137299381840867,
+    "score_boxed_anchor_beta": 0.0,
+    "exact_match_alpha_best": 0.023731251747027504,
+    "exact_match_alpha_worst": 0.2673083268458417,
+    "exact_match_beta_best": 0.0,
+    "exact_match_beta_worst": 0.014431660384844277
+  },
+  "worst_case": {
+    "alpha": 0.2673083268458417,
+    "beta": 0.014431660384844277,
+    "lambda": 2.0,
+    "n_valid": 10,
+    "n_unresolved": 10,
+    "pct_unresolved": 100.0,
+    "median_width": 0.1658707868724906
+  },
+  "best_case": {
+    "alpha": 0.023731251747027504,
+    "beta": 0.0,
+    "lambda": 2.0,
+    "n_valid": 105,
+    "n_unresolved": 25,
+    "pct_unresolved": 23.80952380952381,
+    "median_width": 0.0452944502753972
+  },
+  "established_audit_only_median_width": 0.28000766157679446,
+  "verdict_b_survives_worst_case": true
+}
