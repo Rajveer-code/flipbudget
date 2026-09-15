@@ -1,0 +1,32 @@
+{
+  "most_fragile": {
+    "model_hi": "meta-llama/Meta-Llama-3-70B-Instruct",
+    "model_lo": "tiiuae/falcon-7b",
+    "a1": 0.22885196374622357,
+    "a2": 0.0022658610271903325,
+    "corrected_delta_point": 0.22658610271903323,
+    "delta_interval": [
+      0.20464501510574018,
+      0.24924471299093656
+    ],
+    "flip_budget_point": 0.22658634185791016,
+    "flip_budget_degenerate": false,
+    "flip_budget_lower_5pct": 0.20694923400878906,
+    "coverage_caveat": "This interval is a RAW percentile bootstrap, not a calibrated 95% CI. flipbudget's own coverage simulation (see the repo's T3 commit history) found ~0.90-0.92 empirical coverage against a 0.95 nominal target at realistic audit densities (n=20-50 per model), improving toward nominal as audit size grows. Report the interval as-is with this caveat, not as an exact 95% CI -- that would be a stronger claim than the evidence supports."
+  },
+  "most_robust": {
+    "model_hi": "Qwen/Qwen2-72B-Instruct",
+    "model_lo": "Qwen/Qwen2-7B",
+    "a1": 0.3391238670694864,
+    "a2": 0.16540785498489427,
+    "corrected_delta_point": 0.17371601208459211,
+    "delta_interval": [
+      0.1419939577039275,
+      0.20694864048338368
+    ],
+    "flip_budget_point": 0.17371654510498047,
+    "flip_budget_degenerate": false,
+    "flip_budget_lower_5pct": 0.14728164672851562,
+    "coverage_caveat": "This interval is a RAW percentile bootstrap, not a calibrated 95% CI. flipbudget's own coverage simulation (see the repo's T3 commit history) found ~0.90-0.92 empirical coverage against a 0.95 nominal target at realistic audit densities (n=20-50 per model), improving toward nominal as audit size grows. Report the interval as-is with this caveat, not as an exact 95% CI -- that would be a stronger claim than the evidence supports."
+  }
+}

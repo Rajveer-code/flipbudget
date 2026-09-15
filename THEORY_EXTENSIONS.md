@@ -326,6 +326,21 @@ the first than the second, named here rather than silently conflated.
 
 ---
 
+## 7. Flip-budget uncertainty (item 1, latest directive)
+
+The flip budget `d*` (minimum differential-error perturbation needed to put a comparison's sign in doubt) is itself a statistic with sampling variability — reported as a point value throughout this project so far without a confidence treatment. The published package's `paired_bootstrap_delta` (`src/flipbudget/inference.py`, already unit-tested) resamples both the benchmark items and the audit items jointly and recomputes `d*` per replicate.
+
+**Superseded prior attempt, corrected here.** `scripts/fb_t5_budget_ci.py` computed this on a stale, non-current roster (an earlier MMLU exploration with placeholder models, `alpha=0.01` floor explicitly self-flagged as not a real estimate) — left on disk unmodified as historical, not used in any current result. `scripts/fb_flip_budget_uncertainty_mathhard.py` recomputes it on the CURRENT MATH-Hard roster, real per-item benchmark arrays and real audited counts:
+
+| Pair | `d*` (point) | 95% bootstrap interval for `Δ*` | Lower-5th-pct `d*` bound |
+|---|---|---|---|
+| Meta-Llama-3-70B-Instruct vs. falcon-7b (narrowest identification width among resolved real pairs) | 0.2266 | [0.2046, 0.2492] | 0.2069 |
+| Qwen2-72B-Instruct vs. Qwen2-7B (widest identification width among resolved real pairs) | 0.1737 | [0.1420, 0.2069] | 0.1473 |
+
+Both real pairs require a substantial differential-error perturbation (>0.14) to flip, and the bootstrap interval for `Δ*` excludes zero cleanly in both cases — consistent with, not overturning, the project's broader finding that most real, valid comparisons are decisively resolved once identified at all. `n_boot=2000`, seed fixed at 42 for reproducibility. Full output: `results/flipbudget/flip_budget_uncertainty_mathhard.json`.
+
+**Partial-identification inference, more generally.** The `delta_interval` reported above is a percentile bootstrap over the SAME identification procedure used for the point estimate — a standard, defensible approach for partially-identified parameters (Imbens & Manski, 2004-style percentile-based coverage), not a novel inference procedure. Not attempted here: a formal proof of asymptotic coverage for this specific nonlinear (`g`), non-smooth-at-the-boundary (empty-set-possible) estimand — flagged as a genuine open item for a fully rigorous statistics-venue submission, honestly out of scope for this pass.
+
 ## 6. Partial pooling — when it helps, when it hurts
 
 **Classical result (James & Stein 1961; empirical Bayes, e.g. Efron &
