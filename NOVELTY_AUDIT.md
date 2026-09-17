@@ -80,8 +80,8 @@ theory (`THEORY_EXTENSIONS.md` §1) also invokes. Their identifying
 restriction — reporter-specific sensitivity/specificity calibration
 constants bounding a false-positive/false-negative-style rate — is
 **structurally the same object as this project's (alpha,beta)**, and both
-projects cite the same classical lineage (Horowitz & Manski 1995, Molinari
-2008, Hu 2008).
+projects cite the same classical lineage (Manski & Horowitz 1995, Molinari
+2008).
 
 **Why this is a neighbor, not a collision:** their LLMs are the *raters*
 (the thing that might be wrong); this project's LLMs are the *ratees* (the
@@ -114,7 +114,11 @@ A = classical, B = direct adaptation, C = nontrivial extension, D = genuinely ne
 
 | Result | Class | Reasoning |
 |---|---|---|
-| T-A: Scorer Sensitivity Model (Λ-odds-bound) | **B** | Direct adaptation of the marginal-sensitivity-model / misclassification-bounds literature (Horowitz & Manski 1995; Molinari 2008; Hu 2008) — the same family Chen-Rambachan-Tamer (2026) also adapt, independently, to a different problem |
+| T-A: Scorer Sensitivity Model (Λ-odds-bound) | **B** | Direct adaptation of the marginal-sensitivity-model / misclassification-bounds literature (Manski & Horowitz 1995; Molinari 2008) — the same family Chen-Rambachan-Tamer (2026) also adapt, independently, to a different problem |
+
+### Reference-audit correction (2026-09-17)
+
+Two real citation defects found and fixed during a full reference audit (verified each citation's actual author order/venue against the publisher/index, not from memory): (1) the seminal partial-identification paper's byline is **Manski, C.F., & Horowitz, J.L. (1995)**, Econometrica 63(2):281-302 — confirmed directly against the Econometric Society's own citation export — not "Horowitz & Manski" as every prior draft in this repo had it; fixed everywhere (manuscript, this file). (2) Hu (2008) was removed from the "sensitivity/specificity-bounds" citation group in the manuscript's Related Work: Hu's actual contribution (Journal of Econometrics 144(1):27-61) is point identification of a misclassified regressor via instrumental variables, a different identification strategy than the sensitivity-bound approach Manski-Horowitz/Molinari and this project use — citing it for that specific claim overstated its relevance. Rosenbaum (2004, Biometrika 91(1):153-164) and Molinari (2008, J. Econometrics 144(1):81-117) were independently re-verified and are accurate as cited.
 | T-H: sharpness of the identified set | **B** | Standard linear-fractional vertex-theorem argument; a known proof technique applied to this specific box |
 | T-B: design-sensitivity impossibility (Λ̃) | **B** | Direct adaptation of Rosenbaum design sensitivity (matched-observational-studies literature) to a benchmark-comparison setting |
 | Neyman-optimal audit-stratum allocation | **A** | Classical (Neyman 1934), applied with no modification to the allocation formula itself — see `fb_audit_design_optimization.py`'s explicit proof, cited not claimed |
