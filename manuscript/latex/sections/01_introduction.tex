@@ -1,86 +1,61 @@
 \section{Introduction}
 \label{sec:introduction}
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.85\linewidth]{fig7_conceptual_framework.png}
-  \caption{The scorer is an imperfect measurement mechanism, not a
-  ground-truth oracle. Every arrow into the identified set carries its own
-  uncertainty; audit-estimation dominates in practice
-  (Section~\ref{sec:results-decomposition}).}
-  \label{fig:conceptual}
-\end{figure}
-
-Benchmark leaderboards report accuracy as if it were observed. It is not. A
+Benchmark leaderboards report accuracy as if it were observed. It is not: a
 model's reported score is the output of a fixed, deterministic verifier
-applied to free-text generations---a string comparison, a regex over a boxed
-answer, a symbolic equivalence check---and that verifier can be wrong. When it
-is, the number on the leaderboard is not the model's accuracy; it is the
-model's accuracy contaminated by the verifier's own error rate, in a
-direction and magnitude nobody has measured. Figure~\ref{fig:conceptual}
-sketches the resulting measurement pipeline and where each source of
-uncertainty enters it.
+applied to free-text generations, and that verifier can be wrong. When it
+is, the leaderboard number is the model's accuracy contaminated by the
+verifier's own error rate, in a direction and magnitude nobody has
+measured (schematic: Appendix~\ref{sec:appendix-figures},
+Figure~\ref{fig:conceptual}).
 
 This paper asks what a benchmark comparison is still entitled to claim once
 that contamination is taken seriously. We audit MATH-Hard's standard
-comparator on real model responses, find it disagrees with human judgment at
-a small but nonzero rate, and derive the set of true accuracy values
-consistent with what was actually observed---not a point estimate corrected
-by a guessed error rate, but a \emph{partially identified set}, sharp under
-the weakest assumption the audit data will bear. The central empirical
-finding is not that the verifier is wrong often. It is that \textbf{how much
-a benchmark's verifier has been audited turns out to matter more than how
-good the benchmark's sample size is}: audit-estimation uncertainty, driven by
-how few human-labeled items exist to pin down the verifier's error rate,
-exceeds the field's already-reported sampling uncertainty for the majority of
-real model comparisons we can identify at all.
+comparator on real model responses, find it disagrees with human judgment
+at a small but nonzero rate, and derive the set of true accuracy values
+consistent with what was observed---not a point estimate corrected by a
+guessed error rate, but a \emph{partially identified set}, sharp under the
+weakest assumption the audit data will bear. The central finding: audit
+uncertainty, not sample size, is usually the binding constraint. Audit-
+estimation uncertainty---how few human-labeled items exist to pin down the
+verifier's error rate---exceeds the field's already-reported sampling
+uncertainty for the majority of real model comparisons we can identify at
+all.
 
-That finding immediately raises a design question the literature has not
-answered: if verifier auditing is the binding constraint, how should a fixed
+That finding raises a design question the literature has not answered: if
+verifier auditing is the binding constraint, how should a fixed
 human-labeling budget be spent? We formalize this as a stratified-sampling
 allocation problem, derive the classical \citep{neyman1934stratified}
-solution, and then show---on this paper's own real, sparse audit data---that
-the classical formula's own assumption (a decent pilot estimate) fails in
-exactly the regime most benchmarks are actually audited in: when most audited
-strata have observed zero error events, naive plug-in allocation concentrates
-budget on whichever cell happened to draw a noisy nonzero rate, and is
-dominated by simply spreading the budget evenly. A stress-tested,
-sparse-data-aware allocation rule is this paper's most directly usable
-output.
+solution, and show---on our own real, sparse audit data---that the
+classical formula's assumption (a decent pilot estimate) fails exactly
+where most benchmarks are actually audited: when most strata have observed
+zero error events, naive plug-in allocation concentrates budget on
+whichever cell drew a noisy nonzero rate, and is dominated by simply
+spreading the budget evenly. A stress-tested, sparse-data-aware allocation
+rule is this paper's most directly usable output.
 
-A third thread emerged from building an adversarial test suite for the
-verifier: MATH-Hard's evaluation harness computes accuracy two different ways
-from the same generations---one via LaTeX-aware symbolic parsing
-(\exactmatch, via \code{math\_verify}), one via locating the last
-\code{\textbackslash boxed\{\}} span (\scoreboxed)---and these two, both
-live, both in active use, disagree on 3.63\% of real responses (95\% CI
-[3.39\%, 3.88\%], full population, 17 models $\times$ 7 subjects). Every
-human audit this paper reports was conducted against \scoreboxed; the field's
-reported accuracy comes from \exactmatch. We show this mismatch does not
-overturn the audit-estimation-dominance finding---tested directly, not
-assumed, including under a deliberately adversarial worst-case bound on the
-unaudited scorer's error rate---but it establishes a second, independent
-source of benchmark uncertainty: \emph{which} automated criterion is used to
-score a benchmark is itself a measurable, sometimes consequential, choice.
-Independent, production-scale confirmation that this general problem is real
-(not specific to our framing) is discussed in Section~\ref{sec:related-work}.
+A third thread: MATH-Hard's evaluation harness computes accuracy two
+different ways from the same generations---LaTeX-aware symbolic parsing
+(\exactmatch) and last-\code{\textbackslash boxed\{\}} matching
+(\scoreboxed)---and these disagree on 3.63\% of real responses. Every human
+audit here was conducted against \scoreboxed; the field's reported accuracy
+comes from \exactmatch. This mismatch does not overturn the
+audit-estimation-dominance finding, tested directly including under an
+adversarial worst-case bound, but establishes a second, independent source
+of benchmark uncertainty: \emph{which} automated criterion scores a
+benchmark is itself a measurable, consequential choice, independently
+corroborated by production-scale evidence (Section~\ref{sec:related-work}).
 
 \paragraph{Contributions.} (1) A sharp partial-identification treatment of
 benchmark accuracy under an audited, imperfect verifier, adapting classical
 misclassification-bounds machinery
-\citep{manski1995identification,molinari2008partial} to the
-benchmark-comparison setting---the adaptation, not the underlying
-mathematics, is the contribution. (2) An empirical demonstration, on real
-data from a widely-used benchmark, that audit-estimation uncertainty
-dominates sampling uncertainty for the majority of identifiable model
-comparisons. (3) A stratified audit-design methodology
-(Section~\ref{sec:audit-design}), including a documented failure mode of the
-textbook-optimal allocation rule under sparse real data and a corrected,
-tested alternative. (4) A secondary, honestly-scoped finding that
-automated-scorer choice is itself a measurable, non-dominant but
-non-negligible source of benchmark uncertainty, with a worst-case sensitivity
-bound rather than an assumed-safe headline. Sections~\ref{sec:problem-formulation}--\ref{sec:theory}
-develop the identification theory; Section~\ref{sec:audit-design} the
-audit-design problem; Sections~\ref{sec:empirical-setup}--\ref{sec:results}
-the empirical results, including the scorer-choice and worst-case analyses;
-Section~\ref{sec:limitations} limitations.
+\citep{manski1995identification,molinari2008partial} to benchmark
+comparison. (2) An empirical demonstration that audit-estimation
+uncertainty dominates sampling uncertainty for the majority of identifiable
+comparisons on a widely-used benchmark. (3) A stratified audit-design
+methodology (Section~\ref{sec:audit-design}), including a documented
+failure mode of the textbook-optimal allocation rule under sparse real data
+and a tested alternative. (4) A secondary, honestly-scoped finding that
+automated-scorer choice is itself a measurable, non-dominant source of
+benchmark uncertainty, with a worst-case bound rather than an assumed-safe
+headline.

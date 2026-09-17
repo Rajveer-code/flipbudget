@@ -1,6 +1,113 @@
 \section{Supplementary Material}
 \label{sec:appendix}
 
+\subsection{Additional figures and tables}
+\label{sec:appendix-figures}
+
+Relocated here under the page budget (Section~\ref{sec:results} keeps only
+the figures/tables a reviewer needs to follow the primary and audit-design
+arguments; everything below supports a secondary or robustness claim
+already stated in the main text).
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.75\linewidth]{fig7_conceptual_framework.png}
+  \caption{The scorer is an imperfect measurement mechanism, not a
+  ground-truth oracle. Every arrow into the identified set carries its own
+  uncertainty; audit-estimation dominates in practice.}
+  \label{fig:conceptual}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.55\linewidth]{fig3_identified_set_geometry.png}
+  \caption{Identified-set geometry (T-H): the sharp interval is the
+  pointwise envelope of the four corner curves of the $\Lambda$-box.}
+  \label{fig:identified-set}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.55\linewidth]{fig6_flip_budget.png}
+  \caption{Ranking preservation (Section~\ref{sec:results-flip-budget}):
+  the bootstrap interval for $\Delta^\ast$ stays clear of the flip point
+  (0), most fragile and most robust real pair. $d^\ast$ is a magnitude, not
+  a point on this axis.}
+  \label{fig:flip-budget}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\linewidth]{fig4_scorer_choice_disagreement.png}
+  \caption{Scorer-choice as an accuracy-substitution shift
+  (Section~\ref{sec:results-scorer-mismatch}). $n=120$; median width
+  0.0091.}
+  \label{fig:scorer-choice}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.62\linewidth]{fig5_worst_case_sensitivity.png}
+  \caption{Even \exactmatch's worst-case bound stays below the established
+  audit-estimation-only median (Section~\ref{sec:results-scorer-mismatch}).}
+  \label{fig:worst-case}
+\end{figure}
+
+\begin{table}[h]
+  \centering
+  \caption{Negative controls: constructed scenarios testing whether the
+  dominance ratio is an artifact.}
+  \label{tab:negative-controls}
+  \small
+  \begin{tabular}{@{}p{3.5cm}cc p{3.6cm}@{}}
+    \toprule
+    Scenario & Audit $n$ & Ratio & Interpretation \\
+    \midrule
+    Perfect scorer, realistic audit $n$ & 11/11 & $5.63\times$ & Large ratio from audit thinness alone \\
+    Perfect scorer, large audit & 2000/2000 & $0.03\times$ & Stable, as expected \\
+    High-accuracy scorer, modest audit & 100/100 & $0.92\times$ & Stable \\
+    Scorer sized to its own required $n$ & 415/415 & $0.60\times$ & Stable \\
+    Null true effect (identical models) & --- & --- & Sampling and identification intervals both correctly contain 0 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[h]
+  \centering
+  \caption{Scorer-comparison findings, full detail (headline numbers
+  already given in Section~\ref{sec:results-scorer-mismatch}).}
+  \label{tab:scorer-comparison}
+  \small
+  \begin{tabular}{@{}p{6.7cm}c@{}}
+    \toprule
+    Quantity & Value \\
+    \midrule
+    \exactmatch\ acc.\ + \exactmatch's own audited box (Analysis C) & \textcolor{red}{pending} \\
+    \exactmatch\ acc.\ + \scoreboxed's audited box (Analysis A) & 6.09$\times$, 100\% dominant, $n=120$ \\
+    \scoreboxed\ acc.\ + \scoreboxed's audited box (Analysis B) & 5.74$\times$, 100\% dominant, $n=120$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[h]
+  \centering
+  \caption{Robustness / worst-case sensitivity, full detail.}
+  \label{tab:worst-case}
+  \small
+  \begin{tabular}{@{}lc@{}}
+    \toprule
+    Quantity & Value \\
+    \midrule
+    \scoreboxed\ anchor $\alpha$ (global pooled) & 3.14\% \\
+    \exactmatch\ $\alpha$, best / worst case & 2.37\% / 26.73\% \\
+    \exactmatch\ $\beta$, worst case & 1.44\% \\
+    Worst-case median width; established median & 0.1659; 0.2800 \\
+    Worst-case $n$ valid / unresolved & 10 / 10 \\
+    Verdict B survives the worst case & Yes \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
 \subsection{Proofs and derivations}
 \label{sec:appendix-proofs}
 

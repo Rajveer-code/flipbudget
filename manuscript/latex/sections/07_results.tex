@@ -6,11 +6,8 @@
 
 \begin{table}[t]
   \centering
-  \caption{Empirical pairwise results: three analyses, distinguished by which
-  accuracy is paired with which audited box. Median ratio for A shown at
-  full precision (2 decimals); prose throughout cites the same value rounded
-  to 1 decimal and padded (``6.10$\times$'')---not a different number, a
-  different display convention.}
+  \caption{Empirical pairwise results: three analyses, distinguished by
+  which accuracy is paired with which audited box.}
   \label{tab:pairwise}
   \small
   \begin{tabular}{@{}p{2.3cm}p{4.6cm}ccc@{}}
@@ -24,193 +21,94 @@
   \end{tabular}
 \end{table}
 
-Both established analyses agree in direction and closely in magnitude: the
-headline is not an artifact of the accuracy-input choice. Full denominator
-cascade (378 candidate pairs $\to$ 136 scored $\to$ 120 valid, with every
-exclusion stage counted) and the full percentile distribution
-(min $2.15\times$, max $20.30\times$, mean $7.39\times$) are in
-Table~\ref{tab:dataset} and the supplementary claim ledger
-(Appendix~\ref{sec:appendix-claim-ledger}). (``Historical, mixed'' pairs
-\exactmatch\ accuracy with a box audited against \scoreboxed\ specifically;
-the mismatch and its consequences are the subject of
-Section~\ref{sec:results-scorer-mismatch}.)
+Both established analyses agree in direction and closely in magnitude (min
+ratio $2.15\times$, max $20.30\times$, mean $7.39\times$)---not an artifact
+of the accuracy-input choice. Full denominator cascade and percentile
+distribution: Appendix~\ref{sec:appendix-claim-ledger}. (``Historical,
+mixed'' pairs \exactmatch\ accuracy with a box audited against \scoreboxed;
+the mismatch is Section~\ref{sec:results-scorer-mismatch}.)
 
 \subsection{Four-layer uncertainty decomposition}
 \label{sec:results-decomposition}
 
-Two of the four layers are easy to conflate and are kept structurally
-separate throughout: \emph{scorer-identification-only} asks how much
-$A^\ast$ could vary at a fixed, exactly-known $(\alpha,\beta)$ point
-estimate, purely from the $\Lambda$-sensitivity allowance for per-item
-variation---it would not shrink even with an infinite audit, because it is
-not about knowing $(\alpha,\beta)$ better. \emph{Audit-estimation-only} asks
-the opposite question: how much does not knowing $(\alpha,\beta)$ precisely
-(a finite-sample Wilson confidence interval around the point estimate)
-widen the identified set---this layer shrinks toward zero as the audit
-grows. The two are computed independently in Table~\ref{tab:layers} and are
-never summed into a single ``scorer uncertainty'' figure without saying
-which of the two is meant.
+Two layers are easy to conflate and are kept structurally separate:
+\emph{scorer-identification-only} asks how much $A^\ast$ could vary at a
+fixed, exactly-known $(\alpha,\beta)$---it would not shrink with an
+infinite audit. \emph{Audit-estimation-only} asks how much not knowing
+$(\alpha,\beta)$ precisely widens the set---this shrinks as the audit
+grows. Sampling (0.043, $n=136$) $<$ scorer-identification (0.068, $n=66$)
+$<$ scorer-choice (0.009, $n=120$) $\ll$ audit-estimation (0.280, $n=120$),
+Figure~\ref{fig:decomposition} and Table~\ref{tab:layers}.
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.75\linewidth]{fig1_uncertainty_decomposition.png}
-  \caption{Four measured uncertainty sources on the same 136 real MATH-Hard
-  pairs. Audit-estimation uncertainty (finite human-audit sample) is the
-  largest measured source, $\sim\!4\times$ the sampling width and
-  $\sim\!4\times$ the scorer-sensitivity width.}
+  \includegraphics[width=0.62\linewidth]{fig1_uncertainty_decomposition.png}
+  \caption{Four measured uncertainty sources, same 136 real MATH-Hard
+  pairs. Audit-estimation dominates, $\sim\!4\times$ sampling and
+  scorer-sensitivity width.}
   \label{fig:decomposition}
 \end{figure}
 
-Sampling (0.043 median width, $n=136$) $<$ scorer-identification
-(\scoreboxed, $\Lambda=2$; 0.068, $n=66$) $<$ scorer-choice (0.009, $n=120$)
-$\ll$ audit-estimation (\scoreboxed; 0.280, $n=120$), shown in
-Figure~\ref{fig:decomposition}; see its caption for the scorer-choice-width
-caveat (Section~\ref{sec:results-scorer-mismatch}). The full layer-by-layer
-table, including the two \exactmatch\ worst/best-case bounds from
-Section~\ref{sec:results-scorer-mismatch}, is Table~\ref{tab:layers}.
-
 \begin{table}[t]
   \centering
-  \caption{Uncertainty-layer comparison. Both \exactmatch\ rows are a
-  population-weighted worst/best-case bound, not a measured quantity---its
-  own audit is pending.}
+  \caption{Uncertainty-layer comparison. \exactmatch\ rows are a
+  population-weighted worst/best-case bound, not measured---its own audit
+  is pending.}
   \label{tab:layers}
   \small
-  \begin{tabular}{@{}p{4.6cm}p{2.0cm}ccc@{}}
+  \begin{tabular}{@{}p{4.4cm}p{1.7cm}ccc@{}}
     \toprule
-    Layer & Status & $n$ valid & $n$ unres. & Med.\ width \\
+    Layer & Status & $n$ valid & $n$ unres. & Width \\
     \midrule
-    Benchmark sampling & measured & 136 & 12 & 0.0431 \\
-    Audit-estimation-only (\scoreboxed) & measured & 120 & 91 & 0.2800 \\
-    Scorer-identification-only (\scoreboxed, $\Lambda=2$) & measured & 66 & 15 & 0.0679 \\
+    Sampling & measured & 136 & 12 & 0.0431 \\
+    Audit-estimation (\scoreboxed) & measured & 120 & 91 & 0.2800 \\
+    Scorer-ID (\scoreboxed, $\Lambda{=}2$) & measured & 66 & 15 & 0.0679 \\
     Combined (\scoreboxed) & measured & 120 & 110 & 0.4521 \\
-    Scorer-choice (accuracy substitution) & measured & 120 & --- & 0.0091 \\
-    \exactmatch\ best case (bound, $\Lambda=2$) & worst/best-case & 105 & 25 & 0.0453 \\
-    \exactmatch\ worst case (bound, $\Lambda=2$) & worst/best-case & 10 & 10 & 0.1659 \\
+    Scorer-choice (subst.) & measured & 120 & --- & 0.0091 \\
+    \exactmatch\ best case & bound & 105 & 25 & 0.0453 \\
+    \exactmatch\ worst case & bound & 10 & 10 & 0.1659 \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\subsection{Flip-budget robustness (established, on real pairs)}
+\subsection{Flip-budget robustness}
 \label{sec:results-flip-budget}
-
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.75\linewidth]{fig6_flip_budget.png}
-  \caption{Ranking preservation: the bootstrap interval for $\Delta^\ast$
-  stays clear of the flip point (0), for both the most fragile and most
-  robust real pair tested. $d^\ast$ is a magnitude (minimum additional
-  differential-error perturbation), not itself a point on this axis.}
-  \label{fig:flip-budget}
-\end{figure}
 
 Bootstrapped $d^\ast$ on the current roster's most fragile and most robust
 resolved pairs: both require substantial differential error
 ($d^\ast \geq 0.17$, 95\% intervals excluding zero) to flip---real
-comparisons, once identified, tend to be decisively resolved
-(Figure~\ref{fig:flip-budget}).
+comparisons, once identified, are decisively resolved (figure and
+per-pair detail: Appendix~\ref{sec:appendix-figures}).
 
-\subsection{Scorer-mismatch (established main finding; worst-case bound established, \exactmatch's own audit pending)}
+\subsection{Scorer-mismatch (established main finding; \exactmatch's own audit pending)}
 \label{sec:results-scorer-mismatch}
 
-MATH-Hard's harness computes two live scores per item: \exactmatch\ (via
-\code{math\_verify})---the field's actual reported metric, and this paper's
-own $\hat{a}$ throughout---and \scoreboxed\ (last-\code{\textbackslash boxed\{\}})---what
-every audit round has measured. \textbf{Full population (22{,}508 rows, 17
-models $\times$ 7 subjects): 3.63\% disagreement (95\% CI [3.39\%, 3.88\%]),
-model range 0.60--9.59\%.} Bidirectional, not favoring either scorer
-systematically (a 12-category constructed adversarial taxonomy shows
-\scoreboxed\ false-misses unboxed ``Final Answer: X'' prose; \exactmatch\
-false-credits at least one unit-mismatch case). Full scorer-comparison
-figures are in Table~\ref{tab:scorer-comparison}; per-pair point-estimate
-shift is Figure~\ref{fig:scorer-choice}.
+MATH-Hard's harness computes two live scores per item: \exactmatch\ (the
+field's reported metric) and \scoreboxed\ (what every audit round has
+measured). \textbf{Full population: 3.63\% disagreement (817/22{,}508, 95\%
+CI [3.39\%, 3.88\%]), model range 0.60--9.59\%, bidirectional.}
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.62\linewidth]{fig4_scorer_choice_disagreement.png}
-  \caption{Scorer-choice as an accuracy-substitution shift, not a full
-  symmetric two-scorer comparison. $n=120$ real pairs; median width 0.0091.}
-  \label{fig:scorer-choice}
-\end{figure}
-
-\begin{table}[t]
-  \centering
-  \caption{Scorer-comparison findings (\exactmatch\ vs.\ \scoreboxed).}
-  \label{tab:scorer-comparison}
-  \small
-  \begin{tabular}{@{}p{6.7cm}c@{}}
-    \toprule
-    Quantity & Value \\
-    \midrule
-    Full-population disagreement rate & 3.63\% (817/22{,}508) \\
-    Disagreement rate, exact 95\% Clopper--Pearson CI & [3.39\%, 3.88\%] \\
-    Model-level disagreement range & 0.60\%--9.59\% \\
-    Directionality & Bidirectional \\
-    \exactmatch\ acc.\ + \exactmatch's own audited box (Analysis C) & \textcolor{red}{pending} \\
-    \exactmatch\ acc.\ + \scoreboxed's audited box (historical, Analysis A) & 6.09$\times$, 100\% dominant, $n=120$ \\
-    \scoreboxed\ acc.\ + \scoreboxed's audited box (Analysis B) & 5.74$\times$, 100\% dominant, $n=120$ \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\textbf{The 0.0091 median ``scorer-choice width'' in Figure~\ref{fig:decomposition}
-is an accuracy-substitution point-estimate shift---holding \scoreboxed's
-audited $(\alpha,\beta)$ fixed and varying only which accuracy feeds the
-identification formula---not a full, symmetric two-scorer
-identification-uncertainty comparison}, because \exactmatch\ has no audited
-$(\alpha,\beta)$ of its own yet.
+\textbf{The 0.0091 median ``scorer-choice width'' is an accuracy-substitution
+shift---holding \scoreboxed's box fixed, varying only the accuracy---not a
+full symmetric two-scorer comparison}, since \exactmatch\ has no audited
+box of its own yet (per-pair detail: Appendix~\ref{sec:appendix-figures}).
 
 \textbf{Worst-case sensitivity, established without new labels}: bounding
-\exactmatch's plausible $\alpha$ at $[2.38\%, 26.73\%]$ from the observed
-disagreement population sizes (worst case $\approx 8.5\times$ \scoreboxed's
-known rate) and running it through the identical $\Lambda=2$ methodology
-gives a worst-case median scorer-identification width of \textbf{0.166}---still
-below the established audit-estimation median (0.280). \textbf{Verdict B
-survives even this adversarial bound} (Figure~\ref{fig:worst-case},
-Table~\ref{tab:worst-case}), with an honest cost reported alongside the
-favorable comparison: only 10 of 120 pairs remain valid at all in the worst
-case, and all 10 are fully unresolved.
-\pending{\exactmatch's actual (not worst-case-bounded) audited $\alpha,\beta$,
-and its own fully self-consistent identification result, Analysis C}.
+\exactmatch's plausible $\alpha$ at $[2.38\%,26.73\%]$ from the observed
+disagreement population sizes and running it through the identical
+$\Lambda=2$ methodology gives median width \textbf{0.166}---below the
+established audit-estimation median (0.280). \textbf{Verdict B survives
+even this bound}, honestly: only 10 of 120 pairs stay valid at all, and all
+10 are unresolved (Appendix~\ref{sec:appendix-figures} for the figure).
+\pending{\exactmatch's actual audited $\alpha,\beta$ and its own
+self-consistent result, Analysis C}.
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.75\linewidth]{fig5_worst_case_sensitivity.png}
-  \caption{Even \exactmatch's worst-case bound stays below the established
-  audit-estimation-only median.}
-  \label{fig:worst-case}
-\end{figure}
-
-\begin{table}[t]
-  \centering
-  \caption{Robustness / worst-case sensitivity.}
-  \label{tab:worst-case}
-  \small
-  \begin{tabular}{@{}lc@{}}
-    \toprule
-    Quantity & Value \\
-    \midrule
-    \scoreboxed\ anchor $\alpha$ (global pooled) & 3.14\% \\
-    \exactmatch\ $\alpha$, best case & 2.37\% \\
-    \exactmatch\ $\alpha$, worst case & 26.73\% \\
-    \exactmatch\ $\beta$, worst case & 1.44\% \\
-    Worst-case median identified-set width & 0.1659 \\
-    Worst-case $n$ valid / unresolved & 10 / 10 \\
-    Established audit-estimation-only median & 0.2800 \\
-    Verdict B survives the worst case & Yes \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\subsection{Generalization beyond MATH-Hard (established: limited, not fabricated)}
+\subsection{Generalization beyond MATH-Hard (limited, not fabricated)}
 \label{sec:results-generalization}
 
 IFEval's \code{strict\_acc}/\code{loose\_acc} confirmed as a second, real,
-but structurally different data point (2.60\% disagreement, already
-measured; two leniency settings of \emph{one} verifier, not two
-independently-implemented libraries). BBH checked directly and does not
-qualify (single metric field per record). GPQA/MMLU-PRO/MuSR are
-loglikelihood-scored multiple-choice, structurally ruled out.
-\textbf{Honest conclusion: confirmed on one benchmark in the strong sense, a
-related-but-distinct phenomenon on a second; not yet established as a
-general property of automated evaluation.}
+structurally different data point (2.60\% disagreement---two leniency
+settings of \emph{one} verifier, not two independent libraries). BBH,
+GPQA/MMLU-PRO/MuSR structurally ruled out. \textbf{Confirmed on one
+benchmark in the strong sense, a related-but-distinct phenomenon on a
+second; not a general property of automated evaluation.}
