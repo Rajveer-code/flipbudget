@@ -7,7 +7,11 @@ novelty class; full derivations are in Appendix~\ref{sec:appendix-proofs}.
 \paragraph{T-A (Scorer Sensitivity Model).} $A^\ast$ is identified up to the
 box $B$; sharp bounds via 4-corner evaluation when $B$ does not straddle
 $\alpha+\beta=1$, via the feasible-region supremum (diverges to $[0,1]$)
-when it does. Class B.
+when it does. $B$ is the Cartesian product of two separately-estimated
+marginal intervals for $\alpha$ and $\beta$; this is justified rather than
+assumed away, since $\alpha$ is estimated from the credited stratum and
+$\beta$ from the disjoint wrong stratum, making the two estimates
+statistically independent. Class B.
 
 \paragraph{T-H (Sharpness).} 4-corner evaluation (non-straddling case) is
 exact, not an outer bound---a linear-fractional-function vertex-theorem
@@ -35,7 +39,9 @@ loading breaks this and is what the framework bounds. Class B.
 \citep{hui1980estimating} is not justified by this paper's rater-overlap
 data (an explicit, evidenced decision). A sensitivity bound $q_{\max}(\eta)$
 is derived instead; on real data (0/69 apparent disagreements) it has no
-concerning breakdown point for realistic $\eta$ (0--5\%). Class B/C.
+concerning breakdown point for realistic $\eta$ (0--5\%, grounded in this
+paper's own measured 100\% three-way inter-rater agreement on the audit's
+overlap items, not an assumed convenience range). Class B/C.
 
 \paragraph{T-E (Verification-bias formalization).} Distinct from the
 classical verification-bias structure because the sampling probability

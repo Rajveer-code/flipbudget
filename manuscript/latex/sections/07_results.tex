@@ -38,7 +38,12 @@ infinite audit. \emph{Audit-estimation-only} asks how much not knowing
 $(\alpha,\beta)$ precisely widens the set---this shrinks as the audit
 grows. Sampling (0.043, $n=136$) $<$ scorer-identification (0.068, $n=66$)
 $<$ scorer-choice (0.009, $n=120$) $\ll$ audit-estimation (0.280, $n=120$),
-Figure~\ref{fig:decomposition} and Table~\ref{tab:layers}.
+Figure~\ref{fig:decomposition} and Table~\ref{tab:layers}. The
+audit-estimation width is Wilson-CI-derived; we state plainly that it does
+not carry a proven joint coverage guarantee once composed with the
+nonlinear identification step (the compounding is not trivial), the same
+honesty already applied to the flip-budget bootstrap
+(Section~\ref{sec:limitations}).
 
 \begin{figure}[t]
   \centering

@@ -20,7 +20,14 @@ and a greedy search over the actual discrete objective reaches 40\% at only
 $4\times$ budget.} This does not contradict Neyman's optimality
 proof---variance-optimality-given-the-true-$p$ is a poor proxy for this
 discrete objective when the planning estimate itself is this unreliable, a
-real, quantified, previously-undocumented limitation.
+real, quantified, previously-undocumented limitation. \textbf{Practical
+recommendation}: absent budget for the greedy search, proportional
+allocation is the robust default over plug-in Neyman under this sparsity
+pattern. The greedy search itself is not free---its cost grows with the
+number of models and strata searched, and an earlier implementation of
+this exact computation had a real, since-fixed performance defect
+(Appendix~\ref{sec:appendix-bugs}); we do not claim it scales to
+arbitrarily large rosters without profiling.
 
 \begin{figure}[t]
   \centering

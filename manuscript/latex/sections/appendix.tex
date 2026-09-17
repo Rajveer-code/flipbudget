@@ -177,6 +177,7 @@ categories are null results, reported as such rather than omitted.
     Scope confusion in an early scorer-mismatch draft & 6.51\% (a single-subject figure) presented next to full-population language & Corrected to 3.63\% everywhere \\
     Naive pooling across disproportionate sampling fractions & The post-label analysis pipeline's original estimator & $+444\%$ relative bias demonstrated; fixed with the HT estimator before any real label was processed \\
     A third-party library's multiprocessing timeout crash & A Windows-specific fragility in a dynamically-loaded module & Fixed via a safe timeout setting for short constructed inputs; not a scoring-behavior change \\
+    Greedy audit-allocation search timed out at 900s & Redundant re-evaluation of an 801$\times$801 grid across $\sim$800 trials that changed only one model's box each & Runtime $>$300s (still running when stopped) $\to$ 3--4s after a pure-function cache; verified byte-identical output before/after \\
     \bottomrule
   \end{tabular}
   \caption{Bug disclosures, each with root cause and quantified impact.}
