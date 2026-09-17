@@ -1,0 +1,90 @@
+\section{Limitations}
+\label{sec:limitations}
+
+\begin{enumerate}
+  \item \exactmatch's own audited $\alpha,\beta$ do not yet exist---Analysis
+  C is the single largest open piece of this paper, \pending{458 rows,
+  preregistered and in progress}.
+
+  \item The correlated-error cancellation result (Section~\ref{sec:theory})
+  is verified by simulation against its own closed form, not fit to any
+  real $(\pi, p_{\text{hard}}, p_{\text{easy}})$---no dataset has produced
+  enough scorer-wrong events to fit it (0/69 real T-C events).
+
+  \item The \scoreboxed-path comparator's behavior was verified correct on
+  Linux via continuous integration, resolving the original Windows-only bug
+  finding, but two smaller, named structural limitations found in the
+  adversarial suite (interval/set-notation reordering; unit-word stripping)
+  remain unfixed---flagged, not silently left stale.
+
+  \item The scorer-choice generalization claim
+  (Section~\ref{sec:results-generalization}) is deliberately narrow: one
+  benchmark in the strong sense. IFEval offers a second, real data point
+  (2.60\% disagreement between its \code{strict\_acc}/\code{loose\_acc}
+  settings) but is structurally different---those are two leniency settings
+  of the \emph{same} verifier, not two independently-implemented libraries,
+  so it corroborates without replicating. A second benchmark with two
+  genuinely independent scoring libraries was searched for and not found
+  within this paper's currently-accessible data sources---the ``evaluation
+  pipelines as imperfect measurement systems'' claim is accordingly stated
+  as established for MATH-Hard and suggestive for IFEval, not as a general
+  property of automated evaluation.
+
+  \item The asymptotic coverage properties of the bootstrap-based
+  flip-budget interval (Sections~\ref{sec:theory},~\ref{sec:results-flip-budget})
+  are not proven for this specific nonlinear, potentially-empty-set
+  estimand---a real, named gap for a statistics-focused venue, not claimed
+  resolved.
+
+  \item Naive-Neyman-allocation-fails is demonstrated on this paper's own
+  real, sparse data; whether it generalizes to audits of other benchmarks
+  with different sparsity patterns is untested.
+
+  \item The T-C round's 69 additional audited items
+  (Section~\ref{sec:empirical-setup}) were analyzed for their standalone
+  effect on pooling but never merged into the canonical per-model pipeline;
+  every headline number in Section~\ref{sec:results} reflects only the
+  original 350-usable-item audit. Merging is mechanical (re-run the pooling
+  with both label sets combined and regenerate the downstream chain) but
+  has not been done---named explicitly rather than left as a silent
+  staleness gap.
+
+  \item \textbf{The underlying audits are thin, and the identified-set width
+  this paper reports is partly a statement about that thinness, not only
+  about true scorer error.} The median per-model audit size is small
+  ($n=11$ in the real-data negative-control check,
+  Section~\ref{sec:audit-design}); 15 of 17 qualifying models have exactly
+  zero observed false-credit events. The negative-controls exercise shows a
+  \emph{perfect} scorer audited at this paper's realistic sample sizes
+  still produces a large dominance ratio---the headline finding is real,
+  but a reader should not infer ``this benchmark's scorer is unusually
+  error-prone'' from it alone; the correct inference is ``this benchmark's
+  scorer error has not been pinned down as tightly as its sampling
+  variability has,'' which is this paper's actual claim.
+
+  \item \textbf{This paper depends on the assumption that a human reader
+  can, in principle, determine ground-truth correctness for a MATH-Hard
+  item}---the $(\alpha,\beta)$ framework bounds \emph{scorer} error against
+  that reference, not against some deeper notion of mathematical truth
+  independent of any reader. T-D's sensitivity bound
+  (Section~\ref{sec:theory}) addresses reader error explicitly and finds no
+  concerning breakdown point at realistic human-error rates, but the
+  framework as a whole is not agnostic to this assumption; it is a standard
+  one in the measurement-error literature and is stated here rather than
+  left implicit.
+
+  \item \textbf{Several of this paper's supporting findings are bug
+  reports, not methodological contributions, and should be read as such.}
+  The Windows-specific comparator failure, the empty-identified-set
+  silent-inversion bug (Section~\ref{sec:problem-formulation}), the
+  Horvitz--Thompson pooling bias in the audit-expansion pipeline, and a
+  third-party library's own multiprocessing-timeout fragility are all real,
+  disclosed, and load-bearing for this paper's own internal correctness---but
+  none of them is a novelty claim. They motivate and validate the broader
+  argument (that evaluation pipelines are imperfect measurement systems
+  worth auditing) without being examples of it in the formal sense;
+  conflating ``we found and fixed $N$ bugs in our own tooling'' with ``we
+  contributed $N$ results'' would overstate this paper's contribution, and
+  it does not make that claim (Section~\ref{sec:theory},
+  Appendix~\ref{sec:appendix-novelty}).
+\end{enumerate}

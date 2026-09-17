@@ -1,0 +1,75 @@
+% Main file. Venue is set entirely by the \usepackage[...] line below and
+% the \trackname line further down -- swap those two spots to retarget a
+% different evaluation-focused venue (TMLR, ICML/NeurIPS main track, a
+% workshop). Section content lives in sections/*.tex and does not reference
+% the venue at all, so it survives a venue swap unchanged.
+%
+% Default here: [eandd,preprint] -- readable, author name visible, NOT the
+% anonymized submission format. Before an actual NeurIPS Evaluations &
+% Datasets submission, switch to plain [eandd] (drops "preprint", restores
+% double-blind anonymization) and run the anonymization pass this comment
+% flags in sections/*.tex (self-references to "this project's own repo",
+% the GitHub link, etc.).
+\documentclass{article}
+\usepackage[eandd,preprint]{neurips_2026}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{multirow}
+
+\graphicspath{{figures/}}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue,
+            pdftitle={Scorer-Induced Partial Identification of Benchmark Comparisons},
+            pdfauthor={Rajveer Singh Pall}}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\exactmatch}{\code{exact\_match}}
+\newcommand{\scoreboxed}{\code{score\_boxed}}
+\newcommand{\pending}[1]{\textcolor{red}{[PENDING --- human audit: #1]}}
+
+\title{Scorer-Induced Partial Identification of Benchmark Comparisons:\\
+An Audit-Design Approach}
+
+\author{
+  Rajveer Singh Pall \\
+  Department of Computer Science and Business Systems \\
+  Gyan Ganga Institute of Technology and Sciences, Jabalpur, India \\
+  \texttt{rajveerpall04@gmail.com}
+}
+
+\begin{document}
+
+\maketitle
+
+\input{sections/00_abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_problem_formulation}
+\input{sections/04_theory}
+\input{sections/05_audit_design}
+\input{sections/06_empirical_setup}
+\input{sections/07_results}
+\input{sections/08_limitations}
+\input{sections/09_discussion}
+\input{sections/10_conclusion}
+
+{\small
+\bibliographystyle{plainnat}
+\bibliography{references}
+}
+
+\appendix
+\input{sections/appendix}
+
+\end{document}

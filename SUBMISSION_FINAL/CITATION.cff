@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+title: "flipbudget: scorer-induced partial identification of benchmark comparisons"
+authors:
+  - family-names: "Pall"
+    given-names: "Rajveer Singh"
+    orcid: "https://orcid.org/0009-0001-6762-6134"
+license: Apache-2.0

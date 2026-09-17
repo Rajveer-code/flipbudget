@@ -1,0 +1,76 @@
+\section{Empirical Setup}
+\label{sec:empirical-setup}
+
+\paragraph{Data.} Open LLM Leaderboard v2's MATH-Hard subtask, 7 subjects, 27
+models with public per-item generations (17 pass the audit-qualification
+gate: nonzero audit $n$ on both the credited and wrong strata), drawn from a
+base candidate roster of 28 models (Table~\ref{tab:dataset}). Standard
+comparator: the leaderboard harness's own math-scoring utilities, verified
+byte-identical to a companion project's copy.
+
+\begin{table}[t]
+  \centering
+  \caption{Dataset and benchmark characteristics.}
+  \label{tab:dataset}
+  \small
+  \begin{tabular}{@{}lc@{}}
+    \toprule
+    Quantity & Value \\
+    \midrule
+    Benchmark & MATH-Hard \\
+    Models in the base pairwise-comparison list & 28 \\
+    Models with any accuracy/audit data & 27 \\
+    Qualifying models (Wilson-CI-eligible headline) & 17 \\
+    Subjects & 7 \\
+    Candidate pairs ($\binom{28}{2}$, base roster) & 378 \\
+    Pairs with scored data & 136 \\
+    Valid pairs (headline A/B) & 120 \\
+    T-C expansion population, (model,item) rows & 22{,}508 \\
+    Already covered by original 400-item audit (excluded) & 320 \\
+    \exactmatch/\scoreboxed\ disagreements, full population & 817 (3.63\%) \\
+    T-C expansion2 sample size (200/198/30/30) & 458 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Original human audit (Analyses A/B's basis---the source of every
+headline number in this paper).} 400 items submitted against the
+\scoreboxed\ (last-\code{\textbackslash boxed\{\}}-found) extraction path,
+350 usable across 27 models (162 in the credited stratum, 188 in the wrong
+stratum; the remainder indeterminate/unparseable, held out).
+Empirical-Bayes-pooled per-model $\alpha$: 0.0314; $\beta \approx 0$,
+verified against the already-published pooled figure before any per-model
+breakdown was trusted. This is the data every result in
+Sections~\ref{sec:results-dominance}--\ref{sec:results-flip-budget} and
+Figures~\ref{fig:decomposition}--\ref{fig:identified-set},
+\ref{fig:worst-case}--\ref{fig:flip-budget} is built on.
+
+\paragraph{T-C round (a separate, later, additional audit---not yet merged
+into the pipeline above).} 69 usable, blinded, transcription-protocol-labeled
+human judgments, targeted at the highest-priority (model, stratum) cells
+identified by the audit-design analysis (Section~\ref{sec:audit-design}),
+also against \scoreboxed. 0/69 scorer-wrong events; 100\% three-way
+inter-rater agreement (14-item overlap). Folding these 69 items into the
+pooling analytically shifts the global anchor from 0.0314 to 0.0216 and
+expands qualification from 17 to 25 models---computed as a standalone
+comparison, but this updated pooling has \textbf{not} been propagated back
+into the canonical headline pipeline; every number in
+Section~\ref{sec:results} still reflects the pre-T-C-round pooling. Flagged
+as a limitation (Section~\ref{sec:limitations}), not silently left
+inconsistent.
+
+\paragraph{Second, larger human audit (Analysis C's basis, in the field).}
+458 rows, jointly stratified on both \scoreboxed\ and \exactmatch,
+preregistered before generation, power-justified ($n=300$ for a first
+\exactmatch-$\alpha$ estimate; $n=60$, 65--89\% power, for a
+scorer-disagreement-resolution comparison). \pending{the full analysis}.
+
+\paragraph{Excluded, not used.} Two prior labeling-quality failures (a
+corrupted resubmission; two failed IFEval rounds) and \textbf{two
+AI-generated substitutions for the second T-C round}, all detected via a
+statistical-signature check (near-total mechanical agreement with automated
+scorers, zero use of the ``genuinely ambiguous'' marking, implausible
+turnaround time, and---for the second attempt---a forensic diff showing 318
+of 458 rows changed by one uniform mechanical bulk edit while introducing
+new corruption rather than fixing anything) and preserved as provenance
+only, never entering any result.

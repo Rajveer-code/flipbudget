@@ -1,0 +1,34 @@
+\section{Problem Formulation}
+\label{sec:problem-formulation}
+
+Let a benchmark item have a true binary correctness label $Y^\ast \in \{0,1\}$
+for a given model's response, observed only through an automated verifier's
+report $\hat{Y} \in \{0,1\}$. Define the verifier's false-credit rate
+$\alpha = P(\hat{Y}=1 \mid Y^\ast=0)$ and false-miss rate
+$\beta = P(\hat{Y}=0 \mid Y^\ast=1)$. The observed accuracy
+$a = P(\hat{Y}=1)$ relates to the true accuracy $A^\ast = P(Y^\ast=1)$ by the
+law-of-total-probability identity
+\begin{equation}
+  a = A^\ast(1-\beta) + (1-A^\ast)\alpha,
+  \label{eq:ltp}
+\end{equation}
+which inverts to $A^\ast = g(a,\alpha,\beta) = \frac{a-\alpha}{1-\alpha-\beta}$
+whenever $\alpha+\beta \neq 1$. Given only an \emph{audited estimate} of
+$(\alpha,\beta)$---a confidence region $B$, not a known point---the identified
+set for $A^\ast$ is $\{g(a,\alpha,\beta) : (\alpha,\beta) \in B\} \cap [0,1]$,
+and for a pairwise comparison, the identified set for
+$\Delta^\ast = A_1^\ast - A_2^\ast$ is the corresponding interval difference.
+\textbf{The central object of this paper is the width of this identified set,
+and how it compares to the sampling-only width the field currently reports}
+(which implicitly assumes $\alpha=\beta=0$).
+
+A genuine subtlety, found and fixed during this project's development: when
+the box $B$ lies entirely outside the region making $A^\ast \in [0,1]$
+achievable---i.e., the observed accuracy $a$ is logically inconsistent with
+every $(\alpha,\beta) \in B$---the identified set is \textbf{empty}, not a
+clipped, fabricated interval. Naively clipping $\max(g,0)/\min(g,1)$
+independently at the box's corners silently inverts the interval in this
+case; the correct treatment reports non-identification explicitly. This
+affected 16--70 of 136 real pairs depending on layer
+(Section~\ref{sec:audit-design}), corrected in both the research code and the
+released package, with full regression-test coverage.

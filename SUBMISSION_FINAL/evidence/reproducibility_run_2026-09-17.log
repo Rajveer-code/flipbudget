@@ -1,0 +1,73 @@
+Isolated full reproducibility run -- 2026-09-17
+
+Launched at commit 2ac384127b631aed8e7319742c7cf9c0579465c5 (fb_reproduce_all.py
+had 38 steps at that point, not 33 -- the "33-step" figure used earlier in this
+project's docs undercounted; corrected here and in FINAL_STATUS.md/SUPPLEMENTARY.md).
+
+Environment: Python 3.13.12, numpy 2.4.4, scipy 1.17.1, Windows.
+Started: 2026-09-17 15:42:08 IST. No other CPU-heavy work launched concurrently
+during the run (verified via `ps aux` at start and mid-run).
+
+Root cause of the earlier timeout (step 25, fb_audit_design_optimization.py),
+investigated rather than assumed: bounded_single_model_extrema runs an 801x801
+grid whenever a model's audit-CI box straddles alpha+beta=1 (common for this
+project's thin per-model audits), and the greedy search inside that script
+re-evaluated all 136 pairs from scratch for ~34 candidate cells at ~24 budget
+steps without noticing 16 of 17 models' boxes were unchanged between trials --
+confirmed by profiling in isolation (still running past 300s with nothing else
+competing). Fixed with a local functools.lru_cache wrapper (fb_audit_design_
+optimization.py, commit cda1b93) -- a pure-function cache, not an approximation;
+verified the fixed script's JSON output is byte-for-byte identical to the
+pre-fix committed file, and that two consecutive runs are byte-identical to
+each other (deterministic, no hidden RNG). Runtime for that one step in this
+full run: 2.7s (previously >300s and still running when manually stopped).
+
+RESULT: 38/38 steps passed. Full chain reproduces cleanly end-to-end.
+
+Per-step breakdown (name, kind, seconds):
+  Theory: SSM derivation                                          pure         2.4
+  Theory: design sensitivity                                      pure         4.6
+  Theory: correlated-error simulation                              pure         0.2
+  E-A: dominance study (original, uncorrected method, provenance)  pure         1.4
+  T-A: compound interval                                          pure         1.7
+  T-A: boundary audit                                              pure         1.7
+  T-B: compound design sensitivity                                pure         2.3
+  Reconciliation: four layers                                     pure         6.3
+  Audit design: six-question analysis                              pure         6.5
+  Audit design: stress test                                        pure         1.6
+  T-C: real analysis (69 human trials)                            human-label  1.8
+  T-C: alpha/beta pooling update                                  human-label  10.3
+  Adversarial suite                                                pure         5.3
+  Comparator bug verification (T-C)                                human-label  2.0
+  Comparator bug verification (original 400-item audit)           pure         9.0
+  Blinding verification                                            pure         0.5
+  IFEval: mechanism rescan                                        network      5.7
+  IFEval: reproducibility row cache                                network      48.2
+  IFEval: reproducibility check (15+5 replicates)                 network      625.7
+  IFEval: key re-flag                                              pure         0.1
+  Provenance manifest                                              pure         2.7
+  E-A: canonical dominance recomputation (final validation phase) pure         4.7
+  Root-cause: 70 empty scorer-only sets (final validation phase)  pure         1.3
+  Negative controls (final validation phase)                      pure         1.2
+  T-C: correlated-error bound (final validation phase)             human-label  1.5
+  Audit design: formal optimization + budget curve (final val.)    pure         2.7   <- was the timeout; now fixed
+  Adversarial suite v2: 12-category taxonomy + real-data grounding pure         23.5
+  Scorer-choice self-consistency + scorer-choice-width layer       pure         8.2
+  Worst-case sensitivity bound (exact_match, pop-weighted extremes) pure        1.2
+  Flip-budget uncertainty (real MATH-Hard data)                    pure         80.8
+  T-C expansion2 analysis pipeline smoke test                      pure         6.6
+  Figure 1: uncertainty decomposition                              pure         1.4
+  Figure 2: audit-budget curve                                     pure         1.1
+  Figure 3: identified-set geometry                                pure         2.1
+  Figure 4: scorer-choice disagreement                             pure         1.2
+  Figure 5: worst-case sensitivity                                 pure         0.8
+  Figure 6: flip budget / ranking preservation                     pure         1.1
+  Figure 7: conceptual framework (schematic, no data)               pure         1.1
+
+Total: ~865s (~14.4 min), dominated by one network step (IFEval reproducibility
+check, 625.7s of the total -- 15+5 real API replicates against Hugging Face,
+irreducible without changing what is being verified).
+
+Composition: 31 pure computation (data already on disk), 4 human-label
+(read already-committed labeling/*.csv files, not the pending 458-row audit),
+3 network (Hugging Face API, using the already-authenticated local token).

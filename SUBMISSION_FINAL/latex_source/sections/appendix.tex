@@ -1,0 +1,131 @@
+\section{Supplementary Material}
+\label{sec:appendix}
+
+\subsection{Proofs and derivations}
+\label{sec:appendix-proofs}
+
+Full symbolic and numeric derivations for T-A (Scorer Sensitivity Model),
+T-H (sharpness), T-B (design sensitivity), the ranking-preservation theorem,
+the correlated-error propositions, T-D (imperfect reference), T-E
+(verification bias), the Neyman-allocation proof, and the flip-budget
+bootstrap treatment are maintained as executable scripts alongside this
+paper's code release, each verified by a dual symbolic/numeric check rather
+than hand algebra alone. Pointers to the exact script for each result are
+given in the code release's own index rather than duplicated here, to avoid
+the derivation and its machine-checked verification drifting apart.
+
+\subsection{The Horvitz--Thompson / post-stratified estimator, full detail}
+\label{sec:appendix-ht}
+
+For a scorer's credited (or wrong) stratum composed of cells $S=\{h\}$ with
+population size $N_h$ and sample $(n_h, x_h)$ (scored rows, events):
+\begin{align}
+  \hat{p}_{\mathrm{HT}} &= \frac{\sum_{h \in S} N_h \cdot (x_h/n_h)}{\sum_{h \in S} N_h} \\
+  \mathrm{Var}(\hat{p}_{\mathrm{HT}}) &= \frac{1}{\left(\sum_h N_h\right)^2}
+    \sum_h N_h^2 \left(1 - \frac{n_h}{N_h}\right) \frac{\hat{p}_h(1-\hat{p}_h)}{\max(n_h-1,\,1)}
+\end{align}
+$(1-n_h/N_h)$ is the finite-population correction. This estimator was
+adopted after a naive pooled-proportion estimator was found, by simulation,
+to be biased by $+444\%$ relative to the design-weighted truth in a
+realistic scenario where a small, densely-oversampled cell's true rate
+differs from the majority cell's---exactly the scenario stratifying on
+disagreement was designed to detect. Seven regression tests, including a
+parametrized synthetic-recovery check at four different
+majority/minority-rate pairs, cover this estimator directly.
+
+\subsection{Sampling design, full detail}
+\label{sec:appendix-sampling}
+
+Population: 22{,}508 (model, item) rows, 17 qualifying models $\times$ 7
+MATH-Hard subjects. Four joint-scorer cells, exact population sizes:
+\code{both\_credited}=1{,}531, \code{both\_not\_credited}=19{,}873,
+\code{disagree\_sb\_credited\_em\_not}=291,
+\code{disagree\_em\_credited\_sb\_not}=493. Sample targets: 200/198/30/30 =
+458, seed 42, blinded, excluding 320 items already in the original 400-item
+audit population.
+
+\subsection{Adversarial suite --- full taxonomy}
+\label{sec:appendix-adversarial}
+
+12 categories (formatting, LaTeX, whitespace, delimiters, answer-position,
+verbosity, multiple-answers, self-correction, numerical-formatting, case,
+units, other-scorer-specific), 24 constructed cases with known ground truth,
+run against both live scorers via the real harness functions. 5 of 12
+categories are null results, reported as such rather than omitted.
+
+\subsection{Bug disclosures}
+\label{sec:appendix-bugs}
+
+\begin{table}[h]
+  \centering
+  \small
+  \begin{tabular}{@{}p{3.3cm}p{4.9cm}p{4.9cm}@{}}
+    \toprule
+    Bug & Root cause & Impact quantified \\
+    \midrule
+    \scoreboxed-path comparator always \code{False} on Windows & A Unix-only signal mechanism the existing timeout patch didn't actually fix & 0/69 T-C rows change; verified correct on real Linux CI \\
+    Empty identified set silently inverted & Independent $\max(\mathrm{lo},0)/\min(\mathrm{hi},1)$ clipping when the raw range misses $[0,1]$ entirely & 16--70 of 136 real pairs change depending on layer \\
+    Mutable self-comparison in two IFEval scripts & Compared against the file about to be overwritten & Caught by the reproducibility pipeline's own second run; fixed \\
+    Hardcoded absolute paths & A data-loading function's default arguments & Caught building the Linux CI validation; re-verified identical output \\
+    Scope confusion in an early scorer-mismatch draft & 6.51\% (a single-subject figure) presented next to full-population language & Corrected to 3.63\% everywhere \\
+    Naive pooling across disproportionate sampling fractions & The post-label analysis pipeline's original estimator & $+444\%$ relative bias demonstrated; fixed with the HT estimator before any real label was processed \\
+    A third-party library's multiprocessing timeout crash & A Windows-specific fragility in a dynamically-loaded module & Fixed via a safe timeout setting for short constructed inputs; not a scoring-behavior change \\
+    \bottomrule
+  \end{tabular}
+  \caption{Bug disclosures, each with root cause and quantified impact.}
+\end{table}
+
+\subsection{Exact metric definitions}
+\label{sec:appendix-metrics}
+
+\begin{itemize}
+  \item $\alpha$ (false-credit rate): $P(\text{scorer says correct} \mid \text{true label incorrect})$.
+  \item $\beta$ (false-miss rate): $P(\text{scorer says incorrect} \mid \text{true label correct})$.
+  \item Identified-set width: $\mathrm{hi}-\mathrm{lo}$ of the sharp interval for $A^\ast$ or $\Delta^\ast$.
+  \item Dominant: $W_{\text{identification}} / W_{\text{sampling}} > 1$ for a given pair.
+  \item Unresolved: the identified interval for $\Delta^\ast$ contains 0.
+  \item Flip budget $d^\ast$: the minimum differential-error perturbation
+  (beyond the audited margins) required to make an otherwise-resolved
+  comparison's sign ambiguous.
+  \item Scorer-disagreement rate: fraction of (model, item) rows where
+  \scoreboxed\ and \exactmatch\ give different binary verdicts on the
+  identical raw response.
+\end{itemize}
+
+\subsection{Reproducibility}
+\label{sec:appendix-repro}
+
+A single-command canonical chain (38 steps, clean subprocess per step,
+tagged pure/human-label/network) regenerates every number, figure, and
+table in this paper that does not depend on the pending 458-row audit. Most
+recent isolated clean run (2026-09-17): \textbf{38/38 steps passed}, total
+wall time $\approx$865s, dominated by one 625.7s network step (Python
+3.13.12, Windows, pinned dependencies, fixed seed 42 throughout). Full
+per-step timing is in the paper's accompanying
+\code{results/flipbudget/reproducibility\_run\_2026-09-17.log}, not
+reproduced here to avoid this appendix going stale independently of the
+code. Package tests: 24/24 passing throughout this paper's development.
+
+\subsection{Claim ledger}
+\label{sec:appendix-claim-ledger}
+
+Every quantitative claim in this paper is traced---manuscript sentence
+$\to$ table/figure $\to$ result file $\to$ generating script $\to$ raw
+data---in a standalone claim ledger maintained alongside the code release.
+No claim in this paper failed to trace during the most recent audit pass;
+the two defects found in that pass were citation errors (corrected;
+Section~\ref{sec:related-work}), not numerical ones.
+
+\subsection{Novelty classification}
+\label{sec:appendix-novelty}
+
+No individual theoretical or empirical result in this paper is claimed
+above novelty class C (nontrivial combination or extension of classical
+methods); several are class A (cited, unmodified) or B (direct adaptation).
+The claimed contribution is the specific combination---benchmark comparison
+$+$ scorer misclassification $+$ partial identification $+$
+audit-estimation uncertainty $+$ audit-budget design $+$ scorer-choice
+dependence---evidenced with real data throughout, checked against the
+closest identified prior work \citep{chen2026partial} and found
+non-overlapping in estimand and headline result. Table~\ref{tab:theory-summary}
+in Section~\ref{sec:theory} summarizes the per-result classification.
