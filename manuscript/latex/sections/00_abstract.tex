@@ -1,0 +1,39 @@
+\begin{abstract}
+Benchmark leaderboards report model accuracy as if it were an observed
+quantity. It is the output of an automated verifier applied to free-text
+generations, and that verifier can disagree with the correctness a human
+reader would assign. We formalize this as a partial-identification problem:
+given a benchmark's observed accuracy and an \emph{audited} estimate of the
+verifier's false-credit and false-miss rates, we derive the sharp set of true
+accuracy values consistent with the data, adapting classical
+misclassification-bounds machinery \citep{manski1995identification} to
+benchmark comparison. On MATH-Hard, using a real human audit of the standard
+$\backslash$\texttt{boxed\{\}}-extraction comparator (400 items submitted, 350
+usable across 27 models; a separate, later, targeted 69-item round on the
+highest-priority models found zero additional scorer-wrong events, consistent
+with---not contradicting---the pooled rate from the first round), we show that
+\textbf{audit-estimation uncertainty---how little the verifier's own error
+rate has been pinned down---exceeds sampling uncertainty for the majority of
+model comparisons that remain identifiable at all} (median
+identification-to-sampling width ratio $6.10\times$, 100\% dominant among 120
+well-defined pairwise comparisons out of 136 candidates among 17 qualifying
+models; a self-consistency check using the same audited comparator's own
+accuracy rather than the field's reported metric gives $5.74\times$, also
+100\% dominant---the two agree in direction and closely in magnitude, and the
+minimum ratio across all 120 valid pairs is $2.15\times$, so the result is not
+driven by a small number of extreme comparisons). We formalize the resulting
+audit-budget allocation problem, prove the classical
+\citep{neyman1934stratified} solution, and show empirically that its naive
+plug-in form is \emph{dominated by uniform allocation} on this project's own
+sparse real audit data---a documented failure mode with a tested correction. A
+secondary finding: MATH-Hard's evaluation harness computes accuracy via two
+live, independently-implemented extraction procedures that disagree on 3.63\%
+of real responses (95\% CI [3.39\%, 3.88\%], $n=22{,}508$); we show this
+scorer-choice dependence does not overturn the audit-estimation-dominance
+finding, including under an adversarial worst-case bound, but establishes it
+as a distinct, measurable source of benchmark uncertainty.
+\pending{the verifier's other live scorer, \exactmatch\ via \code{math\_verify},
+has not itself been human-audited; its own $\alpha,\beta$, and the fully
+self-consistent identification result built on them, await a preregistered
+458-row audit already in the field}.
+\end{abstract}

@@ -1,0 +1,96 @@
+\section{Audit Design}
+\label{sec:audit-design}
+
+\paragraph{The formal problem.} Given qualifying models with audit strata
+(credited, wrong) and a fixed additional labeling budget $B$, choose the
+allocation minimizing total variance of the resulting stratified
+estimators---the classical stratified-sampling problem
+\citep{neyman1934stratified}, solved by $n_s \propto \sqrt{p_s(1-p_s)}$
+(three-line Lagrangian proof, cited not claimed).
+
+\paragraph{The failure mode, found and fixed.} On this paper's real audit
+data, 15 of 17 qualifying models have exactly zero observed false-credit
+events (17/17 zero false-miss). Plug-in Neyman weights are therefore
+near-zero for almost every stratum and concentrate the entire additional
+budget on the one or two cells with the largest---and noisiest, since it
+comes from a tiny $n$---observed rate. Swept as an actual budget curve on the
+real 120-pair audit-only reconciliation layer (Figure~\ref{fig:audit-budget},
+Table~\ref{tab:audit-design}): \textbf{naive Neyman allocation stalls at 74\%
+unresolved even at $16\times$ the current budget, while simple proportional
+allocation reaches 22\%, and a genuine greedy search over the actual discrete
+objective (minimize unresolved-comparison count) reaches 40\% at only
+$4\times$ budget.} This does not contradict Neyman's optimality proof---it
+demonstrates that variance-optimality-given-the-true-$p$ is a poor proxy for
+this discrete objective when the planning estimate itself is this
+unreliable, a real, quantified, previously-undocumented limitation.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.75\linewidth]{fig2_audit_budget_curve.png}
+  \caption{Audit-budget allocation: naive Neyman stalls under sparse real
+  counts; proportional and pooled-estimate allocation both continue
+  improving; a greedy search on the actual discrete objective does best.}
+  \label{fig:audit-budget}
+\end{figure}
+
+\begin{table}[t]
+  \centering
+  \caption{Audit-design / allocation results: \% of 120 valid pairs still
+  unresolved (audit-only layer) at each additional-budget multiple.}
+  \label{tab:audit-design}
+  \small
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+    Budget multiple & Proportional & Naive Neyman & Pooled-estimate Neyman \\
+    \midrule
+    0$\times$  & 75.8\% & 75.8\% & 75.8\% \\
+    1$\times$  & 60.0\% & 74.2\% & 61.7\% \\
+    2$\times$  & 53.3\% & 74.2\% & 54.2\% \\
+    4$\times$  & 47.5\% & 74.2\% & 45.8\% \\
+    8$\times$  & 35.0\% & 74.2\% & 36.7\% \\
+    16$\times$ & 21.7\% & 74.2\% & 30.8\% \\
+    \midrule
+    \multicolumn{4}{@{}l}{Greedy (discrete objective), $4\times$ only: \textbf{40.0\%}} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{A second, real bug found building the second audit round.} When
+designing the 458-row expansion, the four preregistered joint-scorer cells
+were found to have sampling fractions differing up to $6\times$ relative to
+their population sizes. Naively pooling raw counts across cells feeding the
+same target's credited/wrong union---the initial implementation---is biased:
+verified numerically at $+444\%$ relative error in a realistic scenario.
+Corrected with a Horvitz--Thompson / post-stratified estimator before any
+real label was processed; 7 regression tests added, including a
+parametrized synthetic-recovery check at four different stratum-prevalence
+pairs.
+
+\paragraph{Negative controls (falsifiability).} The framework is not
+structurally biased toward reporting more uncertainty regardless of input:
+three of five constructed scenarios (a perfect scorer with an adequately
+large audit; a scorer audited at this paper's own derived required-$n$)
+correctly report \emph{stable}---ratio below 1 (Table~\ref{tab:negative-controls}).
+Notably, even a \emph{perfect} scorer at the real audit's median size
+($n=11$) still shows $5.6\times$ dominance---the headline finding is a
+statement about audit thinness, not necessarily large true scorer error,
+which the audit-design contribution directly targets.
+
+\begin{table}[t]
+  \centering
+  \caption{Negative controls: constructed scenarios testing whether the
+  dominance ratio is an artifact.}
+  \label{tab:negative-controls}
+  \small
+  \begin{tabular}{@{}p{4.4cm}ccc@{}}
+    \toprule
+    Scenario & Audit $n$ & Ratio & Interpretation \\
+    \midrule
+    Perfect scorer, realistic audit $n$ & 11/11 & $5.63\times$ & Large ratio from audit thinness alone \\
+    Perfect scorer, large audit & 2000/2000 & $0.03\times$ & Stable, as expected \\
+    High-accuracy scorer, modest audit & 100/100 & $0.92\times$ & Stable \\
+    Scorer sized to its own required $n$ & 415/415 & $0.60\times$ & Stable \\
+    Null true effect (identical models) & --- & --- & Both sampling and identification intervals correctly contain 0 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

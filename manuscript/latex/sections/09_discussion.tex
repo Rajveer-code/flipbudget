@@ -1,0 +1,17 @@
+\section{Discussion}
+\label{sec:discussion}
+
+The central claim is not that any individual scorer is unusually bad. It is
+that \textbf{reported benchmark accuracy is not automatically identified}---the
+measurement procedure that produces it is itself imperfect, audited only
+partially, and that partial audit is where most of the practically relevant
+uncertainty currently lives, exceeding the sampling uncertainty the field
+already reports and accounts for. This reframes audit-budget allocation from
+an implementation detail into part of the benchmark-comparison validity
+problem itself, with a concrete, tested design consequence: naive allocation
+formulas fail exactly where real audits are sparsest, and a corrected,
+stress-tested alternative exists. The scorer-mismatch finding extends this
+same logic one level further---even the choice of \emph{which} automated
+criterion counts as ``the verifier'' is a measurable design decision, not a
+given, though this paper's evidence bounds rather than resolves how much it
+matters for any specific comparison whose own audit is still pending.
