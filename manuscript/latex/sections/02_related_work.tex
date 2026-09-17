@@ -19,6 +19,30 @@ one fixed, non-LLM, deterministic verifier). No overlap in estimand, no
 overlap in headline results; cited as the closest neighbor, not a competing
 claim.
 
+\paragraph{Concurrent work by the same author, sharing empirical
+infrastructure, distinct in estimand and contribution.} \citet{pall2026identified}
+(under review, non-archival at the time of writing) formalizes reported
+accuracy as $\hat A - \bar\varphi \le A^\ast \le \hat A + U/n + \psi$, bounded
+primarily by a scorer's own discarded parse-failure count $U$, and reports
+that 90.2--94.4\% of 378 pairwise orderings on a 28-model MATH-Hard roster
+are not identified. That paper and this one draw on the \emph{same}
+400-item human audit (same MATH-Hard snapshot, same 28-model base roster) as
+a shared empirical resource, disclosed here explicitly rather than left for
+a reader to discover independently. The two are not the same result under
+different notation: this paper's estimand is a full two-parameter
+false-credit/false-miss box $(\alpha,\beta)$, not conditioned on parse
+failure specifically, and its headline statistic (median
+identification-to-sampling width ratio) is not the other paper's (\% of
+orderings unidentified). Two contributions here have no counterpart there
+at all---the audit-budget-allocation theory and failure mode
+(Section~\ref{sec:audit-design}), and the scorer-choice-dependence finding
+between two named, live production scorers
+(Section~\ref{sec:results-scorer-mismatch})---while that paper's
+cross-harness census (\texttt{lm-evaluation-harness}, OpenCompass) and
+learned-extractor comparison have no counterpart here. See
+`VENUE\_AND\_OVERLAP\_AUDIT.md` in the code release for the full
+side-by-side comparison and the policy analysis this disclosure is based on.
+
 \paragraph{Benchmark and verifier reliability.} VerifyBench
 \citep{li2025verifybench} and CompassVerifier \citep{liu2025compassverifier}
 study \emph{which verifier is more accurate}---a different question from
