@@ -38,6 +38,19 @@ Section~\ref{sec:results-scorer-mismatch}.)
 \subsection{Four-layer uncertainty decomposition}
 \label{sec:results-decomposition}
 
+Two of the four layers are easy to conflate and are kept structurally
+separate throughout: \emph{scorer-identification-only} asks how much
+$A^\ast$ could vary at a fixed, exactly-known $(\alpha,\beta)$ point
+estimate, purely from the $\Lambda$-sensitivity allowance for per-item
+variation---it would not shrink even with an infinite audit, because it is
+not about knowing $(\alpha,\beta)$ better. \emph{Audit-estimation-only} asks
+the opposite question: how much does not knowing $(\alpha,\beta)$ precisely
+(a finite-sample Wilson confidence interval around the point estimate)
+widen the identified set---this layer shrinks toward zero as the audit
+grows. The two are computed independently in Table~\ref{tab:layers} and are
+never summed into a single ``scorer uncertainty'' figure without saying
+which of the two is meant.
+
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.75\linewidth]{fig1_uncertainty_decomposition.png}

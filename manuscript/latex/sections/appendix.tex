@@ -95,15 +95,16 @@ categories are null results, reported as such rather than omitted.
 \subsection{Reproducibility}
 \label{sec:appendix-repro}
 
-A single-command canonical chain (33 steps, clean subprocess per step,
+A single-command canonical chain (38 steps, clean subprocess per step,
 tagged pure/human-label/network) regenerates every number, figure, and
-table in this paper that does not depend on the pending 458-row audit. Full
-runtime, environment, commit hash, and pass/fail record for the most recent
-isolated clean run are reported in the paper's accompanying
-\code{FINAL\_STATUS.md} and \code{results/flipbudget/} artifacts, not
+table in this paper that does not depend on the pending 458-row audit. Most
+recent isolated clean run (2026-09-17): \textbf{38/38 steps passed}, total
+wall time $\approx$865s, dominated by one 625.7s network step (Python
+3.13.12, Windows, pinned dependencies, fixed seed 42 throughout). Full
+per-step timing is in the paper's accompanying
+\code{results/flipbudget/reproducibility\_run\_2026-09-17.log}, not
 reproduced here to avoid this appendix going stale independently of the
 code. Package tests: 24/24 passing throughout this paper's development.
-Environment: Python 3.13, pinned dependencies; fixed seeds (42) throughout.
 
 \subsection{Claim ledger}
 \label{sec:appendix-claim-ledger}

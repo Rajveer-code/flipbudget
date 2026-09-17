@@ -345,12 +345,12 @@
     },
     {
       "output": "results/flipbudget/ifeval_reproducibility_check.json",
-      "size_bytes": 5715,
+      "size_bytes": 5713,
       "writer_script": "scripts/fb_ifeval_reproducibility_check.py",
       "last_commit": {
-        "commit": "91c48657c6e1f9e0ef64e123c7d10a2740192896",
-        "date": "2026-09-14 23:03:29 +0530",
-        "message": "fix: embed manual annotations in code so pipeline re-runs stop erasing them"
+        "commit": "2ac384127b631aed8e7319742c7cf9c0579465c5",
+        "date": "2026-09-17 15:41:53 +0530",
+        "message": "chore: regenerated outputs from the last full pipeline run (provenance manifest, IFEval replicates, hardened self-test fields)"
       },
       "human_label_inputs": null
     },
@@ -569,12 +569,12 @@
     },
     {
       "output": "results/flipbudget/tc_expansion2_analysis_selftest.json",
-      "size_bytes": 3232,
+      "size_bytes": 3601,
       "writer_script": null,
       "last_commit": {
-        "commit": "272338fad6c805a75ec17474962a50657a208305",
-        "date": "2026-09-15 12:55:47 +0530",
-        "message": "fix: methodological audit finds and fixes two real bugs before any labeling"
+        "commit": "bf78e06330abb78ad385443a7cd5fde534923be0",
+        "date": "2026-09-17 15:49:22 +0530",
+        "message": "feat: compute the actual analysis-C dominance ratio, not just identification width"
       },
       "human_label_inputs": null
     },
