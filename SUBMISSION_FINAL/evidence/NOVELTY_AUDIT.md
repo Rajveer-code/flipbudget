@@ -146,6 +146,49 @@ No new direct collision found (Chen-Rambachan-Tamer, VerifyBench, CompassVerifie
 
 Hugging Face's own Open LLM Leaderboard team published a postmortem (Kydlicek et al., "Fixing Open LLM Leaderboard with Math-Verify," Feb. 2025) documenting the same family of comparator limitations (no rounding tolerance, no numerical-equivalence support, no variable-assignment handling, no matrix/set-equivalence support) this project's own adversarial suite independently found for the SymPy-based `is_equiv`/`score_boxed` comparator, and switched production scoring to `math-verify` — the same library this project's `exact_match` field uses — after finding the old comparator's failures large enough to more-than-double some model families' MATH-Hard scores (Qwen) and nearly triple others' (DeepSeek). This is real, independent, production-scale, non-self-reported confirmation that scorer choice on this exact benchmark family is a genuine, consequential, previously-underscrutinized problem, not a phenomenon manufactured by this project's own framing — directly strengthens the motivation for §7.4 and Related Work. Does not change the novelty classification (still C-combination, not D): HF's fix is an engineering correction to a specific comparator, not a partial-identification or audit-design treatment of the resulting uncertainty, which remains this project's own contribution. Added to `manuscript/MANUSCRIPT_DRAFT.md` §2.
 
+### Final external-literature audit (2026-09-17)
+
+Searched specifically for the angles the finalization directive named:
+audit allocation, benchmark ranking uncertainty, verifier sensitivity,
+evaluation reliability. Two real new finds, both added to Related Work
+where directly relevant, both logged here regardless:
+
+- **Morikawa, Pervin & Kim, "TS-Neyman: Posterior Sampling for Adaptive
+  Stratified Estimation" (arXiv:2606.08418, June 2026).** Independently
+  notes plug-in Neyman degrades under sparse pilots ("plug-in greedy and
+  two-stage plug-in can degrade by over an order of magnitude under
+  sparse pilots") and proposes a new adaptive Thompson-sampling algorithm
+  with formal convergence proofs, tested on generic stratified-estimation
+  benchmarks (bounded-loss, binary model-error, a CivilComments replay) —
+  not on LLM benchmark auditing specifically, and not against the discrete
+  unresolved-pair-count objective this paper uses. **What already
+  existed**: the qualitative observation that plug-in Neyman can fail
+  badly under sparse pilots (both papers independently converge on this).
+  **What this paper adds**: a real-data demonstration of the failure
+  specifically in benchmark-audit design, against the actual decision-
+  relevant discrete objective (unresolved comparisons), plus the
+  comparison against a genuine greedy search on that exact objective — TS-
+  Neyman does not attempt this discrete-objective comparison. **Exact
+  boundary**: this paper does not propose a new allocation algorithm (TS-
+  Neyman does); it diagnoses and quantifies a known-in-spirit failure mode
+  in a new, concrete, real-data setting. Added as an explicit citation,
+  Related Work, "Audit design" paragraph.
+- **"Quantifying Ranking Uncertainty in LLM Benchmarks" (arXiv:2607.16259,
+  July 2026).** Constructs rank confidence intervals from pairwise
+  hypothesis tests on MMLU, addressing *sampling* variance in rank
+  ordering — the layer this paper's own decomposition (§7.2) already shows
+  is the *smallest* of the four measured sources (0.043 median width),
+  well below audit-estimation uncertainty (0.280). Complementary, not
+  competing: that paper does not address scorer/verifier misclassification
+  at all. Not added to the manuscript body under the page budget — the
+  overlap is real but secondary (a sampling-uncertainty paper, not a
+  scorer-error or audit-design paper) — logged here for completeness per
+  the literature-audit directive.
+
+No other new direct collision found. Neither new paper changes the novelty
+classification (still C-combination, not D, for the reasons already
+stated above and in Table 1 of the manuscript).
+
 ### Is the combination sufficient for NeurIPS 2027?
 
 **Yes, for the Evaluations & Datasets track, on the combination, not on any single piece.** No individual theorem here is D. The manuscript's defensible novelty claim is the *combination* (C-level): applying classical misclassification-sensitivity bounds specifically to benchmark **comparison** (not just single-model accuracy), formalizing the resulting audit-design problem as a budget-allocation optimization with a proven classical solution whose real-data behavior is itself informative (dominated by proportional allocation under sparse events — a genuine, non-obvious finding), and doing all of this with a from-scratch, self-audited reproducibility discipline that caught three real bugs along the way. This is consistent with, and now more precisely stated than, the prior verdict in `FINAL_DECISION.md`.

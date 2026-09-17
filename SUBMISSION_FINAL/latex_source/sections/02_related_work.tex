@@ -2,65 +2,60 @@
 \label{sec:related-work}
 
 \paragraph{Partial identification and misclassification.} The identification
-strategy here is a direct adaptation of the classical misclassification-bounds
+strategy is a direct adaptation of the classical misclassification-bounds
 literature \citep{manski1995identification,molinari2008partial}---sensitivity/specificity-style
-calibration constants bounding a corrupted binary outcome. We claim no new
-mathematics in this layer (class A/B throughout, see the supplementary
-novelty audit, Appendix~\ref{sec:appendix-novelty}); the contribution is
-applying it to benchmark comparison specifically, with an audit-design layer
-classical misclassification papers do not address.
+calibration constants bounding a corrupted binary outcome (class A/B
+throughout, Appendix~\ref{sec:appendix-novelty}). The contribution is
+applying it to benchmark comparison with an audit-design layer classical
+misclassification papers do not address.
 
-\paragraph{Concurrent, independent work.} \citet{chen2026partial} study
-partial identification of a \emph{prevalence} from panels of LLM
-\emph{raters} whose errors are correlated because the raters share training
-lineage---the same classical toolkit, a structurally different problem
-(their LLMs are the noisy raters; ours are the \emph{rated} models, scored by
-one fixed, non-LLM, deterministic verifier). No overlap in estimand, no
-overlap in headline results; cited as the closest neighbor, not a competing
-claim.
+\paragraph{\citet{chen2026partial}.} Study partial identification of a
+\emph{prevalence} from panels of LLM \emph{raters} whose errors are
+correlated by shared training lineage---the same toolkit, a structurally
+different problem (their LLMs are the noisy raters; ours are the
+\emph{rated} models, scored by one fixed, non-LLM verifier). No overlap in
+estimand or headline results.
 
-\paragraph{Benchmark and verifier reliability.} VerifyBench
-\citep{li2025verifybench} and CompassVerifier \citep{liu2025compassverifier}
-study \emph{which verifier is more accurate}---a different question from
-ours (``given a verifier's audited error rate, what can still be concluded
-about a comparison''), complementary rather than overlapping. A body of work
-independently documents answer-format/extraction dependence as an open
-problem in LLM evaluation generally; we do not claim to have discovered that
-extraction is fragile, only to formalize its statistical consequence for
-benchmark comparison.
+\paragraph{Concurrent work by the same author, sharing empirical
+infrastructure.} \citet{pall2026identified} (under review at TMLR, not yet
+archival) bounds reported accuracy by a scorer's discarded parse-failure
+count $U$ and reports 90.2--94.4\% of 378 MATH-Hard pairwise orderings not
+identified. Both papers draw on the \emph{same} 400-item human audit and
+28-model roster---disclosed explicitly rather than left for a reader to
+find. Distinct estimand (full $(\alpha,\beta)$ box here vs.\ a
+parse-failure-conditioned bound there), distinct headline statistic (width
+ratio vs.\ \% unidentified), and two contributions absent from that
+paper---audit-budget design (Section~\ref{sec:audit-design}) and
+scorer-choice dependence (Section~\ref{sec:results-scorer-mismatch}).
+Full comparison and policy analysis: \code{VENUE\_AND\_OVERLAP\_AUDIT.md}
+in the code release.
 
-\paragraph{Independent, high-value external corroboration.} Hugging Face's
-own Open LLM Leaderboard team documented, in a public postmortem
-\citep{kydlicek2025fixing}, the same family of comparator limitations this
-paper's own adversarial suite independently found for \scoreboxed's
-SymPy-based comparison step---no rounding-tolerance support, no
-numerical-equivalence support, no variable-assignment support, no matrix- or
-set-equivalence support---and switched the leaderboard's own scoring to
-\code{math-verify}, the same library this paper's \exactmatch\ field uses,
-after finding the old comparator's failures were severe enough to
-more-than-double some model families' scores (Qwen) and nearly triple
-others' (DeepSeek, whose \code{\textbackslash boxed\{\}}-wrapped answers the
-old comparator could not extract at all). We do not claim \scoreboxed's exact
-extraction path here is byte-identical to the specific historical scorer HF
-retired---only that an independent, production-scale, industry audit of the
-same comparator family found failures large enough to force a
-platform-wide rescoring of 3{,}751 models, which is direct, external,
-non-self-reported evidence that scorer choice is a real, consequential,
-previously-underscrutinized problem for exactly this benchmark family---not
-a phenomenon manufactured by this paper's own framing. It also means our
-\exactmatch\ accuracy input is not an arbitrary alternative scorer: it is
-the field's own currently-endorsed replacement metric.
+\paragraph{Verifier reliability.} VerifyBench \citep{li2025verifybench} and
+CompassVerifier \citep{liu2025compassverifier} ask \emph{which verifier is
+more accurate}---complementary, not overlapping, with our question (``given
+an audited error rate, what can still be concluded''). Hugging Face's own
+postmortem \citep{kydlicek2025fixing} independently documents the same
+comparator-limitation family this paper's adversarial suite found for
+\scoreboxed, and confirms \exactmatch\ is the field's currently-endorsed
+replacement metric after the old comparator's failures were severe enough
+to force a platform-wide rescoring of 3{,}751 models---external,
+production-scale confirmation this is a real problem, not a framing
+artifact.
 
-\paragraph{Audit design.} The stratified-allocation solution
-(Section~\ref{sec:audit-design}) is \citet{neyman1934stratified}, unmodified---cited, not
-claimed novel. The contribution is a documented, tested failure mode of the
-plug-in form under the specific sparse-event regime real benchmark audits
-actually operate in, and a corrected allocation.
+\paragraph{Audit design.} The stratified-allocation solution is
+\citet{neyman1934stratified}, unmodified---cited, not claimed novel.
+Concurrently, \citet{morikawa2026tsneyman} independently note that
+plug-in Neyman degrades under sparse pilots and propose an adaptive
+Thompson-sampling fix with formal convergence guarantees on generic
+estimation benchmarks---a different problem (a new adaptive algorithm)
+from ours (diagnosing the failure, on real audit data, against a discrete
+unresolved-pair-count objective specific to benchmark auditing, not
+continuous MSE). Our contribution is a documented, tested failure mode of
+the plug-in form under sparse real data and a corrected, simple
+allocation---not a new algorithm.
 
-\paragraph{Verification bias.} The stratified-on-scorer-outcome audit design
-is checked against, and shown formally distinct from, the classical
-partial-verification-bias problem in diagnostic testing
-\citep{begg1983assessment}---our sampling probabilities are known by design,
-not an unknown behavioral process, which is the condition under which
-Horvitz--Thompson estimation \citep{horvitz1952generalization} is valid
-rather than biased (Appendix~\ref{sec:appendix-proofs}).
+\paragraph{Verification bias.} The stratified-on-scorer-outcome design is
+shown formally distinct from the classical partial-verification-bias
+problem \citep{begg1983assessment}: our sampling probabilities are known by
+design, the condition under which Horvitz--Thompson estimation
+\citep{horvitz1952generalization} is valid (Appendix~\ref{sec:appendix-proofs}).
