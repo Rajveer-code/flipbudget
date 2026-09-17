@@ -43,9 +43,16 @@ production-scale confirmation this is a real problem, not a framing
 artifact.
 
 \paragraph{Audit design.} The stratified-allocation solution is
-\citet{neyman1934stratified}, unmodified---cited, not claimed novel. The
-contribution is a documented, tested failure mode of the plug-in form
-under sparse real data and a corrected allocation.
+\citet{neyman1934stratified}, unmodified---cited, not claimed novel.
+Concurrently, \citet{morikawa2026tsneyman} independently note that
+plug-in Neyman degrades under sparse pilots and propose an adaptive
+Thompson-sampling fix with formal convergence guarantees on generic
+estimation benchmarks---a different problem (a new adaptive algorithm)
+from ours (diagnosing the failure, on real audit data, against a discrete
+unresolved-pair-count objective specific to benchmark auditing, not
+continuous MSE). Our contribution is a documented, tested failure mode of
+the plug-in form under sparse real data and a corrected, simple
+allocation---not a new algorithm.
 
 \paragraph{Verification bias.} The stratified-on-scorer-outcome design is
 shown formally distinct from the classical partial-verification-bias
