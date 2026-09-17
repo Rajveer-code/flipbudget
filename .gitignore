@@ -6,3 +6,13 @@ venv/
 *.egg-info/
 build/
 dist/
+
+# LaTeX build artifacts (source .tex/.bib/.sty and the compiled main.pdf are tracked)
+manuscript/latex/*.aux
+manuscript/latex/*.log
+manuscript/latex/*.out
+manuscript/latex/*.bbl
+manuscript/latex/*.blg
+manuscript/latex/*.fls
+manuscript/latex/*.fdb_latexmk
+manuscript/latex/*.synctex.gz

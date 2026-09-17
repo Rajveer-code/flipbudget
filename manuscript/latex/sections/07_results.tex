@@ -13,13 +13,13 @@
   different display convention.}
   \label{tab:pairwise}
   \small
-  \begin{tabular}{@{}llccc@{}}
+  \begin{tabular}{@{}p{2.3cm}p{4.6cm}ccc@{}}
     \toprule
-    Analysis & Pairing & Median ratio & \% dominant & $n$ valid \\
+    Analysis & Pairing & Median ratio & \% dom. & $n$ valid \\
     \midrule
     \textbf{A} (historical, mixed) & \exactmatch\ acc.\ + \scoreboxed-audited $(\alpha,\beta)$ & 6.09$\times$ & 100.0\% & 120/136 \\
     \textbf{B} (self-consistent) & \scoreboxed\ acc.\ + \scoreboxed-audited $(\alpha,\beta)$ & 5.74$\times$ & 100.0\% & 120/136 \\
-    \textbf{C} (\exactmatch's own) & \exactmatch\ acc.\ + \exactmatch-audited $(\alpha,\beta)$ & \pending{ratio} & \pending{\%} & \pending{$n$} \\
+    \textbf{C} (\exactmatch's own) & \exactmatch\ acc.\ + \exactmatch-audited $(\alpha,\beta)$ & \textcolor{red}{pending} & \textcolor{red}{pending} & \textcolor{red}{pending} \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -76,17 +76,17 @@ Section~\ref{sec:results-scorer-mismatch}, is Table~\ref{tab:layers}.
   own audit is pending.}
   \label{tab:layers}
   \small
-  \begin{tabular}{@{}lcccc@{}}
+  \begin{tabular}{@{}p{4.6cm}p{2.0cm}ccc@{}}
     \toprule
-    Layer & Status & $n$ valid & $n$ unresolved & Median width \\
+    Layer & Status & $n$ valid & $n$ unres. & Med.\ width \\
     \midrule
     Benchmark sampling & measured & 136 & 12 & 0.0431 \\
     Audit-estimation-only (\scoreboxed) & measured & 120 & 91 & 0.2800 \\
     Scorer-identification-only (\scoreboxed, $\Lambda=2$) & measured & 66 & 15 & 0.0679 \\
     Combined (\scoreboxed) & measured & 120 & 110 & 0.4521 \\
     Scorer-choice (accuracy substitution) & measured & 120 & --- & 0.0091 \\
-    \exactmatch\ best case (bound, $\Lambda=2$) & worst/best-case bound & 105 & 25 & 0.0453 \\
-    \exactmatch\ worst case (bound, $\Lambda=2$) & worst/best-case bound & 10 & 10 & 0.1659 \\
+    \exactmatch\ best case (bound, $\Lambda=2$) & worst/best-case & 105 & 25 & 0.0453 \\
+    \exactmatch\ worst case (bound, $\Lambda=2$) & worst/best-case & 10 & 10 & 0.1659 \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -146,7 +146,7 @@ shift is Figure~\ref{fig:scorer-choice}.
     Disagreement rate, exact 95\% Clopper--Pearson CI & [3.39\%, 3.88\%] \\
     Model-level disagreement range & 0.60\%--9.59\% \\
     Directionality & Bidirectional \\
-    \exactmatch\ acc.\ + \exactmatch's own audited box (Analysis C) & \pending{pending human audit} \\
+    \exactmatch\ acc.\ + \exactmatch's own audited box (Analysis C) & \textcolor{red}{pending} \\
     \exactmatch\ acc.\ + \scoreboxed's audited box (historical, Analysis A) & 6.09$\times$, 100\% dominant, $n=120$ \\
     \scoreboxed\ acc.\ + \scoreboxed's audited box (Analysis B) & 5.74$\times$, 100\% dominant, $n=120$ \\
     \bottomrule
