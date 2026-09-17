@@ -384,6 +384,49 @@ def main():
     print(f"\n  Historical 69-row (score_boxed) comparison: see TC_REAL_ANALYSIS.md (0/69 scorer-wrong)")
 
     print("\n" + "=" * 78)
+    print("ANALYSIS C: the exact_match-self-consistent dominance ratio")
+    print("=" * 78)
+    print("Mirrors ea_dominance_canonical.py's methodology exactly (same sampling-width")
+    print("formula, same 'dominant' = identification width > sampling width definition),")
+    print("using exact_match's OWN accuracy (already this project's a_hat throughout)")
+    print("paired with exact_match's OWN newly-audited box -- the fully self-consistent")
+    print("analysis A/B/C table needs, not previously computed anywhere in this pipeline.")
+    analysis_c_ratio = None
+    em_box = recon_out.get("exact_match")
+    if em_box is not None:
+        box = tuple(em_box["alpha_ci"]) + tuple(em_box["beta_ci"])
+        ratios, n_valid_c, n_dominant_c = [], 0, 0
+        for p in pair_pop:
+            lo_m, hi_m = p["lo"], p["hi"]
+            if lo_m not in rows or hi_m not in rows:
+                continue
+            r1, r2 = rows[hi_m], rows[lo_m]
+            a1, a2 = r1["a_hat"], r2["a_hat"]
+            w_sampling = 2 * Z * np.sqrt(a1 * (1 - a1) / r1["n_bench"] + a2 * (1 - a2) / r2["n_bench"])
+            lo_c, hi_c = bounded_comparison(a1, box, a2, box)
+            if np.isnan(lo_c) or w_sampling <= 0:
+                continue
+            n_valid_c += 1
+            ratio = (hi_c - lo_c) / w_sampling
+            ratios.append(ratio)
+            if ratio > 1:
+                n_dominant_c += 1
+        if ratios:
+            analysis_c_ratio = {
+                "ratio_median": float(np.median(ratios)), "ratio_mean": float(np.mean(ratios)),
+                "ratio_min": float(np.min(ratios)), "ratio_max": float(np.max(ratios)),
+                "n_valid": n_valid_c, "n_dominant": n_dominant_c,
+                "pct_dominant": 100 * n_dominant_c / n_valid_c,
+            }
+            print(f"  median ratio={analysis_c_ratio['ratio_median']:.4f}  "
+                  f"pct_dominant={analysis_c_ratio['pct_dominant']:.1f}%  n_valid={n_valid_c}")
+        else:
+            print("  no valid pairs under exact_match's newly-audited box (empty identified sets "
+                  "or all pairs excluded) -- analysis C genuinely undetermined, not silently zero")
+    else:
+        print("  exact_match alpha/beta insufficiently scored -- analysis C not computed")
+
+    print("\n" + "=" * 78)
     print("STEP 5: A/B/C/D interpretation -- NOT decided here, computed from the numbers above")
     print("=" * 78)
     print("A (scorer-error-dominant): beta or alpha for either scorer turns out large")
@@ -394,7 +437,8 @@ def main():
     print("Read directly off steps 1-4's real numbers once they exist -- no placeholder verdict given here.")
 
     out = {"quality_gate": gate_report, "gate_passed": passed, "score_boxed_alpha_beta": sb,
-           "exact_match_alpha_beta": em, "reconciliation_by_scorer": recon_out, "self_test": args.self_test}
+           "exact_match_alpha_beta": em, "reconciliation_by_scorer": recon_out,
+           "analysis_c_ratio": analysis_c_ratio, "self_test": args.self_test}
     suffix = "_selftest" if args.self_test else ""
     with open(f"results/flipbudget/tc_expansion2_analysis{suffix}.json", "w") as f:
         json.dump(out, f, indent=2)

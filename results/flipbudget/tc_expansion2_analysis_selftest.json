@@ -139,5 +139,14 @@
       "median_width": 0.23579728176013962
     }
   },
+  "analysis_c_ratio": {
+    "ratio_median": 3.7578075674664992,
+    "ratio_mean": 3.828278969949898,
+    "ratio_min": 2.8037637631006493,
+    "ratio_max": 4.641562129862301,
+    "n_valid": 10,
+    "n_dominant": 10,
+    "pct_dominant": 100.0
+  },
   "self_test": true
 }
