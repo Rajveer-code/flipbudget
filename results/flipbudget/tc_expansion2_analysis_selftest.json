@@ -28,6 +28,10 @@
     },
     "n_contradictory": 20,
     "n_none": 40,
+    "n_unmatched_uids": 0,
+    "n_duplicate_uids": 0,
+    "n_corrupted_answers": 0,
+    "corrupted_uids": [],
     "red_flags": []
   },
   "gate_passed": true,

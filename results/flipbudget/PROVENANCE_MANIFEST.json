@@ -1,10 +1,10 @@
 {
-  "n_results": 49,
-  "n_no_writer_found": 1,
+  "n_results": 56,
+  "n_no_writer_found": 3,
   "entries": [
     {
       "output": "results/flipbudget/adversarial_suite.json",
-      "size_bytes": 6071,
+      "size_bytes": 6588,
       "writer_script": "scripts/fb_adversarial_suite.py",
       "last_commit": {
         "commit": "8dbf03cf3f4e8710ccc21df03fb9b8c1cabcd572",
@@ -14,21 +14,36 @@
       "human_label_inputs": null
     },
     {
+      "output": "results/flipbudget/adversarial_suite_v2.json",
+      "size_bytes": 20371,
+      "writer_script": "scripts/fb_adversarial_suite_v2.py",
+      "last_commit": {
+        "commit": "859ec14278a58492aef20eacd4c45466ec23d75b",
+        "date": "2026-09-14 23:20:50 +0530",
+        "message": "feat: adversarial suite v2 -- 12-category taxonomy surfaces a real scorer mismatch"
+      },
+      "human_label_inputs": null
+    },
+    {
       "output": "results/flipbudget/audit_design_analysis.json",
       "size_bytes": 10318,
       "writer_script": "scripts/fb_audit_design_analysis.py",
       "last_commit": {
-        "commit": "22a9b9723626da3d7bd0f35769ccf7f35b564730",
-        "date": "2026-09-12 11:41:46 +0530",
-        "message": "feat: audit-design analysis -- second-contribution evaluation, verdict D"
+        "commit": "91c48657c6e1f9e0ef64e123c7d10a2740192896",
+        "date": "2026-09-14 23:03:29 +0530",
+        "message": "fix: embed manual annotations in code so pipeline re-runs stop erasing them"
       },
       "human_label_inputs": null
     },
     {
       "output": "results/flipbudget/audit_design_optimization.json",
-      "size_bytes": 4099,
+      "size_bytes": 4229,
       "writer_script": "scripts/fb_audit_design_optimization.py",
-      "last_commit": null,
+      "last_commit": {
+        "commit": "927b59067a3e1de84942833508b996e01cb07bfd",
+        "date": "2026-09-14 22:58:46 +0530",
+        "message": "feat: audit-design formal optimization + budget curves (items 5, 6)"
+      },
       "human_label_inputs": null
     },
     {
@@ -55,12 +70,12 @@
     },
     {
       "output": "results/flipbudget/blinding_verification.json",
-      "size_bytes": 1500,
+      "size_bytes": 2105,
       "writer_script": "scripts/fb_blinding_verification.py",
       "last_commit": {
-        "commit": "a7c8d9fd72a84f2c7a71a453d0761cb1ded1040a",
-        "date": "2026-09-12 15:46:08 +0530",
-        "message": "docs: final labeling package -- blinding re-verified, plain-language README"
+        "commit": "18fccac49413af494b846009ba0ce61f4847afa9",
+        "date": "2026-09-14 23:31:31 +0530",
+        "message": "feat: T-C expansion round 2 -- preregistered 458-row joint-stratified audit"
       },
       "human_label_inputs": null
     },
@@ -133,7 +148,7 @@
     {
       "output": "results/flipbudget/ea_dominance_canonical.json",
       "size_bytes": 44667,
-      "writer_script": "scripts/fb_ea_dominance_canonical.py",
+      "writer_script": "scripts/fb_build_tables.py",
       "last_commit": {
         "commit": "3e6d701a99eb8e31c5d5590eb56457cc2b8e4887",
         "date": "2026-09-13 20:24:17 +0530",
@@ -230,6 +245,17 @@
       "human_label_inputs": null
     },
     {
+      "output": "results/flipbudget/flip_budget_uncertainty_mathhard.json",
+      "size_bytes": 1826,
+      "writer_script": "scripts/fb_fig6_flip_budget.py",
+      "last_commit": {
+        "commit": "25b501cf6df869cb843747ced53fc70f80201a53",
+        "date": "2026-09-15 13:15:05 +0530",
+        "message": "feat: flip-budget uncertainty on current MATH-Hard data, supersedes stale MMLU run"
+      },
+      "human_label_inputs": null
+    },
+    {
       "output": "results/flipbudget/ifeval_audit_key.json",
       "size_bytes": 152191,
       "writer_script": "scripts/fb_ifeval_key_reflag.py",
@@ -319,12 +345,12 @@
     },
     {
       "output": "results/flipbudget/ifeval_reproducibility_check.json",
-      "size_bytes": 5717,
+      "size_bytes": 5715,
       "writer_script": "scripts/fb_ifeval_reproducibility_check.py",
       "last_commit": {
-        "commit": "e50fb54aceeb96b544837b933419950fde4ee9b1",
-        "date": "2026-09-12 15:30:58 +0530",
-        "message": "fix: IFEval nondeterminism scan was incomplete (33 -> 96 flagged items)"
+        "commit": "91c48657c6e1f9e0ef64e123c7d10a2740192896",
+        "date": "2026-09-14 23:03:29 +0530",
+        "message": "fix: embed manual annotations in code so pipeline re-runs stop erasing them"
       },
       "human_label_inputs": null
     },
@@ -366,7 +392,7 @@
     {
       "output": "results/flipbudget/negative_controls.json",
       "size_bytes": 2264,
-      "writer_script": "scripts/fb_negative_controls.py",
+      "writer_script": "scripts/fb_build_tables.py",
       "last_commit": {
         "commit": "c74d85818ac0b4b54f6067462e7f16885aa2ade4",
         "date": "2026-09-13 20:29:02 +0530",
@@ -399,7 +425,7 @@
     {
       "output": "results/flipbudget/reconciliation_four_layers_corrected.json",
       "size_bytes": 66981,
-      "writer_script": "scripts/fb_reconcile_layers.py",
+      "writer_script": "scripts/fb_build_tables.py",
       "last_commit": {
         "commit": "b80b22a1509d025a5973a9b9d4e4fbbd01502132",
         "date": "2026-09-13 02:11:24 +0530",
@@ -415,6 +441,39 @@
         "commit": "fba5393a96d32795df4b50d93cb544129b848d36",
         "date": "2026-09-13 20:24:17 +0530",
         "message": "fix: root-cause the 70 scorer-only-layer empty identified sets"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/scorer_accuracy_comparison.json",
+      "size_bytes": 3700,
+      "writer_script": "scripts/fb_scorer_choice_sensitivity.py",
+      "last_commit": {
+        "commit": "a729bd7e827b0db66b40e656ae8b385eaf182a3a",
+        "date": "2026-09-14 23:54:22 +0530",
+        "message": "feat: lock in the scorer-mismatch finding, test impact on headline results"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/scorer_choice_sensitivity.json",
+      "size_bytes": 31274,
+      "writer_script": "scripts/fb_build_tables.py",
+      "last_commit": {
+        "commit": "a729bd7e827b0db66b40e656ae8b385eaf182a3a",
+        "date": "2026-09-14 23:54:22 +0530",
+        "message": "feat: lock in the scorer-mismatch finding, test impact on headline results"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/scorer_mismatch_check.json",
+      "size_bytes": 3413,
+      "writer_script": null,
+      "last_commit": {
+        "commit": "859ec14278a58492aef20eacd4c45466ec23d75b",
+        "date": "2026-09-14 23:20:50 +0530",
+        "message": "feat: adversarial suite v2 -- 12-category taxonomy surfaces a real scorer mismatch"
       },
       "human_label_inputs": null
     },
@@ -465,11 +524,11 @@
     {
       "output": "results/flipbudget/tc_alpha_beta_update.json",
       "size_bytes": 100332,
-      "writer_script": "scripts/fb_tc_alpha_beta_update.py",
+      "writer_script": "scripts/fb_fig3_identified_set_geometry.py",
       "last_commit": {
-        "commit": "17ee32083043a702712965851aee5d5a6c89e5fc",
-        "date": "2026-09-12 15:54:39 +0530",
-        "message": "feat: fold T-C's 69 new audit trials into alpha/beta pooling"
+        "commit": "91c48657c6e1f9e0ef64e123c7d10a2740192896",
+        "date": "2026-09-14 23:03:29 +0530",
+        "message": "fix: embed manual annotations in code so pipeline re-runs stop erasing them"
       },
       "human_label_inputs": [
         "labeling/tc_expansion_l1_completed.csv"
@@ -509,6 +568,17 @@
       "human_label_inputs": null
     },
     {
+      "output": "results/flipbudget/tc_expansion2_analysis_selftest.json",
+      "size_bytes": 3232,
+      "writer_script": null,
+      "last_commit": {
+        "commit": "272338fad6c805a75ec17474962a50657a208305",
+        "date": "2026-09-15 12:55:47 +0530",
+        "message": "fix: methodological audit finds and fixes two real bugs before any labeling"
+      },
+      "human_label_inputs": null
+    },
+    {
       "output": "results/flipbudget/tc_expansion_key.json",
       "size_bytes": 34679,
       "writer_script": "scripts/fb_tc_labeling_package.py",
@@ -544,6 +614,17 @@
         "labeling/tc_expansion_l2_answers.csv",
         "labeling/tc_expansion_l3_answers.csv"
       ]
+    },
+    {
+      "output": "results/flipbudget/worst_case_sensitivity.json",
+      "size_bytes": 867,
+      "writer_script": "scripts/fb_build_tables.py",
+      "last_commit": {
+        "commit": "0205bc0dfd66ef1b804f2a3ea61cd45346b057e1",
+        "date": "2026-09-15 15:59:59 +0530",
+        "message": "feat: reproducible script for the worst-case sensitivity bound"
+      },
+      "human_label_inputs": null
     }
   ]
 }
