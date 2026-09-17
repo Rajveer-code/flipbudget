@@ -43,11 +43,15 @@ turn on wrap-text rather than skimming.
 
 ## `tc_expansion2_l1.csv` — math problems, round 2 (458 rows)
 
-**Identical task to `tc_expansion_l1.csv` above — same column (`your_answer`),
-same rules, including the self-correction rule.** Read that section, not this
-one, for what to actually do. This is a fresh set of 458 problems (no overlap
-with the ones you already did), sized to get a properly-powered estimate
-instead of the small first round. Same instructions apply exactly.
+**Same task as `tc_expansion_l1.csv` above, same column (`your_answer`),
+same rules.** This is a fresh set of 458 problems (no overlap with the ones
+already done), sized for a properly-powered estimate instead of the small
+first round.
+
+**Full instructions with worked examples for every edge case (self-correction,
+hedging, cutoff, notation, units, pacing, the pre-submission checklist):
+`labeling/HUMAN_LABELING_INSTRUCTIONS_tc_expansion2.md`. Read that file in
+full before starting this one — it supersedes the short version here.**
 
 ---
 
