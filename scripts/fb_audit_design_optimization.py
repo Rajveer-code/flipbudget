@@ -31,6 +31,7 @@ Allocations compared, as item 5 asks:
 
 Run: python scripts/fb_audit_design_optimization.py
 """
+import functools
 import json
 import sys
 
@@ -38,9 +39,30 @@ import numpy as np
 
 sys.path.insert(0, "scripts")
 from ea_dominance_study import load, build_model_table, wilson_ci
-from fb_reconcile_layers import bounded_single_model_extrema, bounded_comparison
+from fb_reconcile_layers import bounded_single_model_extrema
 
 Z = 1.96
+
+# Performance fix (2026-09-17), not a science change: bounded_single_model_extrema
+# is a pure function of (a, alpha_lo, alpha_hi, beta_lo, beta_hi); its "straddles"
+# branch runs an 801x801 grid per call. The greedy search below re-evaluates all
+# 136 pairs from scratch for every one of ~34 candidate cells at every one of
+# ~24 budget steps, but changes only ONE model's box per trial -- the other 16
+# models' extrema are byte-identical to a call already made. Profiling confirmed
+# this (not resource contention -- timed in isolation, nothing else running) as
+# the actual bottleneck: >300s and still running with nothing else competing.
+# lru_cache turns every repeat call into a dict lookup; output is unchanged
+# because the wrapped function has no side effects and no randomness.
+_extrema_cached = functools.lru_cache(maxsize=None)(bounded_single_model_extrema)
+
+
+def bounded_comparison(a1, box1, a2, box2):
+    min1, max1 = _extrema_cached(a1, *box1)
+    min2, max2 = _extrema_cached(a2, *box2)
+    if any(np.isnan(x) for x in (min1, max1, min2, max2)):
+        return (float("nan"), float("nan"))
+    lo, hi = min1 - max2, max1 - min2
+    return max(lo, -1.0), min(hi, 1.0)
 
 
 def neyman_weights(p_list):
