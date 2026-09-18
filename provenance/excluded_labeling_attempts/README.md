@@ -28,3 +28,5 @@ and paused per your decision — see `CONSOLIDATED_VERDICT.md`.
 ## 2026-09-19: fourth tc_expansion2 submission (not stored again)
 
 `Downloads/final labeled by me properly.csv`: 458/458 `your_answer` values identical to `tc_expansion2_round3_submission.csv` (49 NONE, 0 CONTRADICTORY). Same content as an already-excluded submission; not used. The sheet it labels is superseded anyway (CORE_ESTIMAND_AUDIT.md section 13).
+
+Content check of the same file (resubmitted 2026-09-19 with a request to accept it on trust): 395/409 non-NONE labels equal a mechanical pattern exactly ("final answer is X" or last boxed). Several labels carry regex over-capture text that a reader would not type, e.g. uid a9a7569653f34d5c labeled 'correct. Let me know if you have any other questions' where the response's answer is \boxed{\frac{h^2}{m}}; d260d55066e24f0a '$3272$. I hope it is correct'; 2ce4d73b57a74545 'The answer is indeed 19. Great job solving this problem!'. Still excluded.
