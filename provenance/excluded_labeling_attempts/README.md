@@ -27,8 +27,4 @@ and paused per your decision — see `CONSOLIDATED_VERDICT.md`.
 
 ## 2026-09-19: fourth tc_expansion2 submission (not stored again)
 
-`C:\Users\Asus\Downloadsinal labeled by me properly.csv`: 458/458 `your_answer` values identical to `tc_expansion2_round3_submission.csv` (49 NONE, 0 CONTRADICTORY). Same file content as an already-excluded submission; not used. The sheet it labels is superseded anyway (CORE_ESTIMAND_AUDIT.md section 13).
-
-## 2026-09-19: fourth tc_expansion2 submission (not stored again)
-
 `Downloads/final labeled by me properly.csv`: 458/458 `your_answer` values identical to `tc_expansion2_round3_submission.csv` (49 NONE, 0 CONTRADICTORY). Same content as an already-excluded submission; not used. The sheet it labels is superseded anyway (CORE_ESTIMAND_AUDIT.md section 13).
