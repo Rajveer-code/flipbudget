@@ -102,7 +102,17 @@ reproduces 817 disagreements, cells 142/32/1/145 (141/16/0/0 correct), and
 84 / 101 / 118 under both indeterminate rules. It passes locally. CI:
 `.github/workflows/tests.yml` (not yet pushed).
 
-## Decisions needed from the author
+## Decisions (author, 2026-09-19): all three recommendations adopted
+
+1. Primary `sb` semantics: **sympy** (faithful). `sb_string` is kept only as the
+   historical reconstruction and for the regression anchor.
+2. `mv` is described as **the leaderboard's own 2025 verifier** (Math-Verify). The setting
+   is "the leaderboard's 2024 and 2025 verifiers plus a boxed verifier". Independence
+   wording follows the shared-component table.
+3. Primary human reference: **harness routine (sympy)**. Math-Verify reference is a
+   sensitivity analysis.
+
+## Decisions requested (kept for the record)
 
 1. **Primary `sb` semantics:** faithful sympy (recommended; it is the harness as written)
    or historical string (reproduces earlier numbers). Every earlier headline built on
