@@ -55,6 +55,26 @@ def test_audit_cells_reproduce_142_32_1_145(anchor_inputs, indet):
 
 
 @pytest.mark.parametrize("indet", ["as_incorrect", "drop"])
+def test_certify_module_reproduces_anchor_at_eps0(anchor_inputs, indet):
+    """G2.4: the new implementation (eps=0, CP, legacy unpaired sampling) gives 84 / 101."""
+    import math
+
+    from flipbudget import certify
+
+    jv, models, shares, audit_map = anchor_inputs
+    cells = audit_map["audit_cells"][f"17|k2_string|string|{indet}"]
+    conc = {c: certify.cp_interval(cells[c]["x_correct"], cells[c]["n"], certify.sidak(2)) for c in ("11", "00")}
+    unaudited = {c: (0.0, 1.0) for c in ("10", "01")}
+
+    def legacy_h(j, k, eps):
+        a = [shares[m]["11"] + shares[m]["10"] for m in (j, k)]
+        return jv.Z_SAMP * math.sqrt(sum(x * (1 - x) / shares[m]["N"] for x, m in zip(a, (j, k))))
+
+    r = certify.evaluate(models, shares, lambda j, k: (conc, unaudited, unaudited), legacy_h, 0.0)
+    assert (r["combined_resolved"], r["audit_resolved"]) == (84, 101)
+
+
+@pytest.mark.parametrize("indet", ["as_incorrect", "drop"])
 def test_anchor_84_101_118(anchor_inputs, indet):
     jv, models, shares, audit_map = anchor_inputs
     cells = audit_map["audit_cells"][f"17|k2_string|string|{indet}"]
