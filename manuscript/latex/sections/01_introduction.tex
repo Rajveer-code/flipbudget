@@ -1,61 +1,47 @@
 \section{Introduction}
 \label{sec:introduction}
 
-Benchmark leaderboards report accuracy as if it were observed. It is not: a
-model's reported score is the output of a fixed, deterministic verifier
-applied to free-text generations, and that verifier can be wrong. When it
-is, the leaderboard number is the model's accuracy contaminated by the
-verifier's own error rate, in a direction and magnitude nobody has
-measured (schematic: Appendix~\ref{sec:appendix-figures},
-Figure~\ref{fig:conceptual}).
+A leaderboard number for a math benchmark is the output of a verifier: code
+that extracts a final answer from free text and compares it with a
+reference. Verifiers fail in known ways---unboxed answers, notation they
+cannot normalize, text after the answer---and such failures led the Open LLM
+Leaderboard to rescore its models with a new verifier
+\citep{kydlicek2025fixing}. The usual safeguard is a human audit of a few
+hundred responses, summarized as an error rate. Leaderboards exist to order
+models, however, and an error rate that is small on average can still
+reverse an ordering if it falls unevenly on one model.
 
-This paper asks what a benchmark comparison is still entitled to claim once
-that contamination is taken seriously. We audit MATH-Hard's standard
-comparator on real model responses, find it disagrees with human judgment
-at a small but nonzero rate, and derive the set of true accuracy values
-consistent with what was observed---not a point estimate corrected by a
-guessed error rate, but a \emph{partially identified set}, sharp under the
-weakest assumption the audit data will bear. The central finding: audit
-uncertainty, not sample size, is usually the binding constraint. Audit-
-estimation uncertainty---how few human-labeled items exist to pin down the
-verifier's error rate---exceeds the field's already-reported sampling
-uncertainty for the majority of real model comparisons we can identify at
-all.
+We ask what a small audit can establish about orderings, using public
+MATH-Hard generations from \nNModels{} models, the two verifiers the
+evaluation harness runs on every response, and a 400-item human audit. We say
+an ordering is \emph{resolved} when an interval for the difference in true
+accuracy excludes zero at 95\% coverage under the stated assumptions.
 
-That finding raises a design question the literature has not answered: if
-verifier auditing is the binding constraint, how should a fixed
-human-labeling budget be spent? We formalize this as a stratified-sampling
-allocation problem, derive the classical \citep{neyman1934stratified}
-solution, and show---on our own real, sparse audit data---that the
-classical formula's assumption (a decent pilot estimate) fails exactly
-where most benchmarks are actually audited: when most strata have observed
-zero error events, naive plug-in allocation concentrates budget on
-whichever cell drew a noisy nonzero rate, and is dominated by simply
-spreading the budget evenly. A stress-tested, sparse-data-aware allocation
-rule is this paper's most directly usable output.
+\emph{Verifier choice reverses orderings} (Section~\ref{sec:results-census}).
+Ranking by one verifier or the other reverses \nScorerFlips{} of \nNPairs{}
+orderings; \nScorerFlipsSig{} are clear under both verifiers' sampling error.
 
-A third thread: MATH-Hard's evaluation harness computes accuracy two
-different ways from the same generations---LaTeX-aware symbolic parsing
-(\exactmatch) and last-\code{\textbackslash boxed\{\}} matching
-(\scoreboxed)---and these disagree on 3.63\% of real responses. Every human
-audit here was conducted against \scoreboxed; the field's reported accuracy
-comes from \exactmatch. This mismatch does not overturn the
-audit-estimation-dominance finding, tested directly including under an
-adversarial worst-case bound, but establishes a second, independent source
-of benchmark uncertainty: \emph{which} automated criterion scores a
-benchmark is itself a measurable, consequential choice, independently
-corroborated by production-scale evidence (Section~\ref{sec:related-work}).
+\emph{Per-model auditing with one verifier resolves nothing}
+(Section~\ref{sec:results-single}). The verifier is accurate on the audited
+items, but each model contributes a handful of them, and the audit resolves
+\nSingleComb{} orderings.
 
-\paragraph{Contributions.} (1) A sharp partial-identification treatment of
-benchmark accuracy under an audited, imperfect verifier, adapting classical
-misclassification-bounds machinery
-\citep{manski1995identification,molinari2008partial} to benchmark
-comparison. (2) An empirical demonstration that audit-estimation
-uncertainty dominates sampling uncertainty for the majority of identifiable
-comparisons on a widely-used benchmark. (3) A stratified audit-design
-methodology (Section~\ref{sec:audit-design}), including a documented
-failure mode of the textbook-optimal allocation rule under sparse real data
-and a tested alternative. (4) A secondary, honestly-scoped finding that
-automated-scorer choice is itself a measurable, non-dominant source of
-benchmark uncertainty, with a worst-case bound rather than an assumed-safe
-headline.
+\emph{Verifier agreement concentrates the observed error}
+(Section~\ref{sec:results-cells}). Where the two verifiers agree, the
+transcribed human answer disagrees with them on \nConcErr{} of \nConcN{}
+audited responses; the model-specific errors the audit finds are in the
+disagreements.
+
+\emph{What agreement buys depends on one assumption}
+(Section~\ref{sec:results-joint}). If agreement is equally reliable across
+models, the existing audit resolves \nJointComb{} of the \nCeiling{}
+orderings sampling error permits. The count falls to \nHetTwo{} if each
+model's agreement error may be twice the pooled bound, and to \nNoPool{}
+without the assumption; the audit is too small to test it model by model.
+The practical contribution is to make this assumption explicit, quantify how
+much the ranking depends on it, and design the next audit to test it
+(Section~\ref{sec:results-design}).
+
+The estimators are classical \citep{neyman1938contribution,begg1983assessment};
+the contributions are the measurements, the sensitivity analysis, and the
+design they imply.

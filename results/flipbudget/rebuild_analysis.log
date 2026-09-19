@@ -1,0 +1,21 @@
+C1 {'n_rows': 22508, 'n_disagree': 817, 'rate': 0.036298205082637286, 'wilson95': (np.float64(0.03393286516603759), np.float64(0.03882179872375896)), 'sb_credited_em_not': 323, 'em_credited_sb_not': 494, 'model_rate_min': 0.006042296072507553, 'model_rate_max': 0.09592145015105741}
+PAIR per_parameter_95                   models=17 pairs=136 resolved=3 sampling-only=119 w_audit=0.718 w_samp=0.0416 ratio=20.2 (min 8.1)
+PAIR joint_95_sidak                     models=17 pairs=136 resolved=1 sampling-only=119 w_audit=0.942 w_samp=0.0416 ratio=25.5 (min 11.3)
+PAIR joint_95_indeterminate_as_error    models=17 pairs=136 resolved=0 sampling-only=119 w_audit=1.021 w_samp=0.0416 ratio=26.7 (min 11.4)
+C2_common_mechanism {'n_models': 17, 'alpha_hat': 0.0015, 'beta_hat': 0.0, 'alpha_95_profile': [0.0007, 0.0021000000000000003], 'alpha_feasible_max': 0.0022658610271903325, 'LR_vs_saturated': 24.77178419742374, 'bootstrap_p': np.float64(0.00999000999000999)}
+C2_common_mechanism_without_command_r {'n_models': 16, 'alpha_hat': 0.0004, 'beta_hat': 0.0, 'alpha_95_profile': [0.0001, 0.0015], 'alpha_feasible_max': 0.0022658610271903325, 'LR_vs_saturated': 6.072052471949689, 'bootstrap_p': np.float64(0.3996003996003996)}
+C3 law [{'a': 0.05, 'N': 1324, 'n_star_exact': 160, 'n_star_closed_form': 159.77059122883983}, {'a': 0.2, 'N': 1324, 'n_star_exact': 86, 'n_star_closed_form': 85.30459016565334}, {'a': 0.35, 'N': 1324, 'n_star_exact': 71, 'n_star_closed_form': 70.91890229437233}]
+   n=    2 labels=    68 resolved=0.0% (sampling-only 87.5%)
+   n=    5 labels=   170 resolved=0.0% (sampling-only 87.5%)
+   n=   10 labels=   340 resolved=0.0% (sampling-only 87.5%)
+   n=   20 labels=   680 resolved=5.9% (sampling-only 87.5%)
+   n=   30 labels=  1020 resolved=14.0% (sampling-only 87.5%)
+   n=   50 labels=  1700 resolved=40.4% (sampling-only 87.5%)
+   n=   75 labels=  2550 resolved=50.7% (sampling-only 87.5%)
+   n=  100 labels=  3400 resolved=55.1% (sampling-only 87.5%)
+   n=  150 labels=  5100 resolved=66.2% (sampling-only 87.5%)
+   n=  200 labels=  6800 resolved=72.8% (sampling-only 87.5%)
+   n=  300 labels= 10200 resolved=77.9% (sampling-only 87.5%)
+   n=  500 labels= 17000 resolved=83.1% (sampling-only 87.5%)
+   n= 1000 labels= 34000 resolved=87.5% (sampling-only 87.5%)
+wrote results/flipbudget/rebuild_results.json

@@ -1,5 +1,5 @@
 {
-  "n_results": 56,
+  "n_results": 61,
   "n_no_writer_found": 3,
   "entries": [
     {
@@ -76,6 +76,17 @@
         "commit": "18fccac49413af494b846009ba0ce61f4847afa9",
         "date": "2026-09-14 23:31:31 +0530",
         "message": "feat: T-C expansion round 2 -- preregistered 458-row joint-stratified audit"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/core_estimand_audit.json",
+      "size_bytes": 13004,
+      "writer_script": "scripts/fb_458_redesign.py",
+      "last_commit": {
+        "commit": "ce693093a2163938042b06975a8a8bdc82e428c8",
+        "date": "2026-09-19 00:49:17 +0530",
+        "message": "fix: core estimand audit -- audit identifies predictive values, not error rates"
       },
       "human_label_inputs": null
     },
@@ -345,12 +356,12 @@
     },
     {
       "output": "results/flipbudget/ifeval_reproducibility_check.json",
-      "size_bytes": 5713,
+      "size_bytes": 5719,
       "writer_script": "scripts/fb_ifeval_reproducibility_check.py",
       "last_commit": {
-        "commit": "2ac384127b631aed8e7319742c7cf9c0579465c5",
-        "date": "2026-09-17 15:41:53 +0530",
-        "message": "chore: regenerated outputs from the last full pipeline run (provenance manifest, IFEval replicates, hardened self-test fields)"
+        "commit": "42fc049d4d5e67b4f55f507006eadb4f46a65286",
+        "date": "2026-09-17 15:58:18 +0530",
+        "message": "docs: record the genuine isolated 38/38 reproducibility pass"
       },
       "human_label_inputs": null
     },
@@ -376,6 +387,13 @@
         "date": "2026-09-13 20:32:22 +0530",
         "message": "feat: T-C correlated-error bound + is_equiv Linux CI validation (items 3, 4)"
       },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/joint_verifier_results.json",
+      "size_bytes": 380095,
+      "writer_script": "scripts/fb_joint_verifier.py",
+      "last_commit": null,
       "human_label_inputs": null
     },
     {
@@ -412,6 +430,20 @@
       "human_label_inputs": null
     },
     {
+      "output": "results/flipbudget/reaudit_results.json",
+      "size_bytes": 28111,
+      "writer_script": "scripts/fb_reaudit.py",
+      "last_commit": null,
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/rebuild_results.json",
+      "size_bytes": 137898,
+      "writer_script": "scripts/fb_build_submission_package.py",
+      "last_commit": null,
+      "human_label_inputs": null
+    },
+    {
       "output": "results/flipbudget/reconciliation_four_layers.json",
       "size_bytes": 67510,
       "writer_script": "scripts/fb_reconcile_layers.py",
@@ -430,6 +462,17 @@
         "commit": "b80b22a1509d025a5973a9b9d4e4fbbd01502132",
         "date": "2026-09-13 02:11:24 +0530",
         "message": "fix: the [0,1]-bound fix itself silently inverted empty identified sets"
+      },
+      "human_label_inputs": null
+    },
+    {
+      "output": "results/flipbudget/redesign_458.json",
+      "size_bytes": 752,
+      "writer_script": "scripts/fb_458_redesign.py",
+      "last_commit": {
+        "commit": "ce693093a2163938042b06975a8a8bdc82e428c8",
+        "date": "2026-09-19 00:49:17 +0530",
+        "message": "fix: core estimand audit -- audit identifies predictive values, not error rates"
       },
       "human_label_inputs": null
     },

@@ -1,61 +1,34 @@
 \section{Related Work}
 \label{sec:related-work}
 
-\paragraph{Partial identification and misclassification.} The identification
-strategy is a direct adaptation of the classical misclassification-bounds
-literature \citep{manski1995identification,molinari2008partial}---sensitivity/specificity-style
-calibration constants bounding a corrupted binary outcome (class A/B
-throughout, Appendix~\ref{sec:appendix-novelty}). The contribution is
-applying it to benchmark comparison with an audit-design layer classical
-misclassification papers do not address.
+\paragraph{Two-phase sampling and verification bias.} Classifying everyone
+cheaply and verifying a subsample stratified by the cheap result is
+two-phase sampling \citep{neyman1938contribution}; \citet{tenenbein1970double}
+treats misclassified binomial data including phase sizes, and
+\citet{begg1983assessment} give the correction when verification depends only
+on the test result. Our estimators are these. When the reference is instead
+collected on units of known true status, sensitivity and specificity are the
+natural parameters \citep{lang2014confidence}.
 
-\paragraph{\citet{chen2026partial}.} Study partial identification of a
-\emph{prevalence} from panels of LLM \emph{raters} whose errors are
-correlated by shared training lineage---the same toolkit, a structurally
-different problem (their LLMs are the noisy raters; ours are the
-\emph{rated} models, scored by one fixed, non-LLM verifier). No overlap in
-estimand or headline results.
-
-\paragraph{Concurrent work by the same author, sharing empirical
-infrastructure.} \citet{pall2026identified} (under review at TMLR, not yet
-archival) bounds reported accuracy by a scorer's discarded parse-failure
-count $U$ and reports 90.2--94.4\% of 378 MATH-Hard pairwise orderings not
-identified. Both papers draw on the \emph{same} 400-item human audit and
-28-model roster---disclosed explicitly rather than left for a reader to
-find. Distinct estimand (full $(\alpha,\beta)$ box here vs.\ a
-parse-failure-conditioned bound there), distinct headline statistic (width
-ratio vs.\ \% unidentified), and two contributions absent from that
-paper---audit-budget design (Section~\ref{sec:audit-design}) and
-scorer-choice dependence (Section~\ref{sec:results-scorer-mismatch}).
-Full comparison and policy analysis: \code{VENUE\_AND\_OVERLAP\_AUDIT.md}
-in the code release.
+\paragraph{Hybrid human--automatic evaluation.} Prediction-powered inference
+\citep{angelopoulos2023ppi} combines automatic labels with few human ones;
+active \citep{zrnic2024active} and stratified \citep{fisch2024stratified}
+variants choose what to label, the latter for language-model evaluation.
+\citet{boyeau2025autoeval} apply the approach to model evaluation and
+\citet{chatzi2024ranking} to rank sets of LLMs from pairwise preferences.
+\citet{lee2026judge} correct one model's LLM-judge accuracy with sensitivity
+and specificity estimated on calibration items drawn by true label, and
+allocate those items between the two labels. Relative to these, we study
+many models and all their pairwise orderings, allow error to differ by
+model, and use agreement between two deterministic verifiers as the
+stratifier.
 
 \paragraph{Verifier reliability.} VerifyBench \citep{li2025verifybench} and
-CompassVerifier \citep{liu2025compassverifier} ask \emph{which verifier is
-more accurate}---complementary, not overlapping, with our question (``given
-an audited error rate, what can still be concluded''). Hugging Face's own
-postmortem \citep{kydlicek2025fixing} independently documents the same
-comparator-limitation family this paper's adversarial suite found for
-\scoreboxed, and confirms \exactmatch\ is the field's currently-endorsed
-replacement metric after the old comparator's failures were severe enough
-to force a platform-wide rescoring of 3{,}751 models---external,
-production-scale confirmation this is a real problem, not a framing
-artifact.
+CompassVerifier \citep{liu2025compassverifier} compare verifiers' accuracy;
+\citet{kydlicek2025fixing} document the extraction failures behind the Open
+LLM Leaderboard \citep{fourrier2024openllm} rescoring;
+\citet{biderman2024lessons} discuss evaluation reproducibility.
 
-\paragraph{Audit design.} The stratified-allocation solution is
-\citet{neyman1934stratified}, unmodified---cited, not claimed novel.
-Concurrently, \citet{morikawa2026tsneyman} independently note that
-plug-in Neyman degrades under sparse pilots and propose an adaptive
-Thompson-sampling fix with formal convergence guarantees on generic
-estimation benchmarks---a different problem (a new adaptive algorithm)
-from ours (diagnosing the failure, on real audit data, against a discrete
-unresolved-pair-count objective specific to benchmark auditing, not
-continuous MSE). Our contribution is a documented, tested failure mode of
-the plug-in form under sparse real data and a corrected, simple
-allocation---not a new algorithm.
-
-\paragraph{Verification bias.} The stratified-on-scorer-outcome design is
-shown formally distinct from the classical partial-verification-bias
-problem \citep{begg1983assessment}: our sampling probabilities are known by
-design, the condition under which Horvitz--Thompson estimation
-\citep{horvitz1952generalization} is valid (Appendix~\ref{sec:appendix-proofs}).
+\paragraph{Concurrent work sharing data.} \citet{pall2026identified} (same
+author, under review) uses the same audit and roster to bound accuracy by a
+verifier's parse-failure count; its estimand and questions differ.

@@ -47,3 +47,38 @@ The task and blinding are unchanged (see above). Given 458 rows is a real time c
 ## Analysis plan, fixed now, before any label is seen
 
 Once labels return: (1) recompute α, β separately for `exact_match` and `score_boxed` from the `both_credited`/`both_not_credited` cells; (2) recompute the disagreement-resolution rate from the two disagreement cells; (3) recompute scorer-identification, audit-estimation, and combined uncertainty for BOTH scorer targets using the existing, unmodified `fb_reconcile_layers.py` machinery; (4) recompute pairwise identification and compare directly against the 69-row result; (5) report the A/B/C/D interpretation (scorer-error-dominant / audit-uncertainty-dominant / both / small-audit-artifact) strictly from what the numbers show — not decided in advance.
+
+
+---
+
+## AMENDMENT 1 (2026-09-19): pre-analysis estimand error; design superseded before any usable label
+
+**What was wrong.** This design and its analysis plan target "alpha, beta" computed within the credited / not-credited cells. Sampling within scorer-output cells identifies q = P(human wrong | scorer credited) and r = P(human right | scorer not credited), not the error rates alpha = P(credited | wrong), beta = P(not credited | right). Analysis step (3) then fed these stratum rates into g(a, alpha, beta), which is biased. This is an error in the preregistered estimand, identified before any usable (human) label existed. It is recorded here as such, not folded in as an ordinary analysis update. Full derivation: CORE_ESTIMAND_AUDIT.md.
+
+**Status of the original design.** Superseded, kept for the record. The 4-cell joint partition itself does identify pooled A*, q and r for both scorers, and alpha, beta via Bayes' rule, but the 200/198/30/30 allocation is inefficient for the corrected targets (5.5% efficiency for the disagreement-resolution contrast, 18% for q_em; results/flipbudget/redesign_458.json). The sheet labeling/tc_expansion2_l1.csv should not be labeled.
+
+**If this audit is run later** (optional; the rebuilt paper does not depend on it): estimands A*, q, r for each scorer and the disagreement-cell resolution rates, design-weighted by cell population; allocation 96/126/98/138 (minimax efficiency under the planning priors in scripts/fb_458_redesign.py, re-run if priors change), with model-proportional sub-stratification inside each cell; new seed and a new sheet; analysis with flipbudget.pv. Any such run must be preceded by its own written amendment fixing the seed and sheet before labeling.
+
+---
+
+## AMENDMENT 2 (2026-09-19): disagreement-targeted redesign, written before any label on the new sheet
+
+Supersedes the allocation in Amendment 1. Reason and power analysis: REAUDIT.md sections 4, 5, 12. The existing audit shows error concentrated where the two live verifiers disagree (concordant cells: 1 error in 287 audited items). Human labels therefore go to disagreement rows.
+
+- Sheet: labeling/audit_v2_l1.csv (457 rows; seed 20260919; scripts/fb_disagreement_sample.py). Provenance with inclusion probabilities: results/analysis/audit_v2_provenance.json.
+- Strata: model x joint cell, unlabeled rows only. 358 disagreement rows (226 exact_match-only, 132 score_boxed-only), stratified SRS proportional to stratum size. 99 concordant rows (49 both-credited, 50 both-rejected), spread evenly over models.
+- Label task unchanged (transcribe the committed final answer; NONE / CONTRADICTORY). Indeterminate = Y*=0 (primary); dropped (sensitivity).
+- Estimands: per-model p10_m, p01_m (disagreement cells), pooled p11, p00; A*_m = sum_c s_c p_c; pairwise Delta*. Concordant-homogeneity check: per-model concordant error counts, reported as observed.
+- Analysis: scripts/fb_joint_verifier.py extended to use the new labels with design weights (inclusion probabilities); Sidak joint 95% over estimated parameters; sampling combined by Sidak split. Primary outcome: number of the 136 orderings identified with sampling included.
+- The labels must be typed by a person reading each response. The quality gate (timestamps, agreement signatures, transcription artifacts) applies.
+
+---
+
+## AMENDMENT 3 (2026-09-19): balanced design, written before any label on the sheet
+
+Supersedes Amendment 2's allocation (358 disagreement + 100 concordant; that draw also had an accidental 457-row shortfall from a capacity cap, fixed). Reason (STRESS_TEST.md): the stress test showed every ordering the joint analysis resolves depends on concordant-cell homogeneity across models (0 resolved without pooling; 43 at 2x heterogeneity). Under homogeneity, disagreement-heavy designs resolve a median 95-97 vs 94-95 for this design; this design raises the median per-model probability of detecting a model with a 10% concordant error rate from 88% to 94% (worst model 65% to 77%). The audit therefore both resolves orderings and tests the assumption they rest on.
+
+- Sheet: labeling/audit_v2_l1.csv, 458 rows (seed 20260919; scripts/fb_disagreement_sample.py): 229 disagreement rows (144 exact_match-only, 85 score_boxed-only), proportional by model x cell; 229 concordant rows (102 both-credited, 127 both-rejected), capacity-aware round-robin over model x cell (3-8 per stratum). Inclusion probabilities in results/analysis/audit_v2_provenance.json.
+- Primary outcomes: (1) per-model concordant error counts (falsification check of homogeneity, reported as observed); (2) resolved orderings, homogeneous analysis; (3) the same under bounded heterogeneity L = 1, 2, 5 and without pooling.
+- Coverage: per ordering >= 95%, audit 0.975 (Clopper-Pearson, Sidak over estimated parameters) + sampling 0.975, union bound; design weights = 1 / inclusion probability within stratum.
+- Labels must be typed by a person reading each response; the quality gate applies.

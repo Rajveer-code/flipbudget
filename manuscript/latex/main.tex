@@ -29,16 +29,18 @@
 
 \usepackage{hyperref}
 \hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue,
-            pdftitle={Scorer-Induced Partial Identification of Benchmark Comparisons},
+            pdftitle={What Can a Small Human Audit Establish About a Leaderboard Ranking?},
             pdfauthor={Rajveer Singh Pall}}
 
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\exactmatch}{\code{exact\_match}}
 \newcommand{\scoreboxed}{\code{score\_boxed}}
+\input{numbers}
 \newcommand{\pending}[1]{\textcolor{red}{[PENDING --- human audit: #1]}}
 
-\title{Scorer-Induced Partial Identification of Benchmark Comparisons:\\
-An Audit-Design Approach}
+\title{What Can a Small Human Audit Establish About\\
+a Leaderboard Ranking? Two Verifiers and the\\
+Assumption That Does the Work}
 
 \author{
   Rajveer Singh Pall \\
@@ -56,13 +58,11 @@ An Audit-Design Approach}
 \input{sections/01_introduction}
 \input{sections/02_related_work}
 \input{sections/03_problem_formulation}
-\input{sections/04_theory}
-\input{sections/05_audit_design}
-\input{sections/06_empirical_setup}
-\input{sections/07_results}
-\input{sections/08_limitations}
-\input{sections/09_discussion}
-\input{sections/10_conclusion}
+\input{sections/04_data}
+\input{sections/05_results}
+\input{sections/06_discussion}
+\input{sections/07_limitations}
+\input{sections/08_conclusion}
 
 {\small
 \bibliographystyle{plainnat}

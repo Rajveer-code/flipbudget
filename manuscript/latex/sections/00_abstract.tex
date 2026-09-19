@@ -1,33 +1,25 @@
 \begin{abstract}
-Benchmark leaderboards report model accuracy as if it were an observed
-quantity. It is the output of an automated verifier applied to free-text
-generations, and that verifier can disagree with the correctness a human
-reader would assign. We formalize this as a partial-identification problem:
-given a benchmark's observed accuracy and an \emph{audited} estimate of the
-verifier's false-credit and false-miss rates, we derive the sharp set of true
-accuracy values consistent with the data, adapting classical
-misclassification-bounds machinery \citep{manski1995identification} to
-benchmark comparison. On MATH-Hard, using a real human audit of the standard
-verifier, we show that \textbf{audit-estimation uncertainty---how little the
-verifier's own error rate has been pinned down---exceeds sampling uncertainty
-for the majority of model comparisons that remain identifiable at all}
-(median identification-to-sampling width ratio $6.10\times$, 100\% dominant
-among 120 well-defined pairwise comparisons out of 136 candidates among 17
-qualifying models; a self-consistency check using the audited comparator's
-own accuracy rather than the field's reported metric gives $5.74\times$,
-also 100\% dominant; minimum ratio across all 120 valid pairs is
-$2.15\times$, so the result is not driven by a few extreme comparisons). We
-formalize the resulting audit-budget allocation problem, prove the classical
-\citep{neyman1934stratified} solution, and show empirically that its naive
-plug-in form is \emph{dominated by uniform allocation} on our own sparse
-real audit data---a documented failure mode with a tested correction. A
-secondary finding: MATH-Hard's evaluation harness computes accuracy via two
-live, independently-implemented extraction procedures that disagree on
-3.63\% of real responses (95\% CI [3.39\%, 3.88\%], $n=22{,}508$); this
-scorer-choice dependence does not overturn the dominance finding, including
-under an adversarial worst-case bound, but is itself a distinct, measurable
-source of benchmark uncertainty. \pending{the verifier's other live scorer
-has not itself been human-audited; its own $\alpha,\beta$ and the fully
-self-consistent identification result built on them await a preregistered
-458-row audit already in the field}.
+Math leaderboards score free-text answers with automated verifiers and check
+the verifiers with small human audits. We ask what such an audit can
+establish about a \emph{ranking} of models, on the MATH-Hard subset of the
+Open LLM Leaderboard (\nNModels{} models, \nNPairs{} pairwise orderings, and a
+400-item human audit). The harness runs two verifiers; they disagree on
+\nDisRate{} of \nNRows{} responses and reverse \nScorerFlips{} orderings,
+\nScorerFlipsSig{} of them clear under both verifiers' sampling error. Used the
+standard way---one verifier, error rates estimated per model---the audit
+resolves \nSingleComb{} orderings at 95\% coverage. The audit also shows where
+verifier error concentrates: on responses where the two verifiers agree, the
+transcribed human answer disagrees with them on \nConcErr{} of \nConcN{}
+(95\% upper bound \nConcUpper), while the model-specific errors it finds lie
+where they disagree. If agreement between the verifiers is equally reliable
+for every model, the same audit resolves \nJointComb{} of the \nCeiling{}
+orderings that sampling error permits. That assumption does most of the work:
+allowing each model's agreement error to vary within twice the pooled bound
+leaves \nHetTwo, within five times \nHetFive, and dropping the assumption
+leaves \nNoPool; reaching \nJointComb{} without it would take on the order of
+\nNPLabelsFull{} labels. We therefore recommend stratifying audits on joint
+verifier outcome, stating the cross-model homogeneity assumption, and spending
+part of the audit on testing it; we give a preregistered 458-item design.
+Results are on one benchmark, and the audit validates answer extraction, not
+semantic equivalence.
 \end{abstract}

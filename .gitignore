@@ -16,3 +16,5 @@ manuscript/latex/*.blg
 manuscript/latex/*.fls
 manuscript/latex/*.fdb_latexmk
 manuscript/latex/*.synctex.gz
+
+PLAN_AISTATS2027.md

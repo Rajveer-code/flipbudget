@@ -1,0 +1,29 @@
+\section{Data and Audit}
+\label{sec:data}
+
+\paragraph{Benchmark and verifiers.} MATH-Hard \citep{hendrycks2021math} on
+the Open LLM Leaderboard v2 \citep{fourrier2024openllm}: 1{,}324 items in 7
+subjects with public per-item generations. The harness scores every response
+with \code{exact\_match}, which extracts the answer after a Minerva-style
+``final answer'' phrase \citep{lewkowycz2022minerva} and is the leaderboard's
+reported metric, and \code{score\_boxed}, which extracts the last
+\verb|\boxed{}|. Both then apply the same normalization and equivalence
+routine to the reference.
+
+\paragraph{Human audit.} 400 (model, item) responses were drawn from 28
+models' pooled responses, stratified by \code{score\_boxed} outcome
+$\times$ subject $\times$ response-length quartile. Labelers saw the problem
+and response only and transcribed the final answer the response commits to,
+or marked it as committing to none (\code{NONE}) or to two unresolved answers
+(\code{CONTRADICTORY}). The transcription is compared with the reference by
+the verifiers' own equivalence routine, so the audit measures extraction
+error; an equivalence error shared by the verifiers and the reference routine
+is invisible to it. Three labelers overlapped on 151 and 75 items (Cohen's
+$\kappa$ 0.61, 0.82, 0.79 across pairs).
+
+\paragraph{Models and cells.} We use the \nNModels{} models with audited
+items in both \code{score\_boxed} strata. Their audited responses fall in the
+joint cells as in Table~\ref{tab:cells}. Because inclusion depends only on the
+\code{score\_boxed} stratum, subject and length, it is independent of the
+\code{exact\_match} outcome within a stratum, so the joint cells are valid
+domains of the existing design.

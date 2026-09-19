@@ -57,6 +57,15 @@ STEPS = [
     ("Figure 5: worst-case sensitivity", "scripts/fb_fig5_worst_case_sensitivity.py", "pure"),
     ("Figure 6: flip budget / ranking preservation", "scripts/fb_fig6_flip_budget.py", "pure"),
     ("Figure 7: conceptual framework (schematic, no data)", "scripts/fb_fig7_conceptual_framework.py", "pure"),
+    # Steps above are the pre-rebuild pipeline, kept as the audit trail
+    # (CORE_ESTIMAND_AUDIT.md). The rebuilt paper uses only the steps below.
+    ("REBUILD: core estimand audit (algebra, simulation, old-vs-new)", "scripts/fb_core_estimand_audit.py", "pure"),
+    ("REBUILD: 458-row allocation under corrected estimands", "scripts/fb_458_redesign.py", "pure"),
+    ("REBUILD: paper numbers (C1-C4)", "scripts/fb_rebuild_analysis.py", "pure", ["1000"]),
+    ("REAUDIT: budget curves, allocation rules, mechanism diagnostics", "scripts/fb_reaudit.py", "pure"),
+    ("REAUDIT: two-verifier identification + targeted-audit projections", "scripts/fb_joint_verifier.py", "pure"),
+    ("REBUILD: figures A-D", "scripts/fb_rebuild_figures.py", "pure"),
+    ("REBUILD: numbers.tex + generated tables", "scripts/fb_rebuild_numbers.py", "pure"),
 ]
 
 
@@ -70,7 +79,7 @@ if __name__ == "__main__":
         name, script, kind = entry[0], entry[1], entry[2]
         extra_args = entry[3] if len(entry) > 3 else []
         t0 = time.time()
-        proc = subprocess.run([sys.executable, script] + extra_args, capture_output=True, text=True, timeout=900)
+        proc = subprocess.run([sys.executable, script] + extra_args, capture_output=True, text=True, timeout=2400)
         elapsed = time.time() - t0
         ok = proc.returncode == 0
         results.append({"name": name, "script": script, "kind": kind, "ok": ok, "elapsed_s": round(elapsed, 1)})

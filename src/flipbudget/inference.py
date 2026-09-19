@@ -56,7 +56,13 @@ def corrected_interval(
     corrected point estimate, a raw percentile bootstrap interval (with an
     honest coverage caveat -- see COVERAGE_CAVEAT), and the point (alpha,beta)
     used.
-    """
+
+REQUIREMENT: the audited items must be a simple random sample of benchmark items
+(unconditional on the scorer's verdict). If the audit was drawn within the
+scorer's credited / not-credited strata, alpha and beta estimated here are
+biased; use flipbudget.pv (A* = a(1-q) + (1-a)r) instead. See
+CORE_ESTIMAND_AUDIT.md.
+"""
     bench = np.asarray(list(benchmark_verdicts), dtype=float)
     ystar = np.asarray(list(audit_ystar), dtype=int)
     yhat = np.asarray(list(audit_yhat), dtype=int)
@@ -124,7 +130,14 @@ def paired_bootstrap_delta(
     """Correct a PAIRWISE comparison (model 1 vs model 2) for scorer
     misclassification, including the flip budget: how much differential
     error (beyond what's already in the two models' own audited margins)
-    would it take to put the comparison's sign in doubt."""
+    would it take to put the comparison's sign in doubt.
+
+REQUIREMENT: the audited items must be a simple random sample of benchmark items
+(unconditional on the scorer's verdict). If the audit was drawn within the
+scorer's credited / not-credited strata, alpha and beta estimated here are
+biased; use flipbudget.pv (A* = a(1-q) + (1-a)r) instead. See
+CORE_ESTIMAND_AUDIT.md.
+"""
     b1 = np.asarray(list(bench1), dtype=float)
     b2 = np.asarray(list(bench2), dtype=float)
     ys1, yh1 = np.asarray(list(audit_ystar1), dtype=int), np.asarray(list(audit_yhat1), dtype=int)

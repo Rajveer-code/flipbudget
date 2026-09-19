@@ -1,0 +1,11 @@
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Scenario ($A^\ast,\alpha,\beta$) & bias, Eq.~(\ref{eq:identity}) & bias, plug-in & cover, Eq.~(\ref{eq:identity}) & cover, plug-in & empty, plug-in \\
+\midrule
+typical (0.2, 0.01, 0.02) & -0.0001 & -0.027 & 1.000 & 0.998 & 0.00 \\
+low accuracy (0.02, 0.01, 0.02) & +0.0002 & -0.560 & 1.000 & 0.237 & 0.60 \\
+zero accuracy (0.0, 0.01, 0.0) & +0.0000 & --- & 1.000 & --- & 1.00 \\
+high error (0.4, 0.1, 0.15) & -0.0003 & -0.078 & 1.000 & 0.961 & 0.00 \\
+perfect verifier (0.2, 0.0, 0.0) & +0.0000 & +0.000 & 1.000 & 1.000 & 0.00 \\
+\bottomrule
+\end{tabular}

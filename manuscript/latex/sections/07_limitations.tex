@@ -1,0 +1,23 @@
+\section{Limitations}
+\label{sec:limitations}
+
+\begin{enumerate}\itemsep2pt
+  \item \textbf{The headline count rests on an untested assumption.}
+  \nJointComb{} resolved orderings require concordant error to be homogeneous
+  across models; the existing audit supports a low pooled rate but cannot
+  test homogeneity, and the count falls quickly as it is relaxed.
+  \item \textbf{One benchmark and an older roster.} All results are on
+  MATH-Hard with Open LLM Leaderboard v2 models. We did not find a second
+  benchmark with two independent live verifiers and an existing human audit;
+  the methodology applies wherever two verifiers can be run, but its payoff
+  depends on how concentrated verifier error is there.
+  \item \textbf{The reference is transcription plus automated comparison},
+  with inter-labeler $\kappa$ of 0.61--0.82. The two verifiers share
+  normalization code, so their agreement is not independent evidence about
+  equivalence errors.
+  \item \textbf{The \code{exact\_match}-only cell is barely audited}
+  (\nCellZeroOneN{} item) and is bounded by $[0,1]$ per model rather than
+  estimated.
+  \item \textbf{Design results are projections}, from simulations whose
+  truths come from the same audit that motivated the design.
+\end{enumerate}

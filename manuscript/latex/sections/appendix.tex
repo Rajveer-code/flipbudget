@@ -1,239 +1,170 @@
-\section{Supplementary Material}
-\label{sec:appendix}
-
-\subsection{Additional figures and tables}
-\label{sec:appendix-figures}
-
-Relocated here under the page budget (Section~\ref{sec:results} keeps only
-the figures/tables a reviewer needs to follow the primary and audit-design
-arguments; everything below supports a secondary or robustness claim
-already stated in the main text).
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.75\linewidth]{fig7_conceptual_framework.png}
-  \caption{The scorer is an imperfect measurement mechanism, not a
-  ground-truth oracle. Every arrow into the identified set carries its own
-  uncertainty; audit-estimation dominates in practice.}
-  \label{fig:conceptual}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.55\linewidth]{fig3_identified_set_geometry.png}
-  \caption{Identified-set geometry (T-H): the sharp interval is the
-  pointwise envelope of the four corner curves of the $\Lambda$-box.}
-  \label{fig:identified-set}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.55\linewidth]{fig6_flip_budget.png}
-  \caption{Ranking preservation (Section~\ref{sec:results-flip-budget}):
-  the bootstrap interval for $\Delta^\ast$ stays clear of the flip point
-  (0), most fragile and most robust real pair. $d^\ast$ is a magnitude, not
-  a point on this axis.}
-  \label{fig:flip-budget}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.5\linewidth]{fig4_scorer_choice_disagreement.png}
-  \caption{Scorer-choice as an accuracy-substitution shift
-  (Section~\ref{sec:results-scorer-mismatch}). $n=120$; median width
-  0.0091.}
-  \label{fig:scorer-choice}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.62\linewidth]{fig5_worst_case_sensitivity.png}
-  \caption{Even \exactmatch's worst-case bound stays below the established
-  audit-estimation-only median (Section~\ref{sec:results-scorer-mismatch}).}
-  \label{fig:worst-case}
-\end{figure}
-
-\begin{table}[h]
-  \centering
-  \caption{Negative controls: constructed scenarios testing whether the
-  dominance ratio is an artifact.}
-  \label{tab:negative-controls}
-  \small
-  \begin{tabular}{@{}p{3.5cm}cc p{3.6cm}@{}}
-    \toprule
-    Scenario & Audit $n$ & Ratio & Interpretation \\
-    \midrule
-    Perfect scorer, realistic audit $n$ & 11/11 & $5.63\times$ & Large ratio from audit thinness alone \\
-    Perfect scorer, large audit & 2000/2000 & $0.03\times$ & Stable, as expected \\
-    High-accuracy scorer, modest audit & 100/100 & $0.92\times$ & Stable \\
-    Scorer sized to its own required $n$ & 415/415 & $0.60\times$ & Stable \\
-    Null true effect (identical models) & --- & --- & Sampling and identification intervals both correctly contain 0 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\begin{table}[h]
-  \centering
-  \caption{Scorer-comparison findings, full detail (headline numbers
-  already given in Section~\ref{sec:results-scorer-mismatch}).}
-  \label{tab:scorer-comparison}
-  \small
-  \begin{tabular}{@{}p{6.7cm}c@{}}
-    \toprule
-    Quantity & Value \\
-    \midrule
-    \exactmatch\ acc.\ + \exactmatch's own audited box (Analysis C) & \textcolor{red}{pending} \\
-    \exactmatch\ acc.\ + \scoreboxed's audited box (Analysis A) & 6.09$\times$, 100\% dominant, $n=120$ \\
-    \scoreboxed\ acc.\ + \scoreboxed's audited box (Analysis B) & 5.74$\times$, 100\% dominant, $n=120$ \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\begin{table}[h]
-  \centering
-  \caption{Robustness / worst-case sensitivity, full detail.}
-  \label{tab:worst-case}
-  \small
-  \begin{tabular}{@{}lc@{}}
-    \toprule
-    Quantity & Value \\
-    \midrule
-    \scoreboxed\ anchor $\alpha$ (global pooled) & 3.14\% \\
-    \exactmatch\ $\alpha$, best / worst case & 2.37\% / 26.73\% \\
-    \exactmatch\ $\beta$, worst case & 1.44\% \\
-    Worst-case median width; established median & 0.1659; 0.2800 \\
-    Worst-case $n$ valid / unresolved & 10 / 10 \\
-    Verdict B survives the worst case & Yes \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\subsection{Proofs and derivations}
+\section{Derivations}
 \label{sec:appendix-proofs}
 
-Full symbolic and numeric derivations for T-A (Scorer Sensitivity Model),
-T-H (sharpness), T-B (design sensitivity), the ranking-preservation theorem,
-the correlated-error propositions, T-D (imperfect reference), T-E
-(verification bias), the Neyman-allocation proof, and the flip-budget
-bootstrap treatment are maintained as executable scripts alongside this
-paper's code release, each verified by a dual symbolic/numeric check rather
-than hand algebra alone. Pointers to the exact script for each result are
-given in the code release's own index rather than duplicated here, to avoid
-the derivation and its machine-checked verification drifting apart.
+\paragraph{Identities.} Conditioning on the verifier outcome,
+$P(Y^\ast=1)=P(Y^\ast=1\mid\hat Y=1)P(\hat Y=1)+P(Y^\ast=1\mid\hat Y=0)P(\hat Y=0)
+=a(1-q)+(1-a)r$; conditioning on the joint cell gives Eq.~\eqref{eq:joint}.
+Bayes' rule gives $\alpha=aq/(1-A^\ast)$ and $\beta=(1-a)r/A^\ast$;
+substituting these into $(a-\alpha)/(1-\alpha-\beta)$ recovers $A^\ast$
+exactly (checked symbolically in the released code), substituting $q,r$
+directly does not.
 
-\subsection{The Horvitz--Thompson / post-stratified estimator, full detail}
-\label{sec:appendix-ht}
+\paragraph{Sharpness.} $\Delta^\ast=\sum_j k_j\theta_j+\text{const}$ with
+coefficients $k_j$ given by census shares ($s_{1c}-s_{2c}$ for a pooled
+parameter; $s_{1c}$ and $-s_{2c}$ for model-specific ones). Over a box
+$\prod_j[\theta_j^-,\theta_j^+]$ the minimum takes $\theta_j^-$ where
+$k_j>0$ and $\theta_j^+$ where $k_j<0$, the maximum the reverse; both are
+attained, so the range is sharp.
 
-For a scorer's credited (or wrong) stratum composed of cells $S=\{h\}$ with
-population size $N_h$ and sample $(n_h, x_h)$ (scored rows, events):
-\begin{align}
-  \hat{p}_{\mathrm{HT}} &= \frac{\sum_{h \in S} N_h \cdot (x_h/n_h)}{\sum_{h \in S} N_h} \\
-  \mathrm{Var}(\hat{p}_{\mathrm{HT}}) &= \frac{1}{\left(\sum_h N_h\right)^2}
-    \sum_h N_h^2 \left(1 - \frac{n_h}{N_h}\right) \frac{\hat{p}_h(1-\hat{p}_h)}{\max(n_h-1,\,1)}
-\end{align}
-$(1-n_h/N_h)$ is the finite-population correction. This estimator was
-adopted after a naive pooled-proportion estimator was found, by simulation,
-to be biased by $+444\%$ relative to the design-weighted truth in a
-realistic scenario where a small, densely-oversampled cell's true rate
-differs from the majority cell's---exactly the scenario stratifying on
-disagreement was designed to detect. Seven regression tests, including a
-parametrized synthetic-recovery check at four different
-majority/minority-rate pairs, cover this estimator directly.
+\paragraph{Pooling one verifier's rates.} With common $(q,r)$,
+$\Delta^\ast=(a_1-a_2)(1-q-r)$, whose sign is that of $a_1-a_2$ whenever
+$q+r<1$.
 
-\subsection{Sampling design, full detail}
-\label{sec:appendix-sampling}
+\section{Coverage}
+\label{sec:appendix-coverage}
 
-Population: 22{,}508 (model, item) rows, 17 qualifying models $\times$ 7
-MATH-Hard subjects. Four joint-scorer cells, exact population sizes:
-\code{both\_credited}=1{,}531, \code{both\_not\_credited}=19{,}873,
-\code{disagree\_sb\_credited\_em\_not}=291,
-\code{disagree\_em\_credited\_sb\_not}=493. Sample targets: 200/198/30/30 =
-458, seed 42, blinded, excluding 320 items already in the original 400-item
-audit population.
+Fix an ordering $(1,2)$. Let $E_{\text{aud}}$ be the event that every
+estimated parameter it depends on lies in its Clopper--Pearson interval, and
+$E_{\text{samp}}$ the event that the benchmark-sampling interval for the
+accuracy difference covers its target. The $k$ estimated parameters are
+proportions from disjoint audited samples (different cells, or different
+models' items), so with per-parameter level $0.975^{1/k}$,
+$P(E_{\text{aud}})\ge0.975$ (Clopper--Pearson intervals are conservative, so
+the bound holds exactly, not asymptotically). $P(E_{\text{samp}})\approx0.975$
+from the normal approximation for a difference of two proportions over
+1{,}324 items. On $E_{\text{aud}}$, $\Delta^\ast$ lies in the projected range
+(sharpness above); on $E_{\text{aud}}\cap E_{\text{samp}}$, the widened
+interval covers the superpopulation difference. By the union bound
+$P(E_{\text{aud}}\cap E_{\text{samp}})\ge1-0.025-0.025=0.95$, with no
+independence assumption between the audit sample and the benchmark items.
+Parameters bounded logically ($[0,1]$ for unaudited disagreement cells, or
+the stated bound under bounded heterogeneity) are not estimated and use no
+coverage. Under homogeneity the audit part depends only on the two pooled
+parameters and so holds for all orderings at once; the simultaneous variant
+reported in Section~\ref{sec:results-joint} additionally puts the sampling
+part at $0.025/136$ per ordering. The coverage is conditional on the stated
+assumption (homogeneity or bounded heterogeneity); it does not account for
+the assumption being false.
 
-\subsection{Adversarial suite --- full taxonomy}
-\label{sec:appendix-adversarial}
+\section{Why full disagreement auditing stops short of the ceiling}
+\label{sec:appendix-census}
 
-12 categories (formatting, LaTeX, whitespace, delimiters, answer-position,
-verbosity, multiple-answers, self-correction, numerical-formatting, case,
-units, other-scorer-specific), 24 constructed cases with known ground truth,
-run against both live scorers via the real harness functions. 5 of 12
-categories are null results, reported as such rather than omitted.
+If every disagreement response were audited and each model's disagreement
+rates equalled the pooled audited value, \nCensusComb{} of the \nCeiling{}
+sampling-permitted orderings would be resolved. \nCensusGapShrink{}
+sampling-permitted orderings fail, and one ordering that sampling alone does
+not resolve becomes resolved. The failures are not for lack of audit
+information: correcting the disagreement mass shrinks the accuracy gap below
+sampling error, so the pair's \code{score\_boxed} gap is significant but its
+corrected gap is not (\nCensusGapShrinkCmdr{} of them involve \code{command-r-v01},
+whose \code{score\_boxed} accuracy is mostly disagreement mass). This
+projection fixes the disagreement rates at the pooled value and is
+illustrative only.
 
-\subsection{Bug disclosures}
-\label{sec:appendix-bugs}
+\section{Simulation: plug-in versus two-phase estimator}
+\label{sec:appendix-sim}
 
-\begin{table}[h]
+Finite benchmark of $N=1{,}324$ items; verifier errors drawn with the stated
+$(\alpha,\beta)$; audit by simple random sampling within verifier strata
+(6--40 items per stratum); 4{,}000 replicates. ``Plug-in'' feeds the audited
+stratum rates into $(a-\alpha)/(1-\alpha-\beta)$. Coverage is for the
+\v{S}id\'ak-adjusted Wilson projection used in this check.
+
+\begin{center}\small
+\resizebox{\linewidth}{!}{\input{tab_sim}}
+\end{center}
+
+\section{One-verifier audit design}
+\label{sec:appendix-single}
+
+\begin{figure}[h]
   \centering
-  \small
-  \begin{tabular}{@{}p{3.3cm}p{4.9cm}p{4.9cm}@{}}
-    \toprule
-    Bug & Root cause & Impact quantified \\
-    \midrule
-    \scoreboxed-path comparator always \code{False} on Windows & A Unix-only signal mechanism the existing timeout patch didn't actually fix & 0/69 T-C rows change; verified correct on real Linux CI \\
-    Empty identified set silently inverted & Independent $\max(\mathrm{lo},0)/\min(\mathrm{hi},1)$ clipping when the raw range misses $[0,1]$ entirely & 16--70 of 136 real pairs change depending on layer \\
-    Mutable self-comparison in two IFEval scripts & Compared against the file about to be overwritten & Caught by the reproducibility pipeline's own second run; fixed \\
-    Hardcoded absolute paths & A data-loading function's default arguments & Caught building the Linux CI validation; re-verified identical output \\
-    Scope confusion in an early scorer-mismatch draft & 6.51\% (a single-subject figure) presented next to full-population language & Corrected to 3.63\% everywhere \\
-    Naive pooling across disproportionate sampling fractions & The post-label analysis pipeline's original estimator & $+444\%$ relative bias demonstrated; fixed with the HT estimator before any real label was processed \\
-    A third-party library's multiprocessing timeout crash & A Windows-specific fragility in a dynamically-loaded module & Fixed via a safe timeout setting for short constructed inputs; not a scoring-behavior change \\
-    Greedy audit-allocation search timed out at 900s & Redundant re-evaluation of an 801$\times$801 grid across $\sim$800 trials that changed only one model's box each & Runtime $>$300s (still running when stopped) $\to$ 3--4s after a pure-function cache; verified byte-identical output before/after \\
-    \bottomrule
-  \end{tabular}
-  \caption{Bug disclosures, each with root cause and quantified impact.}
-\end{table}
+  \includegraphics[width=0.50\linewidth]{figA_per_model_intervals.png}
+  \caption{Per-model \code{score\_boxed} accuracy: sampling 95\% CI (blue)
+  and true-accuracy set from the one-verifier, per-model audit (orange;
+  Eq.~\eqref{eq:identity}, \v{S}id\'ak-adjusted Wilson intervals; illustrative).}
+  \label{fig:intervals}
+\end{figure}
 
-\subsection{Exact metric definitions}
-\label{sec:appendix-metrics}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.44\linewidth]{figB_audit_sizing.png}
+  \caption{One verifier, per model (audit only, Wilson): share of orderings
+  resolved as audited items per stratum per model grow, each model's
+  observed error rates held fixed.}
+  \label{fig:sizing}
+\end{figure}
 
-\begin{itemize}
-  \item $\alpha$ (false-credit rate): $P(\text{scorer says correct} \mid \text{true label incorrect})$.
-  \item $\beta$ (false-miss rate): $P(\text{scorer says incorrect} \mid \text{true label correct})$.
-  \item Identified-set width: $\mathrm{hi}-\mathrm{lo}$ of the sharp interval for $A^\ast$ or $\Delta^\ast$.
-  \item Dominant: $W_{\text{identification}} / W_{\text{sampling}} > 1$ for a given pair.
-  \item Unresolved: the identified interval for $\Delta^\ast$ contains 0.
-  \item Flip budget $d^\ast$: the minimum differential-error perturbation
-  (beyond the audited margins) required to make an otherwise-resolved
-  comparison's sign ambiguous.
-  \item Scorer-disagreement rate: fraction of (model, item) rows where
-  \scoreboxed\ and \exactmatch\ give different binary verdicts on the
-  identical raw response.
-\end{itemize}
+For a model with zero observed errors in $n$ items per stratum the Wilson
+width is about $z^2/(n+z^2)$; equating it with the sampling width
+$2z\sqrt{a(1-a)/N}$ gives $n^\ast\approx(z/2)\sqrt{N/(a(1-a))}-z^2$, i.e.
+\nNstarLow, \nNstarMid{} and \nNstarHigh{} items per stratum per model at
+$a=0.35,0.20,0.05$. Simulated fresh audits (200 replicates, four truth
+scenarios, \nCurTotal{} determinate labels scaled by 1--64) compare five
+allocation rules at equal budget; plug-in Neyman resolves nothing at any
+budget, and the rule minimizing summed zero-event widths
+($n\propto\sqrt{a_m}$, $\sqrt{1-a_m}$) is best or tied. Curves:
+\code{reaudit\_results.json}.
 
-\subsection{Reproducibility}
+\section{Common-mechanism diagnostic}
+\label{sec:appendix-mechanism}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.44\linewidth]{figC_differential_error.png}
+  \caption{Observed $\hat q_m$ (exact 95\% CI) against \code{score\_boxed}
+  accuracy, with the rate implied by one common error mechanism.}
+  \label{fig:differential}
+\end{figure}
+
+Under one $(\alpha,\beta)$ for all models, each model's $(q_m,r_m)$ is
+implied by $a_m$. The grid maximum-likelihood fit gives
+$\hat\alpha=\nAlphaHat$, $\hat\beta=0$, and a likelihood ratio of \nLR{}
+against per-model rates (parametric bootstrap $p=\nLRp$).
+\code{command-r-v01} contributes \nCmdrLR{}; leaving it out gives $p=\nLOOCmdrP$,
+leaving out any other model gives $p$ between \nLOOOtherPLo{} and
+\nLOOOtherPHi{} (500 bootstrap replicates each). The rejection is one model,
+whose errors all lie in a disagreement cell; we report it as a diagnostic,
+not a general finding.
+
+\section{Per-model audit, one verifier}
+\label{sec:appendix-models}
+
+\begin{center}\scriptsize
+\resizebox{\linewidth}{!}{\input{tab_models}}
+\end{center}
+
+\section{Closest prior work}
+\label{sec:appendix-prior}
+
+\begin{center}\footnotesize
+\begin{tabular}{@{}p{3.3cm}p{2.3cm}p{2.2cm}ccp{1.9cm}@{}}
+\toprule
+Work & Estimand & Human sampling & Rank & Two verif. & Allocation \\
+\midrule
+Two-phase / verification bias \citep{neyman1938contribution,tenenbein1970double,begg1983assessment} & prevalence, Se/Sp & on the cheap result & no & no & phase sizes \\
+\citet{lee2026judge} & one model's accuracy & by true label & no & no & between labels \\
+Stratified PPI \citep{fisch2024stratified} & a mean metric & stratified & no & no & across strata \\
+PP-Ranking \citep{chatzi2024ranking} & rank-sets, many models & random & yes & no & none \\
+AutoEval \citep{boyeau2025autoeval} & accuracy, many models & random & partly & no & none \\
+This paper & all pairwise orderings & joint-verifier strata & yes & yes & disagreement vs.\ check \\
+\bottomrule
+\end{tabular}
+\end{center}
+The estimators here are those of the first row. What differs is the question
+(every pairwise ordering of many models), the use of two deterministic
+verifiers' agreement as the stratifier, the explicit cross-model homogeneity
+assumption and its sensitivity analysis, and an audit design that tests that
+assumption.
+
+\section{Reproducibility}
 \label{sec:appendix-repro}
-
-A single-command canonical chain (38 steps, clean subprocess per step,
-tagged pure/human-label/network) regenerates every number, figure, and
-table in this paper that does not depend on the pending 458-row audit. Most
-recent isolated clean run (2026-09-17): \textbf{38/38 steps passed}, total
-wall time $\approx$865s, dominated by one 625.7s network step (Python
-3.13.12, Windows, pinned dependencies, fixed seed 42 throughout). Full
-per-step timing is in the paper's accompanying
-\code{results/flipbudget/reproducibility\_run\_2026-09-17.log}, not
-reproduced here to avoid this appendix going stale independently of the
-code. Package tests: 24/24 passing throughout this paper's development.
-
-\subsection{Claim ledger}
-\label{sec:appendix-claim-ledger}
-
-Every quantitative claim in this paper is traced---manuscript sentence
-$\to$ table/figure $\to$ result file $\to$ generating script $\to$ raw
-data---in a standalone claim ledger maintained alongside the code release.
-No claim in this paper failed to trace during the most recent audit pass;
-the two defects found in that pass were citation errors (corrected;
-Section~\ref{sec:related-work}), not numerical ones.
-
-\subsection{Novelty classification}
-\label{sec:appendix-novelty}
-
-No individual theoretical or empirical result in this paper is claimed
-above novelty class C (nontrivial combination or extension of classical
-methods); several are class A (cited, unmodified) or B (direct adaptation).
-The claimed contribution is the specific combination---benchmark comparison
-$+$ scorer misclassification $+$ partial identification $+$
-audit-estimation uncertainty $+$ audit-budget design $+$ scorer-choice
-dependence---evidenced with real data throughout, checked against the
-closest identified prior work \citep{chen2026partial} and found
-non-overlapping in estimand and headline result. Table~\ref{tab:theory-summary}
-in Section~\ref{sec:theory} summarizes the per-result classification.
+\raggedright
+Every number in this paper is a macro generated by
+\code{scripts/fb\_rebuild\_numbers.py} from result files written by
+\code{fb\_joint\_verifier.py}, \code{fb\_reaudit.py},
+\code{fb\_rebuild\_analysis.py} and \code{fb\_core\_estimand\_audit.py};
+figures by \code{fb\_rebuild\_figures.py}. The estimator is in
+\code{flipbudget.pv}, with tests. The preregistered design for the next audit
+is \code{TC\_EXPANSION\_PREREGISTRATION.md}, Amendment 3, and its blinded sheet
+is \code{labeling/audit\_v2\_l1.csv}.

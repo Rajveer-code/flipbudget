@@ -1,0 +1,21 @@
+======================================================================
+Full reproducibility pipeline -- canonical chain, clean subprocess per step
+======================================================================
+  [PASS] (pure        ) Theory: SSM derivation (2.1s)
+  [PASS] (pure        ) Theory: design sensitivity (3.9s)
+  [PASS] (pure        ) Theory: correlated-error simulation (0.2s)
+  [PASS] (pure        ) E-A: dominance study (original, uncorrected method, provenance) (1.0s)
+  [PASS] (pure        ) T-A: compound interval (1.5s)
+  [PASS] (pure        ) T-A: boundary audit (1.7s)
+  [PASS] (pure        ) T-B: compound design sensitivity (2.0s)
+  [PASS] (pure        ) Reconciliation: four layers (5.2s)
+  [PASS] (pure        ) Audit design: six-question analysis (5.1s)
+  [PASS] (pure        ) Audit design: stress test (1.2s)
+  [PASS] (human-label ) T-C: real analysis (69 human trials) (1.6s)
+  [PASS] (human-label ) T-C: alpha/beta pooling update (9.4s)
+  [PASS] (pure        ) Adversarial suite (3.1s)
+  [PASS] (human-label ) Comparator bug verification (T-C) (1.8s)
+  [PASS] (pure        ) Comparator bug verification (original 400-item audit) (8.3s)
+  [PASS] (pure        ) Blinding verification (0.5s)
+  [PASS] (network     ) IFEval: mechanism rescan (4.6s)
+  [PASS] (network     ) IFEval: reproducibility row cache (39.9s)

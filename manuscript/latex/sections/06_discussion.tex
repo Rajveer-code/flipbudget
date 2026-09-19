@@ -1,0 +1,21 @@
+\section{Recommendations}
+\label{sec:discussion}
+
+\begin{enumerate}\itemsep2pt
+  \item \textbf{Run two verifiers and report their disagreement.} It costs
+  nothing, it reverses orderings, and it locates the errors a small audit
+  can find.
+  \item \textbf{Stratify the audit on joint verifier outcome and state the
+  homogeneity assumption.} A ranking claim from a small audit rests on
+  treating verifier agreement as equally reliable across models; say so, and
+  report how the claim changes as the assumption is relaxed
+  (Figure~\ref{fig:assumption}).
+  \item \textbf{Spend part of the audit testing that assumption.} Labels on
+  concordant responses spread over models are what can falsify it; labels on
+  disagreements are what resolve orderings once it holds.
+  \item \textbf{Do not pool one verifier's error rates across models to
+  support a ranking}, and match the estimator to the sampling: an audit drawn
+  within verifier strata estimates $q$ and $r$ (Eq.~\eqref{eq:identity}).
+  \item \textbf{Say what the audit measures.} Transcription audits validate
+  extraction; semantic equivalence needs a separate check.
+\end{enumerate}

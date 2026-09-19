@@ -1,34 +1,62 @@
-\section{Problem Formulation}
-\label{sec:problem-formulation}
+\section{Estimand and Identification}
+\label{sec:setup}
 
-Let a benchmark item have a true binary correctness label $Y^\ast \in \{0,1\}$
-for a given model's response, observed only through an automated verifier's
-report $\hat{Y} \in \{0,1\}$. Define the verifier's false-credit rate
-$\alpha = P(\hat{Y}=1 \mid Y^\ast=0)$ and false-miss rate
-$\beta = P(\hat{Y}=0 \mid Y^\ast=1)$. The observed accuracy
-$a = P(\hat{Y}=1)$ relates to the true accuracy $A^\ast = P(Y^\ast=1)$ by the
-law-of-total-probability identity
+\paragraph{Reference.} For model $m$ and item $i$, a human transcribes the
+final answer the response commits to; $Y^\ast_{mi}=1$ if that transcription
+is equivalent to the reference answer under the harness's normalization and
+equivalence routine, and $Y^\ast_{mi}=0$ otherwise, including when the
+response commits to no answer. The reference therefore validates
+\emph{answer extraction}; equivalence errors shared by the verifiers and the
+routine are not identified (Section~\ref{sec:data}). The target is
+$A^\ast_m=P(Y^\ast=1)$ over the benchmark's items.
+
+\paragraph{One verifier.} With verifier decision $\hat Y$ and accuracy
+$a_m=P(\hat Y=1)$, known because the verifier runs on every item, an audit
+stratified on $\hat Y$ estimates $q_m=P(Y^\ast=0\mid\hat Y=1)$ and
+$r_m=P(Y^\ast=1\mid\hat Y=0)$, and
 \begin{equation}
-  a = A^\ast(1-\beta) + (1-A^\ast)\alpha,
-  \label{eq:ltp}
+  A^\ast_m = a_m(1-q_m) + (1-a_m)\,r_m .
+  \label{eq:identity}
 \end{equation}
-which inverts to $A^\ast = g(a,\alpha,\beta) = \frac{a-\alpha}{1-\alpha-\beta}$
-whenever $\alpha+\beta \neq 1$. Given only an \emph{audited estimate} of
-$(\alpha,\beta)$---a confidence region $B$, not a known point---the identified
-set for $A^\ast$ is $\{g(a,\alpha,\beta) : (\alpha,\beta) \in B\} \cap [0,1]$,
-and for a pairwise comparison, the identified set for
-$\Delta^\ast = A_1^\ast - A_2^\ast$ is the corresponding interval difference.
-\textbf{The central object of this paper is the width of this identified set,
-and how it compares to the sampling-only width the field currently reports}
-(which implicitly assumes $\alpha=\beta=0$).
+The error rates $\alpha_m=P(\hat Y=1\mid Y^\ast=0)=a_mq_m/(1-A^\ast_m)$ and
+$\beta_m=P(\hat Y=0\mid Y^\ast=1)=(1-a_m)r_m/A^\ast_m$ follow by Bayes' rule;
+feeding $q_m,r_m$ directly into the sensitivity/specificity correction
+$(a-\alpha)/(1-\alpha-\beta)$ is biased and can return empty intervals
+(Appendix~\ref{sec:appendix-sim}).
 
-A genuine subtlety, found and fixed during this project's development: when
-the box $B$ lies entirely outside the region making $A^\ast \in [0,1]$
-achievable---i.e., the observed accuracy $a$ is logically inconsistent with
-every $(\alpha,\beta) \in B$---the identified set is \textbf{empty}, not a
-clipped, fabricated interval. Naively clipping $\max(g,0)/\min(g,1)$
-independently at the box's corners silently inverts the interval in this
-case; the correct treatment reports non-identification explicitly. This
-affected 16--70 of 136 real pairs depending on layer
-(Section~\ref{sec:audit-design}), corrected in both the research code and the
-released package, with full regression-test coverage.
+\paragraph{Two verifiers.} Each response falls in a joint cell
+$c\in\{11,10,01,00\}$ (first index \code{score\_boxed}, second
+\code{exact\_match}; 1 = credit). With census shares $s_{mc}$,
+\begin{equation}
+  A^\ast_m=\sum_c s_{mc}\,p_{mc},\qquad p_{mc}=P(Y^\ast=1\mid \text{cell } c,\ m).
+  \label{eq:joint}
+\end{equation}
+$\Delta^\ast=A^\ast_1-A^\ast_2$ is linear in the $p_{mc}$, so over a box of
+values its range is attained at corners and is sharp.
+
+\paragraph{Assumptions compared.} Disagreement cells are always left
+model-specific: $p_{m,10},p_{m,01}\in[0,1]$ unless audited. For the
+concordant cells we compare
+\begin{itemize}\itemsep1pt
+  \item \emph{homogeneity}: $p_{m,11}=p_{11}$, $p_{m,00}=p_{00}$ for all
+  models, estimated from the pooled audit;
+  \item \emph{bounded heterogeneity} $L\ge1$: each model's
+  $1-p_{m,11}$ and $p_{m,00}$ lie anywhere in $[0,\,L\cdot u]$, independently
+  across models, where $u$ is the pooled upper confidence bound;
+  \item \emph{no pooling}: each model's concordant rates from its own audited
+  items only.
+\end{itemize}
+Pooling a single verifier's $(q,r)$ across models would instead give
+$\Delta^\ast=(a_1-a_2)(1-q-r)$, whose sign never changes: it assumes away the
+model-specific error that can reorder models.
+
+\paragraph{Coverage.} For each ordering we split the 5\% error budget
+between the audit (2.5\%) and benchmark sampling (2.5\%) and combine them by
+the union bound, which needs no independence. Within the audit part, each
+of the $k$ estimated parameters the ordering depends on gets a
+Clopper--Pearson interval at level $0.975^{1/k}$; the estimates come from
+disjoint samples, so they hold jointly with probability at least 0.975.
+Parameters bounded logically ($[0,1]$) cost no coverage. The sampling part is
+a normal interval for the difference in verifier accuracy. Details and a
+simultaneous-over-all-orderings variant are in
+Appendix~\ref{sec:appendix-coverage}.
