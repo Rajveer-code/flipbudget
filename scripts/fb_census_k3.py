@@ -82,7 +82,7 @@ def load_rows(models):
                 filt = r.get("filtered_resps") or [None]
                 filt = filt[0][0] if isinstance(filt[0], list) else filt[0]
                 rows.append({"model": m, "item_id": r.get("doc_hash"), "subject": s,
-                             "gold": doc.get("answer"), "solution": doc.get("solution"),
+                             "gold": doc.get("answer"), "solution": doc.get("solution"), "problem": doc.get("problem"),
                              "response": resp, "filtered_equals_resps": filt == resp,
                              "em": r.get("exact_match")})
     return rows, sources
