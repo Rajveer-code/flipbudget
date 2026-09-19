@@ -82,3 +82,53 @@ Supersedes Amendment 2's allocation (358 disagreement + 100 concordant; that dra
 - Primary outcomes: (1) per-model concordant error counts (falsification check of homogeneity, reported as observed); (2) resolved orderings, homogeneous analysis; (3) the same under bounded heterogeneity L = 1, 2, 5 and without pooling.
 - Coverage: per ordering >= 95%, audit 0.975 (Clopper-Pearson, Sidak over estimated parameters) + sampling 0.975, union bound; design weights = 1 / inclusion probability within stratum.
 - Labels must be typed by a person reading each response; the quality gate applies.
+
+## AMENDMENT 4 (2026-09-19): K=3 design with a valid falsification screen, written before any draw
+
+Supersedes Amendment 3. No label exists on `audit_v2_l1.csv`, and that sheet is withdrawn unlabeled. Reasons:
+- G1 (`G1_VERIFIERS.md`) found that every earlier `score_boxed` verdict was string-only on Windows. It also identified the third verifier as the leaderboard's own 2025 scorer. Strata are therefore redefined on faithful K=3 cells (em, sb_sympy, mv).
+- G2 (`THEORY_CERTIFICATION.md`) showed that Amendment 3's "at least one error" detection probabilities do not test homogeneity. The replacement is a valid range test (THEORY section 7).
+
+**Design** (fixed by `scripts/fb_g3_operating_point.py` → `results/flipbudget/g3_operating_point.json`, the plan's default rule applied mechanically):
+- Strata are (model × K=3 cell), unlabeled rows only, B = 458, drawn by SRSWOR within strata. Seed 20260922, `scripts/fb_audit_v3_sample.py`.
+- **Falsification.** The F = 2 models that appear most in fragile orderings (smallest ε*, `certify_results.json`) are screened. Each gets `n0_by_cell` labels in each concordant cell (000 and 111), sized for 80% power at ρ = 0.20.
+- **Certification.** The remaining labels go to discordant (model, cell) strata, largest-remainder proportional to stratum size and capped at capacity.
+- **Overlap.** A 20% overlap, stratified by role, goes to the second labeler for inter-rater agreement (Cohen's κ).
+- Inclusion probabilities are recorded per row.
+
+**Frontier (projected, `results/flipbudget/g3_frontier.json`).**
+- Projected certified orderings at ε₀ are nearly flat across all splits. Discordant labels buy little certification at this budget.
+- The falsification screen is weak at any split.
+- This is reported as a finding. The operating point spends what the flat certification curve frees on the most fragile models.
+
+**What this screen cannot detect.**
+- A concordant error rate below 0.20 (at 80% power) in the two screened models.
+- Any departure in the 25 unscreened models.
+
+The paper will say "a preregistered screen for substantial model-specific departures; smaller departures remain weakly identified at this budget". It will never say that it "tests the assumption".
+
+**Falsification rule (replaces the plan's G3.5 rule, which tested the absolute error level, not H(ε)).**
+- For each concordant cell c and each screened model m, reject H(ε₀), with ε₀ = 0.01, if LB(e_mc) − UB(ẽ_c) > ε₀.
+- Both bounds are KL intervals (Lemma 1). The pooled ẽ_c uses all existing and new labels in cell c.
+- The level is Bonferroni: one-sided α = 0.05/(2F+1) for each of the 2F per-model lower bounds and the pooled upper bound.
+- The rule is valid because min_m e_mc ≤ ẽ_c.
+- The error-count thresholds in the operating-point file are projections from the existing pool. The rule itself is computed on the final labels.
+
+**Outcome rule (unchanged in spirit from the plan).**
+- No rejection → "no evidence against homogeneity at the tested power"; keep the default title.
+- Any rejection → report it, lead with ε-robust counts, and switch to the alternative title *When Can a Small Human Audit Certify a Leaderboard Ranking?*
+- No re-drawing, re-labeling or dropping of models after labels are seen.
+
+**Analysis plan.**
+- **Primary configuration:** K=3, 27 models, sympy semantics, harness-routine human reference, indeterminate labels scored as incorrect, KL intervals.
+- **Pooling:** concordant cells are pooled over the old and new audits. Under the old design, H(ε) is at the (stratum × model) level.
+- **Discordant cells:** per-model KL intervals from new labels only. These are design-valid under the (model × cell) strata. Unaudited discordant cells are [0,1].
+- **Sampling:** paired conservative half-width.
+- **Headline:** the certified-orderings curve over ε, with references (a) derived, (b) the maximum per-model exact upper bound from this audit, and (c) ε₀ = 0.01. ε = 0 is reported as an idealization, never the headline.
+- **Sensitivities:** K=2; string semantics; Math-Verify reference; indeterminate labels dropped; Clopper–Pearson; legacy and Hoeffding sampling.
+
+**Labeling protocol.**
+- Labels are typed by a person reading each response, in `labeling/app/label.html`: paste blocked, start and end times recorded, batch id, export hash.
+- Work is done in batches of 50.
+- Every batch passes the quality gate (plan G3.4) before use. Failures are logged to `provenance/excluded_labeling_attempts/`.
+- No AI tool generates, pre-fills or edits a label.
