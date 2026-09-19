@@ -42,6 +42,20 @@ With a (model, cell)-stratified design, $g$ is the model and H(ε) is a statemen
 models. With the old design, H(ε) also covers the subject and length strata within a model.
 That is stronger, and it is the version the old audit actually needs.
 
+**H(ε) is about realized fractions, so ε=0 is essentially never true exactly.**
+$p_{gc}$ is a fraction of finitely many fixed responses. Even if every model had the same
+*propensity* $\pi$ of human-judged correctness in a concordant cell, the realized fractions
+would spread by about $\sqrt{\pi(1-\pi)/N_{gc}}$ across sub-populations. H(0) can then hold
+only when $\pi\in\{0,1\}$.
+
+The coverage simulation (§8) shows this directly. With homogeneous propensities, analysis
+at ε=0 can exceed its nominal error, and analysis at a small ε>0 restores it. Consequences:
+- ε=0 counts (the earlier 84, and the ε=0 row of `certify_results.json`) are an idealization.
+  They are reported as the upper end of the ε curve, never as the headline.
+- The design matters. With (stratum × model) sub-populations (old audit), $N_{gc}$ is small
+  and the natural spread is large. A (model × cell)-stratified audit (G3) makes $g$ the
+  model, so $N_{gc}$ is large and the spread small.
+
 **Pooled parameter.** $\tilde p_c=\sum_g w_{gc}\,p_{gc}$ with sampling weights
 $w_{gc}=n_{gc}/n_c$. It is the expectation of the pooled audit proportion $x_c/n_c$.
 
@@ -259,3 +273,16 @@ per-model discordant cells, 351 pairs, and benchmark sampling.
 
 Simulation (`scripts/fb_certify_coverage_sim.py`, ≥2,000 replicates, 27 models, 351 pairs)
 checks the tightness of these statements. It is not their proof.
+
+**Simulation outcome** (`results/flipbudget/certify_coverage_sim.json`):
+- **Validity.** In every scenario where finite H(ε) holds (K ∈ {2,3}, ε ∈ {0, 0.01}), no
+  certified claim was wrong: audit-only, combined per-ordering, and combined simultaneous.
+  The procedure is valid there, and **conservative, not tight**. Its realized error sits far
+  below nominal, mainly because unaudited discordant cells enter at worst case [0,1] and the
+  paired variance bound adds the error terms.
+- **Misspecification.** When the truth has ε=0.02 and the analysis uses ε=0, the audit-only
+  family-wise error exceeds nominal. This is the failure mode the ε curve and breakdown values
+  exist to expose.
+- **Natural noise.** Homogeneous propensities push K=2 audit-only claims past nominal at
+  ε=0, and ε=0.01 restores validity. Combined claims stayed at zero error in every scenario,
+  because the sampling half-width is wide enough to absorb the realized-fraction noise.
