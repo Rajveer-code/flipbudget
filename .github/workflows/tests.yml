@@ -1,0 +1,22 @@
+name: tests
+
+# Unit tests plus the G1.6 regression anchor (84 / 101 / 118 on the old 17-model K=2 data,
+# rebuilt from the committed K=3 census). Linux runner: the verifier tests also exercise the
+# SIGALRM-free timing path on a platform where the original timeouts exist.
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install
+        run: pip install -e ".[dev,verify]"
+      - name: Run tests
+        run: python -m pytest -q
