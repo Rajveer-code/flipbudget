@@ -56,3 +56,9 @@ Not top-tier main-track ready; NeurIPS E&D borderline without replication.
 2. Anonymization before any double-blind submission.
 3. Optional disagreement-targeted labels (sheet ready).
 4. Companion TMLR paper: its bound looked valid on a quick read; not fully audited.
+
+## G4.5 decision (2026-09-20): GSM8K is DROPPED from the AISTATS submission
+
+The hard gate in PLAN_AISTATS2027.md G4.5 requires, before the abstract lock: a complete census, frozen model identifiers, three reproducible and unit-tested verifiers, a preregistration written before labeling, and a human audit that passed the quality gate. GSM8K has none of the last three: `results/analysis/gsm8k_scores.json` holds our own generations for 9 models (400 items requested, strict/flexible regex scoring), there is no K=3 verifier census, no preregistration, and no human labels at all. The MATH-Hard audit has first claim on the labeling budget.
+
+GSM8K is therefore out of the AISTATS paper and kept for the later version. MATH-Hard is not weakened to accommodate it.
