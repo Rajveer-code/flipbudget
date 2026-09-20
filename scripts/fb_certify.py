@@ -43,7 +43,11 @@ def spec(K, sem):
 
 
 class Inputs:
-    def __init__(self, census, audit, K, sem, ref, indet, models, interval):
+    def __init__(self, census, audit, K, sem, ref, indet, models, interval, new_labels=None):
+        """new_labels (G4.1, from scripts/fb_audit_v3_analysis.py): {"pooled": {cell: [x, n]},
+        "disc": {(model, cell): [x, n]}} from the v3 audit. Concordant labels join the pooled
+        cells; discordant labels give per-model intervals, which are design-valid because the
+        v3 strata are (model x cell). Omitted -> the pre-v3 analysis, unchanged."""
         self.K, self.models, self.fields = K, models, spec(K, sem)
         rows = [r for r in census["rows"] if r["model"] in set(models)]
         items = sorted({r["item_id"] for r in rows})
@@ -76,13 +80,26 @@ class Inputs:
             per_model[it["model"]][c][0] += y
             per_model[it["model"]][c][1] += 1
             subpop[c][(it["key_stratum"], it.get("subject"), it.get("quartile"), it["model"])] += 1
+        nl = new_labels or {}
+        self.pooled_existing = {c: list(v) for c, v in pooled.items()}
+        for c, (x, n) in (nl.get("pooled") or {}).items():
+            if c in pooled:
+                pooled[c][0] += x
+                pooled[c][1] += n
+        for m in models:  # v3 concordant labels are per (model, cell) too
+            for c in self.conc_cells:
+                x, n = (nl.get("disc_and_conc_per_model") or {}).get((m, c), (0, 0))
+                per_model[m][c][0] += x
+                per_model[m][c][1] += n
         self.pooled, self.per_model, self.subpop = pooled, per_model, subpop
-        ivl = C.kl_interval if interval == "kl" else C.cp_interval
+        self.ivl = C.kl_interval if interval == "kl" else C.cp_interval
+        ivl = self.ivl
         self.level = C.sidak(2, 1 - ALPHA_A)
         self.conc = {c: ivl(*pooled[c], self.level) for c in self.conc_cells}
         self.conc_pm = {m: {c: ivl(*per_model[m][c], C.sidak(4, 1 - ALPHA_A)) for c in self.conc_cells}
                         for m in models}
         self.disc = {c: (0.0, 1.0) for c in self.cells if c not in self.conc_cells}
+        self.disc_counts = {k: v for k, v in (nl.get("disc") or {}).items() if k[1] in self.disc}
         # pairwise verifier disagreement d^v_jk (item-matched)
         self.d = {}
         for j, k in combinations(models, 2):
@@ -92,12 +109,29 @@ class Inputs:
     def acc(self, m, f):
         return float(self.V[f][self.idx[m]].mean())
 
-    def ebar(self, m, conc, eps):
-        pb = C.model_p_bounds(conc, self.disc, eps)
+    def n_audited_disc(self, m):
+        """Number of discordant parameters of model m estimated from v3 labels."""
+        return sum(1 for (mm, c) in self.disc_counts if mm == m)
+
+    def disc_bounds(self, m, level):
+        """Per-model discordant intervals: KL/CP from v3 labels where they exist, else [0, 1]."""
+        return {c: (self.ivl(*self.disc_counts[(m, c)], level) if (m, c) in self.disc_counts else (0.0, 1.0))
+                for c in self.disc}
+
+    def ebar(self, m, conc, eps, disc=None):
+        pb = C.model_p_bounds(conc, self.disc if disc is None else disc, eps)
         return {f: C.error_bound(self.shares[m], {c: int(c[n]) for c in self.cells}, pb)
                 for n, f in enumerate(self.fields)}
 
-    def halfwidth(self, mode, z, conc):
+    def pair_bounds(self, j, k):
+        """(conc, disc_j, disc_k) at the Sidak level for the parameters this ordering uses:
+        the two pooled concordant cells plus each model's v3-audited discordant cells."""
+        kk = 2 + self.n_audited_disc(j) + self.n_audited_disc(k)
+        lvl = C.sidak(kk, 1 - ALPHA_A)
+        conc = {c: self.ivl(*self.pooled[c], lvl) for c in self.conc_cells}
+        return conc, self.disc_bounds(j, lvl), self.disc_bounds(k, lvl)
+
+    def halfwidth(self, mode, z, conc=None):
         def h(j, k, eps):
             if mode == "none":
                 return 0.0
@@ -106,7 +140,10 @@ class Inputs:
             if mode == "legacy":  # unpaired plug-in from the boxed verifier's accuracy (anchor only)
                 a = [self.acc(m, self.fields[0] if self.K == 2 else self.fields[1]) for m in (j, k)]
                 return z * math.sqrt(sum(x * (1 - x) for x in a) / N_ITEMS)
-            return C.halfwidth_paired(self.d[(j, k)], self.ebar(j, conc, eps), self.ebar(k, conc, eps), N_ITEMS, z)
+            cj, dj, dk = self.pair_bounds(j, k)
+            cc = conc if conc is not None else cj
+            return C.halfwidth_paired(self.d[(j, k)], self.ebar(j, cc, eps, dj), self.ebar(k, cc, eps, dk),
+                                      N_ITEMS, z)
         return h
 
 
@@ -114,12 +151,12 @@ def run(inp, eps, sampling="paired", simultaneous=False, pooling=True):
     npairs = len(inp.models) * (len(inp.models) - 1) // 2
     z = float(norm.ppf(1 - ALPHA_S / 2 / (npairs if simultaneous else 1)))
     if pooling:
-        bounds = lambda j, k: (inp.conc, inp.disc, inp.disc)  # noqa: E731
-        conc_for_h = inp.conc
+        bounds = inp.pair_bounds
     else:  # no pooling: per-model concordant intervals enter as model-specific (discordant-like) bounds
-        bounds = lambda j, k: ({}, inp.disc | inp.conc_pm[j], inp.disc | inp.conc_pm[k])  # noqa: E731
-        conc_for_h = inp.conc
-    return C.evaluate(inp.models, inp.shares, bounds, inp.halfwidth(sampling, z, conc_for_h), eps)
+        def bounds(j, k):
+            lvl = C.sidak(4 + inp.n_audited_disc(j) + inp.n_audited_disc(k), 1 - ALPHA_A)
+            return {}, inp.disc_bounds(j, lvl) | inp.conc_pm[j], inp.disc_bounds(k, lvl) | inp.conc_pm[k]
+    return C.evaluate(inp.models, inp.shares, bounds, inp.halfwidth(sampling, z), eps)
 
 
 def ceiling(inp, simultaneous=False):
@@ -132,11 +169,13 @@ def ceiling(inp, simultaneous=False):
 
 def breakdowns(inp, sampling="paired"):
     z = float(norm.ppf(1 - ALPHA_S / 2))
-    h = inp.halfwidth(sampling, z, inp.conc)
+    h = inp.halfwidth(sampling, z)
     out = {}
     for j, k in combinations(inp.models, 2):
-        def margin(e, sign):
-            lo, hi = C.pair_range(inp.shares[j], inp.shares[k], inp.conc, inp.disc, inp.disc, e)
+        conc, dj, dk = inp.pair_bounds(j, k)
+
+        def margin(e, sign, conc=conc, dj=dj, dk=dk, j=j, k=k):
+            lo, hi = C.pair_range(inp.shares[j], inp.shares[k], conc, dj, dk, e)
             return (lo if sign > 0 else -hi) - h(j, k, e)
         e_pos, e_neg = C.breakdown_eps(lambda e: margin(e, 1)), C.breakdown_eps(lambda e: margin(e, -1))
         if e_pos > 0 or e_neg > 0:

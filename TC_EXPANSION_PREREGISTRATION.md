@@ -132,3 +132,15 @@ The paper will say "a preregistered screen for substantial model-specific depart
 - Work is done in batches of 50.
 - Every batch passes the quality gate (plan G3.4) before use. Failures are logged to `provenance/excluded_labeling_attempts/`.
 - No AI tool generates, pre-fills or edits a label.
+
+## AMENDMENT 5 (2026-09-20): leave-one-out pool in the falsification test, written before any label exists
+
+`labeling/exports/` is empty; no v3 label has been produced. Amendment 4's falsification rule compared a screened model's error lower bound against the upper bound of the pooled concordant error computed from **all** labels, including that model's own. That is self-defeating: the screened models contribute 139 of the pooled labels each, so a model with a high error rate raises the very bound it is tested against. Checked on synthetic labels (`tests/test_audit_v3_analysis.py`): under Amendment 4's wording the 000-cell rejection threshold rises from 6 errors to 11, and a model with a 40% error rate in the 111 cell is not rejected at all.
+
+**Change.** When testing model m in cell c, the pooled comparison excludes m's own labels: the pool is the existing 400-item audit plus every new label in cell c from other models.
+
+**Validity is unchanged.** The range over sub-populations is at least e_mc − min over the other sub-populations, and the leave-one-out pooled error is a weighted mean of those others, so its upper bound bounds their minimum. Levels, ε₀ = 0.01, and the Bonferroni allocation are as in Amendment 4.
+
+**Effect.** With the planned allocation the test recovers exactly the power projected in `g3_operating_point.json` (reject at ≥6 errors of 39 in cell 000, ≥17 of 100 in cell 111).
+
+Nothing else in Amendment 4 changes. The certification analysis still pools all concordant labels, including the screened models' own; that pooling is an estimate of the common level, not a comparison against it.
