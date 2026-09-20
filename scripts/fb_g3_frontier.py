@@ -159,23 +159,28 @@ def _init():
 
 
 def point(args):
+    """args = (F, n0) with n0 an int, or (F, {cell: n0}) for the chosen operating point."""
     F, n0 = args
+    per_cell = n0 if isinstance(n0, dict) else None
     inp, order, cap = CTX["inp"], CTX["order"], CTX["cap"]
-    rng = np.random.default_rng([SEED, F, n0])
+    rng = np.random.default_rng([SEED, F, sum(n0.values()) if per_cell else n0])
     fals = order[:F]
-    conc_new = {c: sum(min(n0, cap[(m, c)]) for m in fals) for c in inp.conc_cells}
+    n0_of = (lambda c: per_cell[c]) if per_cell else (lambda c: n0)
+    conc_new = {c: sum(min(n0_of(c), cap[(m, c)]) for m in fals) for c in inp.conc_cells}
     disc_cap = {(m, c): cap[(m, c)] for m in inp.models for c in inp.disc if cap[(m, c)] > 0}
     alloc_disc = allocate(disc_cap, BUDGET - sum(conc_new.values()))
-    pt = {"F": F, "n0": n0 if F else 0, "falsification_models": fals,
+    pt = {"F": F, "n0": (per_cell if per_cell else n0) if F else 0, "falsification_models": fals,
+          "is_operating_point": bool(per_cell),
           "labels_concordant": sum(conc_new.values()), "labels_discordant": sum(alloc_disc.values()),
           "falsification": {}}
     for c in inp.conc_cells:
         ub = pooled_error_ub(inp, F, c)
-        pt["falsification"][c] = {"pooled_error_ub": ub,
-                                  "reject_if_errors_at_least": reject_threshold(n0, F, ub) if F else None,
-                                  "power_rho10": power(n0, F, ub, 0.1) if F else 0.0,
-                                  "power_rho20": power(n0, F, ub, 0.2) if F else 0.0,
-                                  "detectable_rho_80": detectable_rho(n0, F, ub) if F else None}
+        nc = n0_of(c) if F else 0
+        pt["falsification"][c] = {"n0": nc, "pooled_error_ub": ub,
+                                  "reject_if_errors_at_least": reject_threshold(nc, F, ub) if F else None,
+                                  "power_rho10": power(nc, F, ub, 0.1) if F else 0.0,
+                                  "power_rho20": power(nc, F, ub, 0.2) if F else 0.0,
+                                  "detectable_rho_80": detectable_rho(nc, F, ub) if F else None}
     for scen in ("uniform", "half"):
         for eps in (0.0, EPS0):
             v = [project(inp, alloc_disc, conc_new, scen, rng, eps) for _ in range(N_REP)]
@@ -185,8 +190,18 @@ def point(args):
 
 
 def main():
+    op = json.load(open(ROOT / "results" / "flipbudget" / "g3_operating_point.json", encoding="utf-8"))
+    if "--operating-point-only" in sys.argv:  # evaluate the chosen point and merge it into the frontier
+        _init()
+        pt = point((op["F"], op["n0_by_cell"]))
+        out = json.load(open(OUT, encoding="utf-8"))
+        out["points"] = [p for p in out["points"] if not p.get("is_operating_point")] + [pt]
+        json.dump(out, open(OUT, "w", encoding="utf-8"), indent=1)
+        print(json.dumps(pt["falsification"], indent=1), "certified:",
+              {k: v["median"] for k, v in pt.items() if k.startswith("certified")}, "merged into", OUT)
+        return
     grid = [(F, n0) for F in F_GRID for n0 in N0_GRID
-            if 2 * F * n0 <= BUDGET and not (F == 0 and n0 != N0_GRID[0])]
+            if 2 * F * n0 <= BUDGET and not (F == 0 and n0 != N0_GRID[0])] + [(op["F"], op["n0_by_cell"])]
     with Pool(18, initializer=_init) as pool:
         points = pool.map(point, grid, chunksize=1)
     _init()

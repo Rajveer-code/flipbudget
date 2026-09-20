@@ -15,6 +15,7 @@ Run: python scripts/fb_certify.py        Out: results/flipbudget/certify_results
 import gzip
 import json
 import math
+import os
 import sys
 from collections import defaultdict
 from itertools import combinations
@@ -34,6 +35,18 @@ N_ITEMS = 1324
 ALPHA_A, ALPHA_S = 0.025, 0.025
 EPS0 = 0.01  # preregistered scientific tolerance (THEORY 1.1c), a judgement, not a measurement
 EPS_GRID = [round(0.0025 * i, 4) for i in range(41)]  # 0 .. 0.10
+
+
+V3_LABELS = Path(os.environ.get("FB_V3_OUT", ROOT / "results" / "flipbudget" / "audit_v3_labels.json"))
+
+
+def load_v3(ref):
+    """v3 label counts in Inputs' shape. Cells are the K=3 (em, sb_sympy, mv) strata of the draw."""
+    d = json.load(open(V3_LABELS, encoding="utf-8"))["counts"][ref]
+    per = {tuple(k.split("|")): v for k, v in d["per_model_cell"].items()}
+    return {"pooled": d["pooled"],
+            "disc": {k: v for k, v in per.items() if k[1] not in ("000", "111")},
+            "disc_and_conc_per_model": per}
 
 
 def spec(K, sem):
@@ -167,6 +180,18 @@ def ceiling(inp, simultaneous=False):
                    for j, k in combinations(inp.models, 2)) for f in inp.fields}
 
 
+def sampling_pairs(inp, f, simultaneous=False):
+    """(winner, loser) pairs verifier f separates beyond paired sampling noise, verifier taken as truth."""
+    npairs = len(inp.models) * (len(inp.models) - 1) // 2
+    z = float(norm.ppf(1 - ALPHA_S / 2 / (npairs if simultaneous else 1)))
+    out = set()
+    for j, k in combinations(inp.models, 2):
+        gap = inp.acc(j, f) - inp.acc(k, f)
+        if abs(gap) > z * math.sqrt(inp.d[(j, k)][f] / N_ITEMS):
+            out.add((j, k) if gap > 0 else (k, j))
+    return out
+
+
 def breakdowns(inp, sampling="paired"):
     z = float(norm.ppf(1 - ALPHA_S / 2))
     h = inp.halfwidth(sampling, z)
@@ -229,8 +254,29 @@ def main():
                           for p in r["pairs"] if p["winner"]}
         res["rank_intervals_simultaneous_eps0"] = C.rank_intervals(m27, cert(sim0))
         res["rank_intervals_per_ordering_eps0_NOT_FAMILYWISE"] = C.rank_intervals(m27, cert(at0))
+        # F1 comparison layers, all simultaneous over the 351 orderings
+        res["rank_intervals_simultaneous_eps_preregistered"] = C.rank_intervals(
+            m27, cert(run(prim, EPS0, simultaneous=True)))
+        res["rank_intervals_simultaneous_no_pooling"] = C.rank_intervals(
+            m27, cert(run(prim, 0.0, simultaneous=True, pooling=False)))
+        res["rank_intervals_sampling_only"] = {f: C.rank_intervals(m27, sampling_pairs(prim, f, True))
+                                               for f in prim.fields}
         res["breakdown_eps"] = breakdowns(prim)
         res["no_pooling"] = {k: v for k, v in run(prim, 0.0, pooling=False).items() if k != "pairs"}
+        if K == 3 and V3_LABELS.exists():  # observed v3 audit (its strata are K=3 cells)
+            with_v3 = Inputs(census, audit, K, "sympy", "sympy", "as_incorrect", m27, "kl",
+                             new_labels=load_v3("sympy"))
+            res["with_v3"] = {
+                "inputs": summary(with_v3),
+                "n_new_labels": sum(n for _, n in load_v3("sympy")["disc_and_conc_per_model"].values()),
+                "eps_curve": [{"eps": e, "audit_only": run(with_v3, e)["audit_resolved"],
+                               "combined": run(with_v3, e)["combined_resolved"],
+                               "combined_simultaneous": run(with_v3, e, simultaneous=True)["combined_resolved"]}
+                              for e in EPS_GRID],
+                "rank_intervals_simultaneous_eps0": C.rank_intervals(m27, cert(run(with_v3, 0.0, simultaneous=True))),
+                "breakdown_eps": breakdowns(with_v3),
+                "no_pooling": {k: v for k, v in run(with_v3, 0.0, pooling=False).items() if k != "pairs"}}
+            print("   with v3 labels:", [(x["eps"], x["combined"]) for x in res["with_v3"]["eps_curve"][::4]])
         sens = {}
         for name, args in {
             "string_semantics": (K, "string", "string", "as_incorrect", m27, "kl"),

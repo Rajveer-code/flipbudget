@@ -35,7 +35,7 @@ SHEET = ROOT / "labeling" / "audit_v3_l1.csv"
 OVERLAP = ROOT / "labeling" / "audit_v3_l2_overlap.csv"
 PROV = ROOT / "results" / "analysis" / "audit_v3_provenance.json"
 OP = ROOT / "results" / "flipbudget" / "g3_operating_point.json"
-OUT = ROOT / "results" / "flipbudget" / "audit_v3_labels.json"
+OUT = Path(os.environ.get("FB_V3_OUT", ROOT / "results" / "flipbudget" / "audit_v3_labels.json"))
 REFS = ("sympy", "string", "mv")
 
 

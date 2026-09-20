@@ -1971,6 +1971,58 @@
     "p10": 136.0,
     "p90": 140.0
    }
+  },
+  {
+   "F": 2,
+   "n0": {
+    "000": 39,
+    "111": 100
+   },
+   "falsification_models": [
+    "HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1",
+    "01-ai/Yi-1.5-9B-Chat"
+   ],
+   "is_operating_point": true,
+   "labels_concordant": 278,
+   "labels_discordant": 180,
+   "falsification": {
+    "000": {
+     "n0": 39,
+     "pooled_error_ub": 0.020439216009075778,
+     "reject_if_errors_at_least": 6,
+     "power_rho10": 0.1902592320007468,
+     "power_rho20": 0.8199867998779639,
+     "detectable_rho_80": 0.2
+    },
+    "111": {
+     "n0": 100,
+     "pooled_error_ub": 0.06610473002986189,
+     "reject_if_errors_at_least": 17,
+     "power_rho10": 0.02059881014530016,
+     "power_rho20": 0.8076624154023974,
+     "detectable_rho_80": 0.2
+    }
+   },
+   "certified_uniform_eps0.0": {
+    "median": 160.0,
+    "p10": 158.0,
+    "p90": 162.0
+   },
+   "certified_uniform_eps0.01": {
+    "median": 138.0,
+    "p10": 136.0,
+    "p90": 140.0
+   },
+   "certified_half_eps0.0": {
+    "median": 160.0,
+    "p10": 159.0,
+    "p90": 161.0
+   },
+   "certified_half_eps0.01": {
+    "median": 137.0,
+    "p10": 136.0,
+    "p90": 139.0
+   }
   }
  ]
 }
