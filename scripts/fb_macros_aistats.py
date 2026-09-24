@@ -36,6 +36,11 @@ def main():
     front = json.load(open(RES / "g3_frontier.json", encoding="utf-8"))
     op = json.load(open(RES / "g3_operating_point.json", encoding="utf-8"))
     imp = json.load(open(RES / "g1_semantics_impact.json", encoding="utf-8"))
+    HC = ROOT / "results" / "harness_census"
+    prev = {r[0]: r for r in json.load(open(HC / "prevalence.json", encoding="utf-8"))["rows"]}
+    light = json.load(open(HC / "census_lighteval.json", encoding="utf-8"))
+    simple = json.load(open(HC / "simple_evals_census.json", encoding="utf-8"))
+    valid = json.load(open(HC / "census_validation.json", encoding="utf-8"))["summary"]
     census = json.load(gzip.open(RES / "census_k3.json.gz", "rt", encoding="utf-8"))
     K3, eps0 = cert["K3"], cert["config"]["eps0_preregistered"]
     grid = {p["eps"]: p for p in K3["eps_curve"]}
@@ -109,12 +114,28 @@ def main():
         ("ScreenNRejectAll", op["n0_by_cell"]["000"], "g3_operating_point.json: n0_by_cell"),
         ("ScreenNAgreeAll", op["n0_by_cell"]["111"], "g3_operating_point.json: n0_by_cell"),
         ("ScreenRho", op["rho"], "g3_operating_point.json: rho"),
+        ("ScreenPowerPct", round(op["power"] * 100), "g3_operating_point.json: power"),
         ("ScreenPowerRejectAll", opt["falsification"]["000"]["power_rho20"], "g3_frontier.json: operating point"),
         ("ScreenPowerAgreeAll", opt["falsification"]["111"]["power_rho20"], "g3_frontier.json: operating point"),
         ("LabelsFalsification", op["labels_falsification"], "g3_operating_point.json"),
         ("LabelsCertification", op["labels_certification"], "g3_operating_point.json"),
         ("ProjectedCertPrereg", opt["certified_uniform_eps0.01"]["median"],
          "g3_frontier.json: operating point (PROJECTED)"),
+        # how widely the same design choice is made (harness census)
+        ("LmEvalGenerative", prev["lm-evaluation-harness"][1], "harness_census/prevalence.json"),
+        ("LmEvalCoerce", prev["lm-evaluation-harness"][2], "harness_census/prevalence.json"),
+        ("LmEvalCoercePct", prev["lm-evaluation-harness"][3], "harness_census/prevalence.json"),
+        ("OpenCompassGenerative", prev["OpenCompass"][1], "harness_census/prevalence.json"),
+        ("OpenCompassCoerce", prev["OpenCompass"][2], "harness_census/prevalence.json"),
+        ("OpenCompassCoercePct", prev["OpenCompass"][3], "harness_census/prevalence.json"),
+        ("LightevalGenerative", light["n_generative"], "harness_census/census_lighteval.json"),
+        ("LightevalCoerce", light["n_vulnerable"], "harness_census/census_lighteval.json"),
+        ("SimpleEvalsStringMatch", simple["n_string_match_modules"], "harness_census/simple_evals_census.json"),
+        ("SimpleEvalsCoerce", simple["n_vulnerable"], "harness_census/simple_evals_census.json"),
+        ("CensusValidTestable", valid["vulnerable"]["n_testable"], "harness_census/census_validation.json"),
+        ("CensusValidConfirmed", valid["vulnerable"]["n_agreeing_with_census"], "harness_census/census_validation.json"),
+        ("CensusControlN", valid["control"]["n_sampled"], "harness_census/census_validation.json"),
+        ("CensusControlClean", valid["control"]["not_vulnerable"], "harness_census/census_validation.json"),
     ]
     TEX.parent.mkdir(parents=True, exist_ok=True)
     with open(TEX, "w", encoding="utf-8") as f:

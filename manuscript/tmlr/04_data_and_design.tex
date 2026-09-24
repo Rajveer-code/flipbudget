@@ -1,0 +1,98 @@
+% Data, verifiers, provenance, and the audit design.
+
+\section{Data, verifiers, and audit design}
+\label{sec:data}
+
+\subsection{The board}
+
+We use the Open LLM Leaderboard's \citep{openllmleaderboard} MATH-Hard
+\citep{hendrycksmath2021} results: \NumModels{} models, \NumItems{}
+Level-5 items across seven subjects, and the generations the leaderboard itself published,
+read from its per-model result repositories. Every model has a response for every item, so
+the analysis uses \NumRows{} responses with no missing data and no model dropped. A
+prespecified rule covered missingness before the data were assembled, and it did not fire.
+
+\subsection{Three verifiers, and what they share}
+
+The first verifier is the leaderboard's original scorer. Its per-item verdicts are published
+in the result files, and we did not have to guess its identity: the result files record the
+scoring function that ran, and re-executing that function reproduces the published verdict on
+\EmReexecItems{} of \EmReexecItems{} responses. It extracts an answer by matching one
+sentence pattern and compares symbolically.
+
+The second is Math-Verify, the verifier behind the re-scoring the leaderboard applied to its
+MATH results in February 2025. The re-scoring rewrote the published scores while leaving the
+per-item verdict files untouched, so the leaderboard currently displays scores from one
+verifier and publishes item-level verdicts from another. Running Math-Verify ourselves
+reproduces the re-scored published aggregates in \MvAggregateMatch{} of
+\NumSubjectsRescored{} model-subject cells, with the remainder differing by a single item.
+
+The third extracts the last boxed expression, which is how the benchmark's own reference
+solutions mark their answers, and compares it symbolically after the same normalisation the
+harness uses.
+
+These verifiers are not independent, and we do not describe them as such.
+Table~\ref{tab:shared} lists what they share: a normalisation routine, a symbolic algebra
+library, and the same reference answers. What differs is the extraction rule, the parser, and
+the source from which the reference answer is taken. Independence is not required for any
+result in this paper. What is required is that they fail on different responses, which is an
+observable property, and they do.
+
+\subsection{A defect in our own verifier}
+
+While checking provenance we found that the boxed verifier had been silently degraded on this
+machine. Its symbolic equivalence check guards itself with a timer available only on Unix. On
+Windows the guard raises, the exception is swallowed by a broad handler, and the function
+returns ``not equivalent'' for every call. Every verdict it had produced was therefore a
+string comparison.
+
+The corrected verifier changes the count of responses on which it disagrees with the
+leaderboard's scorer, over the subset of models analysed in earlier work, from
+\DisagreeSbEmSeventeenString{} to \DisagreeSbEmSeventeen{}, and the certified count from
+\AnchorStringCombined{} to \AnchorSympyCombined{}. All results in this paper use the
+corrected verifier. We report the defect because it is the paper's own argument turned on
+its author: a verifier that fails silently produces a plausible number, and nothing in the
+output says otherwise.
+
+\subsection{Human labels}
+
+Labels come from two audits of the same population. The first is an existing 400-item audit
+whose design was registered before labelling; of its labels, \AuditNAgreeAll{} fall in the
+cell where every verifier credits the response and \AuditNRejectAll{} where none does. The
+second is a \AuditBudget{} label audit designed for this paper and registered before the sheet
+was drawn.
+
+Labelling is done in a purpose-built offline tool that shows one response at a time, blocks
+pasting, records the time spent on each item, and writes an export whose hash is recorded.
+Every batch passes an automated quality gate before it is used. The gate checks structure,
+timing, and the rate at which a typed answer exactly matches what a regular expression would
+have extracted, compared against the rate observed in the author's earlier audit. Batches that
+fail are excluded and retained for the record, and this has happened.
+
+\subsection{Where the labels go}
+
+The design question is not how many labels to buy but where to spend them, and the two
+purposes compete. Labels in the discordant cells narrow the identified range and certify more
+orderings. Labels in the concordant cells test Assumption~\ref{ass:h}, on which every
+certified ordering depends, but do not themselves certify anything.
+
+We computed the trade-off before drawing the sheet, over a grid of allocations, and it is
+reported in Figure~\ref{fig:frontier} as a projection rather than as a result. Two findings
+came out of it. Certified orderings are nearly flat across allocations, because the binding
+constraints are the pooled concordant bound and item sampling rather than discordant coverage;
+the whole \AuditBudget{} label budget moves the projected count from \CertPrereg{} to
+\ProjectedCertPrereg{}. And a screen powerful enough to detect a moderate departure from
+Assumption~\ref{ass:h} consumes most of the budget for a small number of models.
+
+Since certification is nearly insensitive to the split, the budget goes where it buys the most
+information about the assumption. The registered design screens the \ScreenedModels{} models
+appearing most often in the orderings with the smallest breakdown values, with
+\ScreenNRejectAll{} labels in the cell where no verifier credits and \ScreenNAgreeAll{} where
+all three do, sized for \ScreenPowerPct\% power against a per-model departure of \ScreenRho{}. The
+remaining \LabelsCertification{} labels go to discordant cells in proportion to their size.
+
+What this screen cannot do is stated with it. It does not detect departures smaller than
+\ScreenRho{} at that power, and it says nothing at all about the models it does not screen.
+The preregistered rejection rule compares each screened model's error lower bound against the
+upper bound of the pooled rate computed without that model's own labels, so that a model
+cannot inflate the bound it is tested against.

@@ -1,0 +1,41 @@
+% Generality: how widely the same design choice is made, and what that does and does not show.
+
+\section{How common is this design choice?}
+\label{sec:generality}
+
+One board is one board. The results above show that the verifier changes the ranking on
+MATH-Hard, and a reader is entitled to ask whether that is a peculiarity of this benchmark or
+of the frameworks that score it. The question splits into two, and only one of them is
+answered here.
+
+The answerable question is how often a scoring configuration coerces an unreadable response
+into a wrong answer, which is the design choice that creates the problem in the first place.
+We resolved the task configurations of four evaluation frameworks
+\citep{biderman2024lessons, opencompass2026, fourrier2024lighteval, openai2024simpleevals} with each framework's own
+loader at a pinned commit, and classified the scoring path each generative task actually
+takes. In \texttt{lm-evaluation-harness}, \LmEvalCoerce{} of \LmEvalGenerative{} generative
+tasks, or \LmEvalCoercePct\%, recover an answer by matching an assumed output format and
+record a failure to match as an incorrect answer. In OpenCompass the figure is
+\OpenCompassCoerce{} of \OpenCompassGenerative{}, in \texttt{lighteval}
+\LightevalCoerce{} of \LightevalGenerative{} generative metrics, and in OpenAI's
+\texttt{simple-evals} \SimpleEvalsCoerce{} of \SimpleEvalsStringMatch{} string-matching
+modules.
+
+Reading code is not the same as running it, so the classification was validated behaviourally.
+For a random sample of tasks the declared filter pipeline was rebuilt from the framework's own
+classes and run on a well-formed response and on an equivalent response carrying the same
+answer in ordinary prose. Of \CensusValidTestable{} testable sampled tasks, all
+\CensusValidConfirmed{} behaved as classified, and of \CensusControlN{} control tasks drawn
+from the tasks classified as unaffected, all \CensusControlClean{} were confirmed unaffected.
+
+The unanswerable question, with the evidence in this paper, is how often that design choice
+changes a published ranking on some other benchmark. It depends on how often real responses
+take a form the extractor misses, which varies by benchmark, by model, and by prompt, and we
+measured it only here. The prevalence figures above bound how many tasks could be affected.
+They do not establish that any particular one is, and we do not claim otherwise.
+
+The strongest statement the evidence supports is narrower than the one a reader might expect,
+and worth stating in full. On one board, with the leaderboard's own published generations, the
+choice of verifier moves the ranking. The design choice that makes this possible is the
+default across the major open evaluation frameworks. Whether it bites elsewhere is a
+measurement someone has to make, and the census says where to look first.

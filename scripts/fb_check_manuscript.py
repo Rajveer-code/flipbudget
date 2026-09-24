@@ -39,7 +39,11 @@ ALLOWED_DIGITS = {
 def main():
     defined = set(re.findall(r"\\newcommand\{\\(\w+)\}", MACROS.read_text(encoding="utf-8")))
     problems = []
+    # machine-generated (macros, tables) and structural (main) files are not prose:
+    generated = {"macros.tex", "tables.tex", "main.tex"}
     for f in sorted(DRAFT.glob("*.tex")):
+        if f.name in generated:
+            continue
         body = re.sub(r"^%.*$", "", f.read_text(encoding="utf-8"), flags=re.M)
         for name in re.findall(r"\\([A-Za-z]+)", body):
             if name[0].isupper() and name not in defined and name not in LATEX:

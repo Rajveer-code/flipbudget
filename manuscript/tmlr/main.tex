@@ -1,0 +1,114 @@
+\documentclass{article}
+\usepackage{tmlr}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{url}  % the bibliography emits \url{...}; tmlr.sty does not provide it
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+
+\input{macros}
+
+\title{Which Leaderboard Orderings Survive a Human Reader?}
+\author{Anonymous}
+
+\begin{document}
+
+\maketitle
+\input{00_abstract}
+
+\input{01_introduction}
+\input{02_setup}
+\input{03_inference}
+\input{04_data_and_design}
+\input{tables}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/f1_rank_intervals.pdf}
+\caption{Simultaneous rank intervals for every model under four analyses. Taking the
+leaderboard's verifier as truth gives the narrowest intervals and is what a published
+leaderboard shows. Removing the pooling assumption entirely leaves almost every rank
+unresolved.}
+\label{fig:ranks}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.66\textwidth]{figures/f2_certified_vs_eps.pdf}
+\caption{Certified orderings as a function of the permitted cross-model heterogeneity
+$\varepsilon$, for two and three verifiers, per ordering and simultaneously over the whole
+board. The dotted line marks the tolerance registered before results were seen.}
+\label{fig:eps}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.72\textwidth]{figures/f3_correctness_by_cell.pdf}
+\caption{Share of audited responses in each verifier cell that the human reference credits,
+with intervals from Lemma~\ref{lem:kl}. Five cells carry no labels in the existing audit and
+are bounded only by $[0,1]$.}
+\label{fig:cells}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/f4_frontier_projected.pdf}
+\caption{Projected trade-off between certifying orderings and screening the pooling
+assumption, over a grid of label allocations. Certification is nearly flat, so the budget is
+spent on the screen. Simulated label outcomes, not observed.}
+\label{fig:frontier}
+\end{figure}
+
+\input{05_results}
+\input{06_generality}
+\input{07_related}
+\input{08_limitations}
+
+\subsubsection*{Reproducibility statement}
+
+Every number in this paper is produced by a committed script from a committed result file and
+enters the text as a generated macro; a checker fails the build if any number is typed
+directly or any macro is undefined. The verifier configurations, the per-response census, the
+human labels, the preregistrations and their amendments, the quality-gate reports, and the
+code that regenerates every figure and table are released with the paper.
+
+\bibliographystyle{tmlr}
+\bibliography{references}
+
+\appendix
+\section{Proofs}
+\label{app:proofs}
+\textbf{[TO WRITE: proofs of Lemma~\ref{lem:kl}, Proposition~\ref{prop:range} including the
+closed form and the sharpness discussion, and Proposition~\ref{prop:oneverifier}. Sources:
+\texttt{THEORY\_CERTIFICATION.md} sections 2, 3 and 5.]}
+
+\section{Numerical checks of the stated results}
+\label{app:tests}
+\textbf{[TO WRITE: the brute-force checks in \texttt{tests/test\_certification.py} and
+\texttt{tests/test\_manuscript\_claims.py}, and the regression anchor.]}
+
+\section{Inference details}
+\label{app:inference}
+\textbf{[TO WRITE: the distribution-free sampling alternative, the Bonferroni and Sidak
+allocation, and the coverage simulation design.]}
+
+\section{Sensitivity analyses}
+\label{app:sensitivity}
+\textbf{[TO WRITE: the registered sensitivity table from
+\texttt{certify\_results.json}.]}
+
+\section{Sensitivity to the human reference routine}
+\label{sec:sensitivity}
+\textbf{[TO WRITE: string, harness and Math-Verify references compared.]}
+
+\end{document}

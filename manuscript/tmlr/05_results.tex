@@ -1,0 +1,86 @@
+% Results. Every number is a macro. Quantities awaiting the registered audit are marked.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Where the verifiers disagree}
+
+Table~\ref{tab:cells} gives the cell structure. The two concordant cells hold most of the
+board: \CellAgreeAll{} responses are credited by every verifier and \CellRejectAll{} by none.
+The verifiers disagree on \RowsAnyDisagree{} of \NumRows{} responses, which is a small
+fraction of the benchmark and, as Section~\ref{sec:setup} explains, the part that decides the
+ranking.
+
+Figure~\ref{fig:cells} shows what a human reader makes of each cell. Where all three verifiers
+credit a response, the human reference agrees in \AuditCorrectAgreeAll{} of
+\AuditNAgreeAll{} audited responses. Where none of them credits it, the human reference
+credits \AuditCorrectRejectAll{} of \AuditNRejectAll{}. The concordant cells are therefore
+close to their verifiers, which is what makes pooling worth doing and also what makes the
+remaining spread hard to measure. In the discordant cells the human reference splits, and
+five of them carry no labels at all in the existing audit, which is what the registered audit
+in Section~\ref{sec:data} is for.
+
+\subsection{How many orderings survive}
+
+Of \NumOrderings{} pairwise orderings, item sampling alone would permit \CeilingEm{} to be
+called if the leaderboard's own verifier were taken as ground truth. That number is the
+ceiling against which everything else should be read, because no audit can certify an ordering
+that the benchmark is too small to resolve.
+
+Under the existing audit, \CertEpsZero{} orderings are certified at $\varepsilon = 0$ and
+\CertPrereg{} at the registered tolerance $\varepsilon = \EpsPrereg$. Requiring every claim on
+the board to hold simultaneously, rather than one ordering at a time, gives \CertPreregSim{}.
+With no pooling across models, which is the analysis that assumes nothing about how models
+relate to each other, \CertNoPooling{} orderings are certified.
+
+That last number is the honest centre of the paper. Nothing on this board is certified without
+an assumption connecting models to one another; the assumption is doing the work, and the only
+question worth arguing about is how much of it is required.
+
+Figure~\ref{fig:eps} answers that question as a curve rather than a number. Certification
+declines smoothly as the permitted heterogeneity grows, and the median ordering breaks at
+$\varepsilon^* = \BreakdownMedian$. Half the certified orderings therefore survive a spread in
+concordant correctness several times larger than the tolerance we registered, and half do not.
+
+\subsection{Ranks rather than pairs}
+
+Figure~\ref{fig:ranks} reports simultaneous rank intervals under four analyses. Taking the
+leaderboard's verifier as truth gives the tightest intervals and is the status quo. The
+agreement-stratified analysis at $\varepsilon = 0$ widens them, the analysis at
+$\varepsilon = \EpsPrereg$ widens them further, and the analysis without pooling leaves nearly
+every model's rank unresolved across the whole board.
+
+The comparison makes the cost of the published presentation visible. A leaderboard prints a
+rank without an interval, which is equivalent to the first analysis, and the first analysis is
+the one that assumes the verifier is never wrong.
+
+\subsection{Two verifiers or three}
+
+Using only the leaderboard's two scorers, rather than all three, certifies
+\CertKTwoEpsZero{} orderings at $\varepsilon = 0$ and \CertKTwoPrereg{} at the registered
+tolerance, against \CertEpsZero{} and \CertPrereg{} with three. Adding a verifier moves
+responses out of the concordant cells and into the discordant ones, where they are bounded
+more crudely, so a third opinion buys a weaker assumption at the price of a wider bound.
+Neither configuration dominates, and reporting both is the point.
+
+\subsection{Sensitivity}
+
+The conclusions above are unchanged under the alternatives we registered. Scoring
+indeterminate labels as incorrect rather than dropping them, using Clopper--Pearson intervals
+instead of Lemma~\ref{lem:kl}, and substituting a Math-Verify-based human reference for the
+harness routine each move the certified count by a few orderings and change no qualitative
+claim. Appendix~\ref{app:sensitivity} gives the table.
+
+The one substitution that matters is the defective verifier described in
+Section~\ref{sec:data}. Analysed with the string-only comparison it produced, the same audit
+certifies \AnchorStringCombined{} orderings against \AnchorSympyCombined{} with the corrected
+verifier, on the subset where both can be computed.
+
+\subsection{The registered audit}
+
+\textbf{[PENDING: the \AuditBudget{}-label audit registered in Section~\ref{sec:data} has been
+drawn but not yet labelled. On completion this subsection reports the falsification test for
+the \ScreenedModels{} screened models, the certified counts with the new labels included, and
+the observed-versus-projected comparison in Figure~\ref{fig:frontier}. The projection is
+\ProjectedCertPrereg{} certified orderings at $\varepsilon = \EpsPrereg$. No number in this
+subsection may be written before the labels exist.]}

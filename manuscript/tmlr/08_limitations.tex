@@ -1,0 +1,53 @@
+% Limitations and conclusion.
+
+\section{Limitations}
+\label{sec:limitations}
+
+The pooling assumption is not testable at this budget in any strong sense. The registered
+screen covers \ScreenedModels{} of \NumModels{} models and detects a per-model departure of
+\ScreenRho{} with \ScreenPowerPct\% power. Smaller departures, and any departure in the models not
+screened, remain outside its reach. This is why the results are reported as a curve over
+$\varepsilon$ and why the no-pooling analysis is reported next to them.
+
+The human reference is a careful reader's judgement of what a response commits to, not
+mathematical truth. A labeler who transcribes an answer faithfully has not checked whether the
+answer is right; correctness is then decided by the benchmark's own equivalence routine
+against its own reference answer. Errors in those reference answers propagate to every result
+here and to the leaderboard equally.
+
+The three verifiers share a normalisation routine and a symbolic algebra library, so a
+response that defeats that shared machinery can be miscounted by all three at once and land in
+a concordant cell. Such a response would be invisible to the agreement stratification and
+would be caught only by the human labels in the concordant cells, which is one reason the
+registered design spends labels there.
+
+The item-sampling term is asymptotic, and the coverage statement says so. A
+distribution-free version is available and is substantially wider.
+
+Everything is measured on one benchmark, one leaderboard, and a fixed set of published
+generations. The census in Section~\ref{sec:generality} shows how widely the same scoring
+design is used; it does not show how often that design changes a ranking elsewhere.
+
+Finally, the audit labels were produced by a small number of labelers, one of whom is the
+author. The tool records timing and blocks pasting, batches pass an automated gate before use,
+and a subsample is independently re-labelled, but the labels are not crowd-sourced and their
+reliability is measured rather than assumed.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+A leaderboard reports one number per model and names only half of what produced it. The other
+half is a verifier, and on the board studied here the choice of verifier moves the ranking,
+which a published score gives a reader no way to detect.
+
+What a small human audit can do about that is limited and worth stating precisely. It can
+certify part of the ranking, but only under an assumption about how models relate to one
+another where the verifiers agree; without that assumption, this audit certifies
+\CertNoPooling{} of \NumOrderings{} orderings. With it, at the tolerance registered before
+seeing any result, it certifies \CertPrereg{}. The useful output is neither number on its own
+but the curve between them, together with the breakdown value of each ordering.
+
+The practical recommendation is narrow and cheap. A benchmark that reports how often its
+scorer failed to read a response, alongside the score, would let a reader compute the bound in
+Section~\ref{sec:setup} without any audit at all. The count already exists inside the scoring
+pipeline; it is discarded.

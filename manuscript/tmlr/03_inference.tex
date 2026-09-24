@@ -1,0 +1,100 @@
+% Inference: the interval that does not assume equal rates, the sampling term, coverage.
+
+\section{Inference}
+\label{sec:inference}
+
+\subsection{An interval that does not assume the models are alike}
+
+The audit draws labels by stratified sampling without replacement, and the pooled count in a
+concordant cell sums labels from sub-populations whose true rates may differ. A textbook
+binomial interval is exact for a single rate under sampling with replacement, and neither
+condition holds here. Using one anyway would assume, inside the confidence statement, the
+very homogeneity that Assumption~\ref{ass:h} is supposed to make explicit and testable.
+
+We use a bound that survives both departures.
+
+\begin{lemma}[Design-valid pooled bound]
+\label{lem:kl}
+Let $x_c$ be the total number of audited responses credited by the human reference in cell
+$c$, summed over sub-populations, with $n_c$ labels in total and sampling weights
+$w_{gc} = n_{gc}/n_c$. Let $\tilde p_c = \sum_g w_{gc}\, p_{gc}$. Then for every $t > 0$,
+\[
+\Pr\!\left(\frac{x_c}{n_c} \ge \tilde p_c + t\right) \le e^{-n_c \mathrm{KL}(\tilde p_c + t \,\|\, \tilde p_c)},
+\qquad
+\Pr\!\left(\frac{x_c}{n_c} \le \tilde p_c - t\right) \le e^{-n_c \mathrm{KL}(\tilde p_c - t \,\|\, \tilde p_c)} .
+\]
+\end{lemma}
+
+The proof, in Appendix~\ref{app:proofs}, combines two standard facts. Sampling without
+replacement is dominated by sampling with replacement in the sense required for moment
+generating functions, which removes the first difficulty, and the moment generating function
+of a sum of independent Bernoulli variables with different means is bounded by that of a
+single Bernoulli at the weighted mean, which removes the second. Inverting the bound gives an
+interval $[L_c, U_c]$ with coverage at least the nominal level, valid in finite samples, for
+heterogeneous rates, and without replacement.
+
+Clopper--Pearson intervals are tighter, and we report them alongside as a sensitivity.
+They are exact only under assumptions this design does not satisfy, so the headline numbers
+use Lemma~\ref{lem:kl}.
+
+\subsection{Item sampling}
+
+The benchmark's \NumItems{} items are themselves a sample of the questions one might have
+asked. A claim about which model is better in general, rather than on these items, carries a
+second source of uncertainty that the audit cannot reduce. We bound it by a paired argument.
+For a pair of models, let $D_i$ be the difference of their human-reference verdicts on item
+$i$. Then $\mathrm{Var}(D) \le \Pr(D \neq 0)$, and $\Pr(D \neq 0)$ is bounded above by the
+observed rate at which a verifier's verdicts differ between the two models, plus each model's
+maximum possible disagreement with that verifier, both of which the identified range already
+supplies. The resulting half-width is paired, so it exploits the fact that both models answer
+the same items, and it is conservative, because it uses upper bounds rather than estimates.
+
+This term is asymptotic. It rests on a central limit approximation, and we say so rather than
+presenting the combined interval as exact. Appendix~\ref{app:inference} reports a
+distribution-free alternative, which is valid in finite samples and noticeably wider.
+
+\subsection{What is certified, and at what level}
+
+Two sources of error are combined by a union bound, and the two are distinct. The audit
+interval concerns the unknown correctness rates given these responses; the item-sampling term
+concerns generalisation beyond these items. Nothing is counted twice.
+
+Families of claims are controlled explicitly. A statement about one ordering is made at the
+per-ordering level. A statement about the whole board is a statement about \NumOrderings{}
+orderings at once, so the sampling term is widened by a Bonferroni factor over the family, and
+the pooled concordant intervals are shared by every pair, which makes the audit part
+simultaneous automatically. Rank intervals follow: if every certified ordering is correct,
+model $m$'s rank is at least one plus the number of models certified above it and at most the
+total less the number certified below it. We report rank intervals as the family-level object,
+because a reader looking at a leaderboard is reading all the orderings at once, not one.
+
+\begin{proposition}[Coverage]
+\label{prop:coverage}
+Under Assumption~\ref{ass:h}, all audit-only claims hold simultaneously with probability at
+least $1 - \alpha_{\mathrm{audit}}$, exactly in finite samples. Claims that also generalise
+beyond the benchmark's items hold with probability at least
+$1 - \alpha_{\mathrm{audit}} - \alpha_{\mathrm{sample}}$, asymptotically in the number of
+items.
+\end{proposition}
+
+The two halves of that statement are deliberately different in kind, and we do not smooth over
+the difference. The first is a finite-sample guarantee that follows from Lemma~\ref{lem:kl}.
+The second inherits the central limit approximation of the sampling term.
+
+\subsection{Simulation}
+
+Simulation cannot establish a coverage theorem, and we do not use it as one. It checks
+whether the guarantee is attained, and how it degrades when the assumption fails. We simulate
+at the full scale of the board, \NumModels{} models and \NumOrderings{} orderings, with
+\SimReplicates{} replicates per scenario, drawing audits under the real design and the real
+cell structure.
+
+Where Assumption~\ref{ass:h} holds, no certified claim was wrong in any scenario, so the
+procedure attains its stated level and is conservative rather than tight. Where the truth
+carries more heterogeneity than the analysis allows for, the family-wise error rises to
+\SimFwerMisspecified{}, against a nominal \SimWorstFwerUnderH{} observed under a correct
+specification. A world in which every model shares the same underlying rate, so that the
+per-model fractions differ only by chance, pushed the family-wise error to
+\SimFwerPropensityKTwo{} when analysed at $\varepsilon = 0$, and a tolerance of \EpsPrereg{}
+restored it. That last scenario is the quantitative reason the paper does not report
+$\varepsilon = 0$ as a result.

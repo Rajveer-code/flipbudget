@@ -1,0 +1,55 @@
+% Related work. Claims about cited papers must be verified against the papers themselves
+% before submission; see manuscript/tmlr/TODO_CITATIONS.md.
+
+\section{Related work}
+\label{sec:related}
+
+\paragraph{Benchmark validity and benchmark quality.}
+A line of work assesses benchmarks as instruments rather than as leaderboards, asking whether
+a benchmark measures what it claims and whether its construction supports the inferences drawn
+from it \citep{reuel2024betterbench, salaudeen2025measurement}. That work is upstream of this
+one. It asks whether the questions and the construct are right; we take the benchmark as given
+and ask whether the ranking it publishes is identified by its own scoring pipeline. The two
+concerns compound: a benchmark can be a valid instrument and still produce an unidentified
+ranking, and the reverse.
+
+\paragraph{Scoring and answer extraction.}
+That evaluation results move with configuration is documented for prompt format and for
+reproducibility of evaluation pipelines \citep{sclar2023quantifying, biderman2024lessons},
+and several papers propose better extractors, including learned ones
+\citep{yu2024xfinder}. Our claim is not that a better extractor is available.
+It is that no extractor is neutral, that the choice is currently unreported, and that the
+consequence for a ranking can be bounded rather than argued about. A better extractor changes
+the cell structure; it does not remove the need to say what happens when extractors disagree.
+
+\paragraph{Inference for rankings.}
+Rank intervals and simultaneous inference for ordered comparisons are established, and we use
+the standard machinery rather than proposing new estimators; the bounds themselves are
+partial-identification statements in the sense of \citet{manski2003partial}, and the interval
+construction follows the finite-population sampling literature
+\citep{cochran1977sampling, kish1965survey, clopper1934use}. The difference in setting is that
+the usual uncertainty is sampling uncertainty over items, with the score of each item treated
+as observed. Here the score itself is a partially identified quantity, so the interval has two
+sources, and the audit-driven one does not shrink with more items.
+
+\paragraph{Using a cheap signal with a small amount of ground truth.}
+Prediction-powered inference and two-phase sampling designs combine an abundant proxy with a
+small validated sample, which is structurally what an audit does. The verifier is the proxy
+and the human labels are the validation. What differs here is the target and the assumption.
+The target is a set of pairwise orderings subject to a simultaneous guarantee rather than a
+single mean, and the assumption that makes a few hundred labels sufficient is about
+cross-model homogeneity within agreement cells, which is stated as a parameter and varied
+rather than adopted.
+
+\paragraph{Verification bias in diagnostic testing.}
+The structure of the problem is old. When a reference test is applied to a subset selected by
+the index test, naive accuracy is biased, and classical corrections adjust for it. The
+agreement-stratified design here is the multi-rater version of that idea, with the labels
+deliberately allocated to the cells where the raters disagree.
+
+\paragraph{What this paper adds.}
+No estimator here is new. The contribution is the combination: verifier provenance established
+from the leaderboard's own records, agreement stratification across three verifiers, an
+identification result that makes the pooling assumption a reported parameter with a breakdown
+value per ordering, a design that allocates labels between certifying and testing that
+assumption, and a released audit.

@@ -18,3 +18,10 @@ manuscript/latex/*.fdb_latexmk
 manuscript/latex/*.synctex.gz
 
 PLAN_AISTATS2027.md
+manuscript/tmlr/*.aux
+manuscript/tmlr/*.log
+manuscript/tmlr/*.out
+manuscript/tmlr/*.bbl
+manuscript/tmlr/*.blg
+manuscript/tmlr/*.fls
+manuscript/tmlr/*.fdb_latexmk
