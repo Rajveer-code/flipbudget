@@ -1,0 +1,42 @@
+% Draft abstract for the TMLR resubmission. All numbers are macros.
+
+\title{Which Leaderboard Orderings Survive a Human Reader?}
+
+\begin{abstract}
+A benchmark score is produced by a model and by a verifier that decides what answer the
+model's text contains. Only the model is named in the leaderboard. We ask what happens to a
+published ranking when a human reader, rather than a string matcher, decides what each
+response says.
+
+On the Open LLM Leaderboard's MATH-Hard board, we read all \NumRows{} published responses
+from \NumModels{} models with three verifiers: the leaderboard's original 2024 scorer, the
+verifier behind its February 2025 re-scoring, and a boxed-answer extractor following the
+benchmark's own reference convention. Re-executing the scoring function recorded in the
+leaderboard's result files reproduces its published per-item verdicts on \EmReexecItems{} of
+\EmReexecItems{} responses, which establishes the identity of the published verifier from
+records rather than from agreement. The three verifiers disagree on \RowsAnyDisagree{}
+responses, and those responses are where the ranking is decided.
+
+Certifying a ranking from a few hundred human labels requires pooling across models, and
+pooling requires an assumption about how far the models may differ where the verifiers agree.
+We state that assumption as a single parameter $\varepsilon$, derive an identified range for
+each pairwise difference under it, and report certified orderings as a function of
+$\varepsilon$ instead of at one chosen value. Of \NumOrderings{} pairwise orderings,
+\CertEpsZero{} are certified under exact homogeneity, \CertPrereg{} at the tolerance we
+registered before seeing results, and \CertNoPooling{} with no pooling at all. The audit
+bounds are design-valid without assuming equal rates across models, and simulation at the
+full \NumModels{}-model scale confirms the stated coverage where the assumption holds and
+shows it failing where it does not.
+
+Two provenance findings shape what can be claimed. The leaderboard changed its own MATH
+verifier in February 2025, so the per-item verdicts it publishes and the scores it displays
+come from different scorers. And our own boxed verifier was silently degraded by a
+platform-specific defect that reduced symbolic equivalence to string comparison; correcting
+it moves the count of disagreeing responses on our earlier subset from
+\DisagreeSbEmSeventeenString{} to \DisagreeSbEmSeventeen{}. We report the corrected analysis
+together with the defect that produced the earlier numbers.
+
+We release the human labels, the per-cell census of all \NumRows{} responses, the three
+verifier configurations with their shared components stated explicitly, and the code that
+regenerates every number in this paper.
+\end{abstract}
