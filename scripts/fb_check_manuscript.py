@@ -17,7 +17,12 @@ LATEX = {"Section", "Sections", "Figure", "Table", "Appendix", "The", "A", "An",
          "This", "It", "If", "At", "Of", "On", "Every", "Because", "Human", "Three", "Two",
          "Nothing", "Once", "What", "First", "Second", "Finally", "Level", "Open", "LLM",
          "Leaderboard", "MATH", "Windows", "Unix", "February", "Great", "Kathy", "Final",
-         "Math", "Verify", "TMLR"}
+         "Math", "Verify", "TMLR",
+         # standard LaTeX/math control sequences, not macros of ours
+         "Delta", "Pr", "Consequently", "Suppose", "Stratifying", "Each", "Equation",
+         "Tight", "Reporting", "Every", "Writing", "For", "Let", "Fix", "Under", "Because",
+         "Exact", "Substituting", "Whenever", "Appendix", "Assumption", "Proposition",
+         "Definition", "Section", "Table"}
 ALLOWED_DIGITS = {
     "2024", "2025",  # dated events (the leaderboard's own scoring eras)
     "400",           # the size of the pre-existing audit, fixed by its own preregistration
@@ -25,6 +30,9 @@ ALLOWED_DIGITS = {
     "0",             # mathematical values such as eps = 0, not results
     "5",             # "Level-5", the benchmark's own subset name
     "22",            # verbatim quoted data in the opening example, reproduced from the response
+    "000", "111",    # cell labels (verdict strings), not counts
+    "0,1",           # the unit interval
+    "2",             # exponents and pair subscripts in mathematics
 }
 
 

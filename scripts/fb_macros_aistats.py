@@ -49,6 +49,8 @@ def main():
         ("NumModels", len(cov["models_kept"]), "coverage_table.json: models_kept"),
         ("NumItems", cert["config"]["n_items"], "certify_results.json: config.n_items"),
         ("NumOrderings", len(K3["eps0_pairs"]), "certify_results.json: K3.eps0_pairs"),
+        ("NumVerifiers", len(K3["inputs"]["cells"][0]), "certify_results.json: K3.inputs.cells (cell width)"),
+        ("NumCells", len(K3["inputs"]["cells"]), "certify_results.json: K3.inputs.cells"),
         ("NumRows", len(rows), "census_k3.json.gz: rows"),
         ("MissingRows", sum(v["n_missing"] for v in cov["per_model"].values()), "coverage_table.json: per_model"),
         ("CommonItems", cov["n_common_items"], "coverage_table.json: n_common_items"),

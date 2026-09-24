@@ -1,0 +1,157 @@
+% Setup and identification. Statements here; proofs in the appendix.
+% Writing rules as in 01_introduction.tex. Numbers only via macros.
+
+\section{Setup and identification}
+\label{sec:setup}
+
+\subsection{What is fixed, what is observed, and what is unknown}
+
+The benchmark is fixed. It consists of \NumItems{} items, each with a reference answer, and
+for each of \NumModels{} models the leaderboard publishes one response per item. No model is
+run again in this paper, and no response is regenerated. Everything below is a statement about
+those published responses.
+
+A \emph{verifier} is a function that reads a response and the reference answer and returns
+either $1$, meaning the response should be credited, or $0$. A verifier has two parts that
+can each fail. It extracts a candidate answer from free text, and it decides whether that
+candidate is equivalent to the reference. The first part fails when a response states its
+answer in a form the extraction rule does not recognise, and a response whose answer cannot
+be extracted is scored $0$, which is the same value a wrong answer receives.
+
+We apply $K = \NumVerifiers$ verifiers to every response, so each response carries a vector of
+$K$ verdicts and falls into one of $\NumCells$ \emph{cells}. We write a cell as the string of
+verdicts in a fixed order, so that cell $111$ contains the responses every verifier credits
+and cell $000$ contains the responses no verifier credits. We call those two cells
+\emph{concordant} and the remaining cells \emph{discordant}. Table~\ref{tab:cells} gives the
+sizes.
+
+The \emph{human reference} $Y^*$ is defined for every response, although it is observed only
+for audited ones. A labeler reads the response, without seeing the reference answer or any
+verifier's verdict, and transcribes the final answer the response states, exactly as written.
+A labeler who finds no final answer records \textsc{none}, and a labeler who finds two
+different final answers both presented as final records \textsc{contradictory}. We then set
+$Y^* = 1$ when that transcription matches the reference answer under the benchmark's own
+equivalence routine, and $Y^* = 0$ otherwise, counting \textsc{none} and \textsc{contradictory}
+as $0$. Section~\ref{sec:sensitivity} reports what changes when they are dropped instead.
+
+Two quantities follow. The first is the \emph{cell share} $s_{mc}$, the fraction of model
+$m$'s responses lying in cell $c$. Shares are computed from all \NumRows{} responses and are
+known exactly, with no sampling error, because every response is read by every verifier. The
+second is $p_{mc}$, the fraction of model $m$'s responses in cell $c$ that the human reference
+credits. These are the unknowns. Each model's accuracy under the human reference is
+\begin{equation}
+A_m \;=\; \sum_{c} s_{mc}\, p_{mc},
+\label{eq:accuracy}
+\end{equation}
+and the quantity a ranking claim is about is the pairwise difference
+$\Delta_{jk} = A_j - A_k$.
+
+\subsection{Why the audit alone does not identify the ranking}
+
+Equation~\eqref{eq:accuracy} is linear in the unknown $p_{mc}$, and the coefficients are
+known. If every $p_{mc}$ were known, every ordering would follow. An audit estimates them
+from a sample, and a sample of a few hundred labels spread over \NumModels{} models and
+$\NumCells$ cells leaves most $(m,c)$ pairs with no labels at all.
+
+For a cell with no labels, the only honest statement about $p_{mc}$ is that it lies in
+$[0,1]$. Substituting that into~\eqref{eq:accuracy} for both models gives a range for
+$\Delta_{jk}$ whose width is the combined share of the unaudited cells. Whenever that width
+exceeds the observed gap between two models, the ordering is not identified, and no amount of
+statistical machinery applied to the audited cells changes it. This is why the analysis is
+organised around cells rather than around models: the discordant cells are small, so bounding
+them crudely is affordable, while the concordant cells are large, so they must be bounded
+tightly or nothing is identified.
+
+\subsection{The pooling assumption}
+
+Tight bounds on the concordant cells require pooling labels across models, and pooling is an
+assumption rather than a measurement. We state it as a single parameter.
+
+\begin{assumption}[Bounded heterogeneity, $H(\varepsilon)$]
+\label{ass:h}
+For each concordant cell $c$, the values of $p_{gc}$ across the audit sub-populations $g$ that
+make up that cell lie in an interval of width at most $\varepsilon$.
+\end{assumption}
+
+A sub-population is a model, or a model crossed with a design stratum where the audit design
+was stratified more finely. Assumption~\ref{ass:h} restricts how far models may differ from
+each other in the cells where the verifiers agree. It says nothing about the level. The
+rate at which a human reader overrules a set of agreeing verifiers may be high or low, and the
+audit estimates it; $\varepsilon$ bounds only the spread.
+
+Exact homogeneity, $\varepsilon = 0$, is stronger than it looks. Each $p_{gc}$ is a fraction
+over finitely many responses, so if the underlying rate is strictly between zero and one, two
+sub-populations of finite size will differ by chance alone. $H(0)$ can hold exactly only when
+the rate is zero or one. We therefore report certified orderings as a function of
+$\varepsilon$, mark the tolerance $\varepsilon = \EpsPrereg$ that we registered before seeing
+any result, and treat $\varepsilon = 0$ as the upper end of a curve rather than as an estimate.
+
+\subsection{The identified range}
+
+Let $[L_c, U_c]$ be a confidence interval for the pooled correctness in concordant cell $c$,
+constructed in Section~\ref{sec:inference} so that it is valid without assuming the models
+share a common rate. For a discordant cell, let $[l_{mc}, u_{mc}]$ be a per-model interval,
+which is $[0,1]$ when that cell has no labels for that model.
+
+\begin{proposition}[Identified range]
+\label{prop:range}
+Fix a pair $(j,k)$ and a concordant cell $c$. Under Assumption~\ref{ass:h} and on the event
+$p_{c} \in [L_c, U_c]$, the pair $(p_{jc}, p_{kc})$ lies in
+\[
+R_c(\varepsilon) \;=\; \bigl\{ (x,y) \in [\ell_c, h_c]^2 \;:\; |x - y| \le \varepsilon \bigr\},
+\qquad \ell_c = \max(0, L_c - \varepsilon), \quad h_c = \min(1, U_c + \varepsilon).
+\]
+Consequently $\Delta_{jk}$ lies in an interval whose endpoints are obtained by minimising and
+maximising~\eqref{eq:accuracy} separately in each cell, and for a concordant cell with shares
+$a = s_{jc}$ and $b = s_{kc}$ the minimum of $a x - b y$ over $R_c(\varepsilon)$ equals
+$a\ell_c - b\min(h_c, \ell_c + \varepsilon)$ when $a \ge b$, and
+$a\max(\ell_c, h_c - \varepsilon) - b h_c$ otherwise.
+\end{proposition}
+
+At $\varepsilon = 0$ the region collapses to the diagonal, $p_{jc} = p_{kc}$, which is the
+pooled analysis; the range is then sharp. For $\varepsilon > 0$ the region is an outer bound,
+because the weights with which $j$ and $k$ enter the pooled estimate constrain the attainable
+configurations slightly more than $R_c(\varepsilon)$ does. Using the outer bound is
+conservative in the direction that matters: it can only widen the reported range, never narrow
+it. Appendix~\ref{app:proofs} proves the proposition and the closed form, and
+Appendix~\ref{app:tests} checks both against brute-force enumeration.
+
+\subsection{Certification and breakdown}
+
+An ordering $j \succ k$ is \emph{certified} at $\varepsilon$ when the identified range for
+$\Delta_{jk}$, widened by the sampling term of Section~\ref{sec:inference}, lies entirely
+above zero. Certification is monotone in $\varepsilon$, since $R_c(\varepsilon)$ grows with
+$\varepsilon$, which makes the following well defined.
+
+\begin{definition}[Breakdown value]
+\label{def:breakdown}
+$\varepsilon^*_{jk}$ is the largest $\varepsilon$ at which the ordering $j \succ k$ remains
+certified.
+\end{definition}
+
+The breakdown value answers the question a skeptical reader should ask, which is not whether
+an ordering is certified but how much cross-model heterogeneity it would take to overturn it.
+Reporting $\varepsilon^*$ per ordering makes the dependence on Assumption~\ref{ass:h} a
+measured quantity rather than a caveat. Because the range in Proposition~\ref{prop:range} is
+an outer bound for $\varepsilon > 0$, each $\varepsilon^*_{jk}$ is a lower bound on the true
+breakdown value, so the reported robustness is understated rather than overstated.
+
+\subsection{Why more than one verifier is needed}
+
+Stratifying on a single verifier does not help, and the reason is worth stating because it
+explains the design.
+
+\begin{proposition}[A common error mechanism cannot reorder]
+\label{prop:oneverifier}
+Suppose one verifier is used, and suppose its predictive values are common to all models, so
+that $\Pr(Y^* = 1 \mid v = 1) = \pi_1$ and $\Pr(Y^* = 1 \mid v = 0) = \pi_0$ regardless of $m$.
+Then $\Delta_{jk} = (\pi_1 - \pi_0)(a_j - a_k)$, where $a_m$ is the rate at which the verifier
+credits model $m$.
+\end{proposition}
+
+Every pairwise difference is scaled by one common factor. A common error mechanism therefore
+cannot produce a reordering of one pair while leaving another intact; its only global effect
+is to reverse every ordering at once, when $\pi_1 < \pi_0$. Pair-specific reversals, which we
+observe, require the mechanism to differ across models. Pooling under a single verifier
+assumes away exactly the phenomenon under study, whereas pooling restricted to the cells where
+independent verifiers agree leaves the disagreement cells free to be model-specific.
