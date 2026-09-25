@@ -1,80 +1,121 @@
 # flipbudget
 
-**What can a small human audit establish about a leaderboard ranking?**
-Verifier agreement, a breakdown analysis, and audit design (MATH-Hard, Open LLM Leaderboard v2).
+**Which leaderboard orderings survive a human reader?**
 
-**Status (2026-09-19): re-founded twice, on the evidence.** (1) A core
-estimand error was found and corrected (`CORE_ESTIMAND_AUDIT.md`): a
-verifier-stratified audit identifies q = P(wrong | credited) and
-r = P(right | rejected), not error rates. (2) A final re-audit (`REAUDIT.md`)
-found that the corrected single-verifier result (the audit certifies almost
-no ranking) reflects audit size, and that the data support a stronger,
-different thesis. All earlier headline numbers are withdrawn; their scripts
-stay as an audit trail. No new human labels are needed for the paper's
-claims.
+A leaderboard reports one accuracy per model and names only half of what produced it. The
+other half is a verifier — the code that reads a free-text response and decides whether it
+answered the question. On the Open LLM Leaderboard v2's MATH-Hard results, the choice of
+verifier moves the ranking, and a published score gives a reader no way to detect it.
 
-## Findings
+This repository bounds which pairwise orderings survive when no verifier is taken as truth,
+using a small human audit and a stated assumption about how models differ where the verifiers
+agree. Every ordering carries a breakdown value: the amount of cross-model heterogeneity it
+would take to overturn it.
 
-- The harness's two verifiers (`exact_match`, `score_boxed`) disagree on
-  3.63% of 22,508 responses and reverse 7 orderings that each reports as
-  statistically clear.
-- A 400-item human audit used per model with one verifier certifies 0 of 136
-  orderings once sampling error is included.
-- Where both verifiers agree, the human reference disagrees with them on 1 of
-  287 audited responses; the remaining error, including all model-specific
-  error, is in the disagreements.
-- Stratifying on the joint verifier outcome, the same audit certifies 84 of
-  the 118 orderings sampling error permits, but only if verifier agreement is
-  equally reliable across models. That assumption carries the result:
-  allowing per-model concordant error up to 2x the pooled bound leaves 43, 5x
-  leaves 7, no pooling leaves 0 (STRESS_TEST.md). Next: AISTATS 2027 plan in
-  PLAN_AISTATS2027.md (local, gitignored).
+**Status (2026-09-25):** TMLR resubmission draft complete except for one results subsection
+that is waiting on human labels. See `PLAN_TMLR_RESUBMIT.md` for the gates and
+`TASKS_REMAINING.csv` for what is open.
+
+## What the data say
+
+- 27 models, 1,324 Level-5 MATH items, 35,748 published responses, read by three verifiers.
+  No model dropped, no response regenerated.
+- The three verifiers disagree on 1,159 responses. That small fraction is the part that
+  decides the ranking.
+- Verifier provenance is established from the leaderboard's own records rather than inferred:
+  re-executing the scoring function recorded in the result files reproduces the published
+  verdict on 35,748 of 35,748 responses.
+- The leaderboard re-scored its MATH results with a different verifier in February 2025 and
+  left the per-item verdict files untouched, so it currently displays scores from one verifier
+  and publishes item-level verdicts from another.
+- Of 351 pairwise orderings, the audit certifies 153 at exact homogeneity and 131 at the
+  tolerance registered before any result was seen. Without the pooling assumption it certifies
+  0. The useful output is the curve between them.
+
+## The argument
+
+Accuracy under a human reference is a sum over verifier-agreement cells of a known share times
+an unknown correctness rate. A few hundred labels cannot identify those rates, so the paper
+bounds them instead, and reports what the bounds do to the ranking rather than to the score.
+
+The one assumption that does real work is stated as a single parameter: within a cell where
+the verifiers agree, models' correctness rates lie in an interval of width at most ε. Results
+are reported as a function of ε, with ε = 0 treated as the end of a curve rather than an
+estimate, because a simulation at full board scale shows exact homogeneity is unattainable —
+finite sub-populations differ by chance alone.
 
 ## What's here
 
 | Path | What it is |
 |---|---|
-| `manuscript/latex/` | Paper source; `numbers.tex` and `tab_*.tex` are generated, never hand-edited |
-| `CORE_ESTIMAND_AUDIT.md` | Derivation, simulation, real-data re-analysis, theorem-by-theorem consequences of the estimand correction |
-| `CLAIM_LEDGER.md` | Every number in the paper traced to its JSON key and script |
-| `REAUDIT.md` | Final re-audit: construct validity, why the single-verifier result is weak, joint-verifier design, 458 decision, prior-art matrix, venue verdict |
-| `PLAN_REBUILD.md` | Rebuild plan and progress |
-| `src/flipbudget/pv.py` | The estimator for verifier-stratified audits (tested) |
-| `scripts/fb_rebuild_analysis.py` | Single entry point for the paper's numbers |
-| `TC_EXPANSION_PREREGISTRATION.md` | Audit designs; Amendment 1 (estimand error), Amendment 2 (disagreement-targeted redesign, sheet `labeling/audit_v2_l1.csv`) |
-| `provenance/excluded_labeling_attempts/` | Excluded label submissions and the checks that excluded them |
+| `manuscript/tmlr/` | The paper. `macros.tex`, `tables.tex` and `sensitivity_table.tex` are generated, never hand-edited |
+| `src/flipbudget/certify.py` | The certification machinery: KL intervals, identified ranges, breakdown values, rank intervals |
+| `src/flipbudget/verifiers.py` | The three verifiers and the human-reference routine |
+| `THEORY_CERTIFICATION.md` | The derivations the paper's appendix transcribes |
+| `CLAIM_LEDGER_AISTATS.md` | Every macro in the paper traced to the result file and key it came from |
+| `PLAN_TMLR_RESUBMIT.md` | Gates, and an open defect found while proving the coverage result |
+| `TASKS_REMAINING.csv`, `MASTER_PROMPT.md` | What is finished, what is not, and what not to redo |
+| `TC_EXPANSION_PREREGISTRATION.md` | The registered audit design, with Amendments 4 and 5 |
+| `VALIDATION_RELABEL.md` | Preregistered criteria for the label-provenance check |
+| `labeling/` | The sheets, the instrumented labelling app, and `LABELING_MASTER_PROMPT.md` |
+| `provenance/excluded_labeling_attempts/` | Label submissions that failed the quality gate, and the checks that excluded them |
+
+## Two findings about this repository's own code
+
+A verifier here was silently degraded for the whole of its earlier life: its symbolic
+equivalence check guarded itself with a timer available only on Unix, the guard raised on
+Windows, a broad handler swallowed it, and the function returned "not equivalent" for every
+call. Every verdict it had produced was a string comparison. The paper reports this, because
+it is the paper's own argument turned on its author — a verifier that fails silently produces
+a plausible number and nothing in the output says otherwise.
+
+Separately, a preregistered falsification rule turned out to be self-defeating: a model's own
+labels inflated the pooled bound it was tested against, so a model with a 40% error rate would
+not have been rejected. Amendment 5 replaced it with a leave-one-out pool, written before any
+label for it existed.
 
 ## Reproduce
 
 ```bash
 pip install -e ".[dev]"
-pytest tests/
-python scripts/fb_rebuild_analysis.py 1000   # results/flipbudget/rebuild_results.json
-python scripts/fb_core_estimand_audit.py     # simulation + estimand audit
-python scripts/fb_rebuild_figures.py
-python scripts/fb_rebuild_numbers.py         # manuscript/latex/numbers.tex, tab_*.tex
 ```
 
-`python scripts/fb_reproduce_all.py` runs the full pipeline, including the
-historical scripts kept for the audit trail.
-
-## Library
-
-```python
-from flipbudget import pv
-lo, hi = pv.accuracy_interval(a, pv.wilson(x_q, n_q) + pv.wilson(x_r, n_r))
+```bash
+pytest -q
 ```
 
-`flipbudget.corrected_interval` estimates error rates conditional on truth
-and is valid only for a simple random audit; for audits drawn within the
-verifier's strata use `flipbudget.pv`.
+Full regeneration, in order:
 
-## Provenance
+```bash
+python scripts/fb_certify.py && python scripts/fb_figures_aistats.py && python scripts/fb_test_census.py && python scripts/fb_macros_aistats.py && python scripts/fb_tables_tmlr.py && python scripts/fb_check_manuscript.py
+```
 
-The 400-item human audit (`results/analysis/mathhard_labelling_key.json`) is
-shared with a concurrent manuscript by the same author under review at TMLR;
-the overlap is disclosed in the paper's Related Work.
+Build the paper:
 
-## License
+```bash
+cd manuscript/tmlr && latexmk -g -pdf -interaction=nonstopmode main.tex
+```
 
-See `LICENSE`.
+## How numbers get into the paper
+
+No number is typed into prose. Each one enters as a LaTeX macro generated by
+`scripts/fb_macros_aistats.py` from a committed result file, and
+`scripts/fb_check_manuscript.py` fails the build if a number is typed directly or a macro is
+undefined. A `.tex` file is exempt from that check only if its first line declares it
+generated. `CLAIM_LEDGER_AISTATS.md` lists every macro with its value and its source.
+
+The test suite holds 880 checks. They compare the implementation against independent
+computation, compare the formulas as printed in the manuscript against the implementation, and
+hold a regression anchor that reproduces previously published counts from the current data
+pipeline.
+
+## Human labels
+
+No automated tool generates, pre-fills, completes or cleans any label. Labelling happens in an
+offline app that blocks pasting, times every item, and hashes its export; each batch passes an
+automated quality gate before it is used, and batches that fail are excluded and kept in the
+record. `labeling/LABELING_MASTER_PROMPT.md` is the instruction sheet.
+
+## Author
+
+Rajveer Singh Pall — rajveerpall04@gmail.com
