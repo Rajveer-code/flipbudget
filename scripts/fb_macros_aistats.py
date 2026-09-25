@@ -38,6 +38,8 @@ def main():
     op = json.load(open(RES / "g3_operating_point.json", encoding="utf-8"))
     imp = json.load(open(RES / "g1_semantics_impact.json", encoding="utf-8"))
     tests = json.load(open(RES / "test_census.json", encoding="utf-8"))
+    sens = cert["K3"]["sensitivity"]
+    m17 = amap["models17"]
     HC = ROOT / "results" / "harness_census"
     prev = {r[0]: r for r in json.load(open(HC / "prevalence.json", encoding="utf-8"))["rows"]}
     light = json.load(open(HC / "census_lighteval.json", encoding="utf-8"))
@@ -129,6 +131,28 @@ def main():
         ("TestsManuscriptClaims", tests["named"]["manuscript_claims"],
          "test_census.json: named.manuscript_claims"),
         ("TestsAnchor", tests["named"]["regression_anchor"], "test_census.json: named.regression_anchor"),
+        # registered sensitivity analyses (appendices D and E)
+        ("SensMvCombined", sens["mv_reference"]["combined"],
+         "certify_results.json: K3.sensitivity.mv_reference.combined"),
+        ("SensMvCorrectRejectAll", sens["mv_reference"]["audit_pooled"]["000"]["x_correct"],
+         "certify_results.json: K3.sensitivity.mv_reference.audit_pooled.000"),
+        ("SensMvCorrectAgreeAll", sens["mv_reference"]["audit_pooled"]["111"]["x_correct"],
+         "certify_results.json: K3.sensitivity.mv_reference.audit_pooled.111"),
+        ("SensDropCombined", sens["indeterminate_dropped"]["combined"],
+         "certify_results.json: K3.sensitivity.indeterminate_dropped.combined"),
+        ("SensDropNRejectAll", sens["indeterminate_dropped"]["audit_pooled"]["000"]["n"],
+         "certify_results.json: K3.sensitivity.indeterminate_dropped.audit_pooled.000"),
+        ("SensStringCombined", sens["string_semantics"]["combined"],
+         "certify_results.json: K3.sensitivity.string_semantics.combined"),
+        ("SensStringNAgreeAll", sens["string_semantics"]["audit_pooled"]["111"]["n"],
+         "certify_results.json: K3.sensitivity.string_semantics.audit_pooled.111"),
+        ("SensCpCombined", sens["clopper_pearson"]["combined"],
+         "certify_results.json: K3.sensitivity.clopper_pearson.combined"),
+        ("SensCpPrereg", sens["clopper_pearson"]["combined_eps0"][1],
+         "certify_results.json: K3.sensitivity.clopper_pearson.combined_eps0"),
+        ("SensSeventeenCombined", sens["models17"]["combined"],
+         "certify_results.json: K3.sensitivity.models17.combined"),
+        ("NumOrderingsSeventeen", len(m17) * (len(m17) - 1) // 2, "audit_k3_map.json: models17"),
         # audit design
         ("AuditBudget", op["budget"], "g3_operating_point.json: budget"),
         ("ScreenedModels", op["F"], "g3_operating_point.json: F"),

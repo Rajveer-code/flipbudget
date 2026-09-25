@@ -483,8 +483,109 @@ compared against nominal with that in mind.
 
 \section{Sensitivity analyses}
 \label{app:sensitivity}
-\textbf{[TO WRITE: the registered sensitivity table from \texttt{certify\_results.json}.]}
+
+The analyses in this appendix were fixed before any result was seen, and each one re-runs the
+whole pipeline with a single element replaced rather than recomputing the headline numbers a
+different way. Table~\ref{tab:sensitivity} reports them, with the pooled audit counts each
+configuration produces alongside the orderings it certifies, because the counts are what the
+certification is downstream of and reporting only the certified number would hide where a
+movement came from.
+
+\input{sensitivity_table}
+
+Three things in the table are worth pointing at.
+
+The choice of interval matters less than the choice of reference. Replacing the design-valid
+bound of Lemma~\ref{lem:kl} with Clopper--Pearson, which is tighter but exact only under
+assumptions this design does not satisfy, moves the certified count from \CertEpsZero{} to
+\SensCpCombined{} at $\varepsilon = 0$, and at the registered tolerance the two agree exactly
+at \CertPrereg{}. That is the useful form of the statement. The headline conclusions do not
+depend on having used the conservative interval, so the conservative one is used because it is
+the valid one here, not because the result needs it.
+
+The largest movement comes from the routine that decides the human reference, and
+Appendix~\ref{sec:sensitivity} takes that apart rather than leaving it as a row.
+
+The last row is a different question from the others. It restricts the board to the models
+analysed in earlier work, so its counts are out of \NumOrderingsSeventeen{} orderings rather
+than \NumOrderings{} and cannot be compared down the column;
+\SensSeventeenCombined{} of \NumOrderingsSeventeen{} is a larger share than \CertEpsZero{} of
+\NumOrderings{}. It is in the table because it is the configuration the regression anchor of
+Appendix~\ref{app:tests} reproduces, and because a reader comparing this paper against the
+earlier numbers should be able to find the bridge.
+
+What none of these rows do is vary Assumption~\ref{ass:h}. They vary the analysis applied to
+a fixed assumption. The assumption itself is varied by the $\varepsilon$ curve of
+Figure~\ref{fig:eps} and summarised per ordering by the breakdown value, and that is the
+sensitivity analysis the paper is actually built around. The rows here answer the narrower
+question of whether a defensible alternative choice inside the pipeline would have produced a
+different story, and none of them does.
 
 \section{Sensitivity to the human reference routine}
 \label{sec:sensitivity}
-\textbf{[TO WRITE: string, harness and Math-Verify references compared.]}
+
+Section~\ref{sec:setup} defines the human reference in two steps, and only the first is
+human. A labeler transcribes the final answer a response commits to. That transcription is
+then compared against the benchmark's own reference answer by an equivalence routine, and
+$Y^*$ is whatever the routine returns. The routine is a choice, and since the whole paper is
+about scoring choices being invisible, ours should not be.
+
+The primary analysis uses the benchmark harness's own routine, the same symbolic comparison
+the leaderboard applies to its own reference solutions. The argument for it is not that it is
+the best available. It is that the question being asked is whether a response would have been
+credited had a reader, rather than an extractor, decided what the response says; holding the
+equivalence step fixed at the benchmark's own routine isolates the extraction step, which is
+the thing under study.
+
+\paragraph{A different equivalence routine.}
+Deciding $Y^*$ with Math-Verify instead credits \SensMvCorrectRejectAll{} audited response in
+the cell where no verifier credits, against \AuditCorrectRejectAll{} under the harness routine,
+and \SensMvCorrectAgreeAll{} of \AuditNAgreeAll{} in the cell where all three credit, against
+\AuditCorrectAgreeAll{}. Both differences push the bounds the same way, and the certified
+count falls from \CertEpsZero{} to \SensMvCombined{}.
+
+The size of that movement, from so few labels, is the point rather than a nuisance. The cell
+where no verifier credits holds \CellRejectAll{} responses. A single audited response credited
+there raises the upper end of that cell's interval, and the interval is multiplied by a share
+close to one when it enters Equation~\eqref{eq:accuracy}. Leverage, not label count, is what
+makes the reference routine the most consequential choice in the pipeline, and it is the same
+leverage that makes the concordant cells worth spending labels on in
+Section~\ref{sec:data}.
+
+\paragraph{String comparison.}
+The third row of the same family is reported in Table~\ref{tab:sensitivity} and should be read
+with care, because it is not a one-factor change. The boxed verifier and the reference routine
+share a normalisation and equivalence implementation, so switching to string comparison
+changes which cell a response falls into as well as how its transcription is judged. The
+label counts move accordingly: the cell where all three verifiers credit holds
+\SensStringNAgreeAll{} audited responses rather than \AuditNAgreeAll{}. Certification falls to
+\SensStringCombined{}. We report the row because it is the configuration under which the
+earlier results were produced, and we do not attribute the movement to the reference routine
+alone.
+
+\paragraph{Responses with no answer, and responses with two.}
+A labeler who finds no final answer records \textsc{none}, and one who finds two answers both
+presented as final records \textsc{contradictory}. The primary analysis counts both as
+incorrect. The alternative is to drop them, which reduces the audited labels in the cell where
+no verifier credits from \AuditNRejectAll{} to \SensDropNRejectAll{} and moves the certified
+count from \CertEpsZero{} to \SensDropCombined{}.
+
+That the two agree so closely is worth explaining rather than presenting as reassurance.
+Dropping the indeterminates removes labels without removing any credited response, so the
+numerator stays at its floor while the denominator shrinks; the interval widens slightly and
+nothing else moves. The choice would matter more in a cell where indeterminate responses were
+a large share of the credited ones, and the design does not guarantee that they never are.
+
+The reason the primary analysis counts them as incorrect is not statistical convenience. Every
+verifier in the pipeline scores a response with no extractable final answer as zero, and the
+comparison the paper is making is against what the leaderboard reports. Dropping such
+responses would compare against a quantity no leaderboard computes. Section~\ref{sec:setup}
+states this as a definition rather than burying it here, because it is a modelling choice and
+not a detail.
+
+\paragraph{What none of this settles.}
+Every row above holds the benchmark's reference answers fixed. An error in a reference answer
+propagates identically through the primary analysis and through all of its alternatives, and
+no sensitivity analysis run inside the pipeline can detect it.
+Section~\ref{sec:limitations} says so plainly, and it remains the largest thing this design
+does not check.
