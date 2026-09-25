@@ -22,7 +22,9 @@ LATEX = {"Section", "Sections", "Figure", "Table", "Appendix", "The", "A", "An",
          "Delta", "Pr", "Consequently", "Suppose", "Stratifying", "Each", "Equation",
          "Tight", "Reporting", "Every", "Writing", "For", "Let", "Fix", "Under", "Because",
          "Exact", "Substituting", "Whenever", "Appendix", "Assumption", "Proposition",
-         "Definition", "Section", "Table"}
+         "Definition", "Section", "Table",
+         # delimiter sizing used in the appendix proofs
+         "Bigl", "Bigr"}
 ALLOWED_DIGITS = {
     "2024", "2025",  # dated events (the leaderboard's own scoring eras)
     "400",           # the size of the pre-existing audit, fixed by its own preregistration
@@ -33,6 +35,8 @@ ALLOWED_DIGITS = {
     "000", "111",    # cell labels (verdict strings), not counts
     "0,1",           # the unit interval
     "2",             # exponents and pair subscripts in mathematics
+    "1,0,1",         # the support of the paired difference D, from the appendix proofs
+    "4",             # Hoeffding's Theorem 4, cited by number in the appendix proofs
 }
 
 

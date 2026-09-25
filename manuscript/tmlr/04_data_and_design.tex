@@ -5,7 +5,7 @@
 
 \subsection{The board}
 
-We use the Open LLM Leaderboard's \citep{openllmleaderboard} MATH-Hard
+We use the Open LLM Leaderboard's \citep{openllmleaderboard, fourrier2024openllm} MATH-Hard
 \citep{hendrycksmath2021} results: \NumModels{} models, \NumItems{}
 Level-5 items across seven subjects, and the generations the leaderboard itself published,
 read from its per-model result repositories. Every model has a response for every item, so
@@ -21,7 +21,8 @@ scoring function that ran, and re-executing that function reproduces the publish
 sentence pattern and compares symbolically.
 
 The second is Math-Verify, the verifier behind the re-scoring the leaderboard applied to its
-MATH results in February 2025. The re-scoring rewrote the published scores while leaving the
+MATH results in February 2025 \citep{kydlicek2025fixing}. The re-scoring rewrote the published
+scores while leaving the
 per-item verdict files untouched, so the leaderboard currently displays scores from one
 verifier and publishes item-level verdicts from another. Running Math-Verify ourselves
 reproduces the re-scored published aggregates in \MvAggregateMatch{} of

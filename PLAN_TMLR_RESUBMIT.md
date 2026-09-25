@@ -54,10 +54,35 @@ agreement relates to cross-model correctness, which we state, quantify, and test
   - A taxonomy of extraction failures with real examples, not a single rate.
   - Output-format adherence depends on instruction tuning, decoding and prompting; the
     leaderboard's generations are fixed, and the design choice under study is the harness's.
-- [ ] **G4 — Related work.** Engage BetterBench (Reuel et al., NeurIPS 2024) and M2M
+- [x] **G4 — Related work.** Engage BetterBench (Reuel et al., NeurIPS 2024) and M2M
   (Salaudeen et al., arXiv 2505.10573), plus the benchmark-validity, prediction-powered
   inference and rank-interval lines. Verify every claim attributed to a cited work by reading
   it.
+  - 2026-09-25: `manuscript/tmlr/07_related.tex` rewritten in nine paragraphs. Partial
+    identification (Horowitz & Manski 1995, Molinari 2008, Chen et al. 2026), design
+    sensitivity (Rosenbaum 2004) as the analogue of the breakdown value, two-phase sampling
+    and verification bias (Neyman 1938, Tenenbein 1970, Begg & Greenes 1983, Lang &
+    Reiczigel 2014), error rates without a gold standard (Hui & Walter 1980, Dawid & Skene
+    1979), the PPI family (Angelopoulos et al. 2023, Fisch et al. 2024, Zrnic & Candes 2024,
+    Boyeau et al. 2024, Chatzi et al. 2024, Lee et al. 2025), verifier benchmarks (Li et al.
+    2025, Liu et al. 2025), and allocation (Neyman 1934, Horvitz & Thompson 1952, Morikawa
+    et al. 2026). Twenty-six entries added to `references.bib`, each fetched by DOI content
+    negotiation or from the arXiv API. Remaining: read the papers in full, per
+    `manuscript/tmlr/TODO_CITATIONS.md`.
+
+### Open defect found on 2026-09-25 while proving Proposition C
+
+`Inputs.pair_bounds` in `scripts/fb_certify.py` allocates the audit level with
+`sidak(2 + n_audited_disc(j) + n_audited_disc(k))`, the **per-ordering** parameter count, and
+`run(..., simultaneous=True)` widens only the sampling term by Bonferroni. Today that is
+correct: `results/flipbudget/audit_v3_labels.json` does not exist, so `n_audited_disc` is zero
+for every model, the only audit parameters are the two pooled concordant intervals, and those
+are shared by every pair, which makes the audit side simultaneous for free. Once the v3
+discordant labels land, each model's discordant intervals enter many pairs while the Sidak
+count stays per-pair, and the family-wise audit level stated in Proposition C (and in
+`THEORY_CERTIFICATION.md` section 8, which specifies Sidak over *all* audited per-model
+parameters) will no longer hold. Fix before the v3 labels are analysed, not after:
+`run` must pass a family-wide parameter count when `simultaneous=True`.
 - [ ] **G5 — Generality.** The harness-wide audit (64.9% of 4,524 generative tasks) becomes a
   section that answers "this is one leaderboard", not a footnote.
 - [ ] **G6 — MMLU.** Demoted to an appendix robustness check, with the multiple-choice caveat

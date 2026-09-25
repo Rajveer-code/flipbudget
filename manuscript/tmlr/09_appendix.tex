@@ -1,0 +1,327 @@
+% Appendices. Mathematical exposition only: no result numbers are typed here, and any number
+% that is a result must enter through a macro exactly as in the body sections.
+
+\appendix
+
+\section{Proofs}
+\label{app:proofs}
+
+Throughout this appendix a concordant cell $c$ is partitioned into sub-populations indexed by
+$g$, where a sub-population is a model, or a model crossed with a design stratum when the
+audit design was stratified more finely inside the cell. Sub-population $g$ contains $N_{gc}$
+responses, of which a fraction $p_{gc}$ is credited by the human reference. The audit draws
+$n_{gc}$ of them by simple random sampling without replacement, independently across $g$, and
+observes $x_{gc}$ credited responses among those drawn. We write
+$n_c = \sum_g n_{gc}$, $x_c = \sum_g x_{gc}$, $w_{gc} = n_{gc}/n_c$,
+$\hat p_c = x_c / n_c$ and $\tilde p_c = \sum_g w_{gc}\, p_{gc}$, and
+$\mathrm{KL}(a \,\|\, b) = a \log(a/b) + (1-a)\log\bigl((1-a)/(1-b)\bigr)$ for
+$a, b \in [0,1]$.
+
+Two things are worth saying before the proofs. The estimand $\tilde p_c$ is the
+\emph{design-weighted} mean of the sub-population rates, not the population mean of cell $c$.
+Those coincide when the audit samples each sub-population in proportion to its size, and they
+do not in general. And $\tilde p_c$ is a quantity the design defines; the certification result
+uses it only through the interval $[L_c, U_c]$, together with
+Assumption~\ref{ass:h}, which ties every $p_{gc}$ to every other.
+
+\subsection{Proof of Lemma~\ref{lem:kl}}
+
+\begin{proof}[Proof of Lemma~\ref{lem:kl}]
+Each $x_{gc}$ is the number of credited responses in a simple random sample without
+replacement of size $n_{gc}$ from a population of $N_{gc}$ responses of which $N_{gc}p_{gc}$
+are credited, so $x_{gc}$ is hypergeometric. The argument has four steps.
+
+\emph{Step one: sampling without replacement is dominated.} Theorem~4 of
+\citet{hoeffding1963probability} states that if $X_1, \dots, X_n$ is a sample drawn without
+replacement from a finite population and $Y_1, \dots, Y_n$ is a sample of the same size drawn
+with replacement from the same population, then
+$\mathbb{E}\, f\bigl(\sum_i X_i\bigr) \le \mathbb{E}\, f\bigl(\sum_i Y_i\bigr)$ for every
+continuous convex $f$. Take $f(z) = e^{\lambda z}$, which is convex for every real $\lambda$.
+The with-replacement sum is binomial, so
+\[
+\mathbb{E}\, e^{\lambda x_{gc}} \;\le\; \bigl(1 - p_{gc} + p_{gc} e^{\lambda}\bigr)^{n_{gc}} .
+\]
+The inequality goes in the direction we need for both tails, because it holds for negative
+$\lambda$ as well as positive.
+
+\emph{Step two: the strata multiply.} The $G$ samples are drawn independently, so the moment
+generating function of $x_c$ is the product of the individual ones:
+$\mathbb{E}\, e^{\lambda x_c} \le \prod_g (1 - p_{gc} + p_{gc}e^{\lambda})^{n_{gc}}$.
+
+\emph{Step three: heterogeneous rates are dominated by their weighted mean.} Let
+$\varphi(p) = \log\bigl(1 + p(e^{\lambda} - 1)\bigr)$, so that the product above is
+$\exp\bigl(\sum_g n_{gc}\,\varphi(p_{gc})\bigr)$. Writing $u = e^{\lambda} - 1$,
+\[
+\varphi''(p) \;=\; \frac{-u^2}{(1 + pu)^2} \;\le\; 0 ,
+\]
+so $\varphi$ is concave on $[0,1]$ for every $\lambda$. Jensen's inequality with the weights
+$w_{gc}$, which are nonnegative and sum to one, gives
+$\sum_g w_{gc}\, \varphi(p_{gc}) \le \varphi\bigl(\sum_g w_{gc}\,p_{gc}\bigr) = \varphi(\tilde p_c)$.
+Multiplying by $n_c$ and exponentiating,
+\[
+\mathbb{E}\, e^{\lambda x_c} \;\le\; \bigl(1 - \tilde p_c + \tilde p_c e^{\lambda}\bigr)^{n_c} .
+\]
+The heterogeneity has been absorbed: the bound is now the moment generating function of a
+single binomial at the weighted mean rate.
+
+\emph{Step four: Chernoff.} Fix $t > 0$ with $\tilde p_c + t \le 1$. For $\lambda > 0$,
+Markov's inequality applied to $e^{\lambda x_c}$ gives
+\[
+\Pr\bigl(\hat p_c \ge \tilde p_c + t\bigr)
+\;\le\; \exp\Bigl( -\lambda n_c (\tilde p_c + t) + n_c \log\bigl(1 - \tilde p_c + \tilde p_c e^{\lambda}\bigr) \Bigr) .
+\]
+The exponent is minimised at
+$e^{\lambda^{\star}} = \frac{(\tilde p_c + t)(1 - \tilde p_c)}{(1 - \tilde p_c - t)\,\tilde p_c}$,
+which is larger than one and therefore admissible, and substituting it gives exponent
+$-n_c\,\mathrm{KL}(\tilde p_c + t \,\|\, \tilde p_c)$. This is the first inequality. For the
+second, apply the same four steps to the complementary counts $n_{gc} - x_{gc}$, whose rates
+are $1 - p_{gc}$ and whose weighted mean is $1 - \tilde p_c$, and use the identity
+$\mathrm{KL}(1-a \,\|\, 1-b) = \mathrm{KL}(a \,\|\, b)$.
+\end{proof}
+
+\paragraph{The interval, and its coverage.}
+Inverting the lemma gives the interval used in the paper. Define
+\[
+[L_c, U_c] \;=\; \bigl\{ q \in [0,1] \;:\; n_c\,\mathrm{KL}(\hat p_c \,\|\, q) \le \log(2/\alpha) \bigr\} ,
+\]
+which is an interval containing $\hat p_c$, because $q \mapsto \mathrm{KL}(\hat p_c \,\|\, q)$
+is convex with its minimum at $q = \hat p_c$.
+
+\begin{proof}[Coverage of the interval]
+Let $t^{\star}$ solve $n_c \mathrm{KL}(\tilde p_c + t^{\star} \,\|\, \tilde p_c) = \log(2/\alpha)$.
+On the event $\{\tilde p_c < L_c\}$ we have $\hat p_c > \tilde p_c$ and
+$n_c \mathrm{KL}(\hat p_c \,\|\, \tilde p_c) > \log(2/\alpha)$. Since
+$a \mapsto \mathrm{KL}(a \,\|\, \tilde p_c)$ is increasing for $a > \tilde p_c$, this forces
+$\hat p_c > \tilde p_c + t^{\star}$, an event of probability at most $\alpha/2$ by
+Lemma~\ref{lem:kl}. The event $\{\tilde p_c > U_c\}$ is bounded by $\alpha/2$ symmetrically,
+and the union bound gives coverage at least $1 - \alpha$.
+\end{proof}
+
+Nothing in either argument requires the sub-population rates to be equal, requires sampling
+with replacement, or appeals to a limit. One sanity check is worth recording because it is
+exact. When no audited response in the cell is credited, $\hat p_c = 0$ and
+$\mathrm{KL}(0 \,\|\, q) = -\log(1-q)$, so the upper endpoint solves
+$-n_c\log(1 - U_c) = \log(2/\alpha)$, giving $U_c = 1 - (\alpha/2)^{1/n_c}$. That is exactly
+the Clopper--Pearson upper limit at zero successes \citep{clopper1934use}: at the boundary the
+design-valid interval costs nothing, and the price of validity is paid in the interior.
+
+\subsection{Proof of Proposition~\ref{prop:range}}
+
+The proof has three parts: the region contains the truth, the optimisation separates across
+cells, and the cellwise optimum has the stated closed form. A fourth part says where the
+region is sharp and where it is not.
+
+\begin{proof}[The region contains the truth]
+Fix a concordant cell $c$. Model $m$'s rate in that cell is the size-weighted mean of the
+rates of the sub-populations belonging to $m$,
+$p_{mc} = \sum_{g \in m} (N_{gc}/N_{mc})\, p_{gc}$, and $\tilde p_c$ is the design-weighted
+mean $\sum_g w_{gc}\, p_{gc}$ over all of them. Both are convex combinations of the same
+numbers $\{p_{gc}\}$. Under Assumption~\ref{ass:h} those numbers lie in a common interval $I$
+of width at most $\varepsilon$, and a convex combination of points of $I$ lies in $I$.
+Therefore $p_{jc}$, $p_{kc}$ and $\tilde p_c$ all lie in $I$, which gives
+$|p_{jc} - p_{kc}| \le \varepsilon$ and $|p_{mc} - \tilde p_c| \le \varepsilon$ for
+$m \in \{j,k\}$. On the event $\tilde p_c \in [L_c, U_c]$ the second of these yields
+$p_{mc} \in [L_c - \varepsilon,\, U_c + \varepsilon]$, and since $p_{mc}$ is a proportion it
+also lies in $[0,1]$, so $p_{mc} \in [\ell_c, h_c]$. Together these are exactly the
+constraints defining $R_c(\varepsilon)$.
+\end{proof}
+
+\begin{proof}[Separability]
+By Equation~\eqref{eq:accuracy}, $\Delta_{jk} = \sum_c (s_{jc} p_{jc} - s_{kc} p_{kc})$ is
+linear in the unknowns and the shares are known. The constraint set is a product across
+cells: each concordant cell contributes $R_c(\varepsilon)$, and each discordant cell
+contributes the rectangle $[l_{jc}, u_{jc}] \times [l_{kc}, u_{kc}]$, which is
+$[0,1]^2$ when that cell carries no labels for those models. Minimising or maximising a sum of
+terms over a product of sets is done term by term. For a discordant cell the optimum is at a
+corner, giving $s_{jc} l_{jc} - s_{kc} u_{kc}$ and $s_{jc} u_{jc} - s_{kc} l_{kc}$.
+\end{proof}
+
+\begin{proof}[The closed form]
+Write $a = s_{jc} \ge 0$, $b = s_{kc} \ge 0$, $\ell = \ell_c$, $h = h_c$, and minimise
+$f(x,y) = a x - b y$ over
+$R = \{(x,y) \in [\ell,h]^2 : |x - y| \le \varepsilon\}$.
+
+For fixed $x \in [\ell,h]$, the objective decreases in $y$, so the optimal $y$ is the largest
+feasible one, $y = \min(h,\, x + \varepsilon)$. This is feasible: it is at most $h$ by
+construction, at least $\ell$ because $x \ge \ell$ and $h \ge \ell$, and within $\varepsilon$
+of $x$ because it is at most $x + \varepsilon$ and at least $\min(h,x) = x$. Substituting,
+\[
+g(x) \;=\; a x - b \min(h,\, x + \varepsilon)
+\;=\;
+\begin{cases}
+(a - b)\,x - b\,\varepsilon, & x \le h - \varepsilon, \\
+a\,x - b\,h, & x \ge h - \varepsilon,
+\end{cases}
+\]
+a piecewise linear function whose slope rises from $a - b$ to $a$ at the kink
+$x = h - \varepsilon$. Since $b \ge 0$ the slope is nondecreasing, so $g$ is convex.
+
+If $a \ge b$, both slopes are nonnegative and $g$ is nondecreasing, so the minimum is at
+$x = \ell$ and equals $a\ell - b\min(h, \ell + \varepsilon)$.
+
+If $a < b$, the first slope is negative and the second is nonnegative, so the unconstrained
+minimiser is the kink, and the constrained minimiser is $x^{\star} = \max(\ell,\, h -
+\varepsilon)$. When $h - \varepsilon \ge \ell$ the value is $a(h-\varepsilon) - bh$. When
+$h - \varepsilon < \ell$ the minimiser is $\ell$, and since then $\ell + \varepsilon > h$ the
+value is $a\ell - bh$. Both cases are written by the single expression
+$a\max(\ell,\, h - \varepsilon) - b\,h$.
+
+The maximum follows by symmetry. $R$ is invariant under exchanging its two coordinates, and
+$\max_R (a x - b y) = -\min_R (b x - a y)$ after that exchange, so the maximum is obtained by
+applying the formula above with $a$ and $b$ swapped and negating the result.
+\end{proof}
+
+\begin{proof}[Sharp at $\varepsilon = 0$, conservative above it]
+At $\varepsilon = 0$ we have $\ell_c = L_c$ and $h_c = U_c$, and $R_c(0)$ is the diagonal
+segment $\{(q,q) : q \in [L_c, U_c]\}$. Every point of it is attained in the relaxation where
+each $p_{gc}$ may take any value in $[0,1]$: set every sub-population rate in the cell to $q$,
+which satisfies $H(0)$ and makes $p_{jc} = p_{kc} = \tilde p_c = q$. The interval for
+$\Delta_{jk}$ is therefore attained and cannot be narrowed, which is what sharpness means
+here. The qualification about the relaxation matters, because each $p_{gc}$ is really a
+fraction over finitely many responses and only finitely many values of $q$ are exactly
+attainable. This is the same granularity that Section~\ref{sec:setup} uses to argue that
+$H(0)$ is an idealisation rather than a hypothesis about the world.
+
+For $\varepsilon > 0$ the region is an outer bound, and the reason is that it forgets the
+weights. $R_c(\varepsilon)$ imposes only that $p_{jc}$ and $p_{kc}$ lie within $\varepsilon$
+of each other inside $[\ell_c, h_c]$. The actual constraint is stronger: the same
+sub-population rates that produce $p_{jc}$ and $p_{kc}$ must also produce a design-weighted
+mean $\tilde p_c$ lying in $[L_c, U_c]$. When one model supplies most of the audit weight in
+the cell, its own rate is pinned close to $\tilde p_c$ and cannot travel the full distance
+$\varepsilon$ away from $[L_c,U_c]$. The computed range therefore contains the sharp
+identified range. Every consequence runs in the safe direction: reported ranges are at least
+as wide as the truth requires, fewer orderings are certified than a sharp analysis would
+certify, and each breakdown value in Definition~\ref{def:breakdown} is a lower bound on the
+sharp one.
+\end{proof}
+
+\subsection{Proof of Proposition~\ref{prop:oneverifier}}
+
+\begin{proof}[Proof of Proposition~\ref{prop:oneverifier}]
+Let $a_m$ be the fraction of model $m$'s responses the single verifier credits. Conditioning
+on the verifier's verdict and using the assumed common predictive values,
+\[
+A_m \;=\; \Pr(Y^\ast = 1 \mid v = 1)\, a_m + \Pr(Y^\ast = 1 \mid v = 0)\,(1 - a_m)
+\;=\; \pi_0 + a_m (\pi_1 - \pi_0),
+\]
+so $\Delta_{jk} = A_j - A_k = (\pi_1 - \pi_0)(a_j - a_k)$.
+\end{proof}
+
+The same statement in the other natural parameterisation makes the consequence easier to see.
+Suppose instead that the verifier has common error rates, $q = \Pr(v = 1 \mid Y^\ast = 0)$ and
+$r = \Pr(v = 0 \mid Y^\ast = 1)$, shared by all models. Then
+$a_m = (1-r) A_m + q (1 - A_m) = q + (1 - q - r) A_m$, so
+$a_j - a_k = (1 - q - r)\,\Delta_{jk}$. The observed gap is the human gap scaled by one
+number.
+
+Either way, a single multiplicative constant relates every observed pairwise gap to the
+corresponding human one. Three consequences follow, and they are the reason the design uses
+more than one verifier.
+
+The sign of every pairwise comparison is determined by the sign of that constant. When
+$\pi_1 > \pi_0$, equivalently $q + r < 1$, every ordering the verifier reports is the human
+ordering. When $\pi_1 < \pi_0$ the whole board is reversed at once. A model that a common
+mechanism treats unusually badly does not exist inside this parameterisation.
+
+Pair-specific reversals are therefore outside the model. A reversal that affects one pair and
+leaves another intact cannot be produced by any choice of $\pi_0$ and $\pi_1$, so observing
+one is evidence that the mechanism differs across models. Section~\ref{sec:results} reports
+such reversals.
+
+At $\pi_1 = \pi_0$, equivalently $q + r = 1$, every $\Delta_{jk}$ is zero and the verifier
+carries no information about the ordering at all.
+
+The role this plays in the design is the following. Pooling under a single verifier is
+Assumption~\ref{ass:h} at $\varepsilon = 0$ with $K = 1$, where the pooled cells cover the
+entire population and nothing is left model-specific. That assumption does not merely
+simplify the analysis; by the proposition it removes the phenomenon the paper is about. With
+$K$ verifiers the pooling is confined to the cells where they agree, and the cells where they
+disagree, which is where the disputed responses live, stay model-specific by construction.
+
+\subsection{Proof of Proposition~\ref{prop:coverage}}
+
+\begin{proof}[The audit half, in finite samples]
+List the parameters a certification uses: the pooled rate $\tilde p_c$ for each concordant
+cell, which is shared by every pair on the board, and the per-model rate $p_{mc}$ for each
+audited discordant cell. Distinct parameters are estimated from disjoint sets of labels,
+drawn independently by the design, so the corresponding intervals are functions of independent
+random variables. Give each of the $P$ parameters an interval at level
+$1 - \alpha'$ with $\alpha' = 1 - (1 - \alpha_{\mathrm{audit}})^{1/P}$, which is the
+allocation of \citet{sidak1967rectangular} and is exact rather than conservative under
+independence. By Lemma~\ref{lem:kl} each interval covers its parameter with probability at
+least $1 - \alpha'$, and by independence all of them cover simultaneously with probability at
+least $(1-\alpha')^{P} = 1 - \alpha_{\mathrm{audit}}$.
+
+On that event, the hypothesis of Proposition~\ref{prop:range} holds for every cell at once, so
+the identified range computed for every pair contains the corresponding $\Delta_{jk}$
+simultaneously. Any ordering whose range lies strictly above zero is therefore correct. No
+step used a limit, so the statement is exact in finite samples.
+\end{proof}
+
+\begin{proof}[The item-sampling half, asymptotically]
+Let $\delta_{jk}$ denote the pairwise difference over the distribution from which the
+benchmark's items were drawn, and $\Delta_{jk}$ the difference on the realised items. With
+$D_i$ the difference of the two models' human-reference verdicts on item $i$, the sample mean
+of $D$ is $\Delta_{jk}$ and its expectation is $\delta_{jk}$. The central limit theorem gives
+$\Pr(|\delta_{jk} - \Delta_{jk}| > z_{1-\alpha_s/2}\sqrt{\mathrm{Var}(D)/N}) \to \alpha_s$,
+and replacing $\mathrm{Var}(D)$ by the upper bound of Section~\ref{sec:inference} can only
+widen the interval. Combining the two halves by a union bound,
+\[
+\Pr\bigl(\delta_{jk} \notin [\mathrm{LB}_{jk} - h_{jk},\, \mathrm{UB}_{jk} + h_{jk}]\bigr)
+\;\le\; \Pr\bigl(\Delta_{jk} \notin [\mathrm{LB}_{jk}, \mathrm{UB}_{jk}]\bigr) + \Pr\bigl(|\delta_{jk} - \Delta_{jk}| > h_{jk}\bigr) ,
+\]
+which is at most $\alpha_{\mathrm{audit}} + \alpha_{\mathrm{sample}}$. The two events concern
+different sources of error, one the labels and the other the items, so nothing is counted
+twice; adding the levels rather than convolving the two error distributions is what makes the
+combination conservative.
+\end{proof}
+
+For a family of orderings, the audit half is already simultaneous because the concordant
+intervals are shared and the discordant allocation runs over all audited per-model parameters.
+The sampling half is made simultaneous by a Bonferroni division of $\alpha_{\mathrm{sample}}$
+across the family. Rank intervals inherit the family level directly: on the event that every
+certified ordering is correct, at least one model is ranked above $m$ for each ordering
+$k \succ m$ that was certified and at least one below for each $m \succ k$, so $m$'s true rank
+lies between one plus the first count and the number of models less the second.
+
+\subsection{The paired variance bound}
+\label{app:paired}
+
+Section~\ref{sec:inference} bounds the item-sampling variance without observing the human
+reference on unaudited items. Two elementary steps do the work.
+
+First, $D_i$ takes values in $\{-1,0,1\}$, so $D_i^2$ is the indicator that the two models are
+scored differently and $\mathrm{Var}(D) \le \mathbb{E}[D^2] = \Pr(D \ne 0)$.
+
+Second, for any verifier $v$ and any response pair,
+\[
+\mathbf{1}[Y^\ast_j \ne Y^\ast_k] \;\le\; \mathbf{1}[v_j \ne v_k] + \mathbf{1}[Y^\ast_j \ne v_j] + \mathbf{1}[Y^\ast_k \ne v_k] .
+\]
+If the left side is one and all three terms on the right are zero, then $v_j = v_k$,
+$Y^\ast_j = v_j$ and $Y^\ast_k = v_k$, which forces $Y^\ast_j = Y^\ast_k$ and contradicts the
+left side. Averaging over items, the disagreement rate between the two models under the human
+reference is at most the verifier's own disagreement rate between them, which is observed on
+every item, plus each model's disagreement rate with that verifier, which the identified
+bounds of Proposition~\ref{prop:range} bound above at the same $\varepsilon$. Taking the
+smallest bound over the available verifiers, and capping at one, gives the quantity used in
+the half-width. It is paired, because the verifier disagreement term is computed item by item
+rather than from the two models' marginal accuracies, and it is conservative, because every
+ingredient is an upper bound.
+
+\section{Numerical checks of the stated results}
+\label{app:tests}
+\textbf{[TO WRITE: the brute-force checks in \texttt{tests/test\_certification.py} and
+\texttt{tests/test\_manuscript\_claims.py}, and the regression anchor.]}
+
+\section{Inference details}
+\label{app:inference}
+\textbf{[TO WRITE: the distribution-free sampling alternative, the Bonferroni and Sidak
+allocation as implemented, and the coverage simulation design.]}
+
+\section{Sensitivity analyses}
+\label{app:sensitivity}
+\textbf{[TO WRITE: the registered sensitivity table from \texttt{certify\_results.json}.]}
+
+\section{Sensitivity to the human reference routine}
+\label{sec:sensitivity}
+\textbf{[TO WRITE: string, harness and Math-Verify references compared.]}

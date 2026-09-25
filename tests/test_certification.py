@@ -60,6 +60,27 @@ def test_p1_boundary_cases():
     assert C.lb_cell(0.3, 0.4, 0.5, 0.5, 1.0) == pytest.approx(-0.4)
 
 
+@pytest.mark.parametrize("seed", range(300))
+def test_p1_minimiser_sits_where_the_proof_says(seed):
+    """Appendix A locates the minimiser, not just its value.
+
+    g(x) = a x - b min(h, x + eps) is convex and piecewise linear with a kink at h - eps,
+    so the minimum is at x = lo when a >= b and at x = max(lo, h - eps) when a < b. The
+    optimal partner is always y = min(h, x + eps). Checking the argmin, and not only the
+    value, is what ties the written derivation to lb_cell.
+    """
+    a, b, L, U, eps = _random_cell()
+    lo, hi = max(0.0, L - eps), min(1.0, U + eps)
+    x_star = lo if a >= b else max(lo, hi - eps)
+    y_star = min(hi, x_star + eps)
+    # the stated point is feasible
+    assert lo - 1e-12 <= x_star <= hi + 1e-12
+    assert lo - 1e-12 <= y_star <= hi + 1e-12
+    assert abs(x_star - y_star) <= eps + 1e-12
+    # and it attains the implementation's minimum
+    assert a * x_star - b * y_star == pytest.approx(C.lb_cell(a, b, L, U, eps), abs=1e-12)
+
+
 def _legacy_shared_range(sj, sk, conc, disc_j, disc_k):
     """fb_joint_verifier.evaluate 'shared' arithmetic, re-derived by corner enumeration."""
     terms = [(sj[c] - sk[c], *conc[c]) for c in conc]

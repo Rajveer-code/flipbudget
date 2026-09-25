@@ -1,55 +1,149 @@
-% Related work. Claims about cited papers must be verified against the papers themselves
-% before submission; see manuscript/tmlr/TODO_CITATIONS.md.
+% Related work. Every characterisation here is drawn from the cited work's own abstract or
+% published record, retrieved by DOI or from the arXiv API; see manuscript/tmlr/TODO_CITATIONS.md
+% for which papers have been read in full and which have not.
 
 \section{Related work}
 \label{sec:related}
 
-\paragraph{Benchmark validity and benchmark quality.}
-A line of work assesses benchmarks as instruments rather than as leaderboards, asking whether
-a benchmark measures what it claims and whether its construction supports the inferences drawn
-from it \citep{reuel2024betterbench, salaudeen2025measurement}. That work is upstream of this
-one. It asks whether the questions and the construct are right; we take the benchmark as given
-and ask whether the ranking it publishes is identified by its own scoring pipeline. The two
-concerns compound: a benchmark can be a valid instrument and still produce an unidentified
-ranking, and the reverse.
+\paragraph{Whether a benchmark measures what it claims.}
+One line of work treats benchmarks as instruments to be assessed rather than scoreboards to be
+topped. BetterBench grades benchmarks against criteria for design, implementation and
+documentation, and finds that many widely used ones score poorly \citep{reuel2024betterbench}.
+A complementary framework asks which evaluative claims a given piece of evidence actually
+licenses, distinguishing performance on a narrow test from the broad capability the
+performance is often taken to demonstrate \citep{salaudeen2025measurement}. That work sits
+upstream of this one. It asks whether the questions and the construct are right; we take the
+benchmark and its reference answers as given and ask whether the ranking the pipeline
+publishes is identified by the pipeline's own outputs. The concerns compound rather than
+compete. A benchmark can be a valid instrument and still publish an unidentified ranking, and
+a benchmark whose construct is shaky can still be scored unambiguously.
 
-\paragraph{Scoring and answer extraction.}
-That evaluation results move with configuration is documented for prompt format and for
-reproducibility of evaluation pipelines \citep{sclar2023quantifying, biderman2024lessons},
-and several papers propose better extractors, including learned ones
-\citep{yu2024xfinder}. Our claim is not that a better extractor is available.
-It is that no extractor is neutral, that the choice is currently unreported, and that the
-consequence for a ranking can be bounded rather than argued about. A better extractor changes
-the cell structure; it does not remove the need to say what happens when extractors disagree.
+\paragraph{Configuration moves scores, and extraction is part of the configuration.}
+That evaluation results move with choices nobody reports is documented for prompt formatting
+\citep{sclar2023quantifying}, for benign perturbations that reorder leaderboards
+\citep{alzahrani2024benchmarks}, and across the whole surface of a widely used evaluation
+harness \citep{biderman2024lessons}. Answer extraction belongs to that surface. The pattern
+the leaderboard's original scorer matches descends from the convention introduced with Minerva
+\citep{lewkowycz2022minerva}, and proposals for better extractors, including learned ones,
+follow \citep{yu2024xfinder}. The board studied here supplies its own demonstration: its MATH
+results were rescored with a different verifier in February~2025, and the published scores
+changed while the per-item verdict files did not \citep{kydlicek2025fixing}. Our claim is not
+that a better extractor exists. It is that no extractor is neutral, that the choice is
+currently unreported alongside the score, and that its consequence for a ranking can be
+bounded rather than argued about. A better extractor changes the cell structure; it does not
+remove the question of what happens where extractors disagree.
 
-\paragraph{Inference for rankings.}
-Rank intervals and simultaneous inference for ordered comparisons are established, and we use
-the standard machinery rather than proposing new estimators; the bounds themselves are
-partial-identification statements in the sense of \citet{manski2003partial}, and the interval
-construction follows the finite-population sampling literature
-\citep{cochran1977sampling, kish1965survey, clopper1934use}. The difference in setting is that
-the usual uncertainty is sampling uncertainty over items, with the score of each item treated
-as observed. Here the score itself is a partially identified quantity, so the interval has two
-sources, and the audit-driven one does not shrink with more items.
+\paragraph{Verifiers as objects of measurement.}
+Recent work measures verifiers directly, building benchmarks for verifier accuracy across
+domains \citep{li2025verifybench} and training verifiers meant to be robust to the formats
+that defeat regular expressions \citep{liu2025compassverifier}. That work and this one point
+in opposite directions from the same observation. Given labels, one can rank verifiers and
+adopt the best; we ask what survives when no verifier is adopted as truth, which is the
+situation a reader of a published leaderboard is in. The two are complementary: a better
+verifier shrinks the discordant cells, and the analysis here says what that shrinkage buys in
+certified orderings.
 
-\paragraph{Using a cheap signal with a small amount of ground truth.}
-Prediction-powered inference and two-phase sampling designs combine an abundant proxy with a
-small validated sample, which is structurally what an audit does. The verifier is the proxy
-and the human labels are the validation. What differs here is the target and the assumption.
-The target is a set of pairwise orderings subject to a simultaneous guarantee rather than a
-single mean, and the assumption that makes a few hundred labels sufficient is about
-cross-model homogeneity within agreement cells, which is stated as a parameter and varied
-rather than adopted.
+\paragraph{Partial identification when the label is corrupted.}
+The bounds in Section~\ref{sec:setup} are partial-identification statements in the sense of
+\citet{manski2003partial}. The closest classical results concern exactly this structure: what
+can be learned about a distribution when an unknown fraction of the data is contaminated
+\citep{horowitz1995identification}, and the sharp bounds available when a binary variable is
+misclassified at unknown rates \citep{molinari2008partial}. A verifier is a misclassifying
+measurement of correctness whose error rate is unknown and may depend on the model, so the
+same machinery applies with the models playing the role of sub-populations.
 
-\paragraph{Verification bias in diagnostic testing.}
-The structure of the problem is old. When a reference test is applied to a subset selected by
-the index test, naive accuracy is biased, and classical corrections adjust for it. The
-agreement-stratified design here is the multi-rater version of that idea, with the labels
-deliberately allocated to the cells where the raters disagree.
+Concurrent work applies partial identification directly to language-model labels.
+\citet{chen2026partial} study the prevalence of a latent binary attribute when the only
+evidence is a panel of model reports whose errors may be arbitrarily dependent given the
+truth, show that the prevalence is completely unidentified without restrictions that separate
+the latent components, and obtain bounds under weak stochastic-ordering restrictions. The
+diagnosis is the same as ours, and the resolutions differ in a way worth stating. They use
+replication of the reports and a stochastic-ordering restriction, and target a single
+prevalence with no ground truth at all. We use a human reference on a small audited subsample
+and a bounded-heterogeneity restriction across models, and target differences of prevalences,
+because a leaderboard reader consumes orderings rather than levels.
+
+\paragraph{Reporting how far an assumption can be pushed.}
+Assumption~\ref{ass:h} is not testable at this budget in any strong sense, so the useful thing
+to report is how much of it a conclusion needs. That is the move made by design sensitivity in
+observational studies, where a finding is described by the magnitude of unmeasured bias that
+would be required to explain it away, and designs are compared by how much bias they can
+tolerate \citep{rosenbaum2004design}. The breakdown value of
+Definition~\ref{def:breakdown} is the same object in this setting, with cross-model
+heterogeneity in place of unmeasured confounding: $\varepsilon^{*}_{jk}$ is the amount of
+heterogeneity it would take to overturn the ordering $j \succ k$. The analogy also sets the
+reporting standard we follow. A sensitivity parameter is worth little as a caveat in a
+discussion section and worth a great deal as a number attached to each conclusion.
+
+\paragraph{Two-phase sampling, verification bias, and raters without a gold standard.}
+Auditing a cheap classifier with a small expensive sample is old. Two-phase sampling, in which
+a large first-phase sample is measured cheaply and a small second phase is measured accurately,
+goes back to \citet{neyman1938contribution}, and the binomial case with misclassification,
+where a fallible classifier is calibrated against a subsample scored by an infallible one, is
+\citeauthor{tenenbein1970double}'s double sampling scheme \citep{tenenbein1970double}.
+The complication that the subsample is chosen by the fallible classifier's own verdict is
+verification bias, and corrections for it are standard in diagnostic testing
+\citep{begg1983assessment}; confidence limits that propagate uncertainty in the estimated
+error rates into the corrected prevalence are also available \citep{lang2014confidence}.
+
+Two features of our setting break the classical correction. The human reference is applied
+to a sample stratified by the agreement pattern of several verifiers rather than by one
+verifier's verdict, and the error rates are not assumed common across the populations being
+compared, which is precisely the assumption Proposition~\ref{prop:oneverifier} shows to be
+fatal to the question. The multi-rater literature is closer on the first point. Estimating
+error rates from several imperfect tests without a gold standard is classical
+\citep{hui1980estimating}, as is estimating observer error rates from repeated labels
+\citep{dawid1979maximum}. Those methods identify rates by assuming the raters err
+independently given the truth. We do not assume that, and Section~\ref{sec:data} reports what
+the three verifiers share; instead of buying identification with an independence assumption,
+we buy partial identification with agreement stratification and pay for the rest in interval
+width.
+
+\paragraph{Label-efficient evaluation with a proxy.}
+Prediction-powered inference combines an abundant machine-generated proxy with a small
+human-labeled sample to produce valid confidence intervals for a target parameter, using the
+labeled sample to correct the proxy's bias \citep{angelopoulos2023ppi}. The family has grown
+towards evaluation: stratified variants for hybrid evaluation of language models
+\citep{fisch2024stratified}, active designs that spend the labeling budget where the proxy is
+least certain \citep{zrnic2024active}, and corrections for evaluation against synthetic labels
+\citep{boyeau2025autoeval}. Two papers target our object directly.
+\citet{chatzi2024ranking} rank models from pairwise comparisons produced by a strong model,
+calibrated against a small set of human comparisons, and return rank sets with a coverage
+guarantee. \citet{lee2026judge} correct the bias a judge's imperfect sensitivity and
+specificity induce in a naive score, build intervals that account for both the test set and
+the human-labeled calibration set, and allocate calibration samples adaptively.
+
+The structural relationship is close and the difference is the assumption, not the
+arithmetic. Bias correction of this kind requires the proxy's operating characteristics,
+estimated on the calibration sample, to transport to the population being scored. When those
+characteristics are taken to be common across the models under comparison, which is the usual
+calibration setup, Proposition~\ref{prop:oneverifier} applies: every pairwise gap is scaled by
+one number, and a pair-specific reversal cannot occur. The reversals reported in
+Section~\ref{sec:results} therefore sit outside that model. Our response is to stop correcting
+and start bounding. Homogeneity is confined to the cells where independent verifiers agree,
+it is carried as a parameter that is varied rather than a condition that is assumed, and the
+output is a range with a breakdown value instead of a point estimate with an interval. The
+price is honest and large: far fewer conclusions, each of them conditional on a number the
+reader can disagree with.
+
+\paragraph{Where to spend a label budget.}
+The allocation question in Section~\ref{sec:data} is a stratified sampling problem, and the
+classical answer optimises the variance of an estimated mean \citep{neyman1934stratified},
+with unequal selection probabilities handled by the standard weighting
+\citep{horvitz1952generalization} and the finite-population corrections used here taken from
+the standard texts \citep{cochran1977sampling, kish1965survey}. Adaptive versions that learn
+the within-stratum variances while sampling are current \citep{morikawa2026tsneyman}. Our
+allocation is not a variance problem. The two uses of a label, narrowing an identified range
+and testing the assumption on which every certified ordering depends, are not commensurable,
+and the projection in Figure~\ref{fig:frontier} shows that the first is nearly flat in the
+allocation. The budget went where variance minimisation would not have sent it.
 
 \paragraph{What this paper adds.}
-No estimator here is new. The contribution is the combination: verifier provenance established
-from the leaderboard's own records, agreement stratification across three verifiers, an
-identification result that makes the pooling assumption a reported parameter with a breakdown
-value per ordering, a design that allocates labels between certifying and testing that
-assumption, and a released audit.
+No estimator here is new, and the individual ingredients are all borrowed from the work above.
+The contribution is the combination and the discipline: verifier provenance established from
+the leaderboard's own records rather than inferred from agreement, agreement stratification
+across $K$ verifiers so that pooling is confined to the cells where they agree, an
+identification result that turns the pooling assumption into a reported parameter with a
+breakdown value attached to every ordering, a design registered in advance that splits a small
+label budget between certifying orderings and testing that assumption, and a released audit
+with its quality gate and its failures.
