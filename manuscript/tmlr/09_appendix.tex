@@ -310,13 +310,176 @@ ingredient is an upper bound.
 
 \section{Numerical checks of the stated results}
 \label{app:tests}
-\textbf{[TO WRITE: the brute-force checks in \texttt{tests/test\_certification.py} and
-\texttt{tests/test\_manuscript\_claims.py}, and the regression anchor.]}
+
+Appendix~\ref{app:proofs} proves the results. This appendix describes what is checked
+numerically, which is a different question with three parts: whether the code computes what
+the propositions say, whether the prose says what the code computes, and whether a change to
+the data pipeline silently moves a number that was published earlier. The released suite holds
+\TestsTotal{} cases in \TestsFunctions{} functions, counted by a script so that this sentence
+does not have to be maintained by hand.
+
+\subsection{The propositions against independent computation}
+
+\texttt{tests/test\_certification.py} contributes \TestsCertification{} cases. Each compares
+the implementation against a computation that does not share its code path.
+
+The closed form of Proposition~\ref{prop:range} is checked against brute force on randomly
+drawn cells: a dense grid over $R_c(\varepsilon)$, together with the region's exact polygon
+vertices so that an optimum sitting between grid points cannot be missed. A separate check
+asserts where the minimiser sits, not only what the minimum equals, because a formula can
+return the right value from the wrong argument and stay wrong at the next input. Three
+degenerate configurations are pinned explicitly: the cell where no verifier credits, in which
+$L_c = 0$ and the clipping binds for every positive $\varepsilon$; a cell in which both
+models have zero share and must contribute nothing; and an $\varepsilon$ large enough that the
+region is the whole unit square.
+
+Monotonicity of the lower bound in $\varepsilon$ is checked over a grid, since
+Definition~\ref{def:breakdown} is well posed only if it holds. The breakdown value itself is
+checked by running the bisection and, separately, scanning a fine grid for the first
+$\varepsilon$ at which the margin fails; the two must agree to a stated tolerance. The
+interior slope of a concordant cell's contribution is checked to be
+$-\max(s_{jc}, s_{kc})$. That check exists because an earlier version of the formula used
+$-(s_{jc} + s_{kc})$, which is valid but looser, and nothing in the output would have said so.
+
+Proposition~\ref{prop:oneverifier} is checked in both parameterisations over random draws,
+for every pair in a synthetic board, which is the form in which the claim is actually used:
+not that some pair is scaled, but that all of them are scaled by the same number. The
+falsification power calculation is checked by inverting it, and the claim that sampling
+without replacement can only help is checked against exact binomial coefficients rather than
+against the bound that replaces them.
+
+Lemma~\ref{lem:kl} gets three checks. At zero and at full successes the interval must equal
+the Clopper--Pearson limit exactly, which is the boundary identity derived in
+Appendix~\ref{app:proofs}. The interval must contain the point estimate and must widen with
+the level. And a Monte Carlo draws pooled hypergeometric samples from sub-populations with
+deliberately different rates and requires the realised miss rate not to exceed nominal. That
+last one is the only check that exercises both departures the lemma is about at once, and it
+is the check that would fail if the Jensen step were wrong.
+
+Rank intervals are checked against a small board whose certified set and correct answer are
+written out by hand.
+
+\subsection{The prose against the code}
+
+\texttt{tests/test\_manuscript\_claims.py} contributes \TestsManuscriptClaims{} cases and
+exists because transcription is where errors enter a paper. The formula as printed in
+Section~\ref{sec:setup} is re-implemented from the LaTeX text, deliberately without importing
+the library, and compared against the implementation on random inputs. The same is done for
+Proposition~\ref{prop:oneverifier}, for the claim that $\varepsilon = 0$ collapses to the
+pooled analysis, and for the claim that certification is monotone. If an edit to the
+manuscript changes a formula and the implementation is not changed with it, the suite fails
+rather than the reviewer noticing.
+
+\subsection{The regression anchor}
+
+\texttt{tests/test\_regression\_anchor.py} contributes \TestsAnchor{} cases. It rebuilds the
+earlier seventeen-model, two-verifier configuration from the \emph{current} census and audit
+map and requires it to reproduce the counts published from the earlier pipeline:
+\AnchorStringCombined{} orderings combined and \AnchorStringAudit{} audit-only, under the
+historical string semantics. The point is not the old numbers. It is that any change to the
+census, the audit map or the verifiers that silently alters a previously published result
+fails the build. The defect described in Section~\ref{sec:data}, in which a verifier degraded
+to string comparison without saying so, is exactly the class of failure this check is for.
+
+\subsection{What these checks do not establish}
+
+They do not prove the propositions; Appendix~\ref{app:proofs} does. They do not validate the
+empirical results, which come from the committed result files and the figures generated from
+them. And a check written from the same misunderstanding as the code will pass. That is the
+reason for the division of labour above: the propositions are proved on paper, the
+manuscript-claims layer re-implements from the printed text rather than from the library, and
+the anchor compares against numbers fixed before the current code existed.
 
 \section{Inference details}
 \label{app:inference}
-\textbf{[TO WRITE: the distribution-free sampling alternative, the Bonferroni and Sidak
-allocation as implemented, and the coverage simulation design.]}
+
+\subsection{How the levels are allocated}
+
+The audit and the item sample are controlled separately, at $\alpha_{\mathrm{audit}} =
+\AlphaAudit$ and $\alpha_{\mathrm{sample}} = \AlphaSample$, and a claim that generalises
+beyond the benchmark's items is made at one minus their sum. Proposition~\ref{prop:coverage}
+is what licenses adding them.
+
+Within the audit, the level is divided across the parameters a claim uses, by the allocation
+$\alpha' = 1 - (1-\alpha_{\mathrm{audit}})^{1/P}$. For a single ordering those parameters are
+the pooled interval of each concordant cell, plus each of the two models' audited discordant
+cells. In the configuration reported here no discordant cell carries labels, so $P$ is the
+number of concordant cells and every pooled interval is constructed at level
+\SidakTwoLevel{}.
+
+Making a statement about the whole board changes less than it might appear. The pooled
+concordant intervals are shared by every pair, so the audit side of a family-wide statement is
+already simultaneous in the present configuration and needs no further widening. What the
+family-wide setting changes is the sampling term, which takes a Bonferroni division of
+$\alpha_{\mathrm{sample}}$ across the \NumOrderings{} orderings. The specification for the
+general case is worth stating because it is not the same: once discordant cells carry labels,
+a per-model interval enters every ordering that model appears in, and the allocation must then
+run over all audited per-model parameters on the board rather than over the parameters of one
+pair.
+
+Rank intervals are read off the certified set and inherit whichever level that set was
+constructed at, since they are a deterministic function of it.
+
+\subsection{A sampling term that does not rest on a limit}
+
+The paired half-width of Section~\ref{sec:inference} is conservative in its variance but
+asymptotic in its distribution, and a reader who declines the central limit approximation
+should be given a number rather than a caveat. Because the paired difference $D_i$ lies in
+$[-1, 1]$, Hoeffding's inequality bounds the deviation of its mean without any variance
+estimate at all, giving the half-width
+\[
+h \;=\; \sqrt{\frac{2 \log(2/\alpha_{\mathrm{sample}})}{N}} ,
+\]
+which is finite-sample, distribution-free, and the same for every pair. It is also much
+wider, and the cost is visible: substituting it certifies \CertHoeffding{} orderings where the
+paired asymptotic term certifies \CertEpsZero{}. Both are reported. The distribution-free
+figure is the one that survives a reader who rejects the approximation, and the gap between
+them is the price of that approximation, stated rather than assumed away.
+
+The pairing matters separately from the distributional question. An earlier unpaired term,
+built from each model's marginal accuracy under one verifier, is retained in the code only to
+reproduce the regression anchor of Appendix~\ref{app:tests}; it certifies
+\CertSamplingLegacy{} orderings. It is not used, because two models answering the same items
+differ on far fewer of them than their marginal accuracies suggest, and a term that ignores
+the pairing throws that away.
+
+\subsection{What the coverage simulation does}
+
+The simulation in \texttt{scripts/fb\_certify\_coverage\_sim.py} runs \SimScenarios{}
+scenarios at \SimReplicates{} replicates each, at the full scale of the board. It checks
+whether the guarantee is attained and how it degrades; it is not a proof, and
+Section~\ref{sec:inference} says so.
+
+The frame is the real census, with the real cell structure and the real audit allocation, so
+that the strata, their sizes and their sampling rates are the ones the paper actually uses.
+What must be invented is the human reference on unaudited responses, and it is invented in two
+deliberately different ways.
+
+In the first, each concordant sub-population is given a number of errors that makes the
+realised error fractions span an interval of width exactly $\varepsilon_{\mathrm{true}}$, so
+that Assumption~\ref{ass:h} holds exactly as a statement about finite populations. This is the
+validity check: the procedure is analysed at the same $\varepsilon$, and no certified claim
+should be wrong.
+
+In the second, concordant errors are drawn independently with a small propensity that is the
+same for every model. No model differs from any other in expectation, which is the most
+favourable situation pooling could hope for, and yet the realised fractions differ by chance,
+so $H(0)$ fails as a statement about the finite populations that actually exist. This is a
+diagnostic rather than a validity check, and it is the one that produced the paper's reason
+for not reporting $\varepsilon = 0$ as a result.
+
+Discordant cells are given independent per-model rates drawn uniformly, which is the worst
+case the analysis is built for and the reason those cells enter at $[0,1]$ when unaudited.
+Items are resampled from the frame with replacement and paired across models, so the
+item-sampling term has something real to cover. An audit-only claim is scored against the
+difference on the realised items; a combined claim is scored against the superpopulation
+expectation. Confusing those two would make the procedure look better than it is, which is why
+they are kept apart in the output.
+
+One number bounds what the simulation can resolve. At the nominal level and this many
+replicates, the Monte Carlo standard error of a family-wise error rate is \SimMcSeAudit{}, so
+a reported rate of zero means below resolution rather than exactly zero, and the scenarios are
+compared against nominal with that in mind.
 
 \section{Sensitivity analyses}
 \label{app:sensitivity}
