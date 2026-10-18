@@ -1,3 +1,8 @@
+> [!NOTE]
+> **Moved.** This was the working repository for the paper. The current code, data and manuscript
+> (submitted to DMLR) live in [`leaderboard-orderings`](https://github.com/Rajveer-code/leaderboard-orderings).
+> This repository is archived and is not updated.
+
 # flipbudget
 
 **Which leaderboard orderings survive a human reader?**
